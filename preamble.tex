@@ -1,0 +1,75 @@
+% ======================== Packages ======================== 
+\usepackage{amssymb, amsmath, amsbsy, amsfonts}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,mexico]{babel}
+
+\usepackage{listings} % code
+\usepackage{geometry}
+\usepackage{csquotes}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+
+
+\usepackage{float}
+\usepackage{color}
+\usepackage[perpage]{footmisc}
+\usepackage{ifthen}
+\usepackage{multicol}
+\setlength{\columnsep}{20pt}
+\usepackage[nottoc]{tocbibind}
+\usepackage{titlesec}
+
+\usepackage{todonotes} % or fixme
+\usepackage{fancyhdr}
+\usepackage{emptypage}
+\usepackage{hyperref}
+
+
+% ================ CAPÍTULOS
+\newcommand{\bigrule}{\titlerule[0.5mm]}
+\titleformat{\chapter}[display]
+{\Huge}
+{\titlerule
+\filright
+\Large\chaptertitlename\
+\Large\thechapter}
+{0mm}
+{\filright}
+[\vspace{0.5mm} \bigrule]
+
+
+% ======================= DECLARACIÓN
+
+\usepackage{titling}
+
+\makeatletter
+\newif\if@decltotoc
+\newcommand\declarationname{Declaration of Authorship}
+\newcommand\ltx@sectionings{chapter,section,subsection,subsubsection,subparagraph}
+\newcommand\decl@rationsect{chapter}
+\ifdefined\chapter\else\renewcommand\decl@rationsect{section}\fi
+\newenvironment{declaration}[2][\decl@rationsect]{%
+  \edef\@tempa{\decl@rationsect}%
+  \edef\reserved@a{#1}%
+  \gdef\theplace{#2}%
+  \@decltotocfalse
+  \@ifundefined{#1}{\@latex@warning{#1 not defined}}{%
+    \@tempswafalse%
+    \@for\sec:=\ltx@sectionings\do{\ifx\sec\reserved@a\@tempswatrue\fi}%
+    \if@tempswa\let\@tempa\reserved@a\else
+      \@latex@warning{#1 is not a sectioning command, so I overrode it}\fi}
+  \csname\@tempa\endcsname*{\declarationname}
+  \if@decltotoc\addcontentsline{toc}{\@tempa}{\declarationname}\fi
+}{%
+  \par\vskip6em\par\noindent\theauthor\hfill\theplace,\space\thedate\par
+  \global\let\declaration\gobble@env
+  \global\let\enddeclaration\relax
+  \global\expandafter\let\csname enddeclaration*\endcsname\relax
+}
+\expandafter\def\csname declaration*\endcsname{\let\@decltotocfalse\@decltotoctrue\declaration}
+\expandafter\let\csname enddeclaration*\endcsname\enddeclaration
+\def\gobble@env{\@ifnextchar[{\@gobble@env}{\@gobble@env[]}}
+\def\@gobble@env[#1]{\@bsphack\@@gobble@env}
+\def\@@gobble@env#1\end{\@esphack\end}
+\makeatother
