@@ -1,0 +1,84 @@
+\documentclass[12pt,twoside]{article}
+\usepackage[spanish,mexico]{babel}
+% \usepackage{natbib}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{braket}
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+\title{Desigualdades de Bell: un experimento sencillo para licenciatura}								% Title
+\author{Luis Villegas}									% Author
+\date{\today}											% Date
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{fancy}
+
+\fancyhf{}
+\fancyhead[LE,RO]{TESIS}
+\fancyhead[RE,LO]{\leftmark}
+\fancyfoot[CE,CO]{\thepage}
+
+\hypersetup{
+    colorlinks = true,
+    linkbordercolor = white,
+	linkcolor = black,
+	citecolor = blue,
+	urlcolor = red}
+
+\thispagestyle{empty}
+\begin{document}
+
+\include{portada}
+
+\clearpage
+
+\section*{}
+\vspace{2cm}
+\normalsize
+
+\begin{flushright}
+\textit{A Joaquín Eduardo Aceves Rodríguez,}\\
+\textit{no he olvidado mi promesa.}
+\end{flushright}
+
+\clearpage
+
+\section*{Agradecimientos}
+
+Se agradece también al proyecto PAPIIT con clave IN116914, \textit{``Estudio y fabricación de chips ópticos para transferencia de información cuántica''} con el cual se adquirió parte del equipo utilizado en este trabajo. De la misma manera al proyecto PAPIME PE104814, \textit{``Fortalecimiento de la Enseñanza en los Laboratorios de Física Contemporánea I y II''}, gracias al cual llegué al laboratorio de óptica avanzada.
+
+\clearpage
+
+\include{resumen}
+
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+\clearpage
+\include{introduccion}
+\include{capitulo_correlaciones}
+%\include{capitulo_espectroscopia}
+%\include{capitulo3}
+\include{conclusiones}
+
+\newpage
+\bibliographystyle{ieeetr}
+\bibliography{bibliografia}
+
+\end{document}
