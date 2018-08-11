@@ -1,20 +1,32 @@
 \section{Correlaciones}\label{correlaciones}
 
-\subsection{Teoría}\label{teoria_correlaciones}
-
 \subsection{Motivación}\label{motivacion_correlaciones}
 
-El Laboratorio de Átomos Fríos y Óptica Cuántica del Instituto de Física de la UNAM - parte del Laboratorio Nacional de Materia Cuántica - tiene como propósito hacer investigación en metrología e información cuántica, por medio del estudio de sistemas cuánticos ópticos y materiales.
+El Laboratorio de Átomos Fríos y Óptica Cuántica del Instituto de Física de la UNAM --- parte del Laboratorio Nacional de Materia Cuántica --- tiene como propósito hacer investigación en metrología e información cuántica, por medio del estudio de sistemas cuánticos ópticos y materiales.
 
-El experimento principal del Laboratorio es el de generación de pares de fotones (o \textit{bifotones}) por medio de un proceso no lineal llamado \textit{mezclado de cuatro ondas} (o FWM por sus siglas en inglés).
+El experimento principal del Laboratorio es el de generación de pares de fotones (o \textit{bifotones}) por medio de un proceso no lineal llamado \textit{mezclado de cuatro ondas} --- o FWM por sus siglas en inglés.
 
-La técnica más estándar para generar bifotones es la de procesos de conversión espontánea paramétrica descendiente\cite{burnham} (o SPDC por sus siglas en inglés) en cristales no lineales, como BBO. Sin embargo, el tiempo de coherencia de los fotones generados en SPDC es muy corto (del tiempo de ps) gracias a que poseen un amplio ancho de banda. Esto impide ciertos experimentos interesantes: incluso sistemas de detección de fotones con tecnología de punta tienen una resolución temporal de al menos decenas de ps\cite{Lukens:15}. Además, la corta longitud de coherencia los hacen poco viables para interacciones átomo-fotón, haciéndolos poco deseables para estudios de información cuántica\cite{PhysRevLett.88.243602}.
+La técnica más estándar para generar bifotones es la de procesos de conversión espontánea paramétrica descendiente\cite{burnham} (o SPDC por sus siglas en inglés) en cristales no lineales, como BBO. Sin embargo, el tiempo de coherencia de los fotones generados en SPDC es muy corto (del orden de ps) gracias a que poseen un amplio ancho de banda. Esto impide ciertos experimentos interesantes; incluso sistemas de detección fotónica con tecnología de punta tienen una resolución temporal de al menos decenas de ps\cite{Lukens:15}. Además, la corta longitud de coherencia los hacen poco viables para interacciones átomo--fotón, haciéndolos poco deseables para estudios de información cuántica\cite{PhysRevLett.88.243602}.
 
-Por esto, en años recientes ha aumentado mucho el interés en generar pares de fotones con un ancho de banda angosto. Una solución simple es colocar el cristal para SPDC en una cavidad óptica\cite{PhysRevLett.101.190501}. Sin embargo, el desarrollo de técnicas de enfriamiento de átomos ha permitido estudiar la generación de bifotones en gases atómicos fríos por medio de procesos de FWM espontáneo. Utilizar este proceso trae varios beneficios: bifotones con un ancho de banda muy angosto, mayor eficiencia de producción y varios parámetros experimentales para poder controlar la función de onda resultante\cite{Du:08}.
+Por esto, en años recientes ha aumentado mucho el interés en generar pares de fotones con un ancho de banda angosto. Una solución simple es colocar el cristal para SPDC en una cavidad óptica\cite{PhysRevLett.101.190501}. Sin embargo, el avance en técnicas de enfriamiento de átomos ha permitido estudiar la generación de bifotones en gases atómicos fríos por medio de procesos de FWM espontáneo. Utilizar este proceso trae varios beneficios: bifotones con un ancho de banda muy angosto, mayor eficiencia de producción y varios parámetros experimentales para poder controlar la función de onda resultante\cite{Du:08}.
 
-En 1986, Grangier et al\cite{grangier} generaron haces de fotones individuales utilizando decaimientos atómicos en cesio para demostrar algunas propiedades cuánticas de la luz.
+El sistema de generación fotónica que decidió usarse en este Laboratorio fue el de una nube atómica a bajas temperaturas. Por la naturaleza sensible de este experimento, el desarrollo de un sistema dedicado de adquisición de datos era necesario. Dicho sistema se diseñó para el procesamiento, almacenamiento y posterior procesamiento de los datos experimentales que permitirían el estudio de correlaciones en la luz generada. A continuación se presentará la motivación y desarrollo del trabajo de este capítulo. 
 
-\subsubsection{Caracterización de los haces}
+\subsubsection{Luz cuántica}\label{luzcuantica}
+
+El primer propósito del estudio de fotones individuales es estudiar las correlaciones entre ellos. En 1986, Grangier et al\cite{grangier} generaron haces de fotones individuales utilizando decaimientos atómicos en cesio para demostrar algunas propiedades cuánticas de la luz. En particular, buscaban estudiar las correlaciones entre foto-detectores para las salidas de transmisión y reflección de un divisor de haz. Si --- citando a Grangier --- \textit{sólo se puede detectar un fotón una sola vez}, entonces habremos probado propiedades granulares de la luz y no habría duda de que sólo se puede describir de manera cuántica, i.e., con su función de onda.
+
+Ahora, si uno considera cada fotón como un campo eléctrico propio, es de interés ver cuáles son las correlaciones que se presentan entre ellos. En la sección \ref{teoria_correlaciones}, se presentarán los conceptos sobre lo que se entiende por \textit{correlaciones} en nuestro sistema, así como una breve descripción matemática acerca de cómo calcularlas.
+
+%Finalmente, la tasa de generación de fotones es muy baja, aún usando técnicas comunes en la academia\cite{Cere:1}. Por ello, es importante tratar de optimizar aquellos parámetros experimentales que mejoren
+
+Al pensar en un sistema de adquisición de datos se deben también tener en cuenta los dispositivos necesarios para la generación de fotones \textemdash como los haces láser usados y los instrumentos de detección, así como la óptica que ayudará a guiar a los fotones a los detectores. Es así que surge una motivación natural de caracterizar estos sistemas como parte de un trabajo más completo.
+
+\subsubsection{Luz láser y }
+
+
+\subsection{Teoría}\label{teoria_correlaciones}
+
 
 \subsection{Sistemas}\label{sistemas_correlaciones}
 
