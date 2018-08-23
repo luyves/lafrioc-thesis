@@ -56,9 +56,9 @@ Finalmente, el \textit{id800} es un módulo etiquetador de cuentas temporales (t
 Todo el software, la electrónica y las pruebas correspondientes se encuentran en la sección \ref{sistemas_correlaciones}.
 
 \subsection{Teoría}\label{teoria_correlaciones}
-En esta sección se presentará una descripción de los elementos teóricos utilizados en este capítulo. Partiendo de una descripción clásica de la luz, se introducirán los conceptos de \textit{coherencia} de primer y segundo grado, que nos permitirán clasificar luz de distintas fuentes de acuerdo a la estadística que siguen. Finalmente, se realizará una cuantización del campo  El desarrollo sigue principalmente a \textbf{Kenyon, Loudon y Fox}.
+En esta sección se presentará una descripción de los elementos teóricos utilizados en este capítulo. Partiendo de una descripción clásica de la luz, se introducirán los conceptos de \textit{coherencia} de primer y segundo grado, que nos permitirán clasificar luz de distintas fuentes de acuerdo a la estadística que siguen. Finalmente, se realizará una cuantización del campo  Este desarrollo sigue principalmente la exposición de \textbf{Kenyon, Loudon y Fox}, respectivamente.
 
-\subsubsection{Óptica clásica}
+\subsubsection{Óptica clásica}\label{optica_clasica}
 Aunque muchos efectos ópticos clásicos pueden ser descritos por óptica geométrica, para poder explicar efectos como interferencia y difracción, que necesitan el tratamiento clásico de la luz como ondas.
 
 Aunque no fue el primero en proponerlas, la teoría de Maxwell de la luz como ondas electromagnéticas está descrita en términos del campo eléctrico $\E(\textbf{r},t)$ y el campo magnético $\B(\textbf{r},t)$; para el campo electromagnético en materiales, se definen de manera más general el campo de desplazamiento $\D(\textbf{r},t)$ y la cantidad magnética $\Hmag(\textbf{r},t)$.
@@ -73,7 +73,7 @@ Las ecuaciones que describen la respuesta de un medio al campo eléctrico y magn
 \begin{align}
 \divr\D &= \rho, \\
 \divr\B &= 0, \\
-\curl\times\E &= -\frac{\partial \B}{\partial t}, \\
+\curl\E &= -\frac{\partial \B}{\partial t}, \\
 \curl\Hmag &= \bm{j} + \frac{\partial \D}{\partial t},
 \end{align}
 donde $\rho$ es la densidad de carga libre y $\bm{j}$ la corriente de carga libre. En el vacío (y sin densidad ni corriente de carga libre) $\epsilon_r = \mu_r = 1$ y las ecuaciones de Maxwell son:
@@ -85,7 +85,7 @@ donde $\rho$ es la densidad de carga libre y $\bm{j}$ la corriente de carga libr
 \curl\B &=\mu_0\epsilon_0\frac{\partial \E}{\partial t}, \label{ampere}
 \end{align}
 
-Tomando el rotacional de la ecuación \ref{faraday}:
+Tomando el rotacional de la ecuación \ref{faraday}, y combinándolo con la ecuación \ref{ampere}:
 \begin{equation*}
 \curl(\curl\E) = -\frac{\partial}{\partial t}\curl\B = - \mu_0\epsilon_0\frac{\partial}{\partial t}\frac{\partial\E}{\partial t} = -\mu_0\epsilon_0\frac{\partial^2\E}{\partial^2 t}
 \end{equation*}
@@ -93,17 +93,19 @@ Por otro lado, utilizando que para cualquier campo vectorial $\bm{\mathcal{A}}$ 
 \begin{equation}
 \nonumber \curl(\curl \bm{\mathcal{A}}) = \nabla(\divr \bm{\mathcal{A}}) - \nabla^2\bm{\mathcal{A}},
 \end{equation}
-y el hecho que $\divr\E = 0$ por la ecuación \ref{gauss_elec}, nos queda
+y el hecho que el primer término del lado derecho es cero por la ecuación \ref{gauss_elec}, tenemos que
 \begin{equation}
 \nabla^2\E(\bm{r},t) = \mu_0\epsilon_0\frac{\partial^2\E(\bm{r},t)}{\partial^2 t},
 \end{equation}
 que corresponde a una ecuación de onda con velocidad $c = 1/\sqrt{\mu_0\epsilon_0} = 2.998\times 10^8 ms^{-1}$, que es la velocidad de la luz en el vacío.
+De una manera análoga se encuentra una ecuación de onda para el campo magnético $\B$.
 
+\subsubsection{Coherencia}\label{coherencia}
+Vale la pena hablar primero del efecto de interferencia. La interferencia es el efecto de la recombinación de dos ondas en movimiento; patrones de interferencia ocurren cuando estas dos ondas presentan una diferencia de fase. Es un fenómeno muy fácil de ver al dejar caer dos piedras en una alberca y hacen olas: se presenta interferencia cuando estas olas se superponen. Sin embargo, en el contexto del campo electromagnético, existen varios ejemplos que sirven para dejarlo en claro.
 
-\subsubsection{Coherencia}
-\subsubsection{Estadística de fotones}
+\subsubsection{Estadística de fotones}\label{estadistica}
 g1 y g2
-\subsubsection{Cuantización del campo}
+\subsubsection{Cuantización del campo}\label{optica cuantica}
 bunching y antibunching
 
 \subsection{Sistemas}\label{sistemas_correlaciones}
