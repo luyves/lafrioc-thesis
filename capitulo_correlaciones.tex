@@ -1,48 +1,200 @@
 \section{Correlaciones}\label{correlaciones}
 
-\subsection{Motivación}\label{motivacion_correlaciones}
-
 El Laboratorio de Átomos Fríos y Óptica Cuántica del Instituto de Física de la UNAM --- parte del Laboratorio Nacional de Materia Cuántica --- tiene como propósito hacer investigación en metrología e información cuántica, por medio del estudio de sistemas cuánticos ópticos y materiales.
 
-El experimento principal del Laboratorio es el de generación de pares de fotones (o \textit{bifotones}) por medio de un proceso no lineal llamado \textit{mezclado de cuatro ondas} --- o FWM por sus siglas en inglés.
+El experimento principal del Laboratorio es el de generación de pares de fotones (o \textit{bifotones}) por medio de un proceso no lineal llamado \textit{mezclado de cuatro ondas} --- o FWM por sus siglas en inglés. En el laboratorio, este proceso de FWM es realizado actualmente en una muestra de átomos de rubidio calientes, y próximamente se realizará también en una muestra de átomos fríos.
+
+\subsection{Motivación}\label{motivacion_correlaciones}
 
 La técnica más estándar para generar bifotones es la de procesos de conversión espontánea paramétrica descendiente\cite{burnham} (o SPDC por sus siglas en inglés) en cristales no lineales, como BBO. Sin embargo, el tiempo de coherencia de los fotones generados en SPDC es muy corto (del orden de ps) gracias a que poseen un amplio ancho de banda. Esto impide ciertos experimentos interesantes; incluso sistemas de detección fotónica con tecnología de punta tienen una resolución temporal de al menos decenas de ps\cite{Lukens:15}. Además, la corta longitud de coherencia los hacen poco viables para interacciones átomo--fotón, haciéndolos poco deseables para estudios de información cuántica\cite{PhysRevLett.88.243602}.
 
-Por esto, en años recientes ha aumentado mucho el interés en generar pares de fotones con un ancho de banda angosto. Una solución simple es colocar el cristal para SPDC en una cavidad óptica\cite{PhysRevLett.101.190501}. Sin embargo, el avance en técnicas de enfriamiento de átomos ha permitido estudiar la generación de bifotones en gases atómicos fríos por medio de procesos de FWM espontáneo. Utilizar este proceso trae varios beneficios: bifotones con un ancho de banda muy angosto, mayor eficiencia de producción y varios parámetros experimentales para poder controlar la función de onda resultante\cite{Du:08}.
+Por esto, en años recientes ha aumentado mucho el interés en generar pares de fotones con un ancho de banda angosto. Una solución simple es colocar el cristal para SPDC en una cavidad óptica\cite{PhysRevLett.101.190501}. Sin embargo, el avance en técnicas de enfriamiento de átomos ha permitido estudiar la generación de bifotones en gases atómicos fríos por medio de procesos de FWM espontáneo. Utilizar este proceso trae varios beneficios: bifotones con un ancho de banda muy angosto, mayor eficiencia de producción y varios parámetros experimentales para poder controlar la función de onda resultante\cite{Du:08}. En este laboratorio, el corazón de este futuro experimento consiste en un gas de átomos de $Rb$, confinados y enfriados por medio de una trampa magneto-óptica (o MOT). Una breve explicación de nuestra MOT se dará en la sección \textbf{ESPECTROSCOPIA MOTIVACIÓN}, y una descripción más detallada puede encontrarse en \cite{Adrian}. A pesar de que el proceso de FWM en átomos fríos todavía no se implementa en el laboratorio, hay varios aspectos del experimento que necesitan desarrollo, como los sistemas de control y adquisición de datos así como la caracterización y optimización de la nube atómica.
 
-El sistema de generación fotónica que decidió usarse en este Laboratorio fue el de una nube atómica a bajas temperaturas. Por la naturaleza sensible de este experimento, el desarrollo de un sistema dedicado de adquisición de datos era necesario. Dicho sistema se diseñó para el procesamiento, almacenamiento y posterior procesamiento de los datos experimentales que permitirían el estudio de correlaciones en la luz generada. A continuación se presentará la motivación y desarrollo del trabajo de este capítulo. 
+%El sistema de generación fotónica que decidió usarse en este laboratorio fue el de FWM en una nube atómica a bajas temperaturas.
+Por la naturaleza sensible de este experimento, el desarrollo de un sistema dedicado de adquisición de datos era necesario. Dicho sistema se diseñó para el procesamiento, almacenamiento y posterior procesamiento de los datos experimentales que permitirían el estudio de correlaciones en la luz generada. A continuación se presentará la motivación y desarrollo del trabajo de este capítulo. 
 
 \subsubsection{Luz cuántica}\label{luzcuantica}
 
-El primer propósito del estudio de fotones individuales es estudiar las correlaciones entre ellos. En 1986, Grangier et al\cite{grangier} generaron haces de fotones individuales utilizando decaimientos atómicos en cesio para demostrar algunas propiedades cuánticas de la luz. En particular, buscaban estudiar las correlaciones entre foto-detectores para las salidas de transmisión y reflección de un divisor de haz. Si --- citando a Grangier --- \textit{sólo se puede detectar un fotón una sola vez}, entonces habremos probado propiedades granulares de la luz y no habría duda de que sólo se puede describir de manera cuántica, i.e., con su función de onda.
+El primer propósito del estudio de fotones individuales es estudiar las correlaciones entre ellos. En 1986, Grangier et al\cite{grangier} generaron haces de fotones individuales utilizando decaimientos atómicos en cesio para demostrar algunas propiedades cuánticas de la luz. En particular, buscaban estudiar las correlaciones entre foto-detectores para las salidas de transmisión y reflección en un divisor de haz. Si --- citando a Grangier --- \textit{sólo se puede detectar un fotón una sola vez}, entonces habremos probado propiedades granulares de la luz y no habría duda de que sólo se puede describir de manera cuántica, i.e., con su función de onda.
 
-Ahora, si uno considera cada fotón como un campo eléctrico propio, es de interés ver cuáles son las correlaciones que se presentan entre ellos. En la sección \ref{teoria_correlaciones}, se presentarán los conceptos sobre lo que se entiende por \textit{correlaciones} en nuestro sistema, así como una breve descripción matemática acerca de cómo calcularlas.
+Ahora, si uno considera cada fotón como un campo eléctrico propio, es de interés ver cuáles son las correlaciones que se pueden medir entre ellos. En la sección \ref{teoria_correlaciones}, se presentarán los conceptos sobre lo que se entiende por \textit{correlaciones} en nuestro sistema, así como una breve descripción matemática acerca de cómo calcularlas.
 
 %Finalmente, la tasa de generación de fotones es muy baja, aún usando técnicas comunes en la academia\cite{Cere:1}. Por ello, es importante tratar de optimizar aquellos parámetros experimentales que mejoren
 
-Al pensar en un sistema de adquisición de datos se deben también tener en cuenta los dispositivos necesarios para la generación de fotones \textemdash como los haces láser usados y los instrumentos de detección, así como la óptica que ayudará a guiar a los fotones a los detectores. Es así que surge una motivación natural de caracterizar estos sistemas como parte de un trabajo más completo.
+\subsubsection{Preparación del sistema}
+Al pensar en un sistema de adquisición de datos se deben también tener en cuenta los dispositivos necesarios para la generación de fotones como los haces láser usados y los instrumentos de detección, así como la óptica que ayudará a guiar a los fotones a los detectores. Es así que surge una motivación natural de caracterizar estos sistemas como parte de un trabajo más completo.
 
-\subsubsection{Luz láser y }
+El arreglo óptico se divide en la parte de bombeo (la luz que llega a la nube de átomos) y la parte de adquisición (la luz resultante que será analizada). La óptica de bombeo se describirá en el capítulo \textbf{ESPECTROSCOPIA} correspondiente al experimento de espectroscopía, pues es más relevante a ese experimento. El montaje de la óptica de bombeo consiste principalmente en un arreglo de filtros de interferencia SEMROCK LL01-780 para filtrar los haces de bombeo y dos fotodiodos de avalancha (APDs) para la detección de eventos. La recolección de esta luz hacia los APDs se realiza por medio de dos fibras ópticas \textbf{THORLABS SERIAL NUMBER}.
 
+Aún con técnicas estándar hoy en día, la tasa de generación de bifotones en experimentos de este tipo es baja\cite{Cere:1}; es por esto que es importante obtener la mayor eficiencia posible a la hora de acoplar las fibras ópticas. El problema del acoplamiento consiste en la alineación del haz incidente y de la fibra para maximizar la potencia transferida. En condiciones ideales, uno podría conseguir un porcentaje de acoplamiento a la fibra de casi 100\%\cite{Ladany:93}, pero hacerlo es laborioso y necesita de múltiples elementos ópticos. El acoplamiento de luz láser a una fibra monomodal es un problema de empatamiento de modos\cite{Newport}:
+\begin{equation}
+\label{acoplamiento}
+f = D\frac{\pi \omega}{4\lambda},
+\end{equation}
+
+donde $f$ es la distancia focal de la lente necesaria para acoplar un haz de diámetro $1/e^2$ $D$ y longitud de onda $\lambda$ a una fibra con modo $\omega$. De la ecuación \ref{acoplamiento}, vemos que el diámetro del haz es un parámetro controlable importante para conseguir un buen acoplamiento. Por esto, se decidió escribir un sencillo programa de computadora para analizar perfiles de haces láser utilizando fotos tomadas con un chip CCD.
+
+\textbf{IMG montaje optico}
+
+El montaje óptico que se decidió utilizar se observa en la figura \textbf{LABEL}, en donde pudimos obtener eficiencias de hasta el 81\% para el acoplamiento de láseres del experimento, gracias al uso de lentes asféricas \textbf{THORLABS}, así como de una montura Thorlabs SM1Z que nos permitió un ajuste fino de la distancia de la fibra al lente a lo largo del eje óptico.
+
+\subsubsection{Instrumentos}
+Para la detección y procesamiento de señales se utilizarán dos instrumentos: varios APD de silicón (\textit{id120}) y un etiquetador de cuentas temporales (\textit{id800}) fabricados por IDQuantique.
+
+Un APD es un un diodo p-n con una ganancia alta. Estos instrumentos tienen un mecanismo interno de amplificación, que genera señales eléctricas con alta tasa señal-ruido como respuesta a detecciones de un sólo fotón\cite{Cork}. Las cuentas detectadas por un APD pueden tener distintas fuentes:
+\begin{itemize}
+\item Fotones individuales, que pueden ser registrados correctamente o como \textit{afterpulses}.
+\item \textit{Cuentas obscuras}, señales generadas por el mismo APD sin luz externa incidente. La tasa de cuentas obscuras (\textit{dark count rate}) es dependiente de la temperatura del detector y el voltaje de polarización (bias).
+\end{itemize}
+
+Los APD \textit{id120} cuentan con una zona de detección de $500\mu m$ de diámetro y una eficiencia cuántica de 80\% para $800nm$. Es necesario optimizar los valores del voltaje de bias aplicado para minimizar el \textit{afterpulsing} y el \textit{dark count rate} --- optimización que no forma parte del presente trabajo, pues el experimento de FWM sigue en fase de planeación. Sin embargo, una descripción mucho más detallada de el funcionamiento y las tasas de generación de eventos en APDs puede encontrarse en \cite{Michalet}.
+
+Una desventaja de la elección de \textit{id120} es que no tienen un trigger interno capaz de ser activado de manera externa, por lo que fue necesario diseñar un circuito de \textit{gating} utilizando búferes de tres estados.
+
+Finalmente, el \textit{id800} es un módulo etiquetador de cuentas temporales (time-to-digital converter, TDC). Cuenta con 8 canales de entrada BNC con una resolución temporal de 81ps para coincidencias de eventos en canales distintos. El \textit{id800} cuenta con un software de LabView para el procesamiento de cuentas, pero la funcionalidad que ofrecía no era adecuada para experimentos de FWM. Por ello, se optó por escribir una biblioteca completa para Python 3.6, para permitir la programación del módulo. Con esta biblioteca, se escribió un programa para procesar y visualizar en tiempo real las cuentas que el TDC reciba.
+
+Todo el software, la electrónica y las pruebas correspondientes se encuentran en la sección \ref{sistemas_correlaciones}.
 
 \subsection{Teoría}\label{teoria_correlaciones}
+En esta sección se presentará una descripción de los elementos teóricos utilizados en este capítulo. Partiendo de una descripción clásica de la luz, se introducirán los conceptos de \textit{coherencia} de primer y segundo grado, que nos permitirán clasificar luz de distintas fuentes de acuerdo a la estadística que siguen. Finalmente, se realizará una cuantización del campo  El desarrollo sigue principalmente a \textbf{Kenyon, Loudon y Fox}.
 
+\subsubsection{Óptica clásica}
+Aunque muchos efectos ópticos clásicos pueden ser descritos por óptica geométrica, para poder explicar efectos como interferencia y difracción, que necesitan el tratamiento clásico de la luz como ondas.
+
+Aunque no fue el primero en proponerlas, la teoría de Maxwell de la luz como ondas electromagnéticas está descrita en términos del campo eléctrico $\E(\textbf{r},t)$ y el campo magnético $\B(\textbf{r},t)$; para el campo electromagnético en materiales, se definen de manera más general el campo de desplazamiento $\D(\textbf{r},t)$ y la cantidad magnética $\Hmag(\textbf{r},t)$.
+
+En un material homogéneo e isotrópico, la descripción de estos campos generales es:
+\begin{align*}
+\D &= \epsilon_0\epsilon_r\E & \B &= \mu_0\mu_r\Hmag,
+\end{align*}
+donde $\epsilon_0$ y $\mu_0$ son la permitividad eléctrica y permeabilidad magnética del vacío, respectivamente, y $\epsilon_r$ y $\mu_r$ la permitividad eléctica y permeabilidad magnética del medio.
+
+Las ecuaciones que describen la respuesta de un medio al campo eléctrico y magnético fueron compiladas por Maxwell:
+\begin{align}
+\divr\D &= \rho, \\
+\divr\B &= 0, \\
+\curl\times\E &= -\frac{\partial \B}{\partial t}, \\
+\curl\Hmag &= \bm{j} + \frac{\partial \D}{\partial t},
+\end{align}
+donde $\rho$ es la densidad de carga libre y $\bm{j}$ la corriente de carga libre. En el vacío (y sin densidad ni corriente de carga libre) $\epsilon_r = \mu_r = 1$ y las ecuaciones de Maxwell son:
+
+\begin{align}
+\divr\E &= 0, \label{gauss_elec}\\
+\divr\B &= 0, \label{gauss_mag}\\
+\curl\E &= -\frac{\partial \B}{\partial t}, \label{faraday}\\
+\curl\B &=\mu_0\epsilon_0\frac{\partial \E}{\partial t}, \label{ampere}
+\end{align}
+
+Tomando el rotacional de la ecuación \ref{faraday}:
+\begin{equation*}
+\curl(\curl\E) = -\frac{\partial}{\partial t}\curl\B = - \mu_0\epsilon_0\frac{\partial}{\partial t}\frac{\partial\E}{\partial t} = -\mu_0\epsilon_0\frac{\partial^2\E}{\partial^2 t}
+\end{equation*}
+Por otro lado, utilizando que para cualquier campo vectorial $\bm{\mathcal{A}}$ es cierto que:
+\begin{equation}
+\nonumber \curl(\curl \bm{\mathcal{A}}) = \nabla(\divr \bm{\mathcal{A}}) - \nabla^2\bm{\mathcal{A}},
+\end{equation}
+y el hecho que $\divr\E = 0$ por la ecuación \ref{gauss_elec}, nos queda
+\begin{equation}
+\nabla^2\E(\bm{r},t) = \mu_0\epsilon_0\frac{\partial^2\E(\bm{r},t)}{\partial^2 t},
+\end{equation}
+que corresponde a una ecuación de onda con velocidad $c = 1/\sqrt{\mu_0\epsilon_0} = 2.998\times 10^8 ms^{-1}$, que es la velocidad de la luz en el vacío.
+
+
+\subsubsection{Coherencia}
+\subsubsection{Estadística de fotones}
+g1 y g2
+\subsubsection{Cuantización del campo}
+bunching y antibunching
 
 \subsection{Sistemas}\label{sistemas_correlaciones}
+La principal parte del trabajo de este capítulo consistió en la elaboración de distintos programas y sistemas que serán de utilidad para el experimento de FWM en átomos fríos. Estos sistemas consistieron en un perfilador de haces Gaussianos, la paquetería de uso del TDC y el sistema de adquisición, el sistema de \textit{gating} y parte del sistema de control.
 
-Casi 30 años después John S. Bell publicaría un artículo que pondría en duda si la paradoja EPR era
-de hecho una paradoja o si el análisis de Einstein, Podolsky y Rosen había pasado por alto algo
-importante.
+\subsubsection{Perfilómetro}\label{perfilometro}
+Poder caracterizar y manipular un haz láser de manera adecuada siempre es ventajoso en un laboratorio de óptica pues permite optimizar algunas aplicaciones de dicha luz, como acoplamiento a fibras ópticas.
+
+Una manera de caracterizar un haz es analizando su perfil de intensidad espacial en un plano perpendicular a su dirección de propagación. Este perfil de intensidad será distinto para cada láser dependiendo de la cavidad que tenga, aunque un perfil Gaussiano es común en láseres utilizados en el laboratorio. La propagación de los láseres del laboratorio puede aproximarse bastante bien asumiendo que tienen una distribución Gaussiana en 2-D, que corresponde a un perfil de intensidad:
+\begin{equation}
+I(r) = I_0 e^{\frac{-2r^2}{w^2}},
+\end{equation}
+donde $r^2 = x^2 + y^2$ y $w$ representa el diámetro del haz. $w$ es en realidad una función de la distancia a partir del plano en el que el frente de onda es plano, pero para un corte transversal es constante \cite{CVI}.
+
+Hay varias definicones de diámetro de haz, y aunque para haces Gaussianos la más común es el diámetro para el cual la intensidad ha caído a $1/e^2$ (13.5 \%) de su intensidad original. Otras definiciones --- útiles en distintos contextos --- son el diámetro $1/e$, \textit{full-width half-maximum} (FWHM) y $D4\sigma$, que corresponden a caídas de intensidad a $1/e$ y $50\%$ para las primeras dos, respectivamente, y 4 veces la desviación estándar para la última. Para haces Gaussianos ideales, los diámetros de $1/e^2$ y $D4\sigma$ coinciden.
+
+\textbf{GRÁFICA DE PERFIL GAUSSIANO Y DIÁMETROS}
+
+Haciendo uso de una cámara digital, es posible tomar una foto del perfil de intensidad espacial en un plano perpendicular y realizar un análisis en la computadora. La cámara disponible para ese propósito en el laboratorio es una cámara Thorlabs DCC1545M, que cuenta con un chip CCD con una resolución de 1280x1024 pixeles cuadrados de $5.4\mu m$ de lado. El chip CCD tiene una intensidad de saturación de aproximadamente $1\mu W/cm^2$, lo que significa que atenuar la luz láser usando filtros de densidad neutral (ND) es necesario.
+
+\textbf{FOTO DE HAZ LASER, LIMPIO Y CON INTERFERENCIA}
+
+Una vez que una foto ha sido tomada, es procesada por la computadora y convertida en una matriz de valores dentro del intervalo $[0,255]$ (pues la cámara toma fotos en 8-bits). Después, el algoritmo realiza un procesamiento sencillo para reducir el ruido en la imagen, ruido que puede provenir tanto de ruido eléctrico en el sensor o por luz de fondo. El algoritmo calcula un valor de offset basado en el valor mediano de los pixeles no iluminados por el haz.
+
+Para el análisis de imágenes, primero hace falta encontrar el centro del haz. La figura \textbf{FOTO DE ARRIBA} b) muestra que a veces es difícil tener una imagen limpia. A veces el uso de filtros ND distorsiona el modo y el perfil de un haz, o se puede presentar interferencia por la óptica usada. Por esto, encontrar el centro de un perfil de intensidad a veces no es directo como encontrar el pixel de mayor intensidad.
+
+Normalmente, este ruido puede arreglarse si uno usa un iris o limpia bien la óptica, pero a veces es riesgoso cuando el arreglo es grande o complicado. En casos como este, es posible hacer un preprocesamiento de la imagen para intentar limpiar un poco el ruido.
+
+%https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3749244/pdf/1472-6807-11-7.pdf
+%http://www.globalsino.com/EM/page1705.html
+%https://www.google.com.mx/search?client=opera&q=fourier+transform+image+mask&sourceid=opera&ie=UTF-8&oe=UTF-8
+\textbf{FOURIER}
+
+\textbf{DIAGRAMA DE FFT}
+
+La idea de este pre-procesamiento consiste en remover el ruido en el dominio de frecuencias por medio de la transformada discreta de Fourier en 2D (utilizando el algoritmo de la transformada rápida, o FFT). Para analiar espectros, es conveniente utilizar el hecho de que la transformada de una distribución Gaussiana es también una Gaussiana:
+\begin{align*}
+\mathcal{F}\{I(x,y)\} &= \hat I (u,v) = \int\int I_0\exp\left(-\cfrac{x^2+y^2}{r_0^2}\right)\exp(-i2\pi (ux+vy))dxdy \\
+&= I_0\int \exp\left(-\cfrac{x^2}{r_0^2}\right)\exp(-i2\pi ux)dx\int\exp\left(-\cfrac{y^2}{r_0^2}\right)\exp(-i2\pi vy)dy \\
+&= I_0\left(\cfrac{\sqrt{\pi}}{r_0}\exp(-\pi^2 r_0^2u^2)\right)\left(\cfrac{\sqrt{\pi}}{r_0}\exp(-\pi^2 r_0^2v^2)\right) \\
+&= I_0\cfrac{\sqrt{\pi}}{r_0}\exp(-\pi^2 r_0^2(u^2+v^2)) = \hat{I_0}\exp\left(-\cfrac{u^2+v^2}{z_0^2}\right),
+\end{align*}
+
+donde $\hat I_0 = I_0\cfrac{\sqrt{\pi}}{r_0}$ es la nueva amplitud de la distribución y $z_0 = \cfrac{1}{\pi r_0}$ es el nuevo radio. Observamos que si tenemos un haz con perfil ancho, se convertirá en un perfil delgado en el espacio de frecuencias.
+
+\textbf{ESPECTRO + ESPECTRO FILTRADO}
+
+Viendo el espectro de frecuencias, podemos bloquear los puntos que no correspondan al espectro de nuestra Gaussiana. A esto lo llamaremos una \textit{máscara} o filtro. La calidad de la imagen que obtengamos dependerá de la manera en la que se filtran las frecuencias no deseadas\cite{Chen}, en este algoritmo se hace una máscara muy simple. Finalmente, se aplica la transformada inversa de Fourier y se observa que el perfil puede haber mejorado un poco.
+
+\textbf{PERFIL MEJORADO}
+
+Dependiendo de cuánto se bloquee en el espacio de frecuencias cambiará la calidad de la imagen reconstruida: si se bloquea muy poco, no habrá mejora, si se bloquea mucho, se puede perder información del perfil. Esta herramienta es útil cuando se prefiere una estimación medianamente precisa del ancho de un haz con mucho ruido y no se puede arreglar la imagen del con óptica, por lo que se recomienda no abusar de ella para obtener una medición confiable.
+
+Después del pre-procesamiento, se encuentra el \textit{centro de gravedad de la imagen} con un cálculo del primer momento de la intensidad del haz sobre la superficie del CCD en ambas direcciones\cite{ISO11146-1}:
+\begin{align*}
+\langle x \rangle &= \frac{\int I(x,y)x \ dxdy}{\int I(x,y) \ dxdy} & \langle y \rangle &= \frac{\int I(x,y)y \ dxdy}{\int I(x,y) \ dxdy}.
+\end{align*}
+
+El algoritmo realiza esta integral de manera discreta a lo largo de cada columna y cada fila del arreglo para encontrar el valor de la proyección sobre cada eje. Una vez encontrado el centro del haz, el algoritmo procede a hacer un ajuste una distribución Gaussiana por medio de mínimos cuadrados:
+
+\begin{equation*}
+G(x) = Ae^{-\frac{(x-\mu)^2}{2\sigma^2}},
+\end{equation*}
+%https://www.researchgate.net/publication/252062037_A_Simple_Algorithm_for_Fitting_a_Gaussian_Function_DSP_Tips_and_Tricks
+
+donde $A$ es la amplitud de la Gaussiana, $\mu$ es su valor esperado y $\sigma$ la desviación estándar. Finalmente, calcula el diámetro para una de las cuatro definiciones.
+
+Además de existir como una biblioteca de funciones independiente, se escribió una interfaz gráfica para utilizar el programa como un ejecutable. Actualmente el programa ha pasado a ser utilizado cotidianamente por todos los usuarios del Laboratorio.
+
+\subsubsection{Sistema de adquisición}\label{adquisicion}
+
+El sistema de adquisición consiste en la paquetería de programación del TDC y el programa de visualización de cuentas. El TDC es un convertidor de cuentas de tiempo a valores digitales que consta en un circuito integrado de aplicación específica (ASIC) que registra eventos en los 8 canales del módulo y los manda a una matriz de puertas programable (FPGA) que los ordena, comprime y calcula tasas de coincidencia para los primeros 4 canales.
+
+El TDC cuenta con un búfer de entrada que trabaja a una velocidad de $200$ millones de eventos por segundo, que resulta en una resolución temporal de $5.5ns$ para eventos consecutivos registrados en el mismo canal. Sin embargo, la resolución temporal para eventos registrados en distintos canales es de $\approx 81 ps$.
+
+Para realizar la comunicación entre el TDC y el resto de los sistemas del laboratorio, fue necesario escribir una paquetería en Python. Esta paquetería se escribió como un controlador para el TDC basada en los archivos compilados por el fabricante (bibliotecas de enlace dinámico, o \textit{DLL}). Un pequeño manual se puede encontrar en el \textbf{ANEXO A??} y la paquetería está disponible en \textbf{REFERENCIA GITHUB} para uso público.
+
+Se escribió también un programa de visualización de datos en tiempo real con dos funciones específicas de conteo de datos:
+\begin{itemize}
+\item Una función que integra el número de eventos por unidad de tiempo para cada canal.
+\item Un analizador de diferencias temporales: tomando un evento en un canal como un \textit{inicio}, y el siguiente como un \textit{fin}. De estas diferencias se construye un histograma útil para ver las diferencias temporales entre distinas señales (distintos canales). 
+\end{itemize}
+
+\begin{verbatim}
+def hola(text):
+    return mundo
+\end{verbatim}
+
+
+\subsubsection{Gating}\label{gating}
+
+\subsubsection{Sistema de control}\label{control}
 
 \subsection{Resultados}\label{resultados_correlaciones}
-
-Consideremos un sistema de dos niveles, por ejemplo la polarización de un
-fotón que puede estar polarizado horizontal ($H$) o verticalmente ($V$).
-Este estado puede ser representado como la siguiente función de onda
-
-\begin{equation}
-    \ket{\varphi} = c_1 \ket{H} + c_2\ket{V},
-    \label{enl:1}
-\end{equation}
-en donde $|c_1|^2$ y $|c_2|^2$ son las probabilidades de obtener $H$ y $V$
-respectivamente al llevar a cabo una medición y por lo tanto $|c_1|^2+|c_2|^2 = 1$.

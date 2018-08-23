@@ -1,10 +1,13 @@
 \documentclass[12pt,twoside]{article}
 \usepackage[spanish,mexico]{babel}
-% \usepackage{natbib}
+
 \usepackage{cite}
+%\usepackage{verbatim}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
 \usepackage{graphicx}
 \graphicspath{{images/}}
 \usepackage{parskip}
@@ -13,11 +16,20 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{braket}
+
+\newcommand{\E}{\bm{\mathcal{E}}}
+\newcommand{\B}{\bm{\mathcal{B}}}
+\newcommand{\D}{\bm{\mathcal{D}}}
+\newcommand{\Hmag}{\bm{\mathcal{H}}}
+\newcommand{\curl}{\nabla\times}
+\newcommand{\divr}{\nabla\cdot}
+
+
 \setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 
-\title{Desigualdades de Bell: un experimento sencillo para licenciatura}								% Title
+\title{Sistema de adquisición de datos para medir correlaciones en pares de fotones}								% Title
 \author{Luis Villegas}									% Author
-\date{\today}											% Date
+\date{\today}									% Date
 
 \makeatletter
 \let\thetitle\@title
@@ -51,15 +63,15 @@
 \normalsize
 
 \begin{flushright}
-\textit{A Joaquín Eduardo Aceves Rodríguez,}\\
-\textit{no he olvidado mi promesa.}
+\textit{A el Santo y Blue Demon,}\\
+\textit{por vencer a las momias de Guanajuato.}
 \end{flushright}
 
 \clearpage
 
 \section*{Agradecimientos}
 
-Se agradece también al proyecto PAPIIT con clave IN116914, \textit{``Estudio y fabricación de chips ópticos para transferencia de información cuántica''} con el cual se adquirió parte del equipo utilizado en este trabajo. De la misma manera al proyecto PAPIME PE104814, \textit{``Fortalecimiento de la Enseñanza en los Laboratorios de Física Contemporánea I y II''}, gracias al cual llegué al laboratorio de óptica avanzada.
+Se agradecen los aplausos
 
 \clearpage
 
