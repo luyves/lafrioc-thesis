@@ -87,7 +87,7 @@ donde $\rho$ es la densidad de carga libre y $\bm{j}$ la corriente de carga libr
 
 Tomando el rotacional de la ecuación \ref{faraday}, y combinándolo con la ecuación \ref{ampere}:
 \begin{equation*}
-\curl(\curl\E) = -\frac{\partial}{\partial t}\curl\B = - \mu_0\epsilon_0\frac{\partial}{\partial t}\frac{\partial\E}{\partial t} = -\mu_0\epsilon_0\frac{\partial^2\E}{\partial^2 t}
+\curl(\curl\E) = -\frac{\partial}{\partial t}\curl\B = - \mu_0\epsilon_0\frac{\partial}{\partial t}\frac{\partial\E}{\partial t} = -\mu_0\epsilon_0\frac{\partial^2\E}{\partial^2 t}.
 \end{equation*}
 Por otro lado, utilizando que para cualquier campo vectorial $\bm{\mathcal{A}}$ es cierto que:
 \begin{equation}
@@ -101,11 +101,158 @@ que corresponde a una ecuación de onda con velocidad $c = 1/\sqrt{\mu_0\epsilon
 De una manera análoga se encuentra una ecuación de onda para el campo magnético $\B$.
 
 \subsubsection{Coherencia}\label{coherencia}
-Vale la pena hablar primero del efecto de interferencia. La interferencia es el efecto de la recombinación de dos ondas en movimiento; patrones de interferencia ocurren cuando estas dos ondas presentan una diferencia de fase. Es un fenómeno muy fácil de ver al dejar caer dos piedras en una alberca y hacen olas: se presenta interferencia cuando estas olas se superponen. Sin embargo, en el contexto del campo electromagnético, existen varios ejemplos que sirven para dejarlo en claro.
+Vale la pena hablar primero del efecto de interferencia. La interferencia es el efecto de la recombinación de dos ondas en movimiento; patrones de interferencia ocurren cuando estas dos ondas presentan una diferencia relativa de fase. En el contexto del campo electromagnético, existen varios ejemplos que sirven para dejarlo en claro: el experimento de la doble rendija de Young, el interferómetro de Michaelson o el interferómetro de Mach Zehnder.
+
+Si dos trenes de ondas presentan una relación bien determinada de fase entre ellos, se dice que son \textit{coherentes}. En una situación ideal, si conocemos esta relación de fase para un tiempo inicial, podríamos deducir la fase relativa en todo momento. La vida real, por desgracia, no funciona así y en realidad tenemos fluctuaciones en la fase que suceden conforme pasa el tiempo. Sin embargo, si la diferencia de fase entre las dos ondas permanece relativamente constante dentro de un intervalo $\tau_c$, decimos que son \textit{parcialmente coherentes} con un tiempo de coherencia $\tau_c$. En este sentido, la coherencia es una medida de la estabilidad de frecuencia de la luz: podremos predecir acertadamente la fase de una onda para un tiempo $t + \tau$, siempre y cuando $\tau << \tau_c$. De manera inmediata podemos obtener la distancia de coherencia $d_c = c\tau_c$ y medir la fase en dos puntos distintos en el espacio.
+
+Para cuantificar la coherencia, calculamos la \textit{correlación}.
+
+\textbf{MACH ZEHNDER}
+
+La figura \textbf{DE ARRIBA} muestra un esquema sencillo del interferómetro de Mach Zehnder. Supongamos que tenemos un campo eléctrico incidente $\E(t)$ incidente sobre el primer divisor de haz, que asumimos idéntico al segundo y ambos con coeficiente de reflexión $\mathcal{R}$ y coeficiente de transmisión  $\mathcal{T}$. Después de pasar por el primer divisor, el haz reflejado y el transmitido recorren una distancia $l_1$ y $l_2$, respectivamente, usualmente diseñadas de distinta magnitud. Al recombinarse en el segundo divisor, tendremos dos salidas:
+\begin{align*}
+\E_A(t) &= \mathcal{RT}\E(t_1) + \mathcal{TR}\E(t_2) \propto \E(t_1) + \E(t_2),\\
+\E_B(t) &= \mathcal{TT}\E(t_2) + \mathcal{RR}\E(t_1),
+\end{align*}
+con $t_1 = t - l_1/c$ y $t_2 = t - l_2/c$.
+
+Consideremos la intensidad del campo $\E_A(t)$ al tiempo $t$:
+\begin{align*}
+I_A(t) &\propto |\E(t_1) + \E(t_2)|^2 = \mathcal{E}(t_1)^2 + \mathcal{E}(t_2)^2 + 2\E(t_1)\cdot\E(t_2).
+\end{align*}
+En la realidad no podemos medir la intensidad de manera instantántea, por lo que tomamos la intensidad promediada:
+\begin{equation}
+\langle I_A(t)\rangle \propto \langle\mathcal{E}(t_1)^2\rangle + \langle\mathcal{E}(t_2)^2\rangle + 2\langle\E(t_1)\cdot\E(t_2)\rangle.
+\end{equation}
+
+Vemos que tenemos tres contribuciones a la intensidad medida. Las primeras dos corresponden a la intensidad que mediríamos de cada campo después de recorrer su brazo del interferómetro de manera independiente, \textit{i.e.}, sin efectos de interferencia. Sin embargo, el tercer término contiene la información de la \textit{correlación} de cada haz.
+
+Si, sin pérdida de generalidad, consideramos que $t_1 < t_2 = t_1 + \tau$, podemos ver que la correlación dependerá de esta diferencia temporal $\tau$ a partir de un tiempo dado, más que de valores particulares de $t_1$ o $t_2$, siempre y cuando la naturaleza de $\E(t)$ nos permita tomar promedios sin mucho problema. De manera más general, el tercer término está definido de manera estadística como:
+\begin{equation}
+\langle\E(t)\cdot\E(t+\tau)\rangle = \cfrac{1}{T}\int_T dt \ \E^*(t)\E(t+\tau)\equiv \langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle ,
+\end{equation} 
+
+que se conoce como la \textit{función de correlación de primer orden}. El \textit{grado de coherencia temporal de primer orden} se define como la versión normalizada de la función de correlación de primer orden:
+\begin{equation}
+\g{1}(\tau) = \cfrac{\left\langle \mathcal{E}^*(t)\mathcal{E}(t+\tau) \right\rangle}{\left\langle\mathcal{E}^*(t)\mathcal{E}(t)\right\rangle}.
+\end{equation}  
+
+Veamos cómo se ve $\g{1}(\tau)$ para distintos tipos de luz.
+\subsubsection*{Luz térmica}\label{luz_termica}
+
+Consideremos a una fuente de luz térmica como un ensamble de muchos átomos que emiten luz de manera independiente unos de otros. Si se da una colisión entre ellos, la fase de la luz emitida cambia (y permanece constante hasta que ocurra otra colisión) pero su amplitud $E_0$ y frecuencia $\omega_0$ permanecen constantes.Podemos modelar este cambio de fase como una función $\phi(t)$ que va cambiando en $[0,2\pi]$, y si observamos este campo en un punto espacial fijo:
+\begin{equation}
+\nonumber \E(t) = E_0e^{-i\omega_0t + i\varphi(t)}.
+\end{equation}
+Suponiendo que podemos superponer cada campo individual para obtener el campo eléctrico total:
+\begin{align*}
+\E(t) &= \E_1(t) + \E_2(t) + ... + \E_n(t)\\
+\E(t) &= E_0e^{-i\omega_0t}\left(e^{i\varphi_1(t) + i\varphi_2(t) + ... + i\varphi_n(t)}\right)
+\end{align*}
+
+Si calculamos $\g{1}(\tau)$ para esta fuente de luz:
+
+\begin{align*}
+\langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle = E_0^2 e^{-i\omega_0\tau}&\times\langle\{e^{-i\varphi_1(t)} + e^{-i\varphi_2(t)} + ...  +e^{-i\varphi_n(t)}\}\\
+&\times\{e^{i\varphi_1(t+\tau)} + e^{i\varphi_2(t+\tau)} + ...  +e^{i\varphi_n(t+\tau)}\}\rangle.
+\end{align*}
+Al tomarse el promedio estadístico, los términos cruzados se eliminan pues corresponden a saltos aleatorios distintos (y promedian cero al considerarse el ensamble completo). Así,
+\begin{align}
+\nonumber\langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle &=  E_0^2e^{-i\omega_0\tau}\sum_{j=1}^n\langle e^{i\phi_j(t+\tau) - i\phi_j(t)}\rangle\\
+\nonumber&= nE_0^2e^{-i\omega_0\tau}\langle e^{i\phi_j(t+\tau) - i\phi_j(t)}\rangle\\
+&= n\langle\mathcal{E}_j^*(t)\mathcal{E}_j(t+\tau)\rangle, \label{eq15}
+\end{align}
+ya que cada átomo es indistinguible de los demás.
+
+Finalmente, calculemos $\langle\mathcal{E}_j^*(t)\mathcal{E}_j(t+\tau)\rangle$. De la teoría cinética de los gases, sabemos que la probabilidad de que haya un tiempo entre colisiones dentro del intervalo $[\tau,\tau+d\tau]$ (donde la fase del campo es constante) es:
+\begin{equation}
+p(\tau)d\tau = (1/\tau_c)e^{(\tau/\tau_c)}d\tau,
+\end{equation}
+donde $\tau_c$ es el tiempo característico de vuelo, o tiempo de coherencia. Usando esta distribución de probabilidad para calcular $\langle\mathcal{E}_j^*(t)\mathcal{E}_j(t+\tau)\rangle$,
+\begin{align}
+\nonumber \langle\mathcal{E}_j^*(t)\mathcal{E}_j(t+\tau)\rangle &= E_0^2e^{-i\omega_0\tau}\langle e^{i\phi_j(t+\tau) - i\phi_j(t)}\\
+\nonumber &= E_0^2e^{-i\omega_0\tau}\int_\tau ^\infty d\tau' p(\tau')\\
+\nonumber &= E_0^2e^{-i\omega_0\tau} e^{\tau/\tau_c}.
+\end{align}
+
+Finalmente, de la ecuación \ref{eq15} obtenemos que:
+\begin{equation}
+\g{1}(\tau) = e^{-i\omega\tau- \tau/\tau_c}.
+\end{equation}
+
+Para una fuente de luz térmica con ensanchamiento Doppler se puede hacer un análisis similar. Partiendo de la expresión del campo eléctrico para este tipo de luz:
+\begin{equation*}
+\E(t) = E_0\sum_{i=1}^n e^{-i\omega_i t + i\varphi_i}.
+\end{equation*}
+
+Aunque la fase del $i$-ésimo átomo es constante (dado que asumimos que no hay colisiones atómicas), están distribuidos de manera aleatoria y las contribuciones de fase de distintos átomos promediará cero. Además, cada átomo tiene una frecuencia de radiación $\omega_i$ recorrida de la frecuencia central $\omega_0$, determinada por su velocidad. 
+
+Calculando $\langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle$, obtenemos que:
+\begin{equation}
+\g{1}(\tau) = e^{-i\omega_0\tau - \frac{\pi}{2}(\tau/\tau_c)^2}.
+\end{equation}
+
+\textbf{FIGURA DE g(1) PARA AMBAS FUENTES}
+
+Vemos que la magnitud de $\g{1}(\tau)$ para luz térmica ensanchada por colisiones tiene un perfil Lorentziano, mientras que para luz térmica ensanchada por Doppler presenta un perfil Gaussiano. $|\g{1}(0)| = 1$ es el máximo y decrece monotónicamente hacia $0$.
+
+\subsubsection*{Luz láser}\label{luz_laser}
+
+De manera ideal, un láser emite una sola frecuencia y tiene coherencia perfecta. Podemos describirlo por una onda sinusoidal con una fase $\varphi$ bien definida en todo momento, y observándolo en un punto fijo a lo largo de la dirección de propagación:
+\begin{equation}
+\E(t) = E_0 e^{-i\omega_0t + i\varphi}. \label{eq19}
+\end{equation}
+
+Vemos entonces que:
+\begin{align*}
+\langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle &= E_0^2 e^{-i\omega_0\tau},
+\end{align*}
+y
+\begin{equation}
+\g{1}(\tau) = e^{-i\omega_0\tau}.
+\end{equation}
+
+Es inmediato que $|\g{1}(\tau)| = 1$ para todo $\tau$, que significa que la luz láser es perfectamente coherente.
+
+\subsubsection*{Función de correlación de segundo orden}
+El experimento de interferencia de intensidades que realizaron Hanbury Brown y Twiss\cite{hbt} mostró que el análisis de las correlaciones entre intensidades era interesante. Justo como consideramos el grado de coherencia temporal de primer orden como una medida de la correlación entre amplitudes, el \textit{grado de coherencia temporal de segundo orden} es una medida de la correlación entre intensidades. La función $\g{2}(\tau)$ mide esencialmente fluctuaciones en la intensidad y se define como:
+\begin{equation}
+\g{2}(\tau) = \cfrac{\langle\mathcal{E}^*(t)\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\mathcal{E}(t)\rangle}{\langle\mathcal{E}^*(t)\mathcal{E}(t)\rangle \langle\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\rangle} = \cfrac{\langle I(t)I(t+\tau)\rangle}{\langle I(t)\rangle\langle I(t+\tau)\rangle}.
+\end{equation}
+
+De acuerdo con esta descripción clásica de la luz, es posible probar que:
+\begin{align*}
+1 &\leq \g{2}(0)\\
+\g{2}(\tau) &\leq \g{2}(0).
+\end{align*}
+
+Para una fuente clásica de luz láser como la descrita por la ecuación \ref{eq19}, es trivial probar que:
+\begin{equation}
+\g{2}(\tau) = 1,
+\end{equation}
+para todo $\tau$ --- sigue siendo perfectamente coherente en intensidad.
+
+Para las fuentes de luz térmica se puede demostrar que, si se tiene un número $n$ muy grande de átomos, es válido:
+\begin{equation}
+\langle\mathcal{E}^*(t)\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\mathcal{E}(t)\rangle = n^2\left[\langle\mathcal{E}_i^*(t)\mathcal{E}_i(t)\rangle^2 + |\langle\mathcal{E}_i^*(t)\mathcal{E}_i(t+\tau)\rangle|^2\right]. \label{eq22}
+\end{equation}
+
+Usando \ref{eq22} en la definición de $\g{2}$, tenemos que para luz térmica (y para $n>>1$):
+\begin{equation}
+\nonumber \g{2}(\tau) = 1+|\g{1}(\tau)|^2,
+\end{equation}
+quedando para luz térmica con colisiones y con ensanchamiento Doppler:
+\begin{align}
+\g{2}(\tau) &= 1 + e^{-2\tau/\tau_c}, & \g{2}(\tau) &= 1 + e^{-\pi(\tau/\tau_c)^2}.
+\end{align}
+
+\textbf{g(2) PARA LAS TRES LUCES CLÁSICAS}
 
 \subsubsection{Estadística de fotones}\label{estadistica}
-g1 y g2
-\subsubsection{Cuantización del campo}\label{optica cuantica}
+
+
+
+\subsubsection{Cuantización del campo}\label{optica_cuantica}
 bunching y antibunching
 
 \subsection{Sistemas}\label{sistemas_correlaciones}
