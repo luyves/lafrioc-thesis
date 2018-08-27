@@ -138,9 +138,9 @@ que se conoce como la \textit{función de correlación de primer orden}. El \tex
 \end{equation}  
 
 Veamos cómo se ve $\g{1}(\tau)$ para distintos tipos de luz.
-\subsubsection*{Luz térmica}\label{luz_termica}
+\subsubsection*{Luz caótica}\label{luz_termica}
 
-Consideremos a una fuente de luz térmica como un ensamble de muchos átomos que emiten luz de manera independiente unos de otros. Si se da una colisión entre ellos, la fase de la luz emitida cambia (y permanece constante hasta que ocurra otra colisión) pero su amplitud $E_0$ y frecuencia $\omega_0$ permanecen constantes.Podemos modelar este cambio de fase como una función $\phi(t)$ que va cambiando en $[0,2\pi]$, y si observamos este campo en un punto espacial fijo:
+Consideremos a una fuente de luz caótica como un ensamble de muchos átomos que emiten luz de manera independiente unos de otros. Si se da una colisión entre ellos, la fase de la luz emitida cambia (y permanece constante hasta que ocurra otra colisión) pero su amplitud $E_0$ y frecuencia $\omega_0$ permanecen constantes.Podemos modelar este cambio de fase como una función $\phi(t)$ que va cambiando en $[0,2\pi]$, y si observamos este campo en un punto espacial fijo:
 \begin{equation}
 \nonumber \E(t) = E_0e^{-i\omega_0t + i\varphi(t)}.
 \end{equation}
@@ -180,7 +180,7 @@ Finalmente, de la ecuación \ref{eq15} obtenemos que:
 \g{1}(\tau) = e^{-i\omega\tau- \tau/\tau_c}.
 \end{equation}
 
-Para una fuente de luz térmica con ensanchamiento Doppler se puede hacer un análisis similar. Partiendo de la expresión del campo eléctrico para este tipo de luz:
+Para una fuente de luz caótica con ensanchamiento Doppler se puede hacer un análisis similar. Partiendo de la expresión del campo eléctrico para este tipo de luz:
 \begin{equation*}
 \E(t) = E_0\sum_{i=1}^n e^{-i\omega_i t + i\varphi_i}.
 \end{equation*}
@@ -194,7 +194,7 @@ Calculando $\langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle$, obtenemos que:
 
 \textbf{FIGURA DE g(1) PARA AMBAS FUENTES}
 
-Vemos que la magnitud de $\g{1}(\tau)$ para luz térmica ensanchada por colisiones tiene un perfil Lorentziano, mientras que para luz térmica ensanchada por Doppler presenta un perfil Gaussiano. $|\g{1}(0)| = 1$ es el máximo y decrece monotónicamente hacia $0$.
+Vemos que la magnitud de $\g{1}(\tau)$ para luz caótica ensanchada por colisiones tiene un perfil Lorentziano, mientras que para luz caótica ensanchada por Doppler presenta un perfil Gaussiano. $|\g{1}(0)| = 1$ es el máximo y decrece monotónicamente hacia $0$.
 
 \subsubsection*{Luz láser}\label{luz_laser}
 
@@ -220,11 +220,11 @@ El experimento de interferencia de intensidades que realizaron Hanbury Brown y T
 \g{2}(\tau) = \cfrac{\langle\mathcal{E}^*(t)\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\mathcal{E}(t)\rangle}{\langle\mathcal{E}^*(t)\mathcal{E}(t)\rangle \langle\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\rangle} = \cfrac{\langle I(t)I(t+\tau)\rangle}{\langle I(t)\rangle\langle I(t+\tau)\rangle}.
 \end{equation}
 
-De acuerdo con esta descripción clásica de la luz, es posible probar que:
-\begin{align*}
-1 &\leq \g{2}(0)\\
+De acuerdo con esta descripción clásica de la luz, es posible probar con la \textit{desigualdad de Cauchy-Schwartz} que:
+\begin{align}
+1 &\leq \g{2}(0) \label{g0_clasica}\\
 \g{2}(\tau) &\leq \g{2}(0).
-\end{align*}
+\end{align}
 
 Para una fuente clásica de luz láser como la descrita por la ecuación \ref{eq19}, es trivial probar que:
 \begin{equation}
@@ -232,28 +232,154 @@ Para una fuente clásica de luz láser como la descrita por la ecuación \ref{eq
 \end{equation}
 para todo $\tau$ --- sigue siendo perfectamente coherente en intensidad.
 
-Para las fuentes de luz térmica se puede demostrar que, si se tiene un número $n$ muy grande de átomos, es válido:
+Para las fuentes de luz caótica se puede demostrar que, si se tiene un número $n$ muy grande de átomos, es válido:
 \begin{equation}
 \langle\mathcal{E}^*(t)\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\mathcal{E}(t)\rangle = n^2\left[\langle\mathcal{E}_i^*(t)\mathcal{E}_i(t)\rangle^2 + |\langle\mathcal{E}_i^*(t)\mathcal{E}_i(t+\tau)\rangle|^2\right]. \label{eq22}
 \end{equation}
 
-Usando \ref{eq22} en la definición de $\g{2}$, tenemos que para luz térmica (y para $n>>1$):
+Usando \ref{eq22} en la definición de $\g{2}$, tenemos que para luz caótica (y para $n>>1$):
 \begin{equation}
 \nonumber \g{2}(\tau) = 1+|\g{1}(\tau)|^2,
 \end{equation}
-quedando para luz térmica con colisiones y con ensanchamiento Doppler:
+quedando para luz caótica con colisiones y con ensanchamiento Doppler:
 \begin{align}
 \g{2}(\tau) &= 1 + e^{-2\tau/\tau_c}, & \g{2}(\tau) &= 1 + e^{-\pi(\tau/\tau_c)^2}.
 \end{align}
 
 \textbf{g(2) PARA LAS TRES LUCES CLÁSICAS}
 
-\subsubsection{Estadística de fotones}\label{estadistica}
-
-
-
 \subsubsection{Cuantización del campo}\label{optica_cuantica}
-bunching y antibunching
+De la teoría clásica del campo electromagnético \textbf{Loudon}, sabemos que el campo eléctrico $\E(\bm{r},t)$ y el campo magnético $\B(\bm{r},t)$ son campos vectoriales dependientes del tiempo que en vacío dependen de un tercer campo $\A(\bm{r},t)$ (el potencial vectorial) y un campo escalar $\phi(\bm{r},t)$:
+\begin{align*}
+\B(\bm{r},t) &=\curl\A(\bm{r},t), \\
+\E(\bm{r},t) &=-\nabla\phi(\bm{r},t) - \cfrac{\partial\A(\bm{r},t)}{\partial t}.
+\end{align*}
+
+De acuerdo a las expresiones anteriores, el Hamiltoniano clásico tiene la forma
+\begin{equation}
+H = \frac{1}{2}\epsilon_0 \int\int\int_V d^3\bm{r} \ \left(|\E(\bm{r},t)|^2 + c^2|\B(\bm{r},t)|^2\right). \label{Hamiltoniano}
+\end{equation}
+
+Tomando la norma de Coulomb, (para la cual $\divr\A = 0$), se puede demostrar que la expansión de Fourier del potencial vectorial es:
+\begin{equation}
+\A(\bm{r},t) = \sum_{\bm{k}}\sum_{\mu =\pm 1}\left(\bm{e}^{(\mu)}(\bm{k})a_{\bm{k}}^{(\mu)}(t)e^{i\bm{k}\cdot\bm{r}} + \bm{e}^{*(\mu)}(\bm{k})a^{*(\mu)}_{\bm{k}}(t)e^{-i\bm{k}\cdot\bm{r}}\right),
+\end{equation}
+con $\bm{e}^{(\pm 1)}$ los vectores unitarios de polarización circular y $\bm{k}$ es el vector de onda.
+
+Si aplicamos las reglas de cuantización equivalentes a $\hat{\bm{p}}(t) \rightarrow -i\hbar\nabla$ para los coeficientes de la serie de Fourier $a_{\bm{k}}^{(\pm 1)}(t)$, es posible demostrar que el Hamiltoniano dado se vuelve:
+\begin{equation}
+\hat H = \sum_{\bm{k},\mu} \hbar\omega_{\bm{k}}\left(\hat a^{\dagger(\mu)}(\bm{k})\hat a^{(\mu)}(\bm{k}) + \frac{1}{2}\right).
+\end{equation}
+
+Este Hamiltoniano se asemeja mucho al de un oscilador armónico expresado en función de los operadores $\ad$ de creación y $\hat a$ de aniquilación:
+\begin{equation}
+\hat H = \hbar\omega\left(\ad\hat a + \frac{1}{2}\right).
+\end{equation} 
+Esto, y la naturaleza ondulatoria y periódica de la luz, hacen razonable describir el comportamiento cuántico en el formalismo del oscilador armónico. Los eigenestados de este Hamiltoniano son $|n\rangle$, y les corresponde una energía:
+\begin{align}
+E_n &= \hbar\omega\left(n + \frac{1}{2}\right) & n &= 1,2,3,... \label{eq_energia_oscilador}
+\end{align}
+
+Los operadores $\ad$ y $\hat a$ actúan en estos estados de la forma:
+\begin{align*}
+\ad\hat a|n\rangle &= \hat n|n\rangle,\\
+\hat a|n\rangle &= \sqrt{n}|n-1\rangle,\\
+\ad|n\rangle &= \sqrt{n+1}|n+1\rangle.
+\end{align*}
+
+En la descripción de óptica cuántica, estos estados $|n\rangle$ describe el número de exitaciones con energía $\hbar\omega$; estas exitaciones reciben el nombre de \textit{fotones}.
+
+\subsubsection{Estadística de fotones}\label{estadistica}
+La óptica cuántica está encargada de estudiar a los haces de luz como un chorro de fotones en vez de la descripción clásica de ondas. Para hacer esto, es útil ver estudiar la estadistica de este haz de fotones. La intensidad de este campo está dado por el valor esperado del operador $\hat n$, que es equivalente al número promedio de fotones en el haz. Esto quiere decir que:
+\begin{equation}
+\langle I \rangle \propto \langle \hat n \rangle  = \langle \ad \hat a \rangle \equiv \bar n.
+\end{equation}
+Con esto, vale la pena volver a definir la función de correlación de segundo orden en función del operador $\hat n$:
+\begin{align}
+\g{2}(\tau) = \cfrac{\langle \ad(t)\ad(t+\tau) \hat a(t+\tau)\hat a(t)\rangle}{\langle\ad(t)\hat a(t)\rangle\langle\ad(t+\tau)\hat a(t+\tau)\rangle} = \cfrac{\langle \hat n(t) \hat n (t+\tau)\rangle}{\langle \hat n(t)\rangle \langle \hat n(t+\tau)\rangle}. \label{g2_cuantica}
+\end{align}
+
+Veamos los resultados de $g{2}(\tau)$ para las fuentes de luz usadas en en \ref{coherencia}.
+
+Para un haz coherente, nos preguntamos cuál es la probabilidad $\mathcal{P}(n)$ de encontrar $n$ fotones en un haz de longitud $L$ partido en $N$ subsegmentos. Usando la distribución binomial para encontrar la probabilidad de $n$ segmentos con un fotón y $N-n$ con ninguno, tenemos que:
+\begin{equation}
+\nonumber\mathcal{P}(n)  = \cfrac{N!}{n!(N-n)!}p^n(1-p)^{N-n}.
+\end{equation}
+
+Como $p = \bar n/N$, tenemos que:
+\begin{equation}
+\nonumber \mathcal{P}(n) = \cfrac{N!}{n!(N-n)!}\left(\cfrac{\bar n}{N}\right)^n\left(1-\cfrac{\bar n}{N}\right)^{N-n} = \cfrac{1}{n!}\left(\cfrac{N!}{(N-n)!N^n}\right)\bar n ^n\left(1-\cfrac{\bar n}{N}\right)^{N-n}.
+\end{equation}
+
+Queremos tomar el límite cuando $N\rightarrow\infty$. Usando la fórmula de Stirling para probar que
+\begin{equation}
+\nonumber \lim_{N\rightarrow\infty}\left[\cfrac{N!}{(N-n)!N^n}\right] = 0, 
+\end{equation}
+y el teorema del binomio para probar que
+\begin{equation}
+\nonumber \left(1-\cfrac{\bar n}{N}\right)^{N-n} = \exp(-\bar n),
+\end{equation}
+tenemos que la probabilidad $\mathcal{P}(n)$ cuando $N\rightarrow\infty$ es:
+\begin{align}
+\mathcal{P}(n) &= \cfrac{\bar n^n}{n!}e^{-\bar n}, & n&=0,1,2,... \ ,
+\end{align}
+que es una \textbf{distribución Poissoniana}. En general, una distribución Poissoniana expresa la probabilidad de que ocurra un número de eventos en un tiempo dado si hay una frecuencia de ocurrencia media y cada evento es independiente de todos los demás. Esto significa que la detección de cada fotón está aleatoriamente espaciada. Para este tipo de distribuciones, la \textit{varianza} está dada por:
+\begin{equation}
+(\Delta n)^2 =\sum_{n=0}^\infty(n-\bar n)^2\mathcal{P}(n) = \bar n, \label{varianza}
+\end{equation}
+lo que significa que la \textit{desviación estándar} cumple con
+\begin{equation}
+\Delta n = \sqrt{n}.
+\end{equation}
+
+Por otro lado, la luz térmica está definida como la radiación electromagnética emitida por un cuerpo negro, y presentan una densidad de energía dentro del rango de emisión $[\omega, \omega + d\omega]$ de acuerdo a la Ley de Planck:
+\begin{equation}
+\nonumber\rho(\omega,T)d\omega = \frac{\hbar\omega^3}{\pi^2c^3}\cfrac{d\omega}{\exp(\hbar\omega/k_BT)-1}.
+\end{equation}
+Cada modo oscilatorio tiene la energía dada por \ref{eq_energia_oscilador} y, de acuerdo a la mecánica estadística, la probabilidad de que se encuentren $n$ fotones en el modo correspondiente a $\omega$ es:
+\begin{equation}
+\mathcal{P}_{\omega}(n) = \cfrac{\exp(-n\hbar\omega/k_BT)}{\sum_{n=0}^\infty\exp(-n\hbar	\omega/k_BT}). \label{prob_termica}
+\end{equation}
+Para este tipo de luz, es posible demostrar que $\bar n = 1/(\exp(\hbar\omega/k_BT)-1)$, y la probabilidad \ref{prob_termica} es :
+\begin{equation}
+\mathcal{P}_{\omega}(n) = \cfrac{1}{\bar n+1}\left(\cfrac{\bar n}{\bar n + 1}\right)^n,
+\end{equation}
+que es una \textbf{distribución de Bose-Einstein}. Para este tipo de luz,
+\begin{equation}
+(\Delta n)^2 = \bar n + \bar n^2 \geq \bar n.
+\end{equation}
+Este resultado nos muestra que que la varianza de una distribución de Bose-Einstein siempre es mayor que la de una distribución Poissoniana. Las fluctuaciones de intensidad en la luz caótica clásica se asemejan mucho a las de la luz térmica descritas aquí, y presentan una estadistica similar.
+
+Con este análisis, es conveniente definir una clasificación para las estadísticas de fotones en función de su desviación estándar:
+\begin{itemize}
+\item \textbf{super-Poissoniana}: $\Delta n > \sqrt n$,
+\item \textbf{Poissoniana}: $\Delta n = \sqrt n$,
+\item \textbf{sub-Poissoniana}: $\Delta n < \sqrt n$. 
+\end{itemize}
+
+La interpretación de que la luz térmic sea super-Poissoniana significa que los fotones que se detectan vienen en promedio con una separación temporal menor a la frecuencia media de ocurrencia, lo que sugiere que llegan en ``paquetes" (o \textit{bonches}). A este efecto se le conoce como \textit{bunching}.
+
+Veamos a $\g{2}(\tau = 0)$. Utilizando la regla de conmutación $[\hat a,\ad] = 1$ podemos encontrar de la ecuación \ref{g2_cuantica} que:
+\begin{equation}
+\g{2}(0) = \cfrac{\langle\hat n^2\rangle - \langle\hat n\rangle}{\langle\hat n\rangle} = 1+ \cfrac{\Delta n^2 - \bar n}{\bar n ^2}.
+\end{equation}
+Vemos con esto que para luz perfectamente coherente, $\g{2}(0) = 1$ y que para luz térmica, $\g{2}(0) > 1$. Sin embargo, si tuviéramos una distribución sub-Poissoniana, se tiene que $\g{2}(0) < 1$. Notemos que en la descripción clásica, de acuerdo a la ecuación \ref{g0_clasica}, cualquier campo electromagnético cumple que $\g{2}(0) \geq 1$ y no es posible encontrar un equivalente clásico al resultado para una distribución sub-Poissoniana.
+
+Este resultado ---contrastando con el efecto de bunching--- significa que los fotones tienden a no llegar al detector muy cerca uno de otro. Si este efecto es constante (es decir, si los fotones llegan regularmente espaciados uno después de otro), se le conoce como \textit{antibunching}.\footnote{Es importante decir que una estadística sub-Poissoniana no necesariamente quiere decir que hay detrás un proceso óptico que presente antibunching\cite{PhysRevA.41.475}. Sin embargo, por simplicidad, se le considerará así en este trabajo pues son dos efectos que muy frecuentemente se presentan juntos.} El hecho que $\g{2}(0) < 1$ nos dice que la fuente del campo electromagnético que se está analizando no puede ser descrito de manera clásica y es un claro ejemplo de la naturaleza cuántica de la luz.
+
+Podemos ver los resultados obtenidos en esta sección para la estadística de fotones en la tabla \ref{valores_g0}:
+\begin{table}[]
+\centering
+\label{valores_g0}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Descripción clásica} & \textbf{Efecto de fotones} & \textbf{Estadística} & \textbf{$\g{2}(0)$} \\ \hline
+Luz caótica o térmica        & Bunching                   & Super-Poissoniana          & $>1$                \\ \hline
+Coherente                    & Aleatorios                 & Poissoniana		           & $=1$                \\ \hline
+---                          & Antibunching               & Sub-Poissoniana            & $<1$                \\ \hline
+\end{tabular}
+\caption{$\g{2}(0)$ y su correspondiente estadística y descripción clásica para distintas fuentes de luz.}
+\end{table}
 
 \subsection{Sistemas}\label{sistemas_correlaciones}
 La principal parte del trabajo de este capítulo consistió en la elaboración de distintos programas y sistemas que serán de utilidad para el experimento de FWM en átomos fríos. Estos sistemas consistieron en un perfilador de haces Gaussianos, la paquetería de uso del TDC y el sistema de adquisición, el sistema de \textit{gating} y parte del sistema de control.
