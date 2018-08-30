@@ -257,7 +257,7 @@ De la teoría clásica del campo electromagnético \textbf{Loudon}, sabemos que 
 
 De acuerdo a las expresiones anteriores, el Hamiltoniano clásico tiene la forma
 \begin{equation}
-H = \frac{1}{2}\epsilon_0 \int\int\int_V d^3\bm{r} \ \left(|\E(\bm{r},t)|^2 + c^2|\B(\bm{r},t)|^2\right). \label{Hamiltoniano}
+H = \frac{1}{2}\epsilon_0 \int\int\int_V d^3r \ \left(|\E(\bm{r},t)|^2 + c^2|\B(\bm{r},t)|^2\right). \label{Hamiltoniano}
 \end{equation}
 
 Tomando la norma de Coulomb, (para la cual $\divr\A = 0$), se puede demostrar que la expansión de Fourier del potencial vectorial es:
@@ -299,7 +299,7 @@ Con esto, vale la pena volver a definir la función de correlación de segundo o
 \g{2}(\tau) = \cfrac{\langle \ad(t)\ad(t+\tau) \hat a(t+\tau)\hat a(t)\rangle}{\langle\ad(t)\hat a(t)\rangle\langle\ad(t+\tau)\hat a(t+\tau)\rangle} = \cfrac{\langle \hat n(t) \hat n (t+\tau)\rangle}{\langle \hat n(t)\rangle \langle \hat n(t+\tau)\rangle}. \label{g2_cuantica}
 \end{align}
 
-Veamos los resultados de $g{2}(\tau)$ para las fuentes de luz usadas en en \ref{coherencia}.
+Veamos los resultados de $\g{2}(\tau)$ para las fuentes de luz usadas en en \ref{coherencia}.
 
 Para un haz coherente, nos preguntamos cuál es la probabilidad $\mathcal{P}(n)$ de encontrar $n$ fotones en un haz de longitud $L$ partido en $N$ subsegmentos. Usando la distribución binomial para encontrar la probabilidad de $n$ segmentos con un fotón y $N-n$ con ninguno, tenemos que:
 \begin{equation}
@@ -311,14 +311,10 @@ Como $p = \bar n/N$, tenemos que:
 \nonumber \mathcal{P}(n) = \cfrac{N!}{n!(N-n)!}\left(\cfrac{\bar n}{N}\right)^n\left(1-\cfrac{\bar n}{N}\right)^{N-n} = \cfrac{1}{n!}\left(\cfrac{N!}{(N-n)!N^n}\right)\bar n ^n\left(1-\cfrac{\bar n}{N}\right)^{N-n}.
 \end{equation}
 
-Queremos tomar el límite cuando $N\rightarrow\infty$. Usando la fórmula de Stirling para probar que
-\begin{equation}
-\nonumber \lim_{N\rightarrow\infty}\left[\cfrac{N!}{(N-n)!N^n}\right] = 0, 
-\end{equation}
-y el teorema del binomio para probar que
-\begin{equation}
-\nonumber \left(1-\cfrac{\bar n}{N}\right)^{N-n} = \exp(-\bar n),
-\end{equation}
+Queremos tomar el límite cuando $N\rightarrow\infty$. Usando la fórmula de Stirling y el teorema del binomio para demostrar que:
+\begin{align*}
+&\lim_{N\rightarrow\infty}\left[\cfrac{N!}{(N-n)!N^n}\right] = 0, & &\left(1-\cfrac{\bar n}{N}\right)^{N-n} = \exp(-\bar n),
+\end{align*}
 tenemos que la probabilidad $\mathcal{P}(n)$ cuando $N\rightarrow\infty$ es:
 \begin{align}
 \mathcal{P}(n) &= \cfrac{\bar n^n}{n!}e^{-\bar n}, & n&=0,1,2,... \ ,
@@ -450,23 +446,26 @@ Además de existir como una biblioteca de funciones independiente, se escribió 
 
 \subsubsection{Sistema de adquisición}\label{adquisicion}
 
-El sistema de adquisición consiste en la paquetería de programación del TDC y el programa de visualización de cuentas. El TDC es un convertidor de cuentas de tiempo a valores digitales que consta en un circuito integrado de aplicación específica (ASIC) que registra eventos en los 8 canales del módulo y los manda a una matriz de puertas programable (FPGA) que los ordena, comprime y calcula tasas de coincidencia para los primeros 4 canales.
+El sistema de adquisición consiste en la paquetería de programación del TDC y el programa de visualización de cuentas. El TDC es un convertidor de cuentas de tiempo a valores digitales que consta en un circuito integrado de aplicación específica (ASIC) que registra eventos en los 8 canales del módulo y los manda a una matriz de puertas programable (FPGA) que los ordena y comprime.
 
 El TDC cuenta con un búfer de entrada que trabaja a una velocidad de $200$ millones de eventos por segundo, que resulta en una resolución temporal de $5.5ns$ para eventos consecutivos registrados en el mismo canal. Sin embargo, la resolución temporal para eventos registrados en distintos canales es de $\approx 81 ps$.
 
-Para realizar la comunicación entre el TDC y el resto de los sistemas del laboratorio, fue necesario escribir una paquetería en Python. Esta paquetería se escribió como un controlador para el TDC basada en los archivos compilados por el fabricante (bibliotecas de enlace dinámico, o \textit{DLL}). Un pequeño manual se puede encontrar en el \textbf{ANEXO A??} y la paquetería está disponible en \textbf{REFERENCIA GITHUB} para uso público.
+Para realizar la comunicación entre el TDC y el resto de los sistemas del laboratorio, fue necesario escribir una paquetería de uso. El diagrama de flujo para el desarrollo de la paquetería se encuentra en \textbf{FLOWCHART}.
+
+\textbf{FLOWCHART}
+
+La paquetería de uso para el módulo etiquetador de cuentas temporales (TDC) \textit{id800} está escrita en Python 3.6. Esta paquetería hace fuerte uso de la paquetería de \code{ctypes} que es una biblioteca de funciones foráneas para Python. Esta paquetería provee compatibilidad de estructuras con C/C++ y el uso de librerías compartidas (DLLs).
+
+El módulo TDC venía con un software de control proprietario, un software de LabView y ejecutables compilados en C. El uso de \code{ctypes} fue necesario, pues el lenguaje estánar de programación del Laboratorio de Átomos Fríos es Python 3.6 y estandarizar el código usado por los programas de los experimentos es necesario.
+
+Un pequeño manual se puede encontrar en el Anexo A y la paquetería está disponible en \textbf{REFERENCIA GITHUB} para uso público.
+
 
 Se escribió también un programa de visualización de datos en tiempo real con dos funciones específicas de conteo de datos:
 \begin{itemize}
 \item Una función que integra el número de eventos por unidad de tiempo para cada canal.
 \item Un analizador de diferencias temporales: tomando un evento en un canal como un \textit{inicio}, y el siguiente como un \textit{fin}. De estas diferencias se construye un histograma útil para ver las diferencias temporales entre distinas señales (distintos canales). 
 \end{itemize}
-
-\begin{verbatim}
-def hola(text):
-    return mundo
-\end{verbatim}
-
 
 \subsubsection{Gating}\label{gating}
 

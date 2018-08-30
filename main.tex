@@ -2,7 +2,7 @@
 \usepackage[spanish,mexico]{babel}
 
 \usepackage{cite}
-%\usepackage{verbatim}
+\usepackage{appendix}
 \usepackage{url}
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
@@ -17,6 +17,8 @@
 \usepackage{xcolor}
 \usepackage{braket}
 
+
+\newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\E}{\bm{\mathcal{E}}}
 \newcommand{\B}{\bm{\mathcal{B}}}
 \newcommand{\D}{\bm{\mathcal{D}}}
@@ -90,7 +92,8 @@ Se agradecen los aplausos
 %\include{capitulo_espectroscopia}
 %\include{capitulo3}
 \include{conclusiones}
-
+\appendix
+\include{apendice_TDC}
 \newpage
 \bibliographystyle{ieeetr}
 \bibliography{bibliografia}
