@@ -20,11 +20,13 @@ Todos los archivos necesarios se encuentran en \textbf{github}. Una vez descarga
 Al importar \code{hunahpy}, se importa sólo la clase \code{TDC}, que contiene todos los métodos necesarios que se pueden llamar fácilmente:
 
 \begin{verbatim}
-from hunahpy import TDC
-tagger = TDC()
-...
-tagger.getLastTimestamps()
-tagger.close()
+############################
+#from hunahpy import TDC   #
+#tagger = TDC()            #
+#...                       #
+#tagger.getLastTimestamps()#
+#tagger.close()            #
+############################
 \end{verbatim}
 
 Este objeto \code{TDC} realiza automáticamente la conexión al primer módulo etiquetador que se encuentre conectado a la computadora y realiza la inicialización necesaria a partir del archivo de configuración \code{config.py}. Este archivo contiene la información del experimento como:
@@ -104,7 +106,7 @@ Byte	 & Canal   & Byte  & Canal   & Byte  & Canal \\ \hline
 La lista completa de funciones implementadas para la paquetería de \code{hunahpy}, junto con su descripción, es:
 
 \begin{enumerate}
-\item \code{switch(byte)}: Función para debuggear el código. Esta fución se ejecuta después de casi todas las otras funciones y es la encargada de imprimir los códigos de error generados por cada función. En la Tabla \ref{switch} están todos los mensajes de error posibles y algunas notas sobre cómo corregirlos.
+\item error code \code{switch(byte)}: Función para debuggear el código. Esta fución se ejecuta después de casi todas las otras funciones y es la encargada de imprimir los códigos de error generados por cada función. En la Tabla \ref{switch} están todos los mensajes de error posibles y algunas notas sobre cómo corregirlos.
 
 \begin{table}[] \label{switch}
 \centering
@@ -125,8 +127,9 @@ La lista completa de funciones implementadas para la paquetería de \code{hunahp
 \caption{Mensajes de error de un objeto TDC.}
 \end{table}
 
-\item mensaje de error \code{close()}: Cierra la conexión al módulo TDC. Sólo se permite una conexión a la vez - sólo un programa de adquisición abierto. Es importante cerrar la conexión antes de desconectarlo para evitar dañar el módulo.
-\item mensaje de error \code{configureSelfTest(channel, signal period, burst size, burst distance)}: El FPGA del TDC puede generar trenes de pulsos virtuales que serán procesados como señales añadidas a las entradas reales de cada canal.
+\item error code \code{close()}: Cierra la conexión al módulo TDC. Sólo se permite una conexión a la vez - sólo un programa de adquisición abierto. Es importante cerrar la conexión antes de desconectarlo para evitar dañar el módulo.
+\item error code \code{switchTermination(on)}: No confundirse con la función \code{switch()} que es la función de debugging. \code{switchTermination()} activa o desactiva el modo de impedancia de $50\Omega$ para los canales de entrada del TDC. Si está desactivado, la impedancia de los canales de entrada del TDC será $1000\Omega$. \code{on} es booleano: puede ser $1$ o $0$.
+\item error code \code{configureSelfTest(channel,signal period,burst size,burst distance)}: El FPGA del TDC puede generar trenes de pulsos virtuales que serán procesados como señales añadidas a las entradas reales de cada canal.
 \begin{itemize}
 \item \code{channel}: Byte del canal a usarse (e.g. 5 corresponde a canales 1 y 3).
 \item \code{signal period}: Período de todas las señales de un tren, en unidades de $20ns$. Entre $2$ Y $60$.
@@ -139,14 +142,53 @@ La lista completa de funciones implementadas para la paquetería de \code{hunahp
 \caption{Señal de prueba del TDC.}
 \label{fig:selftest}
 \end{figure}
-\item \code{getChannel}
-\item \code{getCoincCounters}
-\item \code{getDataLost}
-\item \code{getDeviceParams}
-\item \code{getHistogram}
-\item \code{getHistogramParams}
-\item \code{getLastTimestamps}
-\item \code{saveTimestamps}
-\item \code{setHistogramParams}
-\item \code{switchTermination}
+\item int8 \code{getChannel(byte)}: Regresa el número real de un canal basado en la máscara de bytes.
+\item error code \code{getCoincCounters()}: Calcula el número de coincidencias para la última ventana temporal dado por \code{expTime}. Dos eventos son considerados coincidentes si suceden dentro de esa ventana. Este valor se guarda en la variable \code{coincidence\_array} en el orden: 1, 2, 3, 4, 5, 6, 7 ,8, 1/2, 1/3, 1/4, 2/3, 2/4, 3/4, 1/2/3, 1/2/4, 1/3/4, 2/3/4, 1/2/3/4. Las coincidencias no son acumulativas; sólo se guardan las coincidencias para la última ventana temporal de exposición.
+
+\item error code \code{getDataLost()}: Verifica si hay pérdidas de datos causadas por una velocidad de detección demasiado alta para el cable USB. De haber datos perdidos, el valor de \code{data\_loss} queda como $1$ y se levanta un mensaje de aviso al usuario.
+\item \code{getDeviceParams()}: Imprime los parámetros de operación del TDC.
+\item error code \code{setHistogramParams(bincount, binsize)}: Define los parámetros del histograma de diferencias temporales \code{bincount} y \code{binsize}. Al llamarse esta función, se borran todos los histogramas anteriores acumulados hasta ese punto.
+\item \code{getHistogramParams()}: Imprime los parámetros \code{bincount} y \code{binsize} del histograma de diferencias temporales.
+\item \code{getHistogram(chanA,chanB,reset)}: Llama al histograma de diferencias temporales entre el canal \code{chanA} y el canal \code{chanB}.
+\begin{itemize}
+\item \code{chanA}: Primer canal del TDC para calcular el histograma. 0,...,7 para los canales 1,...,8. Si el valor está fuera de ese rango, calcula el histograma global.
+\item \code{chanB}: Segundo canal del TDC para calcular el histograma. 0,...,7 para los canales 1,...,8. Si el valor está fuera de ese rango, calcula el histograma global.
+\item \code{reset}: Si se deben borrar los histogramas anteriores acumulados hasta ese punto. Booleano: $1$ o $0$.
+\end{itemize}
+\item \code{getLastTimestamps(reset,output,*save)}: La función más importante de la paquetería. Guarda los valores de los últimos eventos procesados por el TDC en las variables \code{timestamps} y sus respectivos canales en \code{channels}. Si la cantidad de eventos procesados al momento de llamar la función es menor al tamaño total del búfer (el número total de eventos que el TDC puede almacenar en memoria en todo momento), la variable \code{valid} regresa el número total de etiquetas válidas en \code{timestamps} y \code{channels} (\textit{i.e.}, si el búfer tiene capacidad de $1000$ etiquetas pero sólo han sucedido $200$, \code{TDC.valid} tendrá un valor de $200$ y sólo las primeras $200$ entradas de \code{TDC.timestamps} serán no nulas).
+\begin{itemize}
+\item \code{reset}: Si se deben borrar los eventos anteriores acumulados hasta ese punto. Booleano: $1$ o $0$.
+\item \code{output}: Si se deben guardar los eventos a archivo.  Booleano: $1$ o $0$. De ser positivo, llama a \code{saveTimestamps()}.
+\item \code{*save}: Si \code{output = 1}, \code{*save} serán los argumentos que \code{saveTimestamps()} necesite: los nombres de archivo y extensión que serán creados.
+\end{itemize}
+\item \code{saveTimestamps(filename timestamps, filename channels,} \code{filename \\ extension)}: Guarda los valores de \code{timestamps} y \code{channels} en un archivo con nombre \code{filename timestamps} y \code{filename channels} respectivamente con extensión \code{filename extension}.
 \end{enumerate}
+
+La función \code{getLastTimestamps()} es la función central y más importante de la paquetería de \code{hunahpy} y permite guardar en la memoria de la computadora o en algún archivo de datos todos los eventos procesados por el TDC. Al crear un objeto \code{TDC}, se definen a partir del archivo \code{config.py} todos los parámetros necesarios por el TDC, como el tamaño del búfer A continuación, un ejemplo de lo que sería un programa sencillo para utilizar \code{hunahpy} desde un script de Python:
+
+\begin{verbatim}
+###################################
+#from hunahpy import TDC          # Importa la librería de hunahpy
+#                                 # para comunicarse con el TDC.
+#                                 #
+#tagger = TDC()                   # Esto inicia la conexión y deja 
+#                                 # todo listo. En la consola, veremos 
+#                                 # los mensajes de error para ver si 
+#                                 # se conectó con éxito.
+#...                              #
+\end{verbatim}
+
+En este punto, se puede realizar el experimento que vaya a generar los eventos para el TDC.
+
+\begin{verbatim}
+#...                              ###############
+#tags_filename = "tags"                         #
+#chan_filename = "chans"                        #
+#file_extension = ".bin"                        #
+#tagger.getLastTimestamps(reset=0,output=1,     #
+#                         "tags","chans",".bin")#
+#tagger.close()                                 #
+#################################################
+\end{verbatim}
+
+Con esto, generamos dos archivos con las etiquetas temporales y sus respectivos canales en dos archivos \code{"tags.bin"} y \code{"chans.bin"}.
