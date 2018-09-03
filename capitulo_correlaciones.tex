@@ -348,12 +348,12 @@ Este resultado nos muestra que que la varianza de una distribución de Bose-Eins
 
 Con este análisis, es conveniente definir una clasificación para las estadísticas de fotones en función de su desviación estándar:
 \begin{itemize}
-\item \textbf{super-Poissoniana}: $\Delta n > \sqrt n$,
+\item \textbf{Super-Poissoniana}: $\Delta n > \sqrt n$,
 \item \textbf{Poissoniana}: $\Delta n = \sqrt n$,
-\item \textbf{sub-Poissoniana}: $\Delta n < \sqrt n$. 
+\item \textbf{Sub-Poissoniana}: $\Delta n < \sqrt n$. 
 \end{itemize}
 
-La interpretación de que la luz térmic sea super-Poissoniana significa que los fotones que se detectan vienen en promedio con una separación temporal menor a la frecuencia media de ocurrencia, lo que sugiere que llegan en ``paquetes" (o \textit{bonches}). A este efecto se le conoce como \textit{bunching}.
+La interpretación de que la luz térmica sea super-Poissoniana significa que los fotones que se detectan vienen en promedio con una separación temporal menor a la frecuencia media de ocurrencia, lo que sugiere que llegan en ``paquetes" (o \textit{bonches}). A este efecto se le conoce como \textit{bunching}.
 
 Veamos a $\g{2}(\tau = 0)$. Utilizando la regla de conmutación $[\hat a,\ad] = 1$ podemos encontrar de la ecuación \ref{g2_cuantica} que:
 \begin{equation}
@@ -363,10 +363,9 @@ Vemos con esto que para luz perfectamente coherente, $\g{2}(0) = 1$ y que para l
 
 Este resultado ---contrastando con el efecto de bunching--- significa que los fotones tienden a no llegar al detector muy cerca uno de otro. Si este efecto es constante (es decir, si los fotones llegan regularmente espaciados uno después de otro), se le conoce como \textit{antibunching}.\footnote{Es importante decir que una estadística sub-Poissoniana no necesariamente quiere decir que hay detrás un proceso óptico que presente antibunching\cite{PhysRevA.41.475}. Sin embargo, por simplicidad, se le considerará así en este trabajo pues son dos efectos que muy frecuentemente se presentan juntos.} El hecho que $\g{2}(0) < 1$ nos dice que la fuente del campo electromagnético que se está analizando no puede ser descrito de manera clásica y es un claro ejemplo de la naturaleza cuántica de la luz.
 
-Podemos ver los resultados obtenidos en esta sección para la estadística de fotones en la tabla \ref{valores_g0}:
+Podemos ver los resultados obtenidos en esta sección para la estadística de fotones en la Tabla \ref{valores_g0}:
 \begin{table}[]
 \centering
-\label{valores_g0}
 \begin{tabular}{|c|c|c|c|}
 \hline
 \textbf{Descripción clásica} & \textbf{Efecto de fotones} & \textbf{Estadística} & \textbf{$\g{2}(0)$} \\ \hline
@@ -374,7 +373,7 @@ Luz caótica o térmica        & Bunching                   & Super-Poissoniana 
 Coherente                    & Aleatorios                 & Poissoniana		           & $=1$                \\ \hline
 ---                          & Antibunching               & Sub-Poissoniana            & $<1$                \\ \hline
 \end{tabular}
-\caption{$\g{2}(0)$ y su correspondiente estadística y descripción clásica para distintas fuentes de luz.}
+\caption{$\g{2}(0)$ y su correspondiente estadística y descripción clásica para distintas fuentes de luz.}\label{valores_g0}
 \end{table}
 
 \subsection{Sistemas}\label{sistemas_correlaciones}

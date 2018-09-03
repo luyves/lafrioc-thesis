@@ -40,7 +40,6 @@ Este objeto \code{TDC} realiza automáticamente la conexión al primer módulo e
 
 Estos parámetros iniciales de configuración pueden modificarse al cambiar las variables del archivo y sirven para determinar tanto la visualización de los datos entrantes en el programa gráfico como la estructura de los \textit{datafiles} creados, que pueden ser tanto en formato binario como hexadecimal. Un ejemplo del formato binario de los archivos creados se puede ver en la tabla \ref{datafile}.
 \begin{table}[]
-\label{datafile}
 \centering
 \begin{tabular}{|c|c|}
 \hline
@@ -62,7 +61,7 @@ Estos parámetros iniciales de configuración pueden modificarse al cambiar las 
 392744469         & 1              \\ \hline
 ...				  & ...
 \end{tabular}
-\caption{Archivo binario de datos creado.}
+\caption{Archivo binario de datos creado.}\label{datafile}
 \end{table}
 
 Para la opción de output binario, los valores de las etiquetas de tiempo están dados en múltiplos del reloj (\code{timebase}) del sistema que es aproximadamente $81ps$, que puede obtenerse precisamente usando el método de \code{timebase} para los objetos TDC.
@@ -82,7 +81,7 @@ Las propiedades modificables del TDC son:
 
 La máscara de bytes es una correspondencia byte-canal que maneja el TDC. La Tabla \ref{mascara} muestra los primeros valores de la relación de correspondencia. Se recomienda dejar todos los canales habilitados (que equivale a un byte de 255, -1, o 0xff en hexadecimal), a menos que un defecto físico en un canal de entrada al TDC esté ocasionando ruido. En ese caso, es simple seguir la secuencia de máscara para encontrar el valor necesario de byte.
 
-\begin{table}[] \label{mascara}
+\begin{table}[]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
@@ -93,7 +92,7 @@ Byte	 & Canal   & Byte  & Canal   & Byte  & Canal \\ \hline
 4    & 3       & 9    & 1,4     & 14   & 2,3,4   \\ \hline
 5    & 1,3     & 10   & 2,4     & 15   & 1,2,3,4 \\ \hline
 \end{tabular}
-\caption{Máscara de bytes del TDC.}
+\caption{Máscara de bytes del TDC.} \label{mascara}
 \end{table}
 \item int32 \code{timestamps}: Array de longitud \code{timestamp\_count} con las etiquetas de tiempo guardadas al momento.
 \item int32 \code{channel}: Array de longitud \code{timestamp\_count} con la máscara de bytes de los canales correspondientes a cada etiqueta de tiempo registrada.
@@ -108,7 +107,7 @@ La lista completa de funciones implementadas para la paquetería de \code{hunahp
 \begin{enumerate}
 \item error code \code{switch(byte)}: Función para debuggear el código. Esta fución se ejecuta después de casi todas las otras funciones y es la encargada de imprimir los códigos de error generados por cada función. En la Tabla \ref{switch} están todos los mensajes de error posibles y algunas notas sobre cómo corregirlos.
 
-\begin{table}[] \label{switch}
+\begin{table}[]
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
@@ -124,7 +123,7 @@ La lista completa de funciones implementadas para la paquetería de \code{hunahp
 10                                 & \begin{tabular}[c]{@{}l@{}}Parameter in func. call is out\\ of range.\end{tabular}     &                                                                                              \\ \hline
 11                                 & Failed to open specified file.                                                         & \begin{tabular}[c]{@{}l@{}}Verificar que $\code{tdcbase.dll}$\\  sea accesible.\end{tabular} \\ \hline
 \end{tabular}
-\caption{Mensajes de error de un objeto TDC.}
+\caption{Mensajes de error de un objeto TDC.} \label{switch}
 \end{table}
 
 \item error code \code{close()}: Cierra la conexión al módulo TDC. Sólo se permite una conexión a la vez - sólo un programa de adquisición abierto. Es importante cerrar la conexión antes de desconectarlo para evitar dañar el módulo.
@@ -139,8 +138,7 @@ La lista completa de funciones implementadas para la paquetería de \code{hunahp
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth]{imagenes/A1_selftest.png}
-\caption{Señal de prueba del TDC.}
-\label{fig:selftest}
+\caption{Señal de prueba del TDC.}\label{fig:selftest}
 \end{figure}
 \item int8 \code{getChannel(byte)}: Regresa el número real de un canal basado en la máscara de bytes.
 \item error code \code{getCoincCounters()}: Calcula el número de coincidencias para la última ventana temporal dado por \code{expTime}. Dos eventos son considerados coincidentes si suceden dentro de esa ventana. Este valor se guarda en la variable \code{coincidence\_array} en el orden: 1, 2, 3, 4, 5, 6, 7 ,8, 1/2, 1/3, 1/4, 2/3, 2/4, 3/4, 1/2/3, 1/2/4, 1/3/4, 2/3/4, 1/2/3/4. Las coincidencias no son acumulativas; sólo se guardan las coincidencias para la última ventana temporal de exposición.
@@ -161,7 +159,7 @@ La lista completa de funciones implementadas para la paquetería de \code{hunahp
 \item \code{output}: Si se deben guardar los eventos a archivo.  Booleano: $1$ o $0$. De ser positivo, llama a \code{saveTimestamps()}.
 \item \code{*save}: Si \code{output = 1}, \code{*save} serán los argumentos que \code{saveTimestamps()} necesite: los nombres de archivo y extensión que serán creados.
 \end{itemize}
-\item \code{saveTimestamps(filename timestamps, filename channels,} \code{filename \\ extension)}: Guarda los valores de \code{timestamps} y \code{channels} en un archivo con nombre \code{filename timestamps} y \code{filename channels} respectivamente con extensión \code{filename extension}.
+\item \code{saveTimestamps(filename_timestamps, filename_channels,} \code{filename-\\ extension)}: Guarda los valores de \code{timestamps} y \code{channels} en un archivo con nombre \code{filename_timestamps} y \code{filename_channels} respectivamente con extensión \code{filename_extension}.
 \end{enumerate}
 
 La función \code{getLastTimestamps()} es la función central y más importante de la paquetería de \code{hunahpy} y permite guardar en la memoria de la computadora o en algún archivo de datos todos los eventos procesados por el TDC. Al crear un objeto \code{TDC}, se definen a partir del archivo \code{config.py} todos los parámetros necesarios por el TDC, como el tamaño del búfer A continuación, un ejemplo de lo que sería un programa sencillo para utilizar \code{hunahpy} desde un script de Python:
@@ -178,17 +176,18 @@ La función \code{getLastTimestamps()} es la función central y más importante 
 #...                              #
 \end{verbatim}
 
-En este punto, se puede realizar el experimento que vaya a generar los eventos para el TDC.
+En este punto, se puede realizar el experimento que vaya a generar los eventos que serán procesados por el TDC.
 
 \begin{verbatim}
 #...                              ###############
-#tags_filename = "tags"                         #
-#chan_filename = "chans"                        #
-#file_extension = ".bin"                        #
+#                                               #
 #tagger.getLastTimestamps(reset=0,output=1,     #
 #                         "tags","chans",".bin")#
 #tagger.close()                                 #
 #################################################
 \end{verbatim}
 
-Con esto, generamos dos archivos con las etiquetas temporales y sus respectivos canales en dos archivos \code{"tags.bin"} y \code{"chans.bin"}.
+Con esto, generamos dos archivos con las etiquetas temporales y sus respectivos canales en dos archivos \code{"tags.bin"} y \code{"}\code{chans.bin"}.
+
+\subsection{Programa de adquisición}
+\code{hunahpy} 
