@@ -1,5 +1,5 @@
 \section{Paquetería de uso de \code{hunahpy}}\label{apendice_TDC}
-La paquetería de \code{hunahpy} provee métodos útiles para el uso del módulo etiquetador de cuentas temporales \textit{id800}, fabricado por IDQuantique.
+La paquetería de \code{hunahpy} provee métodos útiles para el uso del módulo etiquetador de cuentas temporales \textit{id800}, fabricado por IDQuantique. Todos los archivos necesarios se encuentran en \cite{github}.
 
 El nombre de \code{hunahpy} proviene de la cosmología maya narrada en el Popol Vuh: los dioses gemelos Hunahpú e Ixbalanqué, que fueron al inframundo por retar a los señores del Xibalbá y al emerger victoriosos se convirtieron en el Sol y la Luna.
 
@@ -11,25 +11,20 @@ La biblioteca de uso del TDC consiste en varios métodos que aprovechan la funci
 \item \code{libusb} y \code{nhconnect}, que proveen funcionalidad para reconocer y realizar conexiones a controladores USB.
 \item \code{tdcbase}, librería compartida compilada en C por el fabricante del TDC que se comunica con el FPGA del etiquetador.
 \end{itemize}
-
-\subsection{Instalación}
-Debido a que la biblioteca \code{tdcbase} está compilada en 32 bits, una distribución de 32 bits de Python es necesaria para poder correr el código.
-Todos los archivos necesarios se encuentran en \textbf{github}. Una vez descargados, \textbf{FATLA SETUP PY}
-
+Debido a que la biblioteca \code{tdcbase} está compilada en 32 bits, una distribución de 32 bits de Python 3.6 es \textbf{necesaria} para poder correr el código.
 \subsection{Uso}
-Al importar \code{hunahpy}, se importa sólo la clase \code{TDC}, que contiene todos los métodos necesarios que se pueden llamar fácilmente:
+Al importar \code{hunahpy}, se importa un objeto \code{TDC} que contiene todos los métodos para controlar al \textit{id800}. Estos métodos se pueden llamar fácilmente:
 
 \begin{verbatim}
 ############################
 #from hunahpy import TDC   #
 #tagger = TDC()            #
-#...                       #
 #tagger.getLastTimestamps()#
 #tagger.close()            #
 ############################
 \end{verbatim}
 
-Este objeto \code{TDC} realiza automáticamente la conexión al primer módulo etiquetador que se encuentre conectado a la computadora y realiza la inicialización necesaria a partir del archivo de configuración \code{config.py}. Este archivo contiene la información del experimento como:
+Este objeto \code{TDC} realiza automáticamente la conexión al \textit{id800} que se encuentre conectado a la computadora y realiza los procedimientos necesarios de acuerdo al archivo de configuración \code{config.py}. Este archivo contiene información del experimento como:
 \begin{itemize}
 \item El formato de nombre de los archivos a guardarse automáticamente,
 \item El número de archivos a crearse,
@@ -38,8 +33,8 @@ Este objeto \code{TDC} realiza automáticamente la conexión al primer módulo e
 \item Los parámetros para el histograma de diferencias de tiempos en el programa de interfaz gráfica.
 \end{itemize}
 
-Estos parámetros iniciales de configuración pueden modificarse al cambiar las variables del archivo y sirven para determinar tanto la visualización de los datos entrantes en el programa gráfico como la estructura de los \textit{datafiles} creados, que pueden ser tanto en formato binario como hexadecimal. Un ejemplo del formato binario de los archivos creados se puede ver en la tabla \ref{datafile}.
-\begin{table}[]
+Estos parámetros iniciales de configuración pueden modificarse al cambiar los valores del archivo y sirven para determinar tanto la visualización de los datos entrantes en el programa gráfico como la estructura de los archivos de datos creados. Estos archivos están en formato binario, como se ve en la Tabla \ref{datafile}.
+\begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|}
 \hline
@@ -64,7 +59,7 @@ Estos parámetros iniciales de configuración pueden modificarse al cambiar las 
 \caption{Archivo binario de datos creado.}\label{datafile}
 \end{table}
 
-Para la opción de output binario, los valores de las etiquetas de tiempo están dados en múltiplos del reloj (\code{timebase}) del sistema que es aproximadamente $81ps$, que puede obtenerse precisamente usando el método de \code{timebase} para los objetos TDC.
+En estos archivos, los valores de las etiquetas de tiempo están dados en múltiplos del reloj (\code{timebase}) del sistema. Esta unidad es aproximadamente $81ps$ y puede obtenerse usando el método de \code{timebase} de los objetos TDC.
 
 \subsubsection{Lista de métodos}
 El objeto \code{TDC} tiene una lista de propiedades que determinan los parámetros de operación. Como referencia, se listarán los métodos de acuerdo a la siguiente leyenda, con un ejemplo:
@@ -75,13 +70,13 @@ El objeto \code{TDC} tiene una lista de propiedades que determinan los parámetr
 
 Las propiedades modificables del TDC son:
 \begin{itemize}
-\item double \code{timebase}: La resolución temporal del TDC en segundos. El valor exacto es $8.09552722121028e^{-11}s$.
+\item double \code{timebase}: La resolución temporal del TDC en segundos. El valor exacto es $8.09552722121028e^{-11}$s.
 \item int32 \code{timestamp\_count}: El tamaño del búfer de eventos. El búfer es el número total de eventos independientes que el TDC puede procesar en su memoria interna; si este valor está fijado en $1000$ y llega un evento $1001$, reescribirá al primero evento y así continuará. Entre $0$ y $1,000,000$.
 \item int32 \code{channels\_enabled}: La \textit{máscara de bytes} de los canales habilitados del TDC. Si sólo se habilita el canal 1 (correspondiente a una máscara 1), todos los eventos que lleguen a un canal que no sea el 1 no serán procesados. Se recomienda dejar todos los canales habilitados.
 
 La máscara de bytes es una correspondencia byte-canal que maneja el TDC. La Tabla \ref{mascara} muestra los primeros valores de la relación de correspondencia. Se recomienda dejar todos los canales habilitados (que equivale a un byte de 255, -1, o 0xff en hexadecimal), a menos que un defecto físico en un canal de entrada al TDC esté ocasionando ruido. En ese caso, es simple seguir la secuencia de máscara para encontrar el valor necesario de byte.
 
-\begin{table}[]
+\begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
@@ -107,7 +102,7 @@ La lista completa de funciones implementadas para la paquetería de \code{hunahp
 \begin{enumerate}
 \item error code \code{switch(byte)}: Función para debuggear el código. Esta fución se ejecuta después de casi todas las otras funciones y es la encargada de imprimir los códigos de error generados por cada función. En la Tabla \ref{switch} están todos los mensajes de error posibles y algunas notas sobre cómo corregirlos.
 
-\begin{table}[]
+\begin{table}[h!]
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
@@ -131,11 +126,11 @@ La lista completa de funciones implementadas para la paquetería de \code{hunahp
 \item error code \code{configureSelfTest(channel,signal period,burst size,burst distance)}: El FPGA del TDC puede generar trenes de pulsos virtuales que serán procesados como señales añadidas a las entradas reales de cada canal.
 \begin{itemize}
 \item \code{channel}: Byte del canal a usarse (e.g. 5 corresponde a canales 1 y 3).
-\item \code{signal period}: Período de todas las señales de un tren, en unidades de $20ns$. Entre $2$ Y $60$.
+\item \code{signal period}: Período de todas las señales de un tren, en unidades de $20$ns. Entre $2$ Y $60$.
 \item \code{burst size}: Número de períodos en el tren. Entre $1$ y $65,535$.
-\item \code{burst distance}: Distancia entre trenes, en unidades de $80ns$. Entre $0$ y $10,000$.
+\item \code{burst distance}: Distancia entre trenes, en unidades de $80$ns. Entre $0$ y $10,000$.
 \end{itemize}
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=\linewidth]{imagenes/A1_selftest.png}
 \caption{Señal de prueba del TDC.}\label{fig:selftest}
@@ -159,10 +154,12 @@ La lista completa de funciones implementadas para la paquetería de \code{hunahp
 \item \code{output}: Si se deben guardar los eventos a archivo.  Booleano: $1$ o $0$. De ser positivo, llama a \code{saveTimestamps()}.
 \item \code{*save}: Si \code{output = 1}, \code{*save} serán los argumentos que \code{saveTimestamps()} necesite: los nombres de archivo y extensión que serán creados.
 \end{itemize}
-\item \code{saveTimestamps(filename_timestamps, filename_channels,} \code{filename-\\ extension)}: Guarda los valores de \code{timestamps} y \code{channels} en un archivo con nombre \code{filename_timestamps} y \code{filename_channels} respectivamente con extensión \code{filename_extension}.
+\item \code{saveTimestamps(filename\_timestamps, filename\_channels,} \code{extension)}: Guarda los valores de \code{timestamps} y \code{channels} en un archivo con nombre \code{filename\_timestamps} y \code{filename\_channels}.
 \end{enumerate}
 
-La función \code{getLastTimestamps()} es la función central y más importante de la paquetería de \code{hunahpy} y permite guardar en la memoria de la computadora o en algún archivo de datos todos los eventos procesados por el TDC. Al crear un objeto \code{TDC}, se definen a partir del archivo \code{config.py} todos los parámetros necesarios por el TDC, como el tamaño del búfer A continuación, un ejemplo de lo que sería un programa sencillo para utilizar \code{hunahpy} desde un script de Python:
+La función \code{getLastTimestamps()} es la función central y más importante de la paquetería de \code{hunahpy} y permite guardar en la memoria de la computadora o en algún archivo de datos todos los eventos procesados por el TDC.
+
+Al crear un objeto \code{TDC}, se definen a partir del archivo \code{config.py} todos los parámetros necesarios por el TDC, como el tamaño del búfer A continuación, un ejemplo de lo que sería un programa sencillo para utilizar \code{hunahpy} desde un script de Python 3.6:
 
 \begin{verbatim}
 ###################################
@@ -179,8 +176,8 @@ La función \code{getLastTimestamps()} es la función central y más importante 
 En este punto, se puede realizar el experimento que vaya a generar los eventos que serán procesados por el TDC.
 
 \begin{verbatim}
-#...                              ###############
-#                                               #
+#...                              #
+#                                 ###############
 #tagger.getLastTimestamps(reset=0,output=1,     #
 #                         "tags","chans",".bin")#
 #tagger.close()                                 #
@@ -188,6 +185,47 @@ En este punto, se puede realizar el experimento que vaya a generar los eventos q
 \end{verbatim}
 
 Con esto, generamos dos archivos con las etiquetas temporales y sus respectivos canales en dos archivos \code{"tags.bin"} y \code{"}\code{chans.bin"}.
-
+\newpage
 \subsection{Programa de adquisición}
-\code{hunahpy} 
+\code{hunahpy} puede ser utilizado por medio de \textit{scripts} de Python 3.6 o con el programa de adquisición que se escribió específicamente para los experimentos del laboratorio. Cada una de estas opciones requiere el uso exclusivo del DLL \code{nhconnect}, por lo que intentar realizar una conexión al TDC mientras ya está corriendo una interfaz resultará en errores (errores 7 o 2 en la Tabla \ref{switch}).
+
+\code{hunahpy} discrimina y registra eventos en el búfer de eventos, y el programa de adquisición provee una representación digital del tiempo en el que ocurren estos eventos. La función principal de este programa de adquisición es anotar la cronología de eventos procesados por \code{hunahpy} y guardarlos en archivos de datos especificados por el usuario, para ser procesados después. Además, el programa de adquisición tiene la funcionalidad de visualizar los datos de dos formas distintas:
+\begin{itemize}
+\item Contador
+\item Analizador de intervalos temporales
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{imagenes/counts_plot.png}
+\caption{Pestaña de \textit{cuentas} del programa de adquisición.}\label{fig:counts_tab}
+\end{figure}
+La función de \textit{contador} integra el número de cuentas en el búfer para cada canal durante una ventana específica de tiempo. Las tasas de eventos registrados se grafican en tiempo real para cada canal (y de manera global). Se puede elegir el tamaño de la ventana de integración modificando la opción de \code{Time bin}, así como detener o empezar a graficar los datos con el botón de \code{Stop}.
+\newpage
+En cualquiera de las pestañas de graficación hay varios bloques:
+\begin{itemize}
+\item \textbf{Connection}: Un LED verde indica conexión al \textit{id800} o a la tarjeta de control Labjack.
+\item \textbf{Parameters}: Algunos parámetros de operación de acuerdo a \code{config.py}. Además incluye el directorio donde se guardarán los archivos.
+\item \textbf{Progress}: Contiene el nombre de archivo con el cual se guardarán los datos, el número de archivos a crearse (\textit{Experiment}) y una barra de progreso para cada archivo. El número de eventos guardados en cada archivo estará dado exclusivamente por el tamaño del búfer. Los archivos creados son de acuerdo al formato presentado en la Tabla \ref{datafile}.
+\end{itemize}
+
+El programa de adquisición guarda los datos y maneja los archivos creados de manera automática: en cuanto un búfer de eventos se llene, crea un nuevo archivo de acuerdo al formato establecido y escribe allí las cuentas. Sin embargo, si no hay eventos suficientes para llenar un búfer, se puede hacer de forma manual con el botón \code{Save/Next file}. En el archivo \code{config.py} se configura el formato de los archivos a crear y el número de eventos totales que serán procesados por el TDC.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{imagenes/hist_plot.png}
+\caption{Pestaña de \textit{histogramas} del programa de adquisición.}\label{fig:hist_tab}
+\end{figure}
+
+La función de \textit{analizador de intervalos temporales} calcula diferencias de tiempo entre etiquetas y construye un histograma que puede ser útil para visualizar diferencias entre diferentes señales o entre una señal y ella misma. Por default, esta pestaña calcula el histograma de diferencias global (\textit{i.e.}, entre cualesquiera señales procesadas sin importar canal), pero los histogramas entre canales particulares también pueden visualizarse modificando \code{Channel A} y \code{Channel B}.
+
+Las etiquetas \code{Too big} y \code{Too small} dan el número de diferencias de tiempo más grandes que la canasta más grande y más chicas que la canasta más pequeña, respectivamente. Aunque el archivo \code{config.py} viene con valores iniciales de \code{binsize} y \code{bincount} para los histogramas también pueden modificarse manualmente para que \code{Too big} y \code{Too small} sean cero.
+
+\subsection{Consejos para solucionar problemas}
+Los mensajes de error de la Tabla \ref{switch} deberían de dar una indicación de cuál es el problema. Lo primero que se debería intentar es reiniciar tanto el TDC como la computadora.
+\begin{itemize}
+\item \textbf{Problema}: El LED de \textit{id800} sigue en rojo aunque está conectado.
+\item \textbf{Consejo}: Verificar que el TDC esté conectado correctamente y prendido. Si esto no lo soluciona, correr un script como el del inicio de la sección A.2.
+\item \textbf{Problema}: La pestaña de \textit{cuentas} dice que no hay eventos, pero la barra de progreso sí avanza.
+\item \textbf{Consejo}: Si la barra de progreso sí avanza entonces \code{hunahpy} está procesando los eventos correctamente. Por la naturaleza del programa, a veces hay problemas de sincronización y hace falta esperar unos segundos.
+\end{itemize}
+
