@@ -327,7 +327,7 @@ que es una \textbf{distribución Poissoniana}. En general, una distribución Poi
 \end{equation}
 lo que significa que la \textit{desviación estándar} cumple con
 \begin{equation}
-\Delta n = \sqrt{n}.
+\Delta n = \sqrt{\bar n}.
 \end{equation}
 
 Por otro lado, la luz térmica está definida como la radiación electromagnética emitida por un cuerpo negro, y presentan una densidad de energía dentro del rango de emisión $[\omega, \omega + d\omega]$ de acuerdo a la Ley de Planck:
@@ -558,7 +558,7 @@ La ecuación \ref{g2 exp} queda entonces dada por:
 \nonumber \g{2}(\tau = 0) &= \cfrac{N_{TR}}{N_T N_R}\left(\cfrac{\Delta T}{\Delta t}\right),\\
  &= \cfrac{\sum_i T_i R_i}{\sum_i T_i \sum_i R_i}\left(\cfrac{\Delta T}{\Delta t}\right). \label{g2_exp_1}
 \end{align}
-Este análisis es válido para medir $\g{2}(0)$. El retraso $\tau$ surge de la diferencia de camino óptico entre los brazos del interferómetro: uno podría modificar este retraso en tiempos al mover los acopladores de fibra a los APDs o utilizando cables de distinta longitud que vayan de los APDs al TDC, pero podemos introducir un \textit{retraso virtual} en alguno de los brazos del interferómetro en el análisis de datos para $\g{2}(\tau)$. Esto es posible porque las propiedades estadísticas de la luz láser son estacionarias --- \textit{i.e.}, sus fluctuaciones provienen de un proceso \textit{ergódico}\cite{Loudon}. Si desplazamos el inicio de uno de los histogramas por una casilla, simularemos que los eventos de ese brazo del interferómetro estarán retrasados por un valor de $\tau = \Delta t$.
+Este análisis es válido para medir $\g{2}(0)$. El retraso $\tau$ surge de la diferencia de camino óptico entre los brazos del interferómetro: uno podría modificar este retraso en tiempos al mover los acopladores de fibra a los APDs o utilizando cables de distinta longitud que vayan de los APDs al TDC, pero podemos introducir un \textit{retraso virtual} en alguno de los brazos del interferómetro en el análisis de datos para $\g{2}(\tau)$. Esto es posible porque las propiedades estadísticas de la luz láser son estacionarias --- \textit{i.e.}, sus fluctuaciones provienen de un proceso \textit{ergódico}\cite[p.~93]{Loudon}. Si desplazamos el inicio de uno de los histogramas por una casilla, simularemos que los eventos de ese brazo del interferómetro estarán retrasados por un valor de $\tau = \Delta t$.
 \begin{align*}
 &\ _{\downarrow}^{t_0} \\
 T = \ &\mid 1 \mid 0 \mid 2 \mid 1\mid 0\mid 0 \mid 1 \mid \ldots \mid 1 \mid 0 \mid 0 \mid\\
@@ -567,14 +567,14 @@ R' &= \ \ \mid 0 \mid 0 \mid 1 \mid 1\mid 1\mid 0 \mid \ldots \mid 2 \mid 0 \mid
 \end{align*}
 Vemos que, sin embargo, sólo podremos obtener el número de cuentas conjunto $N_{TR}$ para el traslape temporal de nuestros nuevos histogramas, y nuestro tiempo total de detección $\Delta T$ también habrá cambiado. En este caso,
 \begin{align*}
-N_T &= \sum_{i=1}^{n} T_i, & N_R &= \sum_{i=0}^{n-1}, & N_{TR} = \sum_{i=0}^{n-1} T_{i+1}R_i.
+N_T &= \sum_{i=1}^{n} T_i, & N_R &= \sum_{i=0}^{n-1} R_i, & N_{TR} = \sum_{i=0}^{n-1} T_{i+1}R_i.
 \end{align*}
 
 Podemos generalizar este retraso para $k$ desplazamientos y denotar a $\tau_k = k\Delta t$. Finalmente, la ecuación \ref{g2_exp_1} quedará de forma más general como:
 \begin{equation}
 \g{2}(\tau_k) = \cfrac{\sum_i T_{i+k} R_i}{\sum_i T_i \sum_i R_i}\left(\cfrac{\Delta T_k}{\Delta t}\right),
 \end{equation}
-donde cada índice $i$ corre dentro de su respectivo rango. Esto nos permite calcular $\g{2}(\tau)$ para múltiplos de $\Delta t$, aunque a medida que $k$ aumente, la región de traslape de los histogramas disminuirá y la incertidumbre de $\g{2}(\tau_k)$ bajará también.
+donde cada índice $i$ corre dentro de su respectivo rango. Esto nos permite calcular $\g{2}(\tau)$ para múltiplos de $\Delta t$, aunque a medida que $k$ aumente, la región de traslape de los histogramas disminuirá y la incertidumbre de $\g{2}(\tau_k)$ aumentará a la vez.
 \subsection{Resultados}\label{resultados_correlaciones}
 
-El objetivo principal de este capítulo fue el de realizar mediciones con el interferómetro para luz láser y así verificar el buen funcionamiento del sistema de adquisición de datos. 
+El objetivo principal de este capítulo fue el de realizar mediciones con el interferómetro para luz láser y así verificar el buen funcionamiento del sistema de adquisición de datos. Dentro del archivo de configuración \code{config.py} del programa de adquisición se fijó un tamaño de búfer de 1,000,000 de eventos y se guardaron 70+ millones de cuentas
