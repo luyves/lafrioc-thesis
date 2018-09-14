@@ -132,7 +132,7 @@ La lista completa de funciones implementadas para la paquetería de \code{hunahp
 \end{itemize}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\linewidth]{imagenes/A1_selftest.png}
+\includegraphics[width=\linewidth]{/A1_selftest.png}
 \caption{Señal de prueba del TDC.}\label{fig:selftest}
 \end{figure}
 \item int8 \code{getChannel(byte)}: Regresa el número real de un canal basado en la máscara de bytes.
@@ -197,7 +197,7 @@ Con esto, generamos dos archivos con las etiquetas temporales y sus respectivos 
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.8\linewidth]{imagenes/counts_plot.png}
+\includegraphics[width=0.8\linewidth]{counts_plot.png}
 \caption{Pestaña de \textit{cuentas} del programa de adquisición.}\label{fig:counts_tab}
 \end{figure}
 La función de \textit{contador} integra el número de cuentas en el búfer para cada canal durante una ventana específica de tiempo. Las tasas de eventos registrados se grafican en tiempo real para cada canal (y de manera global). Se puede elegir el tamaño de la ventana de integración modificando la opción de \code{Time bin}, así como detener o empezar a graficar los datos con el botón de \code{Stop}.
@@ -212,7 +212,7 @@ En cualquiera de las pestañas de graficación hay varios bloques:
 El programa de adquisición guarda los datos y maneja los archivos creados de manera automática: en cuanto un búfer de eventos se llene, crea un nuevo archivo de acuerdo al formato establecido y escribe allí las cuentas. Sin embargo, si no hay eventos suficientes para llenar un búfer, se puede hacer de forma manual con el botón \code{Save/Next file}. En el archivo \code{config.py} se configura el formato de los archivos a crear y el número de eventos totales que serán procesados por el TDC.
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.8\linewidth]{imagenes/hist_plot.png}
+\includegraphics[width=0.8\linewidth]{hist_plot.png}
 \caption{Pestaña de \textit{histogramas} del programa de adquisición.}\label{fig:hist_tab}
 \end{figure}
 

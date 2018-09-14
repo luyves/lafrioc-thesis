@@ -28,9 +28,13 @@ El arreglo óptico se divide en la parte de bombeo (la luz que llega a la nube d
 
 \textbf{Diamante de rubidio}
 
-La Figura \textbf{DIAMANTE} muestra la configuración atómica para la generación de fotones correlacionados por FWM en el gas de Rb. Aunque una descripción a profundidad de FWM en átomos fríos no es parte de este trabajo, de manera conceptual uno puede ver que usando dos láseres potentes de bombeo de 780nm y 776nm, se pueden generar dos fotones correlacionados de 762nm y 795nm si las condiciones de empatamiento de fase se cumplen\cite{srivathsan}. En este montaje experimental, los haces de bombeo son colineales y los fotones generados también lo serán. El montaje de la óptica de adquisición consiste principalmente en un arreglo de filtros de interferencia SEMROCK LL01-780 y LL01-808 para filtrar la luz de bombeo. A cada ángulo, estos filtros de interferencia transmiten una longitud de onda central y reflejan el resto. Después de filtrar los haces de bomeo, la luz generada fue acoplada a dos fotodiodos de avalancha (APDs) para la detección de fotones individuales por medio de fibras monomodales. 
+La Figura \textbf{DIAMANTE} muestra la configuración atómica para la generación de fotones correlacionados por FWM en el gas de Rb. Aunque una descripción a profundidad de FWM en átomos fríos no es parte de este trabajo, de manera conceptual uno puede ver que usando dos láseres potentes de bombeo de 780nm y 776nm, se pueden generar dos fotones correlacionados de 762nm y 795nm si las condiciones de empatamiento de fase se cumplen\cite{srivathsan}. En este montaje experimental, los haces de bombeo son colineales y los fotones generados también lo serán. El montaje de la óptica de adquisición consiste principalmente en un arreglo de filtros de interferencia SEMROCK LL01-780 y LL01-808 para filtrar la luz que se generará en el FWM de los haces de atrapamiento que son mucho más potentes. A cada ángulo, estos filtros de interferencia transmiten una longitud de onda central y reflejan el resto. Después de filtrar los haces de bombeo, la luz generada fue acoplada a dos fotodiodos de avalancha (APDs) para la detección de fotones individuales por medio de fibras monomodales. 
 
-\textbf{OPTICA BOMBEO}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\linewidth]{optica_adq_fwm.png}
+\caption{Óptica de adquisición para FWM. El filtro IF1 deja pasar luz de 762nm y el IF2 deja pasar luz de 795nm. Un color más tenue indica que la intensidad de los haces generados es muy baja.}\label{fig:optica_fwm}
+\end{figure}
 
 Aún con técnicas estándar hoy en día, la tasa de generación de bifotones en experimentos de este tipo es baja\cite{Cere:1}; es por esto que es importante obtener la mayor eficiencia posible a la hora de acoplar las fibras ópticas. El problema del acoplamiento consiste en la alineación del haz incidente y de la fibra para maximizar la potencia transferida. En condiciones ideales, uno podría conseguir un porcentaje de acoplamiento a la fibra de casi 100\%\cite{Ladany:93}, pero hacerlo es laborioso y necesita de múltiples elementos ópticos. El acoplamiento de luz láser a una fibra monomodal es un problema de empatamiento de modos\cite{Newport}:
 \begin{equation}
@@ -49,7 +53,7 @@ Un APD es un un diodo p-n con una ganancia alta. Estos instrumentos tienen un me
 \item \textit{Cuentas obscuras}, señales generadas por el mismo APD sin luz externa incidente. La tasa de cuentas obscuras (\textit{dark count rate}) es dependiente de la temperatura del detector y el voltaje de polarización (bias). El fabricande del \textit{id120} indica un valor de cuentas obscuras de $<200$Hz.
 \end{itemize}
 
-Los APD \textit{id120} cuentan con una zona de detección de $500\mu $m de diámetro y una eficiencia cuántica de 80\% para $800$nm. Es necesario optimizar los valores del voltaje de bias aplicado para minimizar el \textit{afterpulsing} y el \textit{dark count rate}. Una descripción mucho más detallada de el funcionamiento y las tasas de generación de eventos en APDs puede encontrarse en \cite{Michalet}.
+Los APD \textit{id120} cuentan con una zona de detección de $500\mu $m de diámetro y una eficiencia cuántica de 80\% para $800$nm. Es necesario optimizar los valores del voltaje de bias aplicado para minimizar el \textit{afterpulsing} y la tasa de cuentas obscuras. Una descripción mucho más detallada de el funcionamiento y optimización de APDs puede encontrarse en \cite{Michalet}.
 
 Una desventaja de la elección de \textit{id120} es que no tienen un trigger interno capaz de ser activado de manera externa, por lo que fue necesario diseñar un circuito de \textit{gating} utilizando búferes de tres estados.
 
@@ -109,9 +113,13 @@ Si dos trenes de ondas presentan una relación bien determinada de fase entre el
 
 Para cuantificar la coherencia, calculamos la \textit{correlación}.
 
-\textbf{MACH ZEHNDER}
+\begin{figure}[]
+\centering
+\includegraphics[width=0.65\linewidth]{mach_zehnder.png}
+\caption{Interferómetro de Mach-Zehnder.}\label{fig:mach_zehnder}
+\end{figure}
 
-La figura \textbf{DE ARRIBA} muestra un esquema sencillo del interferómetro de Mach Zehnder. Supongamos que tenemos un campo eléctrico incidente $\E(t)$ incidente sobre el primer divisor de haz, que asumimos idéntico al segundo y ambos con coeficiente de reflexión $\mathcal{R}$ y coeficiente de transmisión  $\mathcal{T}$. Después de pasar por el primer divisor, el haz reflejado y el transmitido recorren una distancia $l_1$ y $l_2$, respectivamente, usualmente diseñadas de distinta magnitud. Al recombinarse en el segundo divisor, tendremos dos salidas:
+La Figura \ref{fig:mach_zehnder} muestra un esquema sencillo del interferómetro de Mach Zehnder. Supongamos que tenemos un campo eléctrico incidente $\E(t)$ incidente sobre el primer divisor de haz, que asumimos idéntico al segundo y ambos con coeficiente de reflexión $\mathcal{R}$ y coeficiente de transmisión  $\mathcal{T}$. Después de pasar por el primer divisor, el haz reflejado y el transmitido recorren una distancia $l_1$ y $l_2$, respectivamente, usualmente diseñadas de distinta magnitud. Al recombinarse en el segundo divisor, tendremos dos salidas:
 \begin{align*}
 \E_A(t) &= \mathcal{RT}\E(t_1) + \mathcal{TR}\E(t_2) \propto \E(t_1) + \E(t_2),\\
 \E_B(t) &= \mathcal{TT}\E(t_2) + \mathcal{RR}\E(t_1),
@@ -129,7 +137,7 @@ En la realidad no podemos medir la intensidad de manera instantántea, por lo qu
 
 Vemos que tenemos tres contribuciones a la intensidad medida. Las primeras dos corresponden a la intensidad que mediríamos de cada campo después de recorrer su brazo del interferómetro de manera independiente, \textit{i.e.}, sin efectos de interferencia. Sin embargo, el tercer término contiene la información de la \textit{correlación} de cada haz.
 
-Si, sin pérdida de generalidad, consideramos que $t_1 < t_2 = t_1 + \tau$, podemos ver que la correlación dependerá de esta diferencia temporal $\tau$ a partir de un tiempo dado, más que de valores particulares de $t_1$ o $t_2$, siempre y cuando la naturaleza de $\E(t)$ nos permita tomar promedios sin mucho problema. De manera más general, el tercer término está definido de manera estadística como:
+Si --- sin pérdida de generalidad --- consideramos que $t_1 < t_2 = t_1 + \tau$ (y $\tau > 0$), podemos ver que la correlación dependerá de esta diferencia temporal $\tau$ a partir de un tiempo dado, más que de valores particulares de $t_1$ o $t_2$, siempre y cuando la naturaleza de $\E(t)$ nos permita tomar promedios sin mucho problema. De manera más general, el tercer término está definido de manera estadística como:
 \begin{equation}
 \langle\E(t)\cdot\E(t+\tau)\rangle = \cfrac{1}{T}\int_T dt \ \E^*(t)\E(t+\tau)\equiv \langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle ,
 \end{equation} 
@@ -179,7 +187,7 @@ donde $\tau_c$ es el tiempo característico de vuelo, o tiempo de coherencia. Us
 
 Finalmente, de la ecuación \ref{eq15} obtenemos que:
 \begin{equation}
-\g{1}(\tau) = e^{-i\omega\tau- \tau/\tau_c}.
+\g{1}(\tau) = e^{-i\omega_0\tau- \tau/\tau_c}.
 \end{equation}
 
 Para una fuente de luz caótica con ensanchamiento Doppler se puede hacer un análisis similar. Partiendo de la expresión del campo eléctrico para este tipo de luz:
@@ -194,8 +202,6 @@ Calculando $\langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle$, obtenemos que:
 \g{1}(\tau) = e^{-i\omega_0\tau - \frac{\pi}{2}(\tau/\tau_c)^2}.
 \end{equation}
 
-\textbf{FIGURA DE g(1) PARA AMBAS FUENTES}
-
 Vemos que la magnitud de $\g{1}(\tau)$ para luz caótica ensanchada por colisiones tiene un perfil Lorentziano, mientras que para luz caótica ensanchada por Doppler presenta un perfil Gaussiano. $|\g{1}(0)| = 1$ es el máximo y decrece monotónicamente hacia $0$.
 
 \subsubsection*{Luz láser}\label{luz_laser}
@@ -205,7 +211,7 @@ De manera ideal, un láser emite una sola frecuencia y tiene coherencia perfecta
 \E(t) = E_0 e^{-i\omega_0t + i\varphi}. \label{eq19}
 \end{equation}
 
-Vemos entonces que:
+Se sigue entonces que:
 \begin{align*}
 \langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle &= E_0^2 e^{-i\omega_0\tau},
 \end{align*}
@@ -216,13 +222,19 @@ y
 
 Es inmediato que $|\g{1}(\tau)| = 1$ para todo $\tau$, que significa que la luz láser es perfectamente coherente.
 
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=0.9\linewidth]{g1_all.png}
+%\caption{$|\g{1}(\tau)|$ para luz láser, luz caótica ensanchada por colisiones y luz caótica ensanchada por effecto Doppler.}\label{fig:g1}
+%\end{figure}
+
 \subsubsection*{Función de correlación de segundo orden}
 El experimento de interferencia de intensidades que realizaron Hanbury Brown y Twiss\cite{hbt} mostró que el análisis de las correlaciones entre intensidades era interesante. Justo como consideramos el grado de coherencia temporal de primer orden como una medida de la correlación entre amplitudes, el \textit{grado de coherencia temporal de segundo orden} es una medida de la correlación entre intensidades. La función $\g{2}(\tau)$ mide esencialmente fluctuaciones en la intensidad y se define como:
 \begin{equation}
 \g{2}(\tau) = \cfrac{\langle\mathcal{E}^*(t)\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\mathcal{E}(t)\rangle}{\langle\mathcal{E}^*(t)\mathcal{E}(t)\rangle \langle\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\rangle} = \cfrac{\langle I(t)I(t+\tau)\rangle}{\langle I(t)\rangle\langle I(t+\tau)\rangle}.
 \end{equation}
 
-De acuerdo con esta descripción clásica de la luz, es posible probar con la \textit{desigualdad de Cauchy-Schwartz} que:
+De acuerdo con esta descripción clásica de la luz, es posible probar con la desigualdad de \textit{Cauchy-Schwartz} que:
 \begin{align}
 1 &\leq \g{2}(0) \label{g0_clasica}\\
 \g{2}(\tau) &\leq \g{2}(0).
@@ -239,7 +251,7 @@ Para las fuentes de luz caótica se puede demostrar que, si se tiene un número 
 \langle\mathcal{E}^*(t)\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\mathcal{E}(t)\rangle = n^2\left[\langle\mathcal{E}_i^*(t)\mathcal{E}_i(t)\rangle^2 + |\langle\mathcal{E}_i^*(t)\mathcal{E}_i(t+\tau)\rangle|^2\right]. \label{eq22}
 \end{equation}
 
-Usando \ref{eq22} en la definición de $\g{2}$, tenemos que para luz caótica (y para $n>>1$):
+Usando la ecuación \ref{eq22} en la definición de $\g{2}$, tenemos que para luz caótica (y para $n\gg1$):
 \begin{equation}
 \nonumber \g{2}(\tau) = 1+|\g{1}(\tau)|^2,
 \end{equation}
@@ -248,7 +260,11 @@ quedando para luz caótica con colisiones y con ensanchamiento Doppler:
 \g{2}(\tau) &= 1 + e^{-2\tau/\tau_c}, & \g{2}(\tau) &= 1 + e^{-\pi(\tau/\tau_c)^2}.
 \end{align}
 
-\textbf{g(2) PARA LAS TRES LUCES CLÁSICAS}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\linewidth]{g2_all.png}
+\caption{$\g{2}(\tau)$ clásica para luz láser, luz caótica ensanchada por colisiones y luz caótica ensanchada por effecto Doppler.}\label{fig:g2}
+\end{figure}
 
 \subsubsection{Cuantización del campo}\label{optica_cuantica}
 De la teoría clásica del campo electromagnético \textbf{Loudon}, sabemos que el campo eléctrico $\E(\bm{r},t)$ y el campo magnético $\B(\bm{r},t)$ son campos vectoriales dependientes del tiempo que en vacío dependen de un tercer campo $\A(\bm{r},t)$ (el potencial vectorial) y un campo escalar $\phi(\bm{r},t)$:
@@ -301,7 +317,7 @@ Con esto, vale la pena volver a definir la función de correlación de segundo o
 \g{2}(\tau) = \cfrac{\langle \ad(t)\ad(t+\tau) \hat a(t+\tau)\hat a(t)\rangle}{\langle\ad(t)\hat a(t)\rangle\langle\ad(t+\tau)\hat a(t+\tau)\rangle} = \cfrac{\langle \hat n(t) \hat n (t+\tau)\rangle}{\langle \hat n(t)\rangle \langle \hat n(t+\tau)\rangle}. \label{g2_cuantica}
 \end{align}
 
-Veamos los resultados de $\g{2}(\tau)$ para las fuentes de luz usadas en en \ref{coherencia}.
+Veamos los resultados de $\g{2}(\tau)$ para las fuentes de luz usadas en la sección \ref{coherencia}.
 
 Para un haz coherente, nos preguntamos cuál es la probabilidad $\mathcal{P}(n)$ de encontrar $n$ fotones en un haz de longitud $L$ partido en $N$ subsegmentos. Usando la distribución binomial para encontrar la probabilidad de $n$ segmentos con un fotón y $N-n$ con ninguno, tenemos que:
 \begin{equation}
@@ -334,7 +350,7 @@ Por otro lado, la luz térmica está definida como la radiación electromagnéti
 \begin{equation}
 \nonumber\rho(\omega,T)d\omega = \frac{\hbar\omega^3}{\pi^2c^3}\cfrac{d\omega}{\exp(\hbar\omega/k_BT)-1}.
 \end{equation}
-Cada modo oscilatorio tiene la energía dada por \ref{eq_energia_oscilador} y, de acuerdo a la mecánica estadística, la probabilidad de que se encuentren $n$ fotones en el modo correspondiente a $\omega$ es:
+Cada modo oscilatorio tiene la energía dada por la ecuación \ref{eq_energia_oscilador} y, de acuerdo a la mecánica estadística, la probabilidad de que se encuentren $n$ fotones en el modo correspondiente a $\omega$ es:
 \begin{equation}
 \mathcal{P}_{\omega}(n) = \cfrac{\exp(-n\hbar\omega/k_BT)}{\sum_{n=0}^\infty\exp(-n\hbar	\omega/k_BT}). \label{prob_termica}
 \end{equation}
@@ -392,7 +408,11 @@ donde $r^2 = x^2 + y^2$ y $w$ representa el diámetro del haz. $w$ es en realida
 
 Hay varias definicones de diámetro de haz, y aunque para haces Gaussianos la más común es el diámetro para el cual la intensidad ha caído a $1/e^2$ (13.5 \%) de su intensidad original. Otras definiciones --- útiles en distintos contextos --- son el diámetro $1/e$, \textit{full-width half-maximum} (FWHM) y $D4\sigma$, que corresponden a caídas de intensidad a $1/e$ y $50\%$ para las primeras dos, respectivamente, y 4 veces la desviación estándar para la última. Para haces Gaussianos ideales, los diámetros de $1/e^2$ y $D4\sigma$ coinciden.
 
-\textbf{GRÁFICA DE PERFIL GAUSSIANO Y DIÁMETROS}
+\begin{figure}[]
+\centering
+\includegraphics[width=0.75\linewidth]{gaussian_waist.png}
+\caption{Perfil de intensidad Gaussiano y distintas definiciones de diámetro.}\label{fig:beam_waist}
+\end{figure}
 
 Haciendo uso de una cámara digital, es posible tomar una foto del perfil de intensidad espacial en un plano perpendicular y realizar un análisis en la computadora. La cámara disponible para ese propósito en el laboratorio es una cámara Thorlabs DCC1545M, que cuenta con un chip CCD con una resolución de 1280x1024 pixeles cuadrados de $5.4\mu$m de lado. El chip CCD tiene una intensidad de saturación de aproximadamente $1\mu$ W/cm$^2$, lo que significa que atenuar la luz láser usando filtros de densidad neutral (ND) es necesario.
 
@@ -473,7 +493,7 @@ El programa de adquisición es parte de un sistema más completo que consiste en
 Los APDs utilizados no cuentan con un canal de entrada digital que permita prenderlos o apagarlos usando un pulso electrónico. Por esto, se diseñó un pequeño instrumento que funcionara como compuerta digital para los eventos que registra el TDC.
 %\begin{figure}[h!]
 %\centering
-%\includegraphics[width=0.6\linewidth]{imagenes/gating_board_wht.png}
+%\includegraphics[width=0.6\linewidth]{gating_board_wht.png}
 %\caption{Circuito de gating.}\label{fig:gating_board}
 %\end{figure}
 
@@ -481,7 +501,7 @@ Este circuito es básicamente un circuito AND adecuado a las especificaciones de
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=\linewidth]{imagenes/gating_plot.png}
+\includegraphics[width=\linewidth]{gating_plot.png}
 \caption{Ejemplo de prueba para el circuito de gating.}\label{fig:gating_plot}
 \end{figure}
 Se realizaron pruebas para verificar que el circuito funcionara adecuadamente. Con un generador de funciones, se enviaron dos trenes de pulsos TTL de distintas frecuencias: una frecuencia baja de control y una más alta como input. La Figura \ref{fig:gating_plot} muestra que el circuito de gating funciona adecuadamente.
@@ -491,9 +511,13 @@ Se realizaron pruebas para verificar que el circuito funcionara adecuadamente. C
 \subsection{Experimento}\label{experimento_correlaciones}
 Como preparación para los experimentos de FWM en átomos fríos, se diseñó un experimento sencillo para medir la función de correlación de segundo orden $\g{2}$ para luz láser.
 
-Se amplió el montaje de la óptica de adquisición de FWM en \textbf{REF} para analizar la luz del haz de bombeo de 780nm. Se montó un interferómetro de intensidades con un divisor de haz y cada brazo se mandó a dos APDs.
+Se amplió el montaje de la óptica de adquisición de FWM de la Figura \ref{fig:optica_fwm} para analizar la luz del haz de bombeo de 780nm. Se montó un interferómetro de intensidades con un divisor de haz 50/50 y cada brazo se mandó a un APDs. Para este experimento se apagó la luz de 776nm.
 
-\textbf{MONTAJE OPTICO}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\linewidth]{optica_adq_780.png}
+\caption{Óptica de adquisición para el haz de 780nm. La sección resaltada es la ampliación del arreglo óptico de la Figura \ref{fig:optica_fwm}. Se consiguió una intensidad baja usando filtros ND y un divisor no polarizante BS.}\label{fig:optica_780}
+\end{figure}
 
 En la sección \ref{teoria_correlaciones} vimos que en el tratamiento cuántico podemos considerar a un haz de luz como un haz de fotones individuales. El \textit{flujo de fotones} $\Phi$ se define como el número de fotones promedio que pasa por una región por unidad de tiempo. Si consideramos un haz monocromático y con intensidad constante $I$, entonces el flujo se da como:
 \begin{equation}
@@ -510,13 +534,13 @@ Existe un valor máximo de $\mathcal{R}$ para cada APD que surge de que el detec
 
 Además de probar la calibración y funcionalidad de los APDs, se realizaron pruebas para medir la tasa de cuentas obscuras para cada uno. Para estas medidas se bloqueó el haz láser y se registraron los eventos por media hora usando el programa de adquisición de datos.
 
-\begin{figure}[h!]
+\begin{figure}[]
 \centering
-\includegraphics[width=\linewidth]{imagenes/cuentas_obscuras.png}
+\includegraphics[width=\linewidth]{cuentas_obscuras_2.png}
 \caption{Histograma de cuentas obscuras para el APD1 (verde) y el APD2 (rojo). El tiempo de integración para cada canasta fue de 150ms.}\label{fig:dark_counts}
 \end{figure}
 
-La temperatura de operación de los APDs fue de -40$^{\circ}$ y el voltaje de polarización de 200V para el APD1 y 191V para el APD2. La tasa de cuentas obscuras que se obtuvo fue de:
+La temperatura de operación de los APDs fue de -40$^{\circ}$C y el voltaje de polarización de 200V para el APD1, y 191V para el APD2. La tasa de cuentas obscuras que se obtuvo fue de:
 \begin{itemize}
 \item APD1: $\mu = 180.67\pm 33.55$ cuentas s$^{-1}$
 \item APD2: $\mu = 155.55\pm 31.66$ cuentas s$^{-1}$
@@ -572,9 +596,19 @@ N_T &= \sum_{i=1}^{n} T_i, & N_R &= \sum_{i=0}^{n-1} R_i, & N_{TR} = \sum_{i=0}^
 
 Podemos generalizar este retraso para $k$ desplazamientos y denotar a $\tau_k = k\Delta t$. Finalmente, la ecuación \ref{g2_exp_1} quedará de forma más general como:
 \begin{equation}
-\g{2}(\tau_k) = \cfrac{\sum_i T_{i+k} R_i}{\sum_i T_i \sum_i R_i}\left(\cfrac{\Delta T_k}{\Delta t}\right),
+\g{2}(\tau_k) = \cfrac{\sum_i T_{i+k} R_i}{\sum_i T_i \sum_i R_i}\left(\cfrac{\Delta T_k}{\Delta t}\right), \label{g2_final}
 \end{equation}
 donde cada índice $i$ corre dentro de su respectivo rango. Esto nos permite calcular $\g{2}(\tau)$ para múltiplos de $\Delta t$, aunque a medida que $k$ aumente, la región de traslape de los histogramas disminuirá y la incertidumbre de $\g{2}(\tau_k)$ aumentará a la vez.
 \subsection{Resultados}\label{resultados_correlaciones}
 
-El objetivo principal de este capítulo fue el de realizar mediciones con el interferómetro para luz láser y así verificar el buen funcionamiento del sistema de adquisición de datos. Dentro del archivo de configuración \code{config.py} del programa de adquisición se fijó un tamaño de búfer de 1,000,000 de eventos y se guardaron 70+ millones de cuentas
+El objetivo principal de este capítulo fue el de realizar mediciones con el interferómetro para luz láser y así verificar el buen funcionamiento del sistema de adquisición de datos. Dentro del archivo de configuración \code{config.py} del programa de adquisición se fijó un tamaño de búfer de 1,000,000 de eventos y se guardaron 70+ millones de cuentas para los dos APDs $T$ y $R$.
+
+Se realizó el análisis de $\g{2}$ para cada canal y se usó un tiempo de canasta de $\Delta t = 2.5$ns para los histogramas de cuentas. El tiempo total de detección $\Delta T$ se calculó a partir de la primera y la última etiqueta de tiempo registrada para cada búfer. Para cada valor de $\tau_k$ desde 2.5ns hasta 125ns se realizó un análisis estadístico sobre todos los datos obtenidos para calcular $\g{2}(\tau_k)$ de acuerdo a la ecuación \ref{g2_final}.
+
+\begin{figure}[]
+\centering
+\includegraphics[width=\linewidth]{g2_laser_3.png}
+\caption{$\g{2}(\tau)$ para un haz de luz coherente.}\label{fig:g2}
+\end{figure}
+
+Se reporta un valor promedio de $\overline{\g{2}} = 1.0007\pm0.0014$, que está en buena concordancia con el valor obtenido de la teoría. Este resultado responde bien al propósito de este trabajo: el desarrollo de un esquema experimental en anticipación a experimentos de FWM en átomos fríos. 
