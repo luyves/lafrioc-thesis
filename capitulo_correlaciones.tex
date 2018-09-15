@@ -416,20 +416,20 @@ Hay varias definicones de diámetro de haz, y aunque para haces Gaussianos la m�
 
 Haciendo uso de una cámara digital, es posible tomar una foto del perfil de intensidad espacial en un plano perpendicular y realizar un análisis en la computadora. La cámara disponible para ese propósito en el laboratorio es una cámara Thorlabs DCC1545M, que cuenta con un chip CCD con una resolución de 1280x1024 pixeles cuadrados de $5.4\mu$m de lado. El chip CCD tiene una intensidad de saturación de aproximadamente $1\mu$ W/cm$^2$, lo que significa que atenuar la luz láser usando filtros de densidad neutral (ND) es necesario.
 
-\textbf{FOTO DE HAZ LASER, LIMPIO Y CON INTERFERENCIA}
-
 Una vez que una foto ha sido tomada, es procesada por la computadora y convertida en una matriz de valores dentro del intervalo $[0,255]$ (pues la cámara toma fotos en 8-bits). Después, el algoritmo realiza un procesamiento sencillo para reducir el ruido en la imagen, ruido que puede provenir tanto de ruido eléctrico en el sensor o por luz de fondo. El algoritmo calcula un valor de offset basado en el valor mediano de los pixeles no iluminados por el haz.
 
-Para el análisis de imágenes, primero hace falta encontrar el centro del haz. La figura \textbf{FOTO DE ARRIBA} b) muestra que a veces es difícil tener una imagen limpia. A veces el uso de filtros ND distorsiona el modo y el perfil de un haz, o se puede presentar interferencia por la óptica usada. Por esto, encontrar el centro de un perfil de intensidad a veces no es directo como encontrar el pixel de mayor intensidad.
+Para el análisis de imágenes, primero hace falta encontrar el centro del haz. Sin embargo, a veces es difícil tener una imagen limpia. A veces la óptica usada está sucia o induce efectos de interferencia por una mala alineación. Por esto, encontrar el centro de un perfil de intensidad a veces no es tan directo como encontrar el pixel de mayor intensidad.
 
 Normalmente, este ruido puede arreglarse si uno usa un iris o limpia bien la óptica, pero a veces es riesgoso cuando el arreglo es grande o complicado. En casos como este, es posible hacer un preprocesamiento de la imagen para intentar limpiar un poco el ruido.
 
 %https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3749244/pdf/1472-6807-11-7.pdf
 %http://www.globalsino.com/EM/page1705.html
 %https://www.google.com.mx/search?client=opera&q=fourier+transform+image+mask&sourceid=opera&ie=UTF-8&oe=UTF-8
-\textbf{FOURIER}
-
-\textbf{DIAGRAMA DE FFT}
+\begin{figure}[]
+\centering
+\includegraphics[width=0.8\linewidth]{fft_flowchart.png}
+\caption{Diagrama de pre-procesamiento para imágenes usando la transformada rápida de Fourier.}\label{fig:fft_flow}
+\end{figure}
 
 La idea de este pre-procesamiento consiste en remover el ruido en el dominio de frecuencias por medio de la transformada discreta de Fourier en 2D (utilizando el algoritmo de la transformada rápida, o FFT). Para analiar espectros, es conveniente utilizar el hecho de que la transformada de una distribución Gaussiana es también una Gaussiana:
 \begin{align*}
@@ -441,11 +441,19 @@ La idea de este pre-procesamiento consiste en remover el ruido en el dominio de 
 
 donde $\hat I_0 = I_0\cfrac{\sqrt{\pi}}{r_0}$ es la nueva amplitud de la distribución y $z_0 = \cfrac{1}{\pi r_0}$ es el nuevo radio. Observamos que si tenemos un haz con perfil ancho, se convertirá en un perfil delgado en el espacio de frecuencias.
 
-\textbf{ESPECTRO + ESPECTRO FILTRADO}
+\begin{figure}[]
+\centering
+\includegraphics[width=\linewidth]{fft.png}
+\caption{Foto real de un haz y su espectro de frecuencias al aplicarle FFT. En vez de ser perfectamente Gaussiano, vemos que hay franjas de interferencia y otros defectos (ver círculos).}\label{fig:fft}
+\end{figure}
 
 Viendo el espectro de frecuencias, podemos bloquear los puntos que no correspondan al espectro de nuestra Gaussiana. A esto lo llamaremos una \textit{máscara} o filtro. La calidad de la imagen que obtengamos dependerá de la manera en la que se filtran las frecuencias no deseadas\cite{Chen}, en este algoritmo se hace una máscara muy simple. Finalmente, se aplica la transformada inversa de Fourier y se observa que el perfil puede haber mejorado un poco.
 
-\textbf{PERFIL MEJORADO}
+\begin{figure}[]
+\centering
+\includegraphics[width=\linewidth]{fft_beams.png}
+\caption{Antes y después de aplicar pre-procesamiento a la foto del haz.}\label{fig:fft}
+\end{figure}
 
 Dependiendo de cuánto se bloquee en el espacio de frecuencias cambiará la calidad de la imagen reconstruida: si se bloquea muy poco, no habrá mejora, si se bloquea mucho, se puede perder información del perfil. Esta herramienta es útil cuando se prefiere una estimación medianamente precisa del ancho de un haz con mucho ruido y no se puede arreglar la imagen del con óptica, por lo que se recomienda no abusar de ella para obtener una medición confiable.
 
@@ -469,9 +477,19 @@ El sistema de adquisición consiste en la paquetería de programación del TDC y
 
 El TDC cuenta con un búfer de entrada que trabaja a una velocidad de $200$ millones de eventos por segundo, que resulta en una resolución temporal de $5.5$ns para eventos consecutivos registrados en el mismo canal. Sin embargo, la resolución temporal para eventos registrados en distintos canales es de $ 81$ps.
 
-Para realizar la comunicación entre el TDC y el resto de los sistemas del laboratorio, fue necesario escribir una paquetería de uso. El diagrama de flujo para el desarrollo de la paquetería se encuentra en \textbf{FLOWCHART}.
+Para realizar la comunicación entre el TDC y el resto de los sistemas del laboratorio, fue necesario escribir una paquetería de uso. El diagrama de flujo para el desarrollo de la paquetería se encuentra en la Figura \ref{fig:flowchart}. Una descripción secuencial de lo que hace el programa es:
+\begin{enumerate}
+\item Establecer conexión con el TDC.
+\item De manera simultánea, configurar los parámetros del experimento (que incluyen un \textit{búfer de datos} que establece el tamaño de los archivos a crear) y empieza a ``escuchar" para registrar eventos que lleguen al TDC.
+\item Visualizar en tiempo real las cuentas procesadas.
+\item Guardar automáticamente los eventos una vez que el búfer de datos se llene.
+\end{enumerate}
 
-\textbf{FLOWCHART}
+\begin{figure}[]
+\centering
+\includegraphics[width=\linewidth]{TDC_flow.png}
+\caption{Diagrama de flujo del programa de adquisición. Ver detalles en la sección \ref{adquisicion}.}\label{fig:flowchart}
+\end{figure}
 
 La paquetería de uso para el módulo etiquetador de cuentas temporales (TDC) \textit{id800} está escrita en Python 3.6. Esta paquetería hace fuerte uso de \code{ctypes} que es una biblioteca de funciones foráneas para Python. Esta paquetería provee compatibilidad de estructuras con C/C++ y el uso de librerías compartidas (DLLs).
 
@@ -486,8 +504,6 @@ Se escribió también un programa de visualización de datos en tiempo real con 
 \end{itemize}
 
 El programa de adquisición es parte de un sistema más completo que consiste en los sistemas de contol, de imagen y de adquisición de datos para experimentos en átomos fríos.
-
-\textbf{DIAGRAMA DE SISTEMAS DE CONTROL IMAGEN Y ADQ}
 
 \subsubsection{Gating}\label{gating}
 Los APDs utilizados no cuentan con un canal de entrada digital que permita prenderlos o apagarlos usando un pulso electrónico. Por esto, se diseñó un pequeño instrumento que funcionara como compuerta digital para los eventos que registra el TDC.
@@ -608,7 +624,7 @@ Se realizó el análisis de $\g{2}$ para cada canal y se usó un tiempo de canas
 \begin{figure}[]
 \centering
 \includegraphics[width=\linewidth]{g2_laser_3.png}
-\caption{$\g{2}(\tau)$ para un haz de luz coherente.}\label{fig:g2}
+\caption{$\g{2}(\tau)$ para un haz de luz coherente.}\label{fig:g2_result}
 \end{figure}
 
 Se reporta un valor promedio de $\overline{\g{2}} = 1.0007\pm0.0014$, que está en buena concordancia con el valor obtenido de la teoría. Este resultado responde bien al propósito de este trabajo: el desarrollo de un esquema experimental en anticipación a experimentos de FWM en átomos fríos. 
