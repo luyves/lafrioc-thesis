@@ -1,32 +1,85 @@
 \section{Espectroscopía}\label{espectroscopia}
-
 La primer trampa magneto-óptica del Laboratorio de Átomos Fríos y Óptica Cuántica es el corazón de los experimentos en planeación para átomos fríos de rubidio. Por medio del uso de láseres desintonizados al rojo y campos magnéticos, es posible desacelerar y atrapar átomos de rubidio. Una vez atrapados, es importante caracterizar las propiedades atómicas de este ensamble; dos características de alta importancia para este laboratorio son el número de átomos atrapados, y su temperatura. Un análisis preciso de estas propiedades es necesario para realizar experimentos como el mezclado de cuatro ondas. El propósito de este segundo capítulo experimental es hacer una caracterización de la densidad óptica de la MOT del laboratorio en función de algunos parámetros experimentales, en anticipación a la generación de bifotones por FWM.
-
 \subsection{Motivación}\label{motivacion_espectro}
-
 El estudio de los átomos fríos ha sido un campo con mucho interés en años recientes, pues permiten preparar gases atómicos difusos para experimentos con luz.
 
 Estudiar las propiedades de átomos a temperatura ambiente resulta complicado debido al movimiento térmico que presentan. Este movimiento --- explicado por la teoría cinética de gases --- resulta en velocidades promedio de casi 300ms$^{-1}$ para átomos de rubidio a temperatura ambiente, por ejemplo. Una velocidad esperada tan alta resulta en un ensanchamiento de las líneas espectrales debido al efecto Doppler, haciendo difícil estudiar los átomos usando técnicas espectroscópicas\cite{RevModPhys.70.721}. Es de aquí que surge el interés de enfriar átomos a temperaturas muy bajas.
 
-El premio Nobel de Física de 1997 fue otorgado a William Phillips, Claude Cohen-Tannoudji y Steven Chu por el ``desarrollo de métodos para enfriar y atrapar átomos con luz láser", que terminaría por aplicarse en el desarrollo de la trampa magneto-óptica (MOT).
+El premio Nobel de Física de 1997 fue otorgado a William Phillips, Claude Cohen-Tannoudji y Steven Chu por el ``desarrollo de métodos para enfriar y atrapar átomos con luz láser", que terminaría por aplicarse en el desarrollo de la trampa magneto-óptica (MOT). En la actualidad, el uso de MOTs es estándar para el enfriamiento de átomos neutros a temperaturas del orden de cientos de $\mu$K. Estos átomos fríos son usados en una gran variedad de experimentos como interferometría atómica\cite{1742-6596-80-1-012047} o información cuántica\cite{Gross995} o son enfriados aún más para hacer experimentos en condensados de Bose-Einstein\cite{901989}.
 
+Dos parámetros experimentales importantes de la nube atómica fría son la densidad óptica y la temperatura de los átomos atrapados. La densidad óptica es particularmente importante para experimentos de FWM, pues define distintos regímenes de conversión espontánea paramétrica descendente y determina la forma de la función de correlación $\g{2}(\tau)$ para los bifotones generados\cite{Du:08,PhysRevA.75.033814}.
+
+En este segundo capítulo, se presenta el arreglo óptico que se usará próximamente para la generación de fotones correlacionados en FWM, así como una optimización de la densidad óptica de la MOT del laboratorio.
 \subsubsection{MOT}
-En la actualidad, el uso de MOTs es estándar para el enfriamiento de átomos neutros a temperaturas del orden de cientos de $\mu$K. No basta enfriar átomos a temperaturas muy bajas, también es necesario lograr confinarlos a una región pequeña para poder estudiarlos.
+No basta enfriar átomos a temperaturas muy bajas, también es necesario lograr confinarlos a una región pequeña para poder estudiarlos.
 
-Por un lado, el enfriamieneto láser es una manifestación de una fuerza radiativa que Ashkin llamó \textit{fuerza de scattering}\cite{PhysRevLett.24.156}. Por el otro lado, para atrapar estos átomos se aprovecha su momento dipolar magnético intrínseco con el uso de un campo magnético cuadrupolar externo\cite{PhysRevLett.59.2631}. 
-
-\subsubsection{Preparación del sistema}
+Por un lado, el enfriamieneto láser es una manifestación de una fuerza radiativa que Ashkin llamó \textit{fuerza de scattering}\cite{PhysRevLett.24.156}. Por el otro lado, para atrapar estos átomos se aprovecha su momento dipolar magnético intrínseco con el uso de un campo magnético cuadrupolar externo\cite{PhysRevLett.59.2631}.
 \subsubsection{Densidad óptica importancia}
-\subsection{Teoría}\label{teoria_espectro}
-\begin{itemize}
-\item rubidio
-\item reglas dipolares
-\item beer lambert / densidad atómica / núm. átomos
-\item espectroscopía de absorción
-\end{itemize}
+\subsubsection{Preparación del sistema}\label{espectro_prep}
+Para realizar las medidas de la densidad óptica (OD) de nuestra nube se aprovechó el montaje óptico para la luz de bombeo del FWM (Figura \textbf{BOMBEO}). En este arreglo, se usan dos haces de bombeo co-propagantes de 780nm y 776nm (bombeo 1 y bombeo 2). Estos haces son resonantes a las transiciones \textbf{HOLA}, respectivamente. En la discusión de FWM de \cite{srivathsan} y \cite{gulati}, en esta configuración se generarán pares de fotones con modos bien definidos por medio del FWM espontáneo. Sin embargo, a los haces se les superpone un haz semilla de 795nm resonante a la transición \textbf{HOLA OTRA VEZ} para hacer más fácil la alineación y acoplamiento a fibra de la luz generada.
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\linewidth]{optica_bombeo.png}
+\caption{Óptica de bombeo para FWM. Un divisor de haz polarizante (PBS) permite superponer el haz semilla con el haz de bombeo 1. El filtro IF3 sirve para superponer los dos haces de bombeo.}\label{fig:optica_bombeo}
+\end{figure}
+
+El haz de prueba que se usó está en resonancia con la transición de enfriamiento (\textbf{TRANSICIÓN, correspondiente al haz de bombeo 1}) para obtener una referencia de la OD y el número de átomos en el centro de la nube. El haz de prueba pasa directamente por el centro de la nube atómica y después es analizado por un fotodiodo \textbf{THORLABS}, cuya señal se observó en un osciloscopio.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\linewidth]{optica_OD.png}
+\caption{Arreglo para medir la densidad óptica.}\label{fig:optica_OD}
+\end{figure}
+
+\subsection{Teoría}\label{teoria_espectro}
+%quiero hablar de la importancia de la desintonía en las mediciones, para eso necesito hablar primero de la estructura fina e hiperfina (solo un poco), de la estructura del rubidio, y efecto zeeman. luego hablo de MOT? o eso en motivación? solo un poco; hablar de láseres de rebombeo y enfriamiento (eso ya en la parte de MOT)
+%
+%\begin{itemize}
+%\item rubidio
+%\item reglas dipolares
+%\item beer lambert / densidad atómica / núm. átomos
+%\item espectroscopía de absorción
+%\end{itemize}
+Es 
+
+\subsubsection{Estructura atómica del rubidio}
+
+\subsection{Absorción}
+La nube atómica es modelada como un vapor ópticamente denso para el cual un haz monocromático en resonancia puede excitar a los átomos por medio de absorción estimulada. Al re-emitir de manera aleatoria esta luz, se presenta una atenuación del haz de prueba original que permite estudiar la absorción de los átomos.
+
+Sigamos el desarrollo de Foot \cite{Foot}. Si consideramos un haz pasando por un medio de ancho $\Delta z$ con $N$ átomos por unidad de volumen, este medio tendrá $N\Delta z$ átomos por unidad de área; la fracción de fotones que serán absorbidos por los átomos de este medio será $N\sigma\Delta z$, donde $\sigma$ se define como la sección transversal de los átomos. 
+ 
+Suponiendo que tenemos un sistema atómico de dos niveles, existe la posibilidad de que átomos absorban esta luz a lo largo de la dirección de propagación $z$. Para un haz con frecuencia $\omega$ y de intensidad baja, es válido:
+\begin{equation}
+\frac{\text{d}I}{\text{d}z} = -N\sigma(\omega)I \equiv -\kappa(\omega)I, \label{beer_diff}
+\end{equation}
+donde $\kappa(\omega)$ es el coeficiente de absorción para la luz incidente.
+
+De forma más general, se puede demostrar que para este sistema de dos niveles resonante en $\omega_0$,
+\begin{equation}
+\sigma(\omega) = \sigma_0 \cfrac{\Gamma^2}{4(\omega-\omega_0)^2+\Gamma^2}.
+\end{equation}
+Aquí, $\sigma_0$ es la sección transversal máxima para $\omega=\omega_0$, y $\Gamma$ es el \textit{ancho de banda natural} de la transición. Este ancho de banda es el ancho de la línea espectral de la transición y puede verse como la tasa de decaimiento del estado excitado.
+
+Para este sistema:
+\begin{align}
+\nonumber \kappa(\omega,I) &= \cfrac{N\sigma(\omega)}{1+(\sigma(\omega)/\sigma_0)(I/I_{sat})}\\
+& = N\sigma_0\cfrac{\Gamma^2}{4(\omega-\omega_0)^2 + \Gamma^2(1+I/I_{sat})}. \label{kappa}
+\end{align}
+donde $I_{sat}$ se define como la intensidad de saturación.
+
+Si $I \ll I_{sat}$ podemos despreciar el cociente $I/I_{sat}$ y entonces la ecuación \ref{beer_diff} tendrá una solución de la forma:
+\begin{equation}
+I(z) = I_0 \exp(-\kappa(\omega)z). \label{beer}
+\end{equation}
+La ecuación \ref{beer} también se conoce como la \textit{Ley de Beer-Lambert}. Para una nube atómica de longitud $L$ (en la dirección de propagación del haz de prueba), la intensidad que se medirá en un fotodiodo después de ser atenuada por la nube será:
+\begin{equation}
+I(L) \equiv I = I_0 \exp\left(-\text{OD}\cfrac{\Gamma^2}{4(\omega-\omega_0)^2 + \Gamma^2}\right).
+\end{equation}
+OD$=NL\sigma_0$ es la \textit{densidad óptica} de la nube y es un parámetro experimental importante para la MOT.
 \newpage
-\subsection{Experimento}\label{experimento_correlaciones}
+\subsection{Experimento}\label{experimento_espectro}
 \subsubsection{imagen}
 
-\subsection{Resultados}\label{resultados_correlaciones}
+\subsection{Resultados}\label{resultados_espectro}
