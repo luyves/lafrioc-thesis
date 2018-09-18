@@ -10,11 +10,7 @@ El premio Nobel de Física de 1997 fue otorgado a William Phillips, Claude Cohen
 Dos parámetros experimentales importantes de la nube atómica fría son la densidad óptica y la temperatura de los átomos atrapados. La densidad óptica es particularmente importante para experimentos de FWM, pues define distintos regímenes de conversión espontánea paramétrica descendente y determina la forma de la función de correlación $\g{2}(\tau)$ para los bifotones generados\cite{Du:08,PhysRevA.75.033814}.
 
 En este segundo capítulo, se presenta el arreglo óptico que se usará próximamente para la generación de fotones correlacionados en FWM, así como una optimización de la densidad óptica de la MOT del laboratorio.
-\subsubsection{MOT}
-No basta enfriar átomos a temperaturas muy bajas, también es necesario lograr confinarlos a una región pequeña para poder estudiarlos.
 
-Por un lado, el enfriamieneto láser es una manifestación de una fuerza radiativa que Ashkin llamó \textit{fuerza de scattering}\cite{PhysRevLett.24.156}. Por el otro lado, para atrapar estos átomos se aprovecha su momento dipolar magnético intrínseco con el uso de un campo magnético cuadrupolar externo\cite{PhysRevLett.59.2631}.
-\subsubsection{Densidad óptica importancia}
 \subsubsection{Preparación del sistema}\label{espectro_prep}
 Para realizar las medidas de la densidad óptica (OD) de nuestra nube se aprovechó el montaje óptico para la luz de bombeo del FWM (Figura \textbf{BOMBEO}). En este arreglo, se usan dos haces de bombeo co-propagantes de 780nm y 776nm (bombeo 1 y bombeo 2). Estos haces son resonantes a las transiciones \textbf{HOLA}, respectivamente. En la discusión de FWM de \cite{srivathsan} y \cite{gulati}, en esta configuración se generarán pares de fotones con modos bien definidos por medio del FWM espontáneo. Sin embargo, a los haces se les superpone un haz semilla de 795nm resonante a la transición \textbf{HOLA OTRA VEZ} para hacer más fácil la alineación y acoplamiento a fibra de la luz generada.
 
@@ -41,43 +37,63 @@ El haz de prueba que se usó está en resonancia con la transición de enfriamie
 %\item beer lambert / densidad atómica / núm. átomos
 %\item espectroscopía de absorción
 %\end{itemize}
-Es 
+Los átomos alcalinos son popularmente usados para experimentos de átomos fríos por varias razones: su estructura atómica se parece a la del hidrógeno (en que tienen un sólo electrón de valencia en su última capa) y facilita su descripción teórica\cite[p.~60]{Foot}, presiones de vaporización cercanas a temperatura ambiente\cite{steck87}, y frecuencias de excitación cercanas al visible (que permiten usar láseres comerciales).
 
-\subsubsection{Estructura atómica del rubidio}
+
+\subsubsection{Estructura atómica}
+Al usar átomos alcalinos, se parte de la estructura de sus niveles energéticos. Para un átomo
+
+\subsubsection{MOT}
+Una descripción teórica a profundidad de los mecanismos de una MOT no forma parte de esta tesis. Sin embargo, una introducción breve basada en \cite{Adrian, Foot} resulta útil.
+
+Por un lado, el enfriamieneto láser es una manifestación de una fuerza radiativa que Ashkin llamó \textit{fuerza de scattering}\cite{PhysRevLett.24.156}. Por el otro lado, para atrapar estos átomos se aprovecha su momento dipolar magnético intrínseco con el uso de un campo magnético cuadrupolar externo\cite{PhysRevLett.59.2631}.
+
+Este enfriamiento láser está basado en la transferencia de momento entre luz y átomos. Al absorber un fotón, el átomo sentirá una fuerza en la dirección de propagación del fotón. Además, el átomo eventualmente emitirá un fotón en una dirección aleatoria por el proceso de emisión espontánea. Al tomar el promedio estadístico para muchos fotones, la fuerza que siente el átomo por emisión espontánea será cero por no emitir en una dirección preferencial.
+
+Esta fuerza resultante de \textit{scattering} dependerá de la diferencia de la frecuencia del láser ($\omega$), la frecuencia de resonancia atómica ($\omega_0$) y su corrimiento de frecuencia debido al efecto Doppler ($kv$) (pues los átomos están en movimiento), y será en la dirección de propagación del láser.
+
+Un láser colimado seleccionará átomos moviéndose en una sola dirección para frenarlos. Como un átomo es libre de moverse en tres dimensiones, es necesario usar tres láseres ortogonales y contrapropagantes para reducir su velocidad neta en cada dirección. La fuerza total que sentirán los átomos en cada una de estos ejes será
+\begin{align}
+\nonumber F_{mel} &= F_{scat}(\omega-\omega_0-kv) - F_{scat}(\omega-\omega_0 +kv)\\
+\nonumber &\simeq F_{scat}(\omega-\omega_0) - kv\frac{\partial F_{scat}}{\partial \omega} - \left[ F_{scat}(\omega-\omega_0) + kv\frac{\partial F_{scat}}{\partial\omega} \right]\\
+&\simeq -2k\frac{\partial F_{scat}}{\partial \omega}v = -\alpha v. 
+\end{align}
+
+Esta fuerza se parece a la que siente una partícula en un líquido viscoso. Es por eso que esta técnica de enfriamiento láser se llamó \textit{melaza óptica}. Se puede demostrar que el coeficiente de amortiguamiento $\alpha$ es proporcional a $-(\omega - \omega_0)$. Para que esta fuerza sea amortiguante es necesario que $\alpha > 0$, \textit{i.e.} $\omega-\omega_0 <0$, que significa que una \textit{desintonía al rojo} de la frecuencia de resonancia es necesaria.
+
+No basta enfriar átomos a temperaturas muy bajas, también es necesario lograr confinarlos a una región pequeña para poder estudiarlos en una MOT.
 
 \subsection{Absorción}
-La nube atómica es modelada como un vapor ópticamente denso para el cual un haz monocromático en resonancia puede excitar a los átomos por medio de absorción estimulada. Al re-emitir de manera aleatoria esta luz, se presenta una atenuación del haz de prueba original que permite estudiar la absorción de los átomos.
+La nube atómica es modelada como un vapor ópticamente denso para el cual un haz monocromático en resonancia puede excitar a los átomos por medio de absorción estimulada. Al re-emitir de manera aleatoria esta luz, se presenta una atenuación del haz de prueba original que permite estudiar la absorción de los átomos. 
 
-Sigamos el desarrollo de Foot \cite{Foot}. Si consideramos un haz pasando por un medio de ancho $\Delta z$ con $N$ átomos por unidad de volumen, este medio tendrá $N\Delta z$ átomos por unidad de área; la fracción de fotones que serán absorbidos por los átomos de este medio será $N\sigma\Delta z$, donde $\sigma$ se define como la sección transversal de los átomos. 
- 
-Suponiendo que tenemos un sistema atómico de dos niveles, existe la posibilidad de que átomos absorban esta luz a lo largo de la dirección de propagación $z$. Para un haz con frecuencia $\omega$ y de intensidad baja, es válido:
+Seguiremos el desarrollo de Foot \cite{Foot}. Supongamos que tenemos un sistema atómico de dos niveles. Si consideramos un haz pasando por un medio de ancho infinitesimal $\text{d}z$ con $N$ átomos por unidad de volumen, este medio tendrá entonces $N\text{d}z$ átomos por unidad de área. La fracción de fotones que serán absorbidos por los átomos de este medio será $N\sigma\text{d}z$, donde $\sigma$ se define como la sección transversal de los átomos. La atenuación del haz puede describirse por:
 \begin{equation}
-\frac{\text{d}I}{\text{d}z} = -N\sigma(\omega)I \equiv -\kappa(\omega)I, \label{beer_diff}
+\frac{\text{d}I}{\text{d}z} = -\kappa(\omega)I \equiv -N\sigma(\omega)I, \label{beer_diff}
 \end{equation}
-donde $\kappa(\omega)$ es el coeficiente de absorción para la luz incidente.
+donde $\kappa(\omega)$ es el coeficiente de absorción para la luz incidente. Esta se conoce como la \textit{Ley de Beer-Lambert} y es válida para un haz con baja intensidad que deja a la mayoría de la población en el estado base.
 
-De forma más general, se puede demostrar que para este sistema de dos niveles resonante en $\omega_0$,
+Se puede demostrar que para este sistema de dos niveles resonante en $\omega_0$, la sección transversal de los átomos es
 \begin{equation}
 \sigma(\omega) = \sigma_0 \cfrac{\Gamma^2}{4(\omega-\omega_0)^2+\Gamma^2}.
 \end{equation}
 Aquí, $\sigma_0$ es la sección transversal máxima para $\omega=\omega_0$, y $\Gamma$ es el \textit{ancho de banda natural} de la transición. Este ancho de banda es el ancho de la línea espectral de la transición y puede verse como la tasa de decaimiento del estado excitado.
 
-Para este sistema:
+Para intensidades más altas, la población atómica en el estado excitado crecerá y presentará emisión estimulada, que aumentará la intensidad del haz después de pasar por la nube. La transición puede entonces \textit{saturarse}: un haz intenso y en resonancia hará que el sistema oscile rápidamente entre el estado base y el estado excitado. Tomando estos efectos de saturación, se puede demostrar que el coeficiente de absorción se vuelve
 \begin{align}
 \nonumber \kappa(\omega,I) &= \cfrac{N\sigma(\omega)}{1+(\sigma(\omega)/\sigma_0)(I/I_{sat})}\\
 & = N\sigma_0\cfrac{\Gamma^2}{4(\omega-\omega_0)^2 + \Gamma^2(1+I/I_{sat})}. \label{kappa}
 \end{align}
-donde $I_{sat}$ se define como la intensidad de saturación.
+$I_{sat} = \frac{\pi}{3}\frac{hc \ \Gamma}{\lambda^3}$ se define como la intensidad de saturación. La atenuación quedará de manera más general como $\text{d}I/\text{d}z = -\kappa(\omega,I)I$.
 
-Si $I \ll I_{sat}$ podemos despreciar el cociente $I/I_{sat}$ y entonces la ecuación \ref{beer_diff} tendrá una solución de la forma:
+Si $I \ll I_{sat}$ podemos despreciar el cociente $I/I_{sat}$ y entonces regresaremos a la ecuación \ref{beer_diff}, que tiene una solución:
 \begin{equation}
 I(z) = I_0 \exp(-\kappa(\omega)z). \label{beer}
 \end{equation}
-La ecuación \ref{beer} también se conoce como la \textit{Ley de Beer-Lambert}. Para una nube atómica de longitud $L$ (en la dirección de propagación del haz de prueba), la intensidad que se medirá en un fotodiodo después de ser atenuada por la nube será:
+Para una nube atómica de longitud $L$ iluminada por un haz poco intenso y frecuencia $\omega$, la intensidad que se medirá en un fotodiodo después de ser atenuada por la nube será:
 \begin{equation}
 I(L) \equiv I = I_0 \exp\left(-\text{OD}\cfrac{\Gamma^2}{4(\omega-\omega_0)^2 + \Gamma^2}\right).
 \end{equation}
-OD$=NL\sigma_0$ es la \textit{densidad óptica} de la nube y es un parámetro experimental importante para la MOT.
+OD $=NL\sigma_0$ es la \textit{densidad óptica} de la nube y es un parámetro experimental importante para la MOT.
 \newpage
 \subsection{Experimento}\label{experimento_espectro}
 \subsubsection{imagen}
