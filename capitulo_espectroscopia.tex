@@ -39,12 +39,29 @@ El haz de prueba que se usó está en resonancia con la transición de enfriamie
 %\end{itemize}
 Los átomos alcalinos son popularmente usados para experimentos de átomos fríos por varias razones: su estructura atómica se parece a la del hidrógeno (en que tienen un sólo electrón de valencia en su última capa) y facilita su descripción teórica\cite[p.~60]{Foot}, presiones de vaporización cercanas a temperatura ambiente\cite{steck87}, y frecuencias de excitación cercanas al visible (que permiten usar láseres comerciales).
 
+%El alcalino usado en la MOT del Laboratorio es rubidio, que tiene dos isótopos que ocurren naturalmente con distintas abundancias: $^{85}$Rb (72.2\%) y $^{87}$Rb (27.8\%)\cite{steck87}. En este trabajo nos centramos en el isótopo de $^{87}$Rb porque es el usado para FWM, aunque el desarrollo también puede aplicarse a $^{85}$Rb.
 
 \subsubsection{Estructura atómica}
-Al usar átomos alcalinos, se parte de la estructura de sus niveles energéticos. Para un átomo
+Para poder entender el enfriamiento y confinamiento de átomos, se parte de la estructura de sus niveles energéticos\cite{steck87,robinson}. Para un átomo alcalino, su electrón de valencia presenta un momento angular orbital $\bm{L}$ y un momento angular de espín $\bm{S}$. Estos dos momentos angulares interactúan entre sí y resultan en un momento angular electrónico total $\bm{J} = \bm{L} + \bm{S}$. Por la naturaleza vectorial del acoplamiento $\bm{LS}$, este momento angular puede tener valores
+\begin{equation}
+|L-S| \leq J \leq |L+S|. \label{j}
+\end{equation}
+Esto (junto con correcciones relativistas a la ecuación de Schrödinger), es conocido como la \textit{estructura fina} e introduce un desdoblamiento de los niveles energéticos de los átomos. Es común usar la notación espectroscópica para etiquetar los niveles atómicos:
+\begin{equation}
+\nonumber N^{2S+1}L_J,
+\end{equation}
+donde $N$ es el número cuántico principal. Para el estado base de $^{87}$Rb, $L = 0$ y $S = 1/2$, por lo que $J = 1/2$, quedando el estado base como $5^2S_{1/2}$. El primer estado excitado del rubidio tiene $L = 1$, así que de la ecuación \ref{j}, $J = 1/2$ y $J = 3/2$. De este desdoblamiento surgen las transiciones \textbf{D1} ($5^2S_{1/2} \rightarrow 5^2P_{1/2}$) y \textbf{D2} ($5^2S_{1/2}\rightarrow 5^2P_{3/2}$).
+
+Más allá de la estructura fina existe un segundo desdoblamiento de los estados energéticos llamado \textit{estructura hiperfina}. Este desdoblamiento se da por el acoplamiento del momento angular total $\bm{J}$ y el espín nuclear $\bm{I}$, que resulta en un momento angular \textit{total} $\bm{F} = \bm{J} + \bm{I}$. De manera similar a la estructura fina, el momento angular total puede valer
+\begin{equation}
+|J-I| \leq F \leq |J+I|.
+\end{equation}
+El $^{87}$Rb tiene espín nuclear $I = 3/2$, por lo que para el estado base $F = 1$ y $F=2$. Para el estado excitado, $F$ puede tener valores 0, 1, 2 y 3.
+
+\textbf{líneas de rubidio!!}
 
 \subsubsection{MOT}
-Una descripción teórica a profundidad de los mecanismos de una MOT no forma parte de esta tesis. Sin embargo, una introducción breve basada en \cite{Adrian, Foot} resulta útil.
+Una descripción teórica a profundidad de los mecanismos de una MOT no forma parte de esta tesis. Sin embargo, una introducción breve basada en \cite{Foot} resulta útil.
 
 Por un lado, el enfriamieneto láser es una manifestación de una fuerza radiativa que Ashkin llamó \textit{fuerza de scattering}\cite{PhysRevLett.24.156}. Por el otro lado, para atrapar estos átomos se aprovecha su momento dipolar magnético intrínseco con el uso de un campo magnético cuadrupolar externo\cite{PhysRevLett.59.2631}.
 
