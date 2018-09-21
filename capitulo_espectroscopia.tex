@@ -46,19 +46,23 @@ Para poder entender el enfriamiento y confinamiento de átomos, se parte de la e
 \begin{equation}
 |L-S| \leq J \leq |L+S|. \label{j}
 \end{equation}
-Esto (junto con correcciones relativistas a la ecuación de Schrödinger), es conocido como la \textit{estructura fina} e introduce un desdoblamiento de los niveles energéticos de los átomos. Es común usar la notación espectroscópica para etiquetar los niveles atómicos:
+Esto (junto con correcciones relativistas a la ecuación de Schrödinger), es conocido como la \textit{estructura fina} e introduce un desdoblamiento de los niveles energéticos de los átomos. La proyección del momento angular electrónico puede tener valores $m_J = 0,\pm 1,\ldots,\pm J$. Es común usar la notación espectroscópica para etiquetar los niveles atómicos:
 \begin{equation}
 \nonumber N^{2S+1}L_J,
 \end{equation}
 donde $N$ es el número cuántico principal. Para el estado base de $^{87}$Rb, $L = 0$ y $S = 1/2$, por lo que $J = 1/2$, quedando el estado base como $5^2S_{1/2}$. El primer estado excitado del rubidio tiene $L = 1$, así que de la ecuación \ref{j}, $J = 1/2$ y $J = 3/2$. De este desdoblamiento surgen las transiciones \textbf{D1} ($5^2S_{1/2} \rightarrow 5^2P_{1/2}$) y \textbf{D2} ($5^2S_{1/2}\rightarrow 5^2P_{3/2}$).
 
-Más allá de la estructura fina existe un segundo desdoblamiento de los estados energéticos llamado \textit{estructura hiperfina}. Este desdoblamiento se da por el acoplamiento del momento angular total $\bm{J}$ y el espín nuclear $\bm{I}$, que resulta en un momento angular \textit{total} $\bm{F} = \bm{J} + \bm{I}$. De manera similar a la estructura fina, el momento angular total puede valer
+Más allá de la estructura fina existe un segundo desdoblamiento de los estados energéticos llamado \textit{estructura hiperfina}. Este desdoblamiento se da por el acoplamiento del momento angular electrónico $\bm{J}$ y el espín nuclear $\bm{I}$, que resulta en un momento angular \textit{total} $\bm{F} = \bm{J} + \bm{I}$. De manera similar a la estructura fina, el momento angular total puede tomar valores
 \begin{equation}
 |J-I| \leq F \leq |J+I|.
 \end{equation}
-El $^{87}$Rb tiene espín nuclear $I = 3/2$, por lo que para el estado base $F = 1$ y $F=2$. Para el estado excitado, $F$ puede tener valores 0, 1, 2 y 3.
+El momento angular total también tiene una proyección que puede valer $m_F = 0,\pm 1,\ldots,\pm F$. El $^{87}$Rb tiene espín nuclear $I = 3/2$, por lo que para el estado base $F = 1$ y $F=2$. Para el estado excitado, $F$ puede valer 0, 1, 2 y 3.% El desdoblamiento energético dado por la estructura hiperfina es más pequeño que el de la estructura fina.
 
-\textbf{líneas de rubidio!!}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\linewidth]{87rb_lineas.png}
+\caption{Estructura hiperfina para la línea \textbf{D2} de $^{87}$Rb.}\label{fig:87rb_lineas}
+\end{figure}
 
 \subsubsection{MOT}
 Una descripción teórica a profundidad de los mecanismos de una MOT no forma parte de esta tesis. Sin embargo, una introducción breve basada en \cite{Foot} resulta útil.
@@ -78,7 +82,19 @@ Un láser colimado seleccionará átomos moviéndose en una sola dirección para
 
 Esta fuerza se parece a la que siente una partícula en un líquido viscoso. Es por eso que esta técnica de enfriamiento láser se llamó \textit{melaza óptica}. Se puede demostrar que el coeficiente de amortiguamiento $\alpha$ es proporcional a $-(\omega - \omega_0)$. Para que esta fuerza sea amortiguante es necesario que $\alpha > 0$, \textit{i.e.} $\omega-\omega_0 <0$, que significa que una \textit{desintonía al rojo} de la frecuencia de resonancia es necesaria.
 
-No basta enfriar átomos a temperaturas muy bajas, también es necesario lograr confinarlos a una región pequeña para poder estudiarlos en una MOT.
+No basta enfriar átomos a temperaturas muy bajas, también es necesario lograr confinarlos a una región pequeña para poder estudiarlos en una MOT. El confinamiento de los átomos se consigue colocando un campo magnético cuadrupolar y usando una polarización específica de los haces de la melaza óptica.
+
+El Hamiltoniano que describe la interacción un átomo con un campo magnético es:
+\begin{equation}
+\nonumber H_{\mathcal{B}} = \frac{\mu_B}{\hbar}\left(g_{S} \bm{S} + g_{L} \bm{L} + g_I \bm{I}\right)\cdot\B,
+\end{equation}
+donde cada factor $g$ considera las modificaciones a los momentos magnéticos dipolares del espín del electrón, momento angular orbital del electrón y espín nuclear, respectivamente. Consideremos un campo magnético en una sola dirección. Para un campo magnético débil, existe un desdoblamiento de los niveles energéticos (llamado \textit{efecto Zeeman}) que es lineal con el campo. Puede probarse \cite{steck87} que este cambio en la energía es $\Delta E \propto m_F \mathcal{B}$.
+
+Dos bobinas en configuración anti-Helmholtz permiten que cerca del centro de la trampa exista un gradiente de campo magnético lineal. Para la dirección $z$, por ejemplo, el campo es aproximadamente $\mathcal{B} = Bz$. Para $J = 1$, el efecto Zeeman hace que la energía de cada cada uno de los sub-niveles $m_F = 0,\pm 1$ varíe linealmente con $z$. Si los haces contrapropagantes tienen polariziones circulares opuestas ($\sigma^+$ y $\sigma^-$), esto creará un desequilibrio en las fuerzas de scattering por las reglas de selección dipolar\cite{Foot}.
+
+\textbf{campo magnético y zeeman}
+
+Imaginemos un átomo alejándose de la trampa con $z>0$. La transición al nivel $m_F = -1$ está más cerca de resonancia con el láser y la regla de selección $\Delta m_F = -1$ hace que absorba fotones del haz con polarización $\sigma^-$, resultando en una fuerza de scattering que lo regresa al centro. Lo mismo pasa para un átomo alejándose con $z<0$ con la transición al nivel $m_F = 1$ y fotones con polarización $\sigma^+$, por la regla de selección $\Delta m_F = +1$. Esto logra una fuerza de confinamiento en un eje --- se pueden atrapar átomos en las tres direcciones eligiendo polarizaciones adecuadas (respecto a cada eje).
 
 \subsection{Absorción}
 La nube atómica es modelada como un vapor ópticamente denso para el cual un haz monocromático en resonancia puede excitar a los átomos por medio de absorción estimulada. Al re-emitir de manera aleatoria esta luz, se presenta una atenuación del haz de prueba original que permite estudiar la absorción de los átomos. 
