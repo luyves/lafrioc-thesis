@@ -12,20 +12,12 @@ Dos parámetros experimentales importantes de la nube atómica fría son la dens
 En este segundo capítulo, se presenta el arreglo óptico que se usará próximamente para la generación de fotones correlacionados en FWM, así como una optimización de la densidad óptica de la MOT del laboratorio.
 
 \subsubsection{Preparación del sistema}\label{espectro_prep}
-Para realizar las medidas de la densidad óptica (OD) de nuestra nube se aprovechó el montaje óptico para la luz de bombeo del FWM (Figura \textbf{BOMBEO}). En este arreglo, se usan dos haces de bombeo co-propagantes de 780nm y 776nm (bombeo 1 y bombeo 2). Estos haces son resonantes a las transiciones \textbf{HOLA}, respectivamente. En la discusión de FWM de \cite{srivathsan} y \cite{gulati}, en esta configuración se generarán pares de fotones con modos bien definidos por medio del FWM espontáneo. Sin embargo, a los haces se les superpone un haz semilla de 795nm resonante a la transición \textbf{HOLA OTRA VEZ} para hacer más fácil la alineación y acoplamiento a fibra de la luz generada.
+Para realizar las medidas de la densidad óptica (OD) de nuestra nube se aprovechó el montaje óptico para la luz de bombeo del FWM (Figura \ref{fig:optica_bombeo}). En este arreglo, se usan dos haces de bombeo co-propagantes de 780nm y 776nm (bombeo 1 y bombeo 2). Estos haces son resonantes a las transiciones $5^2S_{1/2}, \ F=2\rightarrow 5^2P_{3/2}, \ F=3$ y $5^2P_{3/2}, \ F=3 \rightarrow 5^2D_{3/2}, \ F=3$, respectivamente. En la discusión de FWM de \cite{srivathsan} y \cite{gulati}, en esta configuración se generarán pares de fotones con modos bien definidos por medio del FWM espontáneo. Sin embargo, a los haces se les superpone un haz semilla de 795nm resonante a la transición $5^2S_{1/2}, \ F=2\rightarrow 5^2P_{1/2}, \ F=2$ para hacer más fácil la alineación y acoplamiento a fibra de la luz generada.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\linewidth]{optica_bombeo.png}
 \caption{Óptica de bombeo para FWM. Un divisor de haz polarizante (PBS) permite superponer el haz semilla con el haz de bombeo 1. El filtro IF3 sirve para superponer los dos haces de bombeo.}\label{fig:optica_bombeo}
-\end{figure}
-
-El haz de prueba que se usó está en resonancia con la transición de enfriamiento (\textbf{TRANSICIÓN, correspondiente al haz de bombeo 1}) para obtener una referencia de la OD y el número de átomos en el centro de la nube. El haz de prueba pasa directamente por el centro de la nube atómica y después es analizado por un fotodiodo \textbf{THORLABS}, cuya señal se observó en un osciloscopio.
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.95\linewidth]{optica_OD.png}
-\caption{Arreglo para medir la densidad óptica.}\label{fig:optica_OD}
 \end{figure}
 
 \subsection{Teoría}\label{teoria_espectro}
@@ -46,11 +38,11 @@ Para poder entender el enfriamiento y confinamiento de átomos, se parte de la e
 \begin{equation}
 |L-S| \leq J \leq |L+S|. \label{j}
 \end{equation}
-Esto (junto con correcciones relativistas a la ecuación de Schrödinger), es conocido como la \textit{estructura fina} e introduce un desdoblamiento de los niveles energéticos de los átomos. La proyección del momento angular electrónico puede tener valores $m_J = 0,\pm 1,\ldots,\pm J$. Es común usar la notación espectroscópica para etiquetar los niveles atómicos:
+Esto (junto con correcciones relativistas a la ecuación de Schrödinger) introduce un desdoblamiento de los niveles energéticos de los átomos que es conocido como la \textit{estructura fina}. La proyección del momento angular electrónico puede tener valores $m_J = 0,\pm 1,\ldots,\pm J$. Es común usar la notación espectroscópica para etiquetar los niveles atómicos:
 \begin{equation}
 \nonumber N^{2S+1}L_J,
 \end{equation}
-donde $N$ es el número cuántico principal. Para el estado base de $^{87}$Rb, $L = 0$ y $S = 1/2$, por lo que $J = 1/2$, quedando el estado base como $5^2S_{1/2}$. El primer estado excitado del rubidio tiene $L = 1$, así que de la ecuación \ref{j}, $J = 1/2$ y $J = 3/2$. De este desdoblamiento surgen las transiciones \textbf{D1} ($5^2S_{1/2} \rightarrow 5^2P_{1/2}$) y \textbf{D2} ($5^2S_{1/2}\rightarrow 5^2P_{3/2}$).
+donde $N$ es el número cuántico principal. Para el estado base de $^{87}$Rb, $L = 0$ y $S = 1/2$, por lo que $J = 1/2$, quedando el estado base como $5^2S_{1/2}$. El primer estado excitado del rubidio tiene $L = 1$, así que de la ecuación \ref{j}, $J = 1/2$ y $J = 3/2$. De este desdoblamiento surgen las llamadas transiciones \textbf{D1} ($5^2S_{1/2} \rightarrow 5^2P_{1/2}$) y \textbf{D2} ($5^2S_{1/2}\rightarrow 5^2P_{3/2}$).
 
 Más allá de la estructura fina existe un segundo desdoblamiento de los estados energéticos llamado \textit{estructura hiperfina}. Este desdoblamiento se da por el acoplamiento del momento angular electrónico $\bm{J}$ y el espín nuclear $\bm{I}$, que resulta en un momento angular \textit{total} $\bm{F} = \bm{J} + \bm{I}$. De manera similar a la estructura fina, el momento angular total puede tomar valores
 \begin{equation}
@@ -64,14 +56,14 @@ El momento angular total también tiene una proyección que puede valer $m_F = 0
 \caption{Estructura hiperfina para la línea \textbf{D2} de $^{87}$Rb.}\label{fig:87rb_lineas}
 \end{figure}
 
-\subsubsection{MOT}
+\subsubsection{MOT}\label{mot}
 Una descripción teórica a profundidad de los mecanismos de una MOT no forma parte de esta tesis. Sin embargo, una introducción breve basada en \cite{Foot} resulta útil.
 
 Por un lado, el enfriamieneto láser es una manifestación de una fuerza radiativa que Ashkin llamó \textit{fuerza de scattering}\cite{PhysRevLett.24.156}. Por el otro lado, para atrapar estos átomos se aprovecha su momento dipolar magnético intrínseco con el uso de un campo magnético cuadrupolar externo\cite{PhysRevLett.59.2631}.
 
 Este enfriamiento láser está basado en la transferencia de momento entre luz y átomos. Al absorber un fotón, el átomo sentirá una fuerza en la dirección de propagación del fotón. Además, el átomo eventualmente emitirá un fotón en una dirección aleatoria por el proceso de emisión espontánea. Al tomar el promedio estadístico para muchos fotones, la fuerza que siente el átomo por emisión espontánea será cero por no emitir en una dirección preferencial.
 
-Esta fuerza resultante de \textit{scattering} dependerá de la diferencia de la frecuencia del láser ($\omega$), la frecuencia de resonancia atómica ($\omega_0$) y su corrimiento de frecuencia debido al efecto Doppler ($kv$) (pues los átomos están en movimiento), y será en la dirección de propagación del láser.
+Esta fuerza resultante de \textit{scattering} dependerá de la diferencia de la frecuencia del láser ($\omega$) con la frecuencia de resonancia atómica ($\omega_0$) y su corrimiento de frecuencia debido al efecto Doppler ($kv$) (pues los átomos están en movimiento), y será en la dirección de propagación del láser.
 
 Un láser colimado seleccionará átomos moviéndose en una sola dirección para frenarlos. Como un átomo es libre de moverse en tres dimensiones, es necesario usar tres láseres ortogonales y contrapropagantes para reducir su velocidad neta en cada dirección. La fuerza total que sentirán los átomos en cada una de estos ejes será
 \begin{align}
@@ -90,11 +82,15 @@ El Hamiltoniano que describe la interacción un átomo con un campo magnético e
 \end{equation}
 donde cada factor $g$ considera las modificaciones a los momentos magnéticos dipolares del espín del electrón, momento angular orbital del electrón y espín nuclear, respectivamente. Consideremos un campo magnético en una sola dirección. Para un campo magnético débil, existe un desdoblamiento de los niveles energéticos (llamado \textit{efecto Zeeman}) que es lineal con el campo. Puede probarse \cite{steck87} que este cambio en la energía es $\Delta E \propto m_F \mathcal{B}$.
 
-Dos bobinas en configuración anti-Helmholtz permiten que cerca del centro de la trampa exista un gradiente de campo magnético lineal. Para la dirección $z$, por ejemplo, el campo es aproximadamente $\mathcal{B} = Bz$. Para $J = 1$, el efecto Zeeman hace que la energía de cada cada uno de los sub-niveles $m_F = 0,\pm 1$ varíe linealmente con $z$. Si los haces contrapropagantes tienen polariziones circulares opuestas ($\sigma^+$ y $\sigma^-$), esto creará un desequilibrio en las fuerzas de scattering por las reglas de selección dipolar\cite{Foot}.
+Dos bobinas en configuración anti-Helmholtz permiten que cerca del centro de la trampa exista un gradiente de campo magnético lineal. Para la dirección $z$, por ejemplo, el campo es aproximadamente $\mathcal{B} = Bz$. En el estado base, $J=0$ y $m_J=0$ también. Para $J = 1$, el efecto Zeeman hace que la energía de cada cada uno de los sub-niveles $m_J = 0,\pm 1$ varíe linealmente con $z$. Si los haces contrapropagantes tienen polariziones circulares opuestas ($\sigma^+$ y $\sigma^-$), esto creará un desequilibrio en las fuerzas de scattering por las reglas de selección dipolar\cite{Foot}.
 
-\textbf{campo magnético y zeeman}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{magnet.png}
+\caption{a) Mecanismo de atrapamiento magnético de la MOT para un átomo con niveles $J=0$ y $J = 1$. Dos haces contrapropagantes con polarizaciones circulares opuestas ($\sigma^+$ y $\sigma^-$) y las reglas de selección $\Delta m_J = \pm 1$ empujan al átomo hacia el centro de la trampa. Imagen de \cite{Foot}. b) Campo magnético cuadrupolar cerca del centro de la MOT (en dos dimensiones). El campo es cero en el centro.}\label{fig:zeeman}
+\end{figure}
 
-Imaginemos un átomo alejándose de la trampa con $z>0$. La transición al nivel $m_F = -1$ está más cerca de resonancia con el láser y la regla de selección $\Delta m_F = -1$ hace que absorba fotones del haz con polarización $\sigma^-$, resultando en una fuerza de scattering que lo regresa al centro. Lo mismo pasa para un átomo alejándose con $z<0$ con la transición al nivel $m_F = 1$ y fotones con polarización $\sigma^+$, por la regla de selección $\Delta m_F = +1$. Esto logra una fuerza de confinamiento en un eje --- se pueden atrapar átomos en las tres direcciones eligiendo polarizaciones adecuadas (respecto a cada eje).
+Imaginemos un átomo alejándose de la trampa con $z>0$. La transición al nivel $m_J = -1$ estará más cerca de resonancia con el láser a frecuencia $\omega$ (recordemos que está desintonizado al rojo para tener amortiguamiento en la melaza óptica) y la regla de selección $\Delta m_J = -1$ hará que absorba fotones del haz con polarización $\sigma^-$, resultando en una fuerza de scattering que lo regresa al centro. Lo mismo pasa para un átomo alejándose con $z<0$ con la transición al nivel $m_J = 1$ y fotones con polarización $\sigma^+$, por la regla de selección $\Delta m_J = +1$. Esto logra una fuerza de confinamiento en un eje --- se pueden atrapar átomos en las tres direcciones eligiendo polarizaciones de láser adecuadas (respecto a cada eje).
 
 \subsection{Absorción}
 La nube atómica es modelada como un vapor ópticamente denso para el cual un haz monocromático en resonancia puede excitar a los átomos por medio de absorción estimulada. Al re-emitir de manera aleatoria esta luz, se presenta una atenuación del haz de prueba original que permite estudiar la absorción de los átomos. 
@@ -116,7 +112,7 @@ Para intensidades más altas, la población atómica en el estado excitado crece
 \nonumber \kappa(\omega,I) &= \cfrac{N\sigma(\omega)}{1+(\sigma(\omega)/\sigma_0)(I/I_{sat})}\\
 & = N\sigma_0\cfrac{\Gamma^2}{4(\omega-\omega_0)^2 + \Gamma^2(1+I/I_{sat})}. \label{kappa}
 \end{align}
-$I_{sat} = \frac{\pi}{3}\frac{hc \ \Gamma}{\lambda^3}$ se define como la intensidad de saturación. La atenuación quedará de manera más general como $\text{d}I/\text{d}z = -\kappa(\omega,I)I$.
+$I_{sat} = \frac{\hbar \omega^3 \ \Gamma}{12\pi c^2}$ se define como la intensidad de saturación. La atenuación quedará de manera más general como $\text{d}I/\text{d}z = -\kappa(\omega,I)I$.
 
 Si $I \ll I_{sat}$ podemos despreciar el cociente $I/I_{sat}$ y entonces regresaremos a la ecuación \ref{beer_diff}, que tiene una solución:
 \begin{equation}
@@ -124,11 +120,101 @@ I(z) = I_0 \exp(-\kappa(\omega)z). \label{beer}
 \end{equation}
 Para una nube atómica de longitud $L$ iluminada por un haz poco intenso y frecuencia $\omega$, la intensidad que se medirá en un fotodiodo después de ser atenuada por la nube será:
 \begin{equation}
-I(L) \equiv I = I_0 \exp\left(-\text{OD}\cfrac{\Gamma^2}{4(\omega-\omega_0)^2 + \Gamma^2}\right).
+I(L) \equiv I = I_0 \exp\left(-\text{OD}\cfrac{\Gamma^2}{4(\omega-\omega_0)^2 + \Gamma^2}\right). \label{od}
 \end{equation}
-OD $=NL\sigma_0$ es la \textit{densidad óptica} de la nube y es un parámetro experimental importante para la MOT.
-\newpage
+OD $=NL\sigma_0$ es la \textit{densidad óptica} de la nube. Esta expresión muestra la intensidad transmitida como una función de la desintonía del haz de prueba.
+
 \subsection{Experimento}\label{experimento_espectro}
-\subsubsection{imagen}
+%En la MOT del Laboratorio, hay varios parámetros experimentales que se pueden variar para optimizar la cantidad de átomos que se encuentran atrapados. El propósito de este experimento fue caracterizar la densidad óptica de la nube en función de estos distintos parámetros para tener una referencia práctica de la máxima densidad óptica que podemos alcanzar en el Laboratorio.
+
+El haz de prueba usado para medir la absorción de la nube fue generado por el mismo diodo láser de cavidad extendida que genera de la luz de enfriamiento. Este diodo láser (MOGLabs CEL002) tiene una longitud de onda centrada en 780nm.
+
+La intensidad de saturación para la transición \textbf{D2} de $^{87}$Rb es\cite{steck87}
+\begin{equation}
+I_{sat} = 1.66933\pm 0.00035\text{mW}\text{cm}^{-1}.
+\end{equation}
+La intensidad del haz de prueba fue $I = 0.229\pm 0.007$mW cm$^{-1}$, o aproximadamente 1.7\% de $I_{sat}$, lo que nos deja en el rango de validez para ajustar la ecuación \ref{od} a nuestras medidas.
+
+La tasa de decaimiento de la transición $5^2P_{3/2}, \ F=3 \rightarrow 5^2S_{1/2}, \ F=2$ es de $\Gamma = 2\pi \times 6.06 MHz$\cite{steck87}.
+
+Los parámetros que fueron variados para las mediciones fueron:
+\begin{itemize}
+\item Gradiente del campo magnético
+\item Presión de la MOT
+\item Desintonía de los haces de enfriamiento
+\item Intensidad de los haces de enfriamiento
+\end{itemize}
+
+Los desplazamientos de frecuencia de los haces de prueba y enfriamiento se realizaron con dos moduladores acustico-ópticos (AOM) independientes.  Las mediciones de desintonía del haz de prueba se tomaron a partir de la frecuencia de resonancia para la transición $5^2S_{1/2}\rightarrow 5^2P_{3/2}$. Se caracterizó la eficiencia de la modulación de frecuencia del AOM alrededor de la frecuencia de resonancia. Para esto, se midió la potencia con un fotodiodo de silicio Thorlabs PDA36A al variar la frecuencia. De acuerdo a la Figura \ref{fig:aom}, la eficiencia del AOM bajó hasta un 16\% para corrimientos de frecuencia de hasta 15 MHz.	
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{aom_eff.png}
+\caption{Voltaje medido por el fotodiodo contra desintonía del AOM. Normalizado respecto al valor máximo de voltaje.}\label{fig:aom}
+\end{figure}
+
+Las bobinas anti-Helmholtz de la MOT fueron hechas en el Laboratorio con alambre de cobre de 2.9mm y pueden generar gradientes de hasta 50 Gauss cm$^{-1}$ a menos de 50$^{\circ}$C de temperatura. La presión en la cámara de la MOT está determinada por el sistema de vacío y el dispensador de rubidio. La caracterización del campo magnético generado y del sistema de vacío fueron realizados en \cite{Adrian} y ahí se encuentra una descripción detallada.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{presion.png}
+\caption{Presión en la cámara de la MOT contra corriente suministrada al dispensador de rubidio.}\label{fig:pres}
+\end{figure}
+\newpage
+
+\subsubsection{Técnicas de medición}
+
+Para obtener un valor de la densidad óptica de la nube, se realizó un barrido de frecuencias para un rango de -30MHz a 30MHz alrededor de la transición $5^2S_{1/2}\rightarrow 5^2P_{3/2}$. El haz de prueba pasa directamente por el centro de la nube atómica y después es analizado por un fotodiodo PDA36A, cuya señal se observó en un osciloscopio. Al realizar estas medidas, \textit{no} se apagaron los haces de enfriamiento de la MOT.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\linewidth]{optica_OD.png}
+\caption{Arreglo para medir la densidad óptica.}\label{fig:optica_OD}
+\end{figure}
+
+Como se demostró que la eficiencia de nuestro AOM no era constante (Figura \ref{fig:aom}), se decidió medir también la potencia del haz sin nube para cada valor de la desintonía como voltajes de control.
+
+A los datos obtenidos de cada experimento, se le realizó un ajusto de la ecuación \ref{od}, normalizando respecto a los voltajes de control. El error de los resultados presentados se reporta como su desviación estándar.
 
 \subsection{Resultados}\label{resultados_espectro}
+
+Se realizaron varios experimentos para medir la densidad óptica al variar un solo parámetro experimental. En la Figura \ref{fig:od_graficas} se encuentran los resultados de estos experimentos.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{densidad_optica.png}
+\caption{Densidad óptica de la nube de átomos de $^{87}$Rb para: a) Desintonía de los haces de enfriamiento  b) Presión de rubidio en la cámara de vacío c) Gradiente del campo magnético d) \textbf{Intensidad de los haces de enfriamiento}.}\label{fig:od_graficas}
+\end{figure}
+
+Para los experimentos de presión de rubidio e intensidad de los haces de enfriamiento (Fig. \ref{fig:od_graficas} b, d), se observa un comportamiento sigmoide, tendiendo hacia un valor máximo en cada caso. Por el otro lado, para los experimentos de desintonía de los haces de enfriamiento y de gradiente de campo magnético (Fig. \ref{fig:od_graficas} a, c), la densidad óptica crece monótonamente hasta alcanzar un valor maximal y después baja.
+\newpage
+La densidad óptica máxima obtenida para nuestra MOT fue de OD $= 46.9 \pm 0.4$ y las condiciones experimentales para obtenerla fueron:
+\begin{itemize}
+\item Gradiente de campo magnético: $\nabla\mathcal{B} = 20.0\pm 0.4$ G cm$^{-1}$
+\item Desintonía de haces de enfriamiento: $\omega - \omega_0 = 27$ MHz
+\item Intensidad total de haces de enfriamiento: $ $
+\item Presión de rubidio: $P = 1.80 \pm 0.05 \times ^{-9}$ Torr
+\end{itemize}
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=0.95\linewidth]{od_buena.png}
+%\caption{Transmisión del haz de prueba como función de su desintonía de resonancia. Cerca de $\omega -\omega_0 = -27$MHz, se ve un súbito aumento en la transmisión del haz de prueba.}\label{fig:od_ejemplo}
+%\end{figure}
+%Una gráfica representativa de un experimento para medir la densidad óptica se ve en la Figura \ref{fig:od_ejemplo}. Se observa que, para esta gráfica, cerca de $\omega -\omega_0 = -27$MHz la transmisión del haz de prueba aumenta súbitamente.
+\newpage
+En cada una de los experimentos para medir la densidad óptica de la nube, se encontró una desintonía para el cual la transmisión del haz de prueba crecía aceleradamente y que no se ajustaba correctamente al comportamiento descrito por la ecuación \ref{od}. En la Figura \ref{fig:eit}, se presentan algunas gráficas de las medidas de densidad óptica donde se variaba la desintonía de los haces de atrapamiento. Se observa que la desviación de la forma esperada de la curva ocurre a distintos valores, correspondientes a los valores de la desintonía de los haces de atrapamiento en cada caso.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{eit_2.png}
+\caption{Transmisión del haz de prueba como función de su desintonía de resonancia. La desintonía de los haces de enfriamiento es: a) $\omega-\omega_0=20$MHz b) $\omega-\omega_0=25$MHz c) $\omega-\omega_0=27$MHz.}\label{fig:eit}
+\end{figure}
+
+\subsection{Discusión}\label{discusion_espectro}
+
+Se consiguió dar una caracterización sencilla de la densidad óptica de la nube atómica de la MOT del Laboratorio para distintas condiciones experimentales.
+
+Como se puede ver en la Figura \ref{fig:od_graficas} c), gradientes magnéticos intensos disminuyen la densidad óptica de la nube. Esto es porque la fuerza de confinamiento que sienten los átomos termina por dominar a la fuerza de scattering, lo que destruye la nube. Un estudio más a detalle de la proporción entre la intensidad de los haces de enfriamiento y el gradiente magnético podría permitir obtener densidades ópticas mayores.
+
+La intensidad de enfriamiento está regulada por un sistema de amplificación óptico\cite{Adrian} que puede operar con hasta 2500mA. La mayor densidad óptica registrada en este trabajo se obtuvo con una intensidad de los haces de enfriamiento de \textbf{ESO}, correspondiente a una corriente de amplificación de 2250mA. Como esta corriente está cercana a la corriente máxima del amplificador, se recomienda trabajar con una intensidad de \textbf{eso otro} (y una corriente de 2000mA), que corresponde a una densidad óptica muy similar de OD $=46.6\pm 0.4$. Esto es con el fin de prolongar la vida útil del amplificador.
+
+La región de transmisión incrementada que se observa en la Figura \ref{fig:eit} ya ha sido reportada antes en la literatura \cite{srivathsan,gulati} y puede explicarse como una ventana de transparencia electromagnéticamente inducida (EIT), causada por los haces de enfriamiento al no apagarse durante el experimento. Esto 

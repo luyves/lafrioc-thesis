@@ -2,13 +2,13 @@
 
 El Laboratorio de Átomos Fríos y Óptica Cuántica del Instituto de Física de la UNAM --- parte del Laboratorio Nacional de Materia Cuántica --- tiene como propósito hacer investigación en metrología e información cuántica, por medio del estudio de sistemas cuánticos ópticos y materiales.
 
-El experimento principal del Laboratorio es el de generación de pares de fotones (o \textit{bifotones}) por medio de un proceso no lineal llamado \textit{mezclado de cuatro ondas} --- o FWM por sus siglas en inglés. En el laboratorio, este proceso de FWM es realizado actualmente en una muestra de átomos de rubidio calientes, y próximamente se realizará también en una muestra de átomos fríos.
+El experimento principal del Laboratorio es el de generación de pares de fotones (o \textit{bifotones}) por medio de un proceso no lineal llamado \textit{mezclado de cuatro ondas} --- o FWM por sus siglas en inglés. En el Laboratorio, este proceso de FWM es realizado actualmente en una muestra de átomos de rubidio calientes, y próximamente se realizará también en una muestra de átomos fríos.
 
 \subsection{Motivación}\label{motivacion_correlaciones}
 
 La técnica más estándar para generar bifotones es la de procesos de conversión espontánea paramétrica descendiente\cite{burnham} (o SPDC por sus siglas en inglés) en cristales no lineales, como BBO. Sin embargo, el tiempo de coherencia de los fotones generados en SPDC es muy corto (del orden de ps) gracias a que poseen un amplio ancho de banda. Esto impide ciertos experimentos interesantes; incluso sistemas de detección fotónica con tecnología de punta tienen una resolución temporal de al menos decenas de ps\cite{Lukens:15}. Además, la corta longitud de coherencia los hacen poco viables para interacciones átomo--fotón, haciéndolos poco deseables para estudios de información cuántica\cite{PhysRevLett.88.243602}.
 
-Por esto, en años recientes ha aumentado mucho el interés en generar pares de fotones con un ancho de banda angosto. Una solución simple es colocar el cristal para SPDC en una cavidad óptica\cite{PhysRevLett.101.190501}. Sin embargo, el avance en técnicas de enfriamiento de átomos ha permitido estudiar la generación de bifotones en gases atómicos fríos por medio de procesos de FWM espontáneo. Utilizar este proceso trae varios beneficios: bifotones con un ancho de banda muy angosto, mayor eficiencia de producción y varios parámetros experimentales para poder controlar la función de onda resultante\cite{Du:08}. En este laboratorio, el corazón de este futuro experimento consiste en un gas de átomos de $Rb$, confinados y enfriados por medio de una trampa magneto-óptica (o MOT). Una breve explicación de nuestra MOT se dará en la sección \textbf{ESPECTROSCOPIA MOTIVACIÓN}, y una descripción más detallada puede encontrarse en \cite{Adrian}. A pesar de que el proceso de FWM en átomos fríos todavía no se implementa en el laboratorio, hay varios aspectos del experimento que necesitan desarrollo, como los sistemas de control y adquisición de datos así como la caracterización y optimización de la nube atómica.
+Por esto, en años recientes ha aumentado mucho el interés en generar pares de fotones con un ancho de banda angosto. Una solución simple es colocar el cristal para SPDC en una cavidad óptica\cite{PhysRevLett.101.190501}. Sin embargo, el avance en técnicas de enfriamiento de átomos ha permitido estudiar la generación de bifotones en gases atómicos fríos por medio de procesos de FWM espontáneo. Utilizar este proceso trae varios beneficios: bifotones con un ancho de banda muy angosto, mayor eficiencia de producción y varios parámetros experimentales para poder controlar la función de onda resultante\cite{Du:08}. En este laboratorio, el corazón de este futuro experimento consiste en un gas de átomos de $Rb$, confinados y enfriados por medio de una trampa magneto-óptica (o MOT). Una breve explicación de nuestra MOT se dará en la sección \ref{mot}, y una descripción más detallada puede encontrarse en \cite{Adrian}. A pesar de que el proceso de FWM en átomos fríos todavía no se implementa en el laboratorio, hay varios aspectos del experimento que necesitan desarrollo, como los sistemas de control y adquisición de datos así como la caracterización y optimización de la nube atómica.
 
 %El sistema de generación fotónica que decidió usarse en este laboratorio fue el de FWM en una nube atómica a bajas temperaturas.
 Por la naturaleza sensible de este experimento, el desarrollo de un sistema dedicado de adquisición de datos era necesario. Dicho sistema se diseñó para el procesamiento, almacenamiento y posterior procesamiento de los datos experimentales que permitirían el estudio de correlaciones en la luz generada. A continuación se presentará la motivación y desarrollo del trabajo de este capítulo. 
@@ -26,14 +26,18 @@ Al pensar en un sistema de adquisición de datos se deben también tener en cuen
 
 El arreglo óptico se divide en la parte de bombeo (la luz que llega a la nube de átomos) y la parte de adquisición (la luz resultante que será analizada). La óptica de bombeo se describirá en la sección \ref{espectro_prep} correspondiente al experimento de espectroscopía, pues es más relevante a ese experimento.
 
-\textbf{Diamante de rubidio}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\linewidth]{diamante.png}
+\caption{Esquema energético diamante para generación de fotones con FWM en átomos fríos de $^{87}$Rb.}\label{fig:diamante}
+\end{figure}
 
-La Figura \textbf{DIAMANTE} muestra la configuración atómica para la generación de fotones correlacionados por FWM en el gas de Rb. Aunque una descripción a profundidad de FWM en átomos fríos no es parte de este trabajo, de manera conceptual uno puede ver que usando dos láseres potentes de bombeo de 780nm y 776nm, se pueden generar dos fotones correlacionados de 762nm y 795nm si las condiciones de empatamiento de fase se cumplen\cite{srivathsan}. En este montaje experimental, los haces de bombeo son colineales y los fotones generados también lo serán. El montaje de la óptica de adquisición consiste principalmente en un arreglo de filtros de interferencia SEMROCK LL01-780 y LL01-808 para filtrar la luz que se generará en el FWM de los haces de atrapamiento que son mucho más potentes. A cada ángulo, estos filtros de interferencia transmiten una longitud de onda central y reflejan el resto. Después de filtrar los haces de bombeo, la luz generada fue acoplada a dos fotodiodos de avalancha (APDs) para la detección de fotones individuales por medio de fibras monomodales. 
+La Figura \ref{fig:diamante} muestra la configuración atómica para la generación de fotones correlacionados por FWM en un gas de $^{87}$Rb. Aunque una descripción a profundidad de FWM en átomos fríos no es parte de este trabajo, de manera conceptual uno puede ver que usando dos láseres potentes de bombeo de 780nm y 776nm, se pueden generar dos fotones correlacionados de 762nm y 795nm si las condiciones de empatamiento de fase se cumplen\cite{srivathsan}. En este montaje experimental, los haces de bombeo son colineales y los fotones generados también lo serán. El montaje de la óptica de adquisición consiste principalmente en un arreglo de filtros de interferencia SEMROCK LL01-780 y LL01-808 para filtrar la luz que se generará en el FWM de los haces de atrapamiento que son mucho más potentes. A cada ángulo, estos filtros de interferencia transmiten una longitud de onda central y reflejan el resto. Después de filtrar los haces de bombeo, la luz generada fue acoplada a dos fotodiodos de avalancha (APDs) para la detección de fotones individuales por medio de fibras monomodales. 
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\linewidth]{optica_adq_fwm.png}
-\caption{Óptica de adquisición para FWM. El filtro IF1 deja pasar luz de 762nm y el IF2 deja pasar luz de 795nm. Un color más tenue indica que la intensidad de los haces generados es muy baja.}\label{fig:optica_fwm}
+\caption{Óptica de adquisición para FWM. El filtro IF1 deja pasar luz de 762nm y el IF2 deja pasar luz de 795nm. Un color más tenue indica que la intensidad de los haces generados es muy baja. Esta luz se enviará al TDC para analizar correlaciones.}\label{fig:optica_fwm}
 \end{figure}
 
 Aún con técnicas estándar hoy en día, la tasa de generación de bifotones en experimentos de este tipo es baja\cite{Cere:1}; es por esto que es importante obtener la mayor eficiencia posible a la hora de acoplar las fibras ópticas. El problema del acoplamiento consiste en la alineación del haz incidente y de la fibra para maximizar la potencia transferida. En condiciones ideales, uno podría conseguir un porcentaje de acoplamiento a la fibra de casi 100\%\cite{Ladany:93}, pero hacerlo es laborioso y necesita de múltiples elementos ópticos. El acoplamiento de luz láser a una fibra monomodal es un problema de empatamiento de modos\cite{Newport}:
@@ -116,7 +120,7 @@ Para cuantificar la coherencia, calculamos la \textit{correlación}.
 \begin{figure}[]
 \centering
 \includegraphics[width=0.65\linewidth]{mach_zehnder.png}
-\caption{Interferómetro de Mach-Zehnder.}\label{fig:mach_zehnder}
+\caption{Interferómetro de Mach-Zehnder. El haz original $\mathcal{E}$ se divide en dos brazos con distancia $l_1$ y $l_2$.}\label{fig:mach_zehnder}
 \end{figure}
 
 La Figura \ref{fig:mach_zehnder} muestra un esquema sencillo del interferómetro de Mach Zehnder. Supongamos que tenemos un campo eléctrico incidente $\E(t)$ incidente sobre el primer divisor de haz, que asumimos idéntico al segundo y ambos con coeficiente de reflexión $\mathcal{R}$ y coeficiente de transmisión  $\mathcal{T}$. Después de pasar por el primer divisor, el haz reflejado y el transmitido recorren una distancia $l_1$ y $l_2$, respectivamente, usualmente diseñadas de distinta magnitud. Al recombinarse en el segundo divisor, tendremos dos salidas:
@@ -267,7 +271,7 @@ quedando para luz caótica con colisiones y con ensanchamiento Doppler:
 \end{figure}
 
 \subsubsection{Cuantización del campo}\label{optica_cuantica}
-De la teoría clásica del campo electromagnético \textbf{Loudon}, sabemos que el campo eléctrico $\E(\bm{r},t)$ y el campo magnético $\B(\bm{r},t)$ son campos vectoriales dependientes del tiempo que en vacío dependen de un tercer campo $\A(\bm{r},t)$ (el potencial vectorial) y un campo escalar $\phi(\bm{r},t)$:
+De la teoría clásica del campo electromagnético \cite{Loudon}, sabemos que el campo eléctrico $\E(\bm{r},t)$ y el campo magnético $\B(\bm{r},t)$ son campos vectoriales dependientes del tiempo que en vacío dependen de un tercer campo $\A(\bm{r},t)$ (el potencial vectorial) y un campo escalar $\phi(\bm{r},t)$:
 \begin{align*}
 \B(\bm{r},t) &=\curl\A(\bm{r},t), \\
 \E(\bm{r},t) &=-\nabla\phi(\bm{r},t) - \cfrac{\partial\A(\bm{r},t)}{\partial t}.
@@ -382,7 +386,7 @@ Vemos con esto que para luz perfectamente coherente, $\g{2}(0) = 1$ y que para l
 Este resultado ---contrastando con el efecto de bunching--- significa que los fotones tienden a no llegar al detector muy cerca uno de otro. Si este efecto es constante (es decir, si los fotones llegan regularmente espaciados uno después de otro), se le conoce como \textit{antibunching}.\footnote{Es importante decir que una estadística sub-Poissoniana no necesariamente quiere decir que hay detrás un proceso óptico que presente antibunching\cite{PhysRevA.41.475}. Sin embargo, por simplicidad, se le considerará así en este trabajo pues son dos efectos que muy frecuentemente se presentan juntos.} El hecho que $\g{2}(0) < 1$ nos dice que la fuente del campo electromagnético que se está analizando no puede ser descrito de manera clásica y es un claro ejemplo de la naturaleza cuántica de la luz.
 
 Podemos ver los resultados obtenidos en esta sección para la estadística de fotones en la Tabla \ref{valores_g0}:
-\begin{table}[]
+\begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -406,13 +410,13 @@ I(r) = I_0 e^{\frac{-2r^2}{w^2}},
 \end{equation}
 donde $r^2 = x^2 + y^2$ y $w$ representa el diámetro del haz. $w$ es en realidad una función de la distancia a partir del plano en el que el frente de onda es plano, pero para un corte transversal es constante \cite{CVI}.
 
-Hay varias definicones de diámetro de haz, y aunque para haces Gaussianos la más común es el diámetro para el cual la intensidad ha caído a $1/e^2$ (13.5 \%) de su intensidad original. Otras definiciones --- útiles en distintos contextos --- son el diámetro $1/e$, \textit{full-width half-maximum} (FWHM) y $D4\sigma$, que corresponden a caídas de intensidad a $1/e$ y $50\%$ para las primeras dos, respectivamente, y 4 veces la desviación estándar para la última. Para haces Gaussianos ideales, los diámetros de $1/e^2$ y $D4\sigma$ coinciden.
-
-\begin{figure}[]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.75\linewidth]{gaussian_waist.png}
 \caption{Perfil de intensidad Gaussiano y distintas definiciones de diámetro.}\label{fig:beam_waist}
 \end{figure}
+
+Hay varias definicones de diámetro de haz, y aunque para haces Gaussianos la más común es el diámetro para el cual la intensidad ha caído a $1/e^2$ (13.5 \%) de su intensidad original. Otras definiciones --- útiles en distintos contextos --- son el diámetro $1/e$, \textit{full-width half-maximum} (FWHM) y $D4\sigma$, que corresponden a caídas de intensidad a $1/e$ y $50\%$ para las primeras dos, respectivamente, y 4 veces la desviación estándar para la última. Para haces Gaussianos ideales, los diámetros de $1/e^2$ y $D4\sigma$ coinciden.
 
 Haciendo uso de una cámara digital, es posible tomar una foto del perfil de intensidad espacial en un plano perpendicular y realizar un análisis en la computadora. La cámara disponible para ese propósito en el laboratorio es una cámara Thorlabs DCC1545M, que cuenta con un chip CCD con una resolución de 1280x1024 pixeles cuadrados de $5.4\mu$m de lado. El chip CCD tiene una intensidad de saturación de aproximadamente $1\mu$ W/cm$^2$, lo que significa que atenuar la luz láser usando filtros de densidad neutral (ND) es necesario.
 
@@ -425,7 +429,7 @@ Normalmente, este ruido puede arreglarse si uno usa un iris o limpia bien la óp
 %https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3749244/pdf/1472-6807-11-7.pdf
 %http://www.globalsino.com/EM/page1705.html
 %https://www.google.com.mx/search?client=opera&q=fourier+transform+image+mask&sourceid=opera&ie=UTF-8&oe=UTF-8
-\begin{figure}[]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\linewidth]{fft_flowchart.png}
 \caption{Diagrama de pre-procesamiento para imágenes usando la transformada rápida de Fourier.}\label{fig:fft_flow}
@@ -441,15 +445,15 @@ La idea de este pre-procesamiento consiste en remover el ruido en el dominio de 
 
 donde $\hat I_0 = I_0\cfrac{\sqrt{\pi}}{r_0}$ es la nueva amplitud de la distribución y $z_0 = \cfrac{1}{\pi r_0}$ es el nuevo radio. Observamos que si tenemos un haz con perfil ancho, se convertirá en un perfil delgado en el espacio de frecuencias.
 
-\begin{figure}[]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=\linewidth]{fft.png}
 \caption{Foto real de un haz y su espectro de frecuencias al aplicarle FFT. En vez de ser perfectamente Gaussiano, vemos que hay franjas de interferencia y otros defectos (ver círculos).}\label{fig:fft}
 \end{figure}
-
+\newpage
 Viendo el espectro de frecuencias, podemos bloquear los puntos que no correspondan al espectro de nuestra Gaussiana. A esto lo llamaremos una \textit{máscara} o filtro. La calidad de la imagen que obtengamos dependerá de la manera en la que se filtran las frecuencias no deseadas\cite{Chen}, en este algoritmo se hace una máscara muy simple. Finalmente, se aplica la transformada inversa de Fourier y se observa que el perfil puede haber mejorado un poco.
 
-\begin{figure}[]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=\linewidth]{fft_beams.png}
 \caption{Antes y después de aplicar pre-procesamiento a la foto del haz.}\label{fig:fft_beams}
@@ -513,16 +517,14 @@ Los APDs utilizados no cuentan con un canal de entrada digital que permita prend
 %\caption{Circuito de gating.}\label{fig:gating_board}
 %\end{figure}
 
-Este circuito es básicamente un circuito AND adecuado a las especificaciones de voltaje de salida de los APDs (TTL de bajo voltaje o LVTTL), de entrada del TDC (TTL o LVTTL) y los pulsos del sistema de control (TTL). Se decidió usar un búfer de tres estados, que permite 3 salidas: $1$V, $0$V, y un estado de alta impedancia (donde no pasa corriente). El búfer tiene dos canales de entrada (input y control) y uno de salida (OUT); cuando no hay señal de control, el estado del búfer es de alta impedancia. Esto fue para evitar la posibilidad de que el TDC interpretara señales de salida de bajo voltaje (idealmente $0$V) como falsos eventos. El instrumento permite hasta 8 señales de salida independientes, con sus respectivos canales de entrada y control.
+Este circuito es básicamente un circuito AND adecuado a las especificaciones de voltaje de salida de los APDs (TTL de bajo voltaje o LVTTL), de entrada del TDC (TTL o LVTTL) y los pulsos del sistema de control (TTL). Se decidió usar un búfer de tres estados, que permite 3 salidas: $1$V, $0$V, y un estado de alta impedancia (donde no pasa corriente). El búfer tiene dos canales de entrada (input y control) y uno de salida (output); cuando no hay señal de control, el estado del búfer es de alta impedancia. Esto fue para evitar la posibilidad de que el TDC interpretara señales de salida de bajo voltaje (idealmente $0$V) como falsos eventos. El instrumento permite hasta 8 señales de salida independientes, con sus respectivos canales de entrada y control.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\linewidth]{gating_plot.png}
-\caption{Ejemplo de prueba para el circuito de gating.}\label{fig:gating_plot}
+\caption{Ejemplo de prueba para el circuito de gating. a) El pulso de entrada o la señal que queremos usar. b) El pulso de control. c) El pulso de salida después de pasar por el circuito.}\label{fig:gating_plot}
 \end{figure}
 Se realizaron pruebas para verificar que el circuito funcionara adecuadamente. Con un generador de funciones, se enviaron dos trenes de pulsos TTL de distintas frecuencias: una frecuencia baja de control y una más alta como input. La Figura \ref{fig:gating_plot} muestra que el circuito de gating funciona adecuadamente.
-
-\newpage
 
 \subsection{Experimento}\label{experimento_correlaciones}
 Como preparación para los experimentos de FWM en átomos fríos, se diseñó un experimento sencillo para medir la función de correlación de segundo orden $\g{2}$ para luz láser.
@@ -553,7 +555,7 @@ Además de probar la calibración y funcionalidad de los APDs, se realizaron pru
 \begin{figure}[]
 \centering
 \includegraphics[width=\linewidth]{cuentas_obscuras_2.png}
-\caption{Histograma de cuentas obscuras para el APD1 (verde) y el APD2 (rojo). El tiempo de integración para cada canasta fue de 150ms.}\label{fig:dark_counts}
+\caption{Histograma de cuentas obscuras para el APD1 (azul) y el APD2 (rojo). El tiempo de integración para cada canasta fue de 150ms.}\label{fig:dark_counts}
 \end{figure}
 
 La temperatura de operación de los APDs fue de -40$^{\circ}$C y el voltaje de polarización de 200V para el APD1, y 191V para el APD2. La tasa de cuentas obscuras que se obtuvo fue de:
@@ -623,7 +625,7 @@ Se realizó el análisis de $\g{2}$ para cada canal y se usó un tiempo de canas
 
 \begin{figure}[]
 \centering
-\includegraphics[width=\linewidth]{g2_laser_3.png}
+\includegraphics[width=\linewidth]{g2_laser.png}
 \caption{$\g{2}(\tau)$ para un haz de luz coherente.}\label{fig:g2_result}
 \end{figure}
 
