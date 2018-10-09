@@ -12,7 +12,7 @@ La biblioteca de uso del TDC consiste en varios métodos que aprovechan la funci
 \item \code{tdcbase}, librería compartida compilada en C por el fabricante del TDC que se comunica con el FPGA del etiquetador.
 \end{itemize}
 Debido a que la biblioteca \code{tdcbase} está compilada en 32 bits, una distribución de 32 bits de Python 3.6 es \textbf{necesaria} para poder correr el código.
-\subsection{Uso}
+\subsection{Ejemplo básico de uso}
 Al importar \code{hunahpy}, se importa un objeto \code{TDC} que contiene todos los métodos para controlar al \textit{id800}. Estos métodos se pueden llamar fácilmente:
 
 \begin{verbatim}
@@ -186,7 +186,7 @@ En este punto, se puede realizar el experimento que vaya a generar los eventos q
 
 Con esto, generamos dos archivos con las etiquetas temporales y sus respectivos canales en dos archivos \code{"tags.bin"} y \code{"}\code{chans.bin"}.
 \newpage
-\subsection{Programa de adquisición}
+\subsection{Interfaz gráfica para el programa de adquisición}
 \code{hunahpy} puede ser utilizado por medio de \textit{scripts} de Python 3.6 o con el programa de adquisición que se escribió específicamente para los experimentos del laboratorio. Cada una de estas opciones requiere el uso exclusivo del DLL \code{nhconnect}, por lo que intentar realizar una conexión al TDC mientras ya está corriendo una interfaz resultará en errores (errores 7 o 2 en la Tabla \ref{switch}).
 
 \code{hunahpy} discrimina y registra eventos en el búfer de eventos, y el programa de adquisición provee una representación digital del tiempo en el que ocurren estos eventos. La función principal de este programa de adquisición es anotar la cronología de eventos procesados por \code{hunahpy} y guardarlos en archivos de datos especificados por el usuario, para ser procesados después. Además, el programa de adquisición tiene la funcionalidad de visualizar los datos de dos formas distintas:
@@ -220,7 +220,7 @@ La función de \textit{analizador de intervalos temporales} calcula diferencias 
 
 Las etiquetas \code{Too big} y \code{Too small} dan el número de diferencias de tiempo más grandes que la canasta más grande y más chicas que la canasta más pequeña, respectivamente. Aunque el archivo \code{config.py} viene con valores iniciales de \code{binsize} y \code{bincount} para los histogramas también pueden modificarse manualmente para que \code{Too big} y \code{Too small} sean cero.
 
-\subsection{Consejos para solucionar problemas}
+\subsection{Solución de problemas comunes}
 Los mensajes de error de la Tabla \ref{switch} deberían de dar una indicación de cuál es el problema. Lo primero que se debería intentar es reiniciar tanto el TDC como la computadora.
 \begin{itemize}
 \item \textbf{Problema}: El LED de \textit{id800} sigue en rojo aunque está conectado.

@@ -1,12 +1,35 @@
-\section{Introducción}\label{introduccion}
+\section*{Introducción}\label{introduccion}
+\addcontentsline{toc}{section}{Introducción}
+%El estudio de sistemas cuánticos ha sido de particular interés para la física experimental en años recientes. En particular, en los últimos 30 años ha habido un tremendo avance en el desarrollo de gases cuánticos, abriendo muchas posibilidades de realizar experimentos novedosos en física atómica.
 
-Consideremos un sistema de dos niveles, por ejemplo la polarización de un
-fotón que puede estar polarizado horizontal ($H$) o verticalmente ($V$).
-Este estado puede ser representado como la siguiente función de onda
+La invención de técnicas de enfriamiento atómico en los 80s ha permitido manipular y monitorear la evolución temporal de ensambles atómicos a ultra-bajas temperaturas. Casi todos los datos experimentales de estos átomos fríos se consiguen por medio de observaciones ópticas; la \textit{óptica cuántica} estudia la interacción entre luz y materia desde una perspectiva cuántica.
 
-\begin{equation}
-    \ket{\varphi} = c_1 \ket{H} + c_2\ket{V},
-    \label{enl:1}
-\end{equation}
-en donde $|c_1|^2$ y $|c_2|^2$ son las probabilidades de obtener $H$ y $V$
-respectivamente al llevar a cabo una medición y por lo tanto $|c_1|^2+|c_2|^2 = 1$.
+Estos sistemas de átomos fríos confinados tienen un gran potencial como herramientas de estudio en correlaciones y entrelazamiento, con mucho interés en implementarlos para procesamientos en información cuántica. Para esto, es indispensable poder crear, manipular y medir los estados cuánticos de estos sistemas. Una transmisión eficiente de información entre dos sistemas atómicos requiere una interacción fuerte entre átomos y fotones.
+
+El Laboratorio de Átomos Fríos y Óptica Cuántica del Instituto de Física de la UNAM --- parte del Laboratorio Nacional de Materia Cuántica --- tiene como propósito hacer investigación en metrología e información cuántica, por medio del estudio de sistemas cuánticos ópticos y materiales.
+
+El experimento principal del Laboratorio es el de generación de pares de fotones (o \textit{bifotones}) por medio de un proceso no lineal llamado \textit{mezclado de cuatro ondas} --- o FWM por sus siglas en inglés. En el Laboratorio, este proceso de FWM es realizado actualmente en una muestra de átomos de rubidio calientes, y próximamente se realizará también en una muestra de átomos fríos.
+ 
+Tener sistemas de control robustos que puedan procesar los datos generados por este experimento es vital. Este sistema de recolección y procesamiento debe tener una buena resolución temporal para poder analizar en tiempo real los datos que genere el mezclado. Además, la optimización de la nube atómica es muy importante para obtener buenos resultados; entre más fotones se generen, mejor será la estadística del experimento. El parámetro experimental más importante para procesos de FWM es el de la densidad óptica máxima del ensamble.
+
+Esta tesis está dedicada principalmente a desarrollar el sistema de adquisición de datos del Laboratorio en anticipación a futuros experimentos de mezclado de cuatro ondas. Sin embargo, de manera simultánea se realiza la caracterización y optimización de nuestra trampa magneto-óptica (MOT) utilizada para atrapar y enfriar átomos de rubidio. Estos dos proyectos sirven el propósito de dejar listo el sistema que se utilizará tanto para la generación como para la adquisición de fotones en el experimento. Este trabajo pretende ser una guía para el análisis e interpretación de la estadística de fotones individuales generados en el Laboratorio, así como servir de referencia para los valores óptimos de la densidad óptica de la nube atómica como función de distintos parámetros experimentales. 
+
+Por contener dos objetivos diferentes, se decidió desarrollar cada proyecto de manera independiente en dos capítulos principales. Así, la estructura de esta tesis es como sigue:
+\begin{itemize}
+\item El \textbf{Capítulo 1} es el capítulo principal de este trabajo y se concentra en el estudio de correlaciones para pares de fotones. Al iniciar, se discute la motivación del experimento de mezclado de cuatro ondas para generar bifotones. Luego, se presenta una introducción teórica del estudio cuantitativo de la correlación para fuentes clásicas de luz. Se introduce también un tratamiento cuántico de la correlación y se establece una clasificación de las fuentes a partir de su estadística.
+
+Después, se describen los distintos sistemas y programas que forman parte del sistema de adquisición. Se da una visión general del funcionamiento del código del programa de adquisición y de cómo se comunica con los instrumentos. También se incluyen otros sistemas y circuitos que se desarrollaron para el experimento.
+
+Finalmente, se habla de la preparación experimental para medir correlaciones en luz láser, con el propósito de probar el sistema de adquisición. Se caracterizan los fotodiodos de avalancha y se presentan los resultados del experimento.
+
+\item La optimización de la MOT se encuentra en el \textbf{Capítulo 2}. Se presenta la motivación para hacer espectroscopía en átomos fríos y la importancia de la densidad óptica.
+
+En la subsección de teoría, se presenta la estructura atómica de rubidio 87. Luego, se introducen los mecanismos de enfriamiento y atrapamiento de átomos que usa la MOT. Un modelo atómico sencillo de dos niveles es introducido para explicar el fenómeno de absorción en átomos, así como para definir la densidad óptica de la nube a partir de la transmisión de un haz débil de prueba.
+
+Por último, se presenta el montaje para las medidas de densidad óptica, así como los resultados obtenidos al variar distintos parámetros experimentales. Se da un análisis cualitativo de las mediciones y se discuten las características de los espectros registrados.
+
+\item En el \textbf{Capítulo 3} se presentan las conclusiones de este trabajo. Contiene también la visión a futuro para la continuación de este proyecto.
+
+\item Se incluye además un \textbf{Apéndice} con una guía de usuario extensa para el sistema de adquisición de datos del experimento.
+
+\end{itemize}

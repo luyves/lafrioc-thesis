@@ -1,19 +1,23 @@
-\section{Correlaciones}\label{correlaciones}
+\section{Sistema de adquisición de datos}\label{correlaciones}
 
-El Laboratorio de Átomos Fríos y Óptica Cuántica del Instituto de Física de la UNAM --- parte del Laboratorio Nacional de Materia Cuántica --- tiene como propósito hacer investigación en metrología e información cuántica, por medio del estudio de sistemas cuánticos ópticos y materiales.
+%El Laboratorio de Átomos Fríos y Óptica Cuántica del Instituto de Física de la UNAM --- parte del Laboratorio Nacional de Materia Cuántica --- tiene como propósito hacer investigación en metrología e información cuántica, por medio del estudio de sistemas cuánticos ópticos y materiales.
+%
+%El experimento principal del Laboratorio es el de generación de pares de fotones (o \textit{bifotones}) por medio de un proceso no lineal llamado \textit{mezclado de cuatro ondas} --- o FWM por sus siglas en inglés. En el Laboratorio, este proceso de FWM es realizado actualmente en una muestra de átomos de rubidio calientes, y próximamente se realizará también en una muestra de átomos fríos.
 
-El experimento principal del Laboratorio es el de generación de pares de fotones (o \textit{bifotones}) por medio de un proceso no lineal llamado \textit{mezclado de cuatro ondas} --- o FWM por sus siglas en inglés. En el Laboratorio, este proceso de FWM es realizado actualmente en una muestra de átomos de rubidio calientes, y próximamente se realizará también en una muestra de átomos fríos.
+La motivación inicial para la generación de bifotones en el Laboratorio es el estudio de su correlación. Esto nos da información cuantitativa acerca de su naturaleza cuántica para realizar posteriormente otros experimentos.
+
+Para poder analizar la correlación de bifotones, es necesario desarrollar un sistema de adquisición y procesamiento de datos capaz de analizar adecuadamente los fotones generados por procesos de mezclado de cuatro ondas. En este capítulo se presenta una introducción a la teoría de estadística de fotones individuales y su implementación experimental, así como el desarrollo del sistema de adquisición de datos que será usado por el Laboratorio para experimentos en átomos fríos.
 
 \subsection{Motivación}\label{motivacion_correlaciones}
 
 La técnica más estándar para generar bifotones es la de procesos de conversión espontánea paramétrica descendiente\cite{burnham} (o SPDC por sus siglas en inglés) en cristales no lineales, como BBO. Sin embargo, el tiempo de coherencia de los fotones generados en SPDC es muy corto (del orden de ps) gracias a que poseen un amplio ancho de banda. Esto impide ciertos experimentos interesantes; incluso sistemas de detección fotónica con tecnología de punta tienen una resolución temporal de al menos decenas de ps\cite{Lukens:15}. Además, la corta longitud de coherencia los hacen poco viables para interacciones átomo--fotón, haciéndolos poco deseables para estudios de información cuántica\cite{PhysRevLett.88.243602}.
 
-Por esto, en años recientes ha aumentado mucho el interés en generar pares de fotones con un ancho de banda angosto. Una solución simple es colocar el cristal para SPDC en una cavidad óptica\cite{PhysRevLett.101.190501}. Sin embargo, el avance en técnicas de enfriamiento de átomos ha permitido estudiar la generación de bifotones en gases atómicos fríos por medio de procesos de FWM espontáneo. Utilizar este proceso trae varios beneficios: bifotones con un ancho de banda muy angosto, mayor eficiencia de producción y varios parámetros experimentales para poder controlar la función de onda resultante\cite{Du:08}. En este laboratorio, el corazón de este futuro experimento consiste en un gas de átomos de $Rb$, confinados y enfriados por medio de una trampa magneto-óptica (o MOT). Una breve explicación de nuestra MOT se dará en la sección \ref{mot}, y una descripción más detallada puede encontrarse en \cite{Adrian}. A pesar de que el proceso de FWM en átomos fríos todavía no se implementa en el laboratorio, hay varios aspectos del experimento que necesitan desarrollo, como los sistemas de control y adquisición de datos así como la caracterización y optimización de la nube atómica.
+Por esto, en años recientes ha aumentado mucho el interés en generar pares de fotones con un ancho de banda angosto. Una solución simple es colocar el cristal para SPDC en una cavidad óptica\cite{PhysRevLett.101.190501}. Sin embargo, el avance en técnicas de enfriamiento de átomos ha permitido estudiar la generación de bifotones en gases atómicos fríos por medio de procesos de FWM espontáneo. Utilizar este proceso trae varios beneficios: bifotones con un ancho de banda muy angosto, mayor eficiencia de producción y varios parámetros experimentales para poder controlar la función de onda resultante\cite{Du:08}. En este laboratorio, el corazón de este futuro experimento consiste en un gas de átomos de rubidio, confinados y enfriados por medio de una trampa magneto-óptica (o MOT). Una breve explicación de nuestra MOT se dará en la sección \ref{mot}, y una descripción más detallada puede encontrarse en \cite{Adrian}. A pesar de que el proceso de FWM en átomos fríos todavía no se implementa en el laboratorio, hay varios aspectos del experimento que necesitan desarrollo, como los sistemas de control y adquisición de datos así como la caracterización y optimización de la nube atómica.
 
 %El sistema de generación fotónica que decidió usarse en este laboratorio fue el de FWM en una nube atómica a bajas temperaturas.
 Por la naturaleza sensible de este experimento, el desarrollo de un sistema dedicado de adquisición de datos era necesario. Dicho sistema se diseñó para el procesamiento, almacenamiento y posterior procesamiento de los datos experimentales que permitirían el estudio de correlaciones en la luz generada. A continuación se presentará la motivación y desarrollo del trabajo de este capítulo. 
 
-\subsubsection{Luz cuántica}\label{luzcuantica}
+\subsubsection*{Luz cuántica}\label{luzcuantica}
 
 El primer propósito del estudio de fotones individuales es estudiar las correlaciones entre ellos. En 1986, Grangier et al\cite{grangier} generaron haces de fotones individuales utilizando decaimientos atómicos en cesio para demostrar algunas propiedades cuánticas de la luz. En particular, buscaban estudiar las correlaciones entre foto-detectores para las salidas de transmisión y reflección en un divisor de haz. Si --- citando a Grangier --- \textit{sólo se puede detectar un fotón una sola vez}, entonces habremos probado propiedades granulares de la luz y no habría duda de que sólo se puede describir de manera cuántica, i.e., con su función de onda.
 
@@ -21,7 +25,7 @@ Ahora, si uno considera cada fotón como un campo eléctrico propio, es de inter
 
 %Finalmente, la tasa de generación de fotones es muy baja, aún usando técnicas comunes en la academia\cite{Cere:1}. Por ello, es importante tratar de optimizar aquellos parámetros experimentales que mejoren
 
-\subsubsection{Preparación del sistema}
+\subsubsection{Preparación del sistema óptico}
 Al pensar en un sistema de adquisición de datos se deben también tener en cuenta los haces láser usados y los instrumentos de detección, así como la óptica que ayudará a guiar a los fotones a los detectores. Es así que surge una motivación natural de caracterizar estos sistemas como parte de un trabajo más completo.
 
 El arreglo óptico se divide en la parte de bombeo (la luz que llega a la nube de átomos) y la parte de adquisición (la luz resultante que será analizada). La óptica de bombeo se describirá en la sección \ref{espectro_prep} correspondiente al experimento de espectroscopía, pues es más relevante a ese experimento.
@@ -29,7 +33,7 @@ El arreglo óptico se divide en la parte de bombeo (la luz que llega a la nube d
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.6\linewidth]{diamante.png}
-\caption{Esquema energético diamante para generación de fotones con FWM en átomos fríos de $^{87}$Rb.}\label{fig:diamante}
+\caption{Esquema energético de diamante para generación de fotones con FWM en átomos fríos de $^{87}$Rb.}\label{fig:diamante}
 \end{figure}
 
 La Figura \ref{fig:diamante} muestra la configuración atómica para la generación de fotones correlacionados por FWM en un gas de $^{87}$Rb. Aunque una descripción a profundidad de FWM en átomos fríos no es parte de este trabajo, de manera conceptual uno puede ver que usando dos láseres potentes de bombeo de 780nm y 776nm, se pueden generar dos fotones correlacionados de 762nm y 795nm si las condiciones de empatamiento de fase se cumplen\cite{srivathsan}. En este montaje experimental, los haces de bombeo son colineales y los fotones generados también lo serán. El montaje de la óptica de adquisición consiste principalmente en un arreglo de filtros de interferencia SEMROCK LL01-780 y LL01-808 para filtrar la luz que se generará en el FWM de los haces de atrapamiento que son mucho más potentes. A cada ángulo, estos filtros de interferencia transmiten una longitud de onda central y reflejan el resto. Después de filtrar los haces de bombeo, la luz generada fue acoplada a dos fotodiodos de avalancha (APDs) para la detección de fotones individuales por medio de fibras monomodales. 
@@ -48,7 +52,7 @@ f = D\frac{\pi \omega}{4\lambda},
 
 donde $f$ es la distancia focal de la lente necesaria para acoplar un haz de diámetro $1/e^2$ $D$ y longitud de onda $\lambda$ a una fibra con modo $\omega$. De la ecuación \ref{acoplamiento}, vemos que el diámetro del haz es un parámetro controlable importante para conseguir un buen acoplamiento. Por esto, se decidió escribir un sencillo programa de computadora para analizar perfiles de haces láser utilizando fotos tomadas con un chip CCD.
 
-\subsubsection{Instrumentos}
+\subsubsection{Fotodiodos de avalancha y etiquetador de cuentas}
 Para la detección y procesamiento de señales se utilizarán dos instrumentos: varios APD de silicón (\textit{id120}) y un etiquetador de cuentas temporales (\textit{id800}) fabricados por IDQuantique.
 
 Un APD es un un diodo p-n con una ganancia alta. Estos instrumentos tienen un mecanismo interno de amplificación, que genera señales eléctricas con alta tasa señal-ruido como respuesta a detecciones de un sólo fotón\cite{Cork}. Las cuentas detectadas por un APD pueden tener distintas fuentes:
@@ -110,7 +114,7 @@ y el hecho que el primer término del lado derecho es cero por la ecuación \ref
 que corresponde a una ecuación de onda con velocidad $c = 1/\sqrt{\mu_0\epsilon_0} = 2.998\times 10^8 ms^{-1}$, que es la velocidad de la luz en el vacío.
 De una manera análoga se encuentra una ecuación de onda para el campo magnético $\B$.
 
-\subsubsection{Coherencia}\label{coherencia}
+\subsubsection{La función de correlación de primer orden}\label{coherencia}
 Vale la pena hablar primero del efecto de interferencia. La interferencia es el efecto de la recombinación de dos ondas en movimiento; patrones de interferencia ocurren cuando estas dos ondas presentan una diferencia relativa de fase. En el contexto del campo electromagnético, existen varios ejemplos que sirven para dejarlo en claro: el experimento de la doble rendija de Young, el interferómetro de Michaelson o el interferómetro de Mach Zehnder.
 
 Si dos trenes de ondas presentan una relación bien determinada de fase entre ellos, se dice que son \textit{coherentes}. En una situación ideal, si conocemos esta relación de fase para un tiempo inicial, podríamos deducir la fase relativa en todo momento. La vida real, por desgracia, no funciona así y en realidad tenemos fluctuaciones en la fase que suceden conforme pasa el tiempo. Sin embargo, si la diferencia de fase entre las dos ondas permanece relativamente constante dentro de un intervalo $\tau_c$, decimos que son \textit{parcialmente coherentes} con un tiempo de coherencia $\tau_c$. En este sentido, la coherencia es una medida de la estabilidad de frecuencia de la luz: podremos predecir acertadamente la fase de una onda para un tiempo $t + \tau$, siempre y cuando $\tau << \tau_c$. De manera inmediata podemos obtener la distancia de coherencia $d_c = c\tau_c$ y medir la fase en dos puntos distintos en el espacio.
@@ -232,7 +236,7 @@ Es inmediato que $|\g{1}(\tau)| = 1$ para todo $\tau$, que significa que la luz 
 %\caption{$|\g{1}(\tau)|$ para luz láser, luz caótica ensanchada por colisiones y luz caótica ensanchada por effecto Doppler.}\label{fig:g1}
 %\end{figure}
 
-\subsubsection*{Función de correlación de segundo orden}
+\subsubsection{La función de correlación de segundo orden}
 El experimento de interferencia de intensidades que realizaron Hanbury Brown y Twiss\cite{hbt} mostró que el análisis de las correlaciones entre intensidades era interesante. Justo como consideramos el grado de coherencia temporal de primer orden como una medida de la correlación entre amplitudes, el \textit{grado de coherencia temporal de segundo orden} es una medida de la correlación entre intensidades. La función $\g{2}(\tau)$ mide esencialmente fluctuaciones en la intensidad y se define como:
 \begin{equation}
 \g{2}(\tau) = \cfrac{\langle\mathcal{E}^*(t)\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\mathcal{E}(t)\rangle}{\langle\mathcal{E}^*(t)\mathcal{E}(t)\rangle \langle\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\rangle} = \cfrac{\langle I(t)I(t+\tau)\rangle}{\langle I(t)\rangle\langle I(t+\tau)\rangle}.
@@ -311,7 +315,7 @@ Los operadores $\ad$ y $\hat a$ actúan en estos estados de la forma:
 
 En la descripción de óptica cuántica, estos estados $|n\rangle$ describe el número de exitaciones con energía $\hbar\omega$; estas exitaciones reciben el nombre de \textit{fotones}.
 
-\subsubsection{Estadística de fotones}\label{estadistica}
+\subsubsection{Estadística de fotones individuales}\label{estadistica}
 La óptica cuántica está encargada de estudiar a los haces de luz como un chorro de fotones en vez de la descripción clásica de ondas. Para hacer esto, es útil ver estudiar la estadistica de este haz de fotones. La intensidad de este campo está dado por el valor esperado del operador $\hat n$, que es equivalente al número promedio de fotones en el haz. Esto quiere decir que:
 \begin{equation}
 \langle I \rangle \propto \langle \hat n \rangle  = \langle \ad \hat a \rangle \equiv \bar n.
@@ -401,7 +405,7 @@ Coherente                    & Aleatorios                 & Poissoniana		       
 \subsection{Sistemas}\label{sistemas_correlaciones}
 La principal parte del trabajo de este capítulo consistió en la elaboración de distintos programas y sistemas que serán de utilidad para el experimento de FWM en átomos fríos. Estos sistemas consistieron en un perfilador de haces Gaussianos, la paquetería de uso del TDC y el sistema de adquisición, y la electrónica de \textit{gating}.
 
-\subsubsection{Perfilómetro}\label{perfilometro}
+\subsubsection{Perfilómetro de láseres}\label{perfilometro}
 Poder caracterizar y manipular un haz láser de manera adecuada siempre es ventajoso en un laboratorio de óptica pues permite optimizar algunas aplicaciones de dicha luz, como acoplamiento a fibras ópticas.
 
 Una manera de caracterizar un haz es analizando su perfil de intensidad espacial en un plano perpendicular a su dirección de propagación. Este perfil de intensidad será distinto para cada láser dependiendo de la cavidad que tenga, aunque un perfil Gaussiano es común en láseres utilizados en el laboratorio. La propagación de los láseres del laboratorio puede aproximarse bastante bien asumiendo que tienen una distribución Gaussiana en 2-D, que corresponde a un perfil de intensidad:
@@ -475,7 +479,7 @@ G(x) = Ae^{-\frac{(x-\mu)^2}{2\sigma^2}}.
 
 Además de existir como una biblioteca de funciones independiente, se escribió una interfaz gráfica para utilizar el programa como un ejecutable. Actualmente el programa ha pasado a ser utilizado cotidianamente por todos los usuarios del Laboratorio.
 
-\subsubsection{Sistema de adquisición}\label{adquisicion}
+\subsubsection{Sistema de adquisición de datos}\label{adquisicion}
 
 El sistema de adquisición consiste en la paquetería de programación del TDC y el programa de visualización de cuentas. El TDC es un convertidor de cuentas de tiempo a valores digitales que consta en un circuito integrado de aplicación específica (ASIC) que registra eventos en los 8 canales del módulo y los manda a una matriz de puertas programable (FPGA) que los ordena y comprime.
 
@@ -509,7 +513,7 @@ Se escribió también un programa de visualización de datos en tiempo real con 
 
 El programa de adquisición es parte de un sistema más completo que consiste en los sistemas de contol, de imagen y de adquisición de datos para experimentos en átomos fríos.
 
-\subsubsection{Gating}\label{gating}
+\subsubsection{Circuito de conmutación}\label{gating}
 Los APDs utilizados no cuentan con un canal de entrada digital que permita prenderlos o apagarlos usando un pulso electrónico. Por esto, se diseñó un pequeño instrumento que funcionara como compuerta digital para los eventos que registra el TDC.
 %\begin{figure}[h!]
 %\centering
@@ -517,7 +521,7 @@ Los APDs utilizados no cuentan con un canal de entrada digital que permita prend
 %\caption{Circuito de gating.}\label{fig:gating_board}
 %\end{figure}
 
-Este circuito es básicamente un circuito AND adecuado a las especificaciones de voltaje de salida de los APDs (TTL de bajo voltaje o LVTTL), de entrada del TDC (TTL o LVTTL) y los pulsos del sistema de control (TTL). Se decidió usar un búfer de tres estados, que permite 3 salidas: $1$V, $0$V, y un estado de alta impedancia (donde no pasa corriente). El búfer tiene dos canales de entrada (input y control) y uno de salida (output); cuando no hay señal de control, el estado del búfer es de alta impedancia. Esto fue para evitar la posibilidad de que el TDC interpretara señales de salida de bajo voltaje (idealmente $0$V) como falsos eventos. El instrumento permite hasta 8 señales de salida independientes, con sus respectivos canales de entrada y control.
+Este circuito de conmutación es básicamente un circuito AND adecuado a las especificaciones de voltaje de salida de los APDs (TTL de bajo voltaje o LVTTL), de entrada del TDC (TTL o LVTTL) y los pulsos del sistema de control (TTL). Se decidió usar un búfer de tres estados, que permite 3 salidas: $1$V, $0$V, y un estado de alta impedancia (donde no pasa corriente). El búfer tiene dos canales de entrada (input y control) y uno de salida (output); cuando no hay señal de control, el estado del búfer es de alta impedancia. Esto fue para evitar la posibilidad de que el TDC interpretara señales de salida de bajo voltaje (idealmente $0$V) como falsos eventos. El instrumento permite hasta 8 señales de salida independientes, con sus respectivos canales de entrada y control.
 
 \begin{figure}[h!]
 \centering
@@ -526,7 +530,7 @@ Este circuito es básicamente un circuito AND adecuado a las especificaciones de
 \end{figure}
 Se realizaron pruebas para verificar que el circuito funcionara adecuadamente. Con un generador de funciones, se enviaron dos trenes de pulsos TTL de distintas frecuencias: una frecuencia baja de control y una más alta como input. La Figura \ref{fig:gating_plot} muestra que el circuito de gating funciona adecuadamente.
 
-\subsection{Experimento}\label{experimento_correlaciones}
+\subsection{Configuración experimental}\label{experimento_correlaciones}
 Como preparación para los experimentos de FWM en átomos fríos, se diseñó un experimento sencillo para medir la función de correlación de segundo orden $\g{2}$ para luz láser.
 
 Se amplió el montaje de la óptica de adquisición de FWM de la Figura \ref{fig:optica_fwm} para analizar la luz del haz de bombeo de 780nm. Se montó un interferómetro de intensidades con un divisor de haz 50/50 y cada brazo se mandó a un APDs. Para este experimento se apagó la luz de 776nm.
