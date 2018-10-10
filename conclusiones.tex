@@ -1,17 +1,22 @@
-\section{Conclusiones y perspectivas a futuro}\label{Conclusiones}
+\section{Conclusiones}\label{Conclusiones}
 
-Al final de todo, se logra pues, publicar un artículo en una revista arbitrada como resultado del
-trabajo detallado en este informe. El artículo pierde en un sentido y gana en otro con respecto a la
-idea original. Durante el primer arbitraje y las respectivas correcciones se pierde la discusión
-histórica y filosófica de las desigualdades de Bell y los estados entrelazados, además de algunos
-ejemplos que se creía esclarecerían la idea tras las desigualdades de Bell. Sin embargo, al
-deshacerse de esa parte, fue necesario ampliar el contenido acerca del experimento, se agrega una
-parte explicando cómo puede obtenerse cualquiera de los 4 estados de Bell a partir de la disposición
-original del experimento y el uso de placas retardadoras de fase.
+En este trabajo se enfocó principalmente en dejar listo un sistema de adquisición y procesamiento de datos para experimentos en átomos fríos de rubidio.
 
-El artículo en su estado final puede fácilmente cumplir con su labor de manual para llevar a cabo
-el experimento. Además de citar fuentes útiles tanto para la discusión teórica de las desigualdades
-como para su discusión filosófica. En el artículo se hace una clara distinción entre los resultados
-que predice cualquier teoría de variables ocultas locales en este experimento y las predicciones de
-la mecánica cuántica. Y por último se obtiene un parámetro de Bell que claramente viola la
-desigualdad de CHSH, probando así experimentalmente una vez más el teorema de Bell.
+Se escribió una paquetería completa en Python para procesar etiquetas temporales de eventos generados por fotodiodos de avalancha. Este programa se conecta con el módulo de cuentas TDC, coordina la comunicación del instrumento con la computadora y permite al usuario visualizar los datos generados en tiempo real, para después guardarlos en un servidor. El desarrollo de este software propio permitió quitarse de la limitante de tener que usar el programa proporcionado por el fabricante, logrando adaptar la funcionalidad del TDC a las necesidades del experimento y no al revés.
+
+Además de esta paquetería para adquisición de datos, se desarrollaron dos sistemas útiles para el experimento de mezclado de cuatro ondas y para el Laboratorio en general. Estos sistemas fueron un perfilómetro para haces de luz Gaussianos y un circuito de conmutación para controlar la salida de los APDs.
+
+Se realizó un experimento sencillo para verificar que el sistema de adquisición funcionara adecuadamente. Este experimento consistió en medir la función de correlación de segundo orden $\g{2}(\tau)$ para una fuente coherente clásica. Se obtuvo un valor de $\g{2}(0) = 1.0006\pm0.0012$ y un promedio de $\overline{\g{2}} = 1.0007\pm0.0014$, que se encuentran en excelente concordancia con la teoría. Esto demostró el buen funcionamiento del programa de adquisición de datos que será utilizado para procesar bifotones generados por FWM.
+
+Finalmente, se escribió una guía de usuario exhaustiva para usar la paquetería de adquisición de datos y su interfaz gráfica.
+
+Como objetivo secundario, se buscó una primer caracterización de la nube atómica dentro de la MOT en función de sus parámetros experimentales. Se realizaron una serie de mediciones que documentan las propiedades espectroscópicas de nuestra MOT con todos los láseres y campos magnéticos relevantes encendidos. Se midió la densidad óptica de la nube en función del gradiente del campo magnético de atrapamiento, la desintonía e intensidad de los haces de enfriamiento y la presión dentro de la cámara de vacío. Se encontró un valor máximo de OD $= 46.9 \pm 0.4$ para nuestra nube.
+Estos resultados constituyen una primer referencia experimental para el control de la densidad óptica de la MOT del Laboratorio.
+
+\subsection{Perspectivas a futuro}
+
+El siguiente paso lógico para la continuación de este trabajo sería integrar el programa de adquisición de datos al sistema de control que se encuentra en desarrollo para experimentos de mezclado de cuatro ondas. Con esto, se podrán medir correlaciones en bifotones generados por este proceso.
+
+Por otro lado, los resultados obtenidos en el Capítulo \ref{espectroscopia} servirán inmediatamente para comparar los resultados de mediciones de densidad óptica que se obtendrán con el sistema de imagen. Además, sería interesante ampliar la caracterización de la densidad óptica de la nube pulsando los haces de enfriamiento.
+
+Una explicación de los fenónemos detrás de los picos observados en los espectros de absorción no se incluye en este capítulo. Sin embargo, podría ser de interés estudiar más a detalle la estructura de estas características.
