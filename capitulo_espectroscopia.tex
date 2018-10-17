@@ -1,29 +1,38 @@
 \section{Espectroscopía de átomos fríos}\label{espectroscopia}
-La espectroscopía podría definirse como ``el estudio de propiedades físicas de materia utilizando su interacción con luz". En átomos fríos, nuestro objeto de estudio son los átomos atrapados por una MOT: usando láseres adecuados y campos magnéticos, es posible desacelerar y confinar estos átomos. Utilizando el fenómeno de absorción estimulada, estudiaremos algunas propiedades de esta nube atómica.
 
-%La trampa magneto-óptica es el corazón de los experimentos en átomos fríos de rubidio del Laboratorio de Átomos Fríos y Óptica Cuántica. Por medio del uso de láseres desintonizados al rojo y campos magnéticos, es posible desacelerar y atrapar estos átomos.
-%Una propiedad de gran importancia para los experimentos a realizarse en el Laboratorio es el número de átomos atrapados. Un análisis preciso de estas propiedades es necesario para realizar experimentos como FWM. 
+En átomos fríos, nuestro objeto de estudio son los átomos atrapados por una MOT: usando láseres adecuados y campos magnéticos, es posible desacelerar y confinar estos átomos. Utilizando el fenómeno de absorción estimulada, estudiaremos algunas propiedades de esta nube atómica.
 
 Al estudiar el espectro de absorción de los átomos atrapados podemos estimar la densidad atómica de la nube. Esta es una propiedad importante para realizar experimentos de FWM, por lo que una caracterización detallada resulta útil. El propósito de este segundo capítulo es hacer una caracterización de la densidad óptica de la MOT del Laboratorio en función de algunos de sus parámetros experimentales, en anticipación a la generación de bifotones por procesos de mezclado de cuatro ondas.
 
 \subsection{Motivación}\label{motivacion_espectro}
 El estudio de los átomos fríos ha sido un campo con mucho interés en años recientes, pues permiten preparar gases atómicos difusos para experimentos con luz.
 
-Estudiar las propiedades de átomos a temperatura ambiente resulta complicado debido al movimiento térmico que presentan. Este movimiento --- explicado por la teoría cinética de gases --- resulta en velocidades promedio de casi 300ms$^{-1}$ para átomos de rubidio a temperatura ambiente, por ejemplo. Una velocidad esperada tan alta resulta en un ensanchamiento de las líneas espectrales debido al efecto Doppler, haciendo difícil estudiar los átomos usando técnicas espectroscópicas\cite{RevModPhys.70.721}. Es de aquí que surge el interés de enfriar átomos a temperaturas muy bajas.
-
-El premio Nobel de Física de 1997 fue otorgado a William Phillips, Claude Cohen-Tannoudji y Steven Chu por el ``desarrollo de métodos para enfriar y atrapar átomos con luz láser", que terminaría por aplicarse en el desarrollo de la trampa magneto-óptica (MOT). En la actualidad, el uso de MOTs es estándar para el enfriamiento de átomos neutros a temperaturas del orden de cientos de $\mu$K. Estos átomos fríos son usados en una gran variedad de experimentos como interferometría atómica\cite{1742-6596-80-1-012047} o información cuántica\cite{Gross995} o son enfriados aún más para hacer experimentos en condensados de Bose-Einstein\cite{901989}.
+%Estudiar las propiedades de átomos a temperatura ambiente resulta complicado debido al movimiento térmico que presentan. Este movimiento --- explicado por la teoría cinética de gases --- resulta en velocidades promedio de casi 300ms$^{-1}$ para átomos de rubidio a temperatura ambiente, por ejemplo. Una velocidad esperada tan alta resulta en un ensanchamiento de las líneas espectrales debido al efecto Doppler, haciendo difícil estudiar los átomos usando técnicas espectroscópicas\cite{RevModPhys.70.721}. Es de aquí que surge el interés de enfriar átomos a temperaturas muy bajas.
+%
+%El premio Nobel de Física de 1997 fue otorgado a William Phillips, Claude Cohen-Tannoudji y Steven Chu por el ``desarrollo de métodos para enfriar y atrapar átomos con luz láser", que terminaría por aplicarse en el desarrollo de la trampa magneto-óptica (MOT). En la actualidad, el uso de MOTs es estándar para el enfriamiento de átomos neutros a temperaturas del orden de cientos de $\mu$K. Estos átomos fríos son usados en una gran variedad de experimentos como interferometría atómica\cite{1742-6596-80-1-012047} o información cuántica\cite{Gross995} o son enfriados aún más para hacer experimentos en condensados de Bose-Einstein\cite{901989}.
 
 Dos parámetros experimentales importantes de la nube atómica fría son la densidad óptica y la temperatura de los átomos atrapados. La densidad óptica es particularmente importante para experimentos de FWM, pues define distintos regímenes de conversión espontánea paramétrica descendente y determina la forma de la función de correlación $\g{2}(\tau)$ para los bifotones generados\cite{Du:08,PhysRevA.75.033814}.
+
+Además,
 
 En este segundo capítulo, se presenta el arreglo óptico que se usará próximamente para la generación de fotones correlacionados en FWM, así como una optimización de la densidad óptica de la MOT del laboratorio.
 
 \subsubsection{Preparación del sistema óptico}\label{espectro_prep}
+
+La Figura \ref{fig:diamante} muestra la configuración atómica para la generación de fotones correlacionados por FWM en un gas de $^{87}$Rb. Aunque una descripción a profundidad de FWM en átomos fríos no es parte de este trabajo, de manera conceptual uno puede ver que usando dos láseres potentes de bombeo de 780nm y 776nm, se pueden generar dos fotones correlacionados de 762nm y 795nm si las condiciones de empatamiento de fase se cumplen\cite{srivathsan}. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\linewidth]{diamante.png}
+\caption{Esquema energético de diamante para generación de fotones con FWM en átomos fríos de $^{87}$Rb.}\label{fig:diamante}
+\end{figure}
+
 Para realizar las medidas de la densidad óptica (OD) de nuestra nube se aprovechó el montaje óptico para la luz de bombeo del FWM (Figura \ref{fig:optica_bombeo}). En este arreglo, se usan dos haces de bombeo co-propagantes de 780nm y 776nm (bombeo 1 y bombeo 2). Estos haces son resonantes a las transiciones $5^2S_{1/2}, \ F=2\rightarrow 5^2P_{3/2}, \ F'=3$ y $5^2P_{3/2}, \ F=3 \rightarrow 5^2D_{3/2}, \ F'=3$, respectivamente. En la discusión de FWM de \cite{srivathsan} y \cite{gulati}, en esta configuración se generarán pares de fotones con modos bien definidos por medio del FWM espontáneo. Sin embargo, a los haces se les superpone un haz semilla de 795nm resonante a la transición $5^2S_{1/2}, \ F=2\rightarrow 5^2P_{1/2}, \ F'=2$ para hacer más fácil la alineación y acoplamiento a fibra de la luz generada.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\linewidth]{optica_bombeo.png}
-\caption{Óptica de bombeo para FWM. Un divisor de haz polarizante (PBS) permite superponer el haz semilla con el haz de bombeo 1. El filtro IF3 sirve para superponer los dos haces de bombeo.}\label{fig:optica_bombeo}
+\caption[Óptica de bombeo para FWM.]{Óptica de bombeo para FWM. Un divisor de haz polarizante (PBS) permite superponer el haz semilla con el haz de bombeo 1. El filtro IF3 sirve para superponer los dos haces de bombeo.}\label{fig:optica_bombeo}
 \end{figure}
 
 \subsection{Teoría}\label{teoria_espectro}
@@ -84,7 +93,7 @@ Dos bobinas en configuración anti-Helmholtz permiten que cerca del centro de la
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{magnet.png}
-\caption{a) Mecanismo de atrapamiento magnético de la MOT para un átomo con niveles $J=0$ y $J = 1$. Dos haces contrapropagantes con polarizaciones circulares opuestas ($\sigma^+$ y $\sigma^-$) y las reglas de selección $\Delta m_J = \pm 1$ empujan al átomo hacia el centro de la trampa. Imagen de \cite{Foot}. b) Campo magnético cuadrupolar cerca del centro de la MOT (en dos dimensiones). El campo es cero en el centro.}\label{fig:zeeman}
+\caption[a) Mecanismo de atrapamiento magnético de la MOT para un átomo con niveles $J=0$ y $J = 1$. b) Campo magnético cuadrupolar cerca del centro de la MOT (en dos dimensiones)]{a) Mecanismo de atrapamiento magnético de la MOT para un átomo con niveles $J=0$ y $J = 1$. Dos haces contrapropagantes con polarizaciones circulares opuestas ($\sigma^+$ y $\sigma^-$) y las reglas de selección $\Delta m_J = \pm 1$ empujan al átomo hacia el centro de la trampa. Imagen de \cite{Foot}. b) Campo magnético cuadrupolar cerca del centro de la MOT (en dos dimensiones). El campo es cero en el centro.}\label{fig:zeeman}
 \end{figure}
 
 Imaginemos un átomo alejándose de la trampa con $z>0$. La transición al nivel $m_J = -1$ estará más cerca de resonancia con el láser a frecuencia $\omega$ (recordemos que está desintonizado al rojo para tener amortiguamiento en la melaza óptica) y la regla de selección $\Delta m_J = -1$ hará que absorba fotones del haz con polarización $\sigma^-$, resultando en una fuerza de scattering que lo regresa al centro. Lo mismo pasa para un átomo alejándose con $z<0$ con la transición al nivel $m_J = 1$ y fotones con polarización $\sigma^+$, por la regla de selección $\Delta m_J = +1$. Esto logra una fuerza de confinamiento en un eje --- se pueden atrapar átomos en las tres direcciones eligiendo polarizaciones de láser adecuadas (respecto a cada eje).
@@ -143,7 +152,7 @@ Los desplazamientos de frecuencia de los haces de prueba y enfriamiento se reali
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\linewidth]{aom_eff.png}
-\caption{Voltaje medido por el fotodiodo contra desintonía del AOM. Normalizado respecto al valor máximo de voltaje.}\label{fig:aom}
+\caption[Voltaje medido por el fotodiodo contra desintonía del AOM.]{Voltaje medido por el fotodiodo contra desintonía del AOM. Normalizado respecto al valor máximo de voltaje.}\label{fig:aom}
 \end{figure}
 
 Las bobinas anti-Helmholtz de la MOT fueron hechas en el Laboratorio con alambre de cobre de 2.9mm y pueden generar gradientes de hasta 50 Gauss cm$^{-1}$ a menos de 50$^{\circ}$C de temperatura. La presión en la cámara de la MOT está determinada por el sistema de vacío y el dispensador de rubidio. La caracterización del campo magnético generado y del sistema de vacío fueron realizados en \cite{Adrian}, donde se encuentra una descripción detallada.
@@ -177,7 +186,7 @@ En la Figura \ref{fig:eit} se presentan algunas gráficas representativas de las
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\linewidth]{eit_2.png}
-\caption{Transmisión del haz de prueba como función de su desintonía de resonancia. La desintonía $\omega-\omega_0$ de los haces de enfriamiento en cada caso es: a) $20$ MHz b) $25$ MHz c) $27$ MHz.}\label{fig:eit}
+\caption[Transmisión del haz de prueba como función de su desintonía de resonancia]{Transmisión del haz de prueba como función de su desintonía de resonancia. La desintonía $\omega-\omega_0$ de los haces de enfriamiento en cada caso es: a) $20$ MHz b) $25$ MHz c) $27$ MHz.}\label{fig:eit}
 \end{figure}
 
 Aunque este pico presenta una discrepancia inesperada con la descripción teórica de la sección \ref{espectro_abs}, el resto del perfil de absorción presenta una buena concordancia con los resultados esperados y permitió hacer un ajuste a la ecuación \ref{od} para encontrar la densidad óptica en cada experimento.
@@ -187,7 +196,7 @@ La caracterización de la MOT se consiguó al realizar varios experimentos varia
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{od_plots.png}
-\caption{Densidad óptica de la nube de átomos de $^{87}$Rb para: a) Desintonía de los haces de enfriamiento  b) Presión de rubidio en la cámara de vacío c) Gradiente del campo magnético d) Intensidad total de los haces de enfriamiento. }\label{fig:od_graficas}
+\caption[Densidad óptica de la nube de átomos de $^{87}$Rb]{Densidad óptica de la nube de átomos de $^{87}$Rb para: a) Desintonía de los haces de enfriamiento  b) Presión de rubidio en la cámara de vacío c) Gradiente del campo magnético d) Intensidad total de los haces de enfriamiento. }\label{fig:od_graficas}
 \end{figure}
 \newpage
 Para los experimentos de presión de rubidio e intensidad de los haces de enfriamiento (Fig. \ref{fig:od_graficas} b, d), se observa un comportamiento sigmoide, tendiendo hacia un valor máximo en cada caso. Por otro lado, para los experimentos de desintonía de los haces de enfriamiento y de gradiente de campo magnético (Fig. \ref{fig:od_graficas} a, c), se puede observar que la densidad óptica crece monótonamente hasta alcanzar un valor máximo para decrecer después.
@@ -207,7 +216,7 @@ Con esta caracterización, se reporta que la densidad óptica máxima obtenida p
 
 \subsection{Discusión}\label{discusion_espectro}
 
-Se realizó la primera caracterización de la densidad óptica de la nube atómica de la MOT del Laboratorio para distintas condiciones experimentales. Esta caracterización es una buena referencia inicial para futuros experimentos. Se ha observado que el control de la densidad óptica de la nube es importante en la generación de bifotones por medio de FWM \cite{Cere:1,Du:09}, por lo que los resultados de este capítulo son de utilidad para el Laboratorio.
+Se realizó la primera caracterización de la densidad óptica de la nube atómica de la MOT del Laboratorio para distintas condiciones experimentales. Esta caracterización es una buena referencia inicial para futuros experimentos. Se ha observado que el control de la densidad óptica de la nube es importante en la generación de bifotones por medio de FWM, por lo que los resultados de este capítulo son de utilidad para el Laboratorio.
 
 Como se observa en la Figura \ref{fig:od_graficas} c, gradientes magnéticos muy intensos disminuyen la densidad óptica de la nube. Esto es porque la fuerza de confinamiento que sienten los átomos termina por dominar a la fuerza de scattering, lo que destruye la nube. Un estudio más a detalle de la proporción entre la intensidad de los haces de enfriamiento y el gradiente magnético podría permitir obtener densidades ópticas mayores.
 
