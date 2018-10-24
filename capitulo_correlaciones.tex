@@ -332,9 +332,9 @@ Como $p = \bar n/N$ es la probabilidad de encontrar un fotón en un subsegmento,
 
 Queremos tomar el límite cuando $N\rightarrow\infty$. Usando la fórmula de Stirling y el teorema del binomio para demostrar que:
 \begin{align*}
-&\lim_{N\rightarrow\infty}\left[\cfrac{N!}{(N-n)!N^n}\right] = 0, & &\left(1-\cfrac{\bar n}{N}\right)^{N-n} = \exp(-\bar n),
+&\lim_{N\rightarrow\infty}\left[\cfrac{N!}{(N-n)!N^n}\right] = 1, & &\left(1-\cfrac{\bar n}{N}\right)^{N-n} = \exp(-\bar n),
 \end{align*}
-tenemos que la probabilidad $\mathcal{P}(n)$ cuando $N\rightarrow\infty$ es:
+y tenemos que la probabilidad $\mathcal{P}(n)$ cuando $N\rightarrow\infty$ es:
 \begin{align}
 \mathcal{P}(n) &= \cfrac{\bar n^n}{n!}e^{-\bar n}, & n&=0,1,2,... \ ,
 \end{align}
@@ -351,7 +351,7 @@ Por otro lado, la luz térmica está definida como la radiación electromagnéti
 \begin{equation}
 \nonumber\rho(\omega,T)d\omega = \frac{\hbar\omega^3}{\pi^2c^3}\cfrac{d\omega}{\exp(\hbar\omega/k_BT)-1}.
 \end{equation}
-Cada modo oscilatorio tiene la energía dada por la ecuación \ref{eq_energia_oscilador} y, de acuerdo a la mecánica estadística, la probabilidad de que se encuentren $n$ fotones en el modo correspondiente a $\omega$ es:
+Cada modo oscilatorio tiene la energía dada por la ecuación \ref{eq_energia_oscilador} y, de acuerdo a la mecánica estadística, la probabilidad de que se encuentren $n$ átomos en el modo correspondiente a $\omega$ es:
 \begin{equation}
 \mathcal{P}_{\omega}(n) = \cfrac{\exp(-n\hbar\omega/k_BT)}{\sum_{n=0}^\infty\exp(-n\hbar	\omega/k_BT}). \label{prob_termica}
 \end{equation}
@@ -359,7 +359,7 @@ Para este tipo de luz, es posible demostrar que $\bar n = 1/(\exp(\hbar\omega/k_
 \begin{equation}
 \mathcal{P}_{\omega}(n) = \cfrac{1}{\bar n+1}\left(\cfrac{\bar n}{\bar n + 1}\right)^n,
 \end{equation}
-que es una \textbf{distribución de Bose-Einstein}. Para este tipo de luz,
+que es una \textbf{distribución de Bose-Einstein}. Para fuentes de luz con esta distribución,
 \begin{equation}
 (\Delta n)^2 = \bar n + \bar n^2 \geq \bar n.
 \end{equation}
@@ -374,7 +374,7 @@ Con este análisis, es conveniente definir una clasificación para las estadíst
 
 La interpretación de que la luz térmica sea super-Poissoniana significa que los fotones que se detectan vienen en promedio con una separación temporal menor a la frecuencia media de ocurrencia, lo que sugiere que llegan en ``paquetes" (o \textit{bonches}). A este efecto se le conoce como \textit{bunching}.
 
-Veamos a $\g{2}(\tau = 0)$. Utilizando la regla de conmutación $[\hat a,\ad] = 1$ podemos encontrar de la ecuación \ref{g2_cuantica} que:
+¿Qué pasa cuando se toman medidas de intensidad al mismo tiempo? Para estudiar ests coincidencias, veamos a $\g{2}(\tau = 0)$. Utilizando la regla de conmutación $[\hat a,\ad] = 1$ podemos encontrar de la ecuación \ref{g2_cuantica} que:
 \begin{equation}
 \g{2}(0) = \cfrac{\langle\hat n^2\rangle - \langle\hat n\rangle}{\langle\hat n\rangle} = 1+ \cfrac{\Delta n^2 - \bar n}{\bar n ^2}.
 \end{equation}
@@ -398,10 +398,10 @@ Coherente                    & Aleatorios                 & Poissoniana		       
 \subsection{Sistemas}\label{sistemas_correlaciones}
 La principal parte del trabajo de este capítulo consistió en la elaboración de distintos programas y sistemas que serán de utilidad para el experimento de FWM en átomos fríos. Estos sistemas consistieron en un perfilador de haces Gaussianos, la paquetería de uso del TDC y el sistema de adquisición, y la electrónica de \textit{gating}.
 
-\subsubsection{Perfilómetro de láseres}\label{perfilometro}
-Poder caracterizar y manipular un haz láser de manera adecuada siempre es ventajoso en un laboratorio de óptica pues permite optimizar algunas aplicaciones de dicha luz, como acoplamiento a fibras ópticas.
+\subsubsection{Perfilómetro láser}\label{perfilometro}
+%Poder caracterizar y manipular un haz láser de manera adecuada siempre es ventajoso en un laboratorio de óptica pues permite optimizar algunas aplicaciones de dicha luz, como acoplamiento a fibras ópticas.
 
-Una manera de caracterizar un haz es analizando su perfil de intensidad espacial en un plano perpendicular a su dirección de propagación. Este perfil de intensidad será distinto para cada láser dependiendo de la cavidad que tenga, aunque un perfil Gaussiano es común en láseres utilizados en el laboratorio. La propagación de los láseres del laboratorio puede aproximarse bastante bien asumiendo que tienen una distribución Gaussiana en 2-D, que corresponde a un perfil de intensidad:
+Una manera de caracterizar un haz es analizando su perfil de intensidad espacial en un plano perpendicular a su dirección de propagación. La propagación de los láseres del laboratorio puede aproximarse bastante bien asumiendo que tienen una distribución Gaussiana en 2-D, que corresponde a un perfil de intensidad:
 \begin{equation}
 I(r) = I_0 e^{\frac{-2r^2}{w^2}},
 \end{equation}
@@ -413,15 +413,13 @@ donde $r^2 = x^2 + y^2$ y $w$ representa el diámetro del haz. $w$ es en realida
 \caption{Perfil de intensidad Gaussiano y distintas definiciones de diámetro.}\label{fig:beam_waist}
 \end{figure}
 
-Hay varias definicones de diámetro de haz, y aunque para haces Gaussianos la más común es el diámetro para el cual la intensidad ha caído a $1/e^2$ (13.5 \%) de su intensidad original. Otras definiciones --- útiles en distintos contextos --- son el diámetro $1/e$, \textit{full-width half-maximum} (FWHM) y $D4\sigma$, que corresponden a caídas de intensidad a $1/e$ y $50\%$ para las primeras dos, respectivamente, y 4 veces la desviación estándar para la última. Para haces Gaussianos ideales, los diámetros de $1/e^2$ y $D4\sigma$ coinciden.
+Hay varias definicones de diámetro de haz, y aunque para haces Gaussianos la más común es el diámetro para el cual la intensidad ha caído a $1/e^2$ (13.5 \%) de su intensidad original. Otras definiciones --- que pueden verse en la Figura \ref{fig:beam_waist} --- son el diámetro $1/e$, \textit{full-width half-maximum} (FWHM) y $D4\sigma$, que corresponden a caídas de intensidad a $1/e$ y $50\%$ para las primeras dos, respectivamente, y 4 veces la desviación estándar para la última. Para haces Gaussianos ideales, los diámetros de $1/e^2$ y $D4\sigma$ coinciden. 
 
-Haciendo uso de una cámara digital, es posible tomar una foto del perfil de intensidad espacial en un plano perpendicular y realizar un análisis en la computadora. La cámara disponible para ese propósito en el laboratorio es una cámara Thorlabs DCC1545M, que cuenta con un chip CCD con una resolución de 1280x1024 pixeles cuadrados de 5.4 $\mu$m de lado. El chip CCD tiene una intensidad de saturación de aproximadamente $1\mu$ W/cm$^2$, lo que significa que atenuar la luz láser usando filtros de densidad neutral (ND) es necesario.
+Haciendo uso de una cámara digital, es posible tomar una foto del perfil de intensidad espacial en un plano perpendicular y realizar un análisis en la computadora. La cámara disponible para ese propósito en el Laboratorio es una cámara Thorlabs DCC1545M, que cuenta con un chip CCD con una resolución de 1280x1024 pixeles cuadrados de 5.4 $\mu$m de lado. El chip CCD tiene una intensidad de saturación de aproximadamente 1 $\mu$W/cm$^2$. Los láseres que se usan en el Laboratorio no pueden producir un haz estable con intensidades tan bajas, lo que significa que atenuar la luz láser usando filtros de densidad neutral (ND) es necesario.
 
-Una vez que una foto ha sido tomada, es procesada por la computadora y convertida en una matriz de valores dentro del intervalo $[0,255]$ (pues la cámara toma fotos en 8-bits). Después, el algoritmo realiza un procesamiento sencillo para reducir el ruido en la imagen, ruido que puede provenir tanto de ruido eléctrico en el sensor o por luz de fondo. El algoritmo calcula un valor de offset basado en el valor mediano de los pixeles no iluminados por el haz.
+El programa del perfilómetro se encuentra en \cite{github:p}; sin embargo, una pequeña descripción del algoritmo se presenta aquí. Una vez que una foto ha sido tomada, es procesada por computadora y convertida en una matriz de valores dentro del intervalo $[0,255]$ (pues la cámara usada toma fotos en 8-bits). Después, el algoritmo realiza un procesamiento sencillo para reducir el ruido en la imagen que puede provenir tanto de ruido electrónico o luz de fondo. El algoritmo calcula un valor de offset basado en el valor mediano de los pixeles no iluminados por el haz.
 
-Para el análisis de imágenes, primero hace falta encontrar el centro del haz. Sin embargo, a veces es difícil tener una imagen limpia. A veces la óptica usada está sucia o induce efectos de interferencia por una mala alineación. Por esto, encontrar el centro de un perfil de intensidad a veces no es tan directo como encontrar el pixel de mayor intensidad.
-
-Normalmente, este ruido puede arreglarse si uno usa un iris o limpia bien la óptica, pero a veces es riesgoso cuando el arreglo es grande o complicado. En casos como este, es posible hacer un preprocesamiento de la imagen para intentar limpiar un poco el ruido.
+Para el análisis de imágenes, primero hace falta encontrar el centro del haz. Sin embargo, a veces es difícil tener una imagen limpia. A veces la óptica usada está sucia o induce efectos de interferencia por una mala alineación. Por esto, encontrar el centro de un perfil de intensidad a veces no es tan directo como encontrar el pixel de mayor intensidad. Normalmente, este ruido puede arreglarse si uno usa un iris o limpia bien la óptica, pero a veces es riesgoso cuando el arreglo es grande o complicado. En casos como este, es posible hacer un preprocesamiento de la imagen para intentar limpiar un poco el ruido.
 
 %https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3749244/pdf/1472-6807-11-7.pdf
 %http://www.globalsino.com/EM/page1705.html
@@ -432,7 +430,7 @@ Normalmente, este ruido puede arreglarse si uno usa un iris o limpia bien la óp
 \caption{Diagrama de pre-procesamiento para imágenes usando la transformada rápida de Fourier.}\label{fig:fft_flow}
 \end{figure}
 
-La idea de este pre-procesamiento consiste en remover el ruido en el dominio de frecuencias por medio de la transformada discreta de Fourier en 2D (utilizando el algoritmo de la transformada rápida, o FFT). Para analiar espectros, es conveniente utilizar el hecho de que la transformada de una distribución Gaussiana es también una Gaussiana:
+La idea de este pre-procesamiento (Figura \ref{fig:fft_flow}) consiste en remover el ruido en el dominio de frecuencias por medio de la transformada discreta de Fourier en 2D (utilizando el algoritmo de la transformada rápida, o FFT). Para analizar espectros, es conveniente utilizar el hecho de que la transformada de una distribución Gaussiana es también una Gaussiana:
 \begin{align*}
 \mathcal{F}\{I(x,y)\} &= \hat I (u,v) = \int\int I_0\exp\left(-\cfrac{x^2+y^2}{r_0^2}\right)\exp(-i2\pi (ux+vy))dxdy \\
 &= I_0\int \exp\left(-\cfrac{x^2}{r_0^2}\right)\exp(-i2\pi ux)dx\int\exp\left(-\cfrac{y^2}{r_0^2}\right)\exp(-i2\pi vy)dy \\
@@ -448,7 +446,7 @@ donde $\hat I_0 = I_0\cfrac{\sqrt{\pi}}{r_0}$ es la nueva amplitud de la distrib
 \caption[Foto real de un haz y su espectro de frecuencias al aplicarle FFT.]{Foto real de un haz y su espectro de frecuencias al aplicarle FFT. En vez de ser perfectamente Gaussiano, vemos que hay franjas de interferencia y otros defectos (ver círculos).}\label{fig:fft}
 \end{figure}
 \newpage
-Viendo el espectro de frecuencias, podemos bloquear los puntos que no correspondan al espectro de nuestra Gaussiana. A esto lo llamaremos una \textit{máscara} o filtro. La calidad de la imagen que obtengamos dependerá de la manera en la que se filtran las frecuencias no deseadas\cite{Chen}, en este algoritmo se hace una máscara muy simple. Finalmente, se aplica la transformada inversa de Fourier y se observa que el perfil puede haber mejorado un poco.
+Viendo el espectro de frecuencias, podemos bloquear los puntos que no correspondan al espectro de nuestra Gaussiana. A esto lo llamaremos una \textit{máscara} o filtro. La calidad de la imagen que obtengamos dependerá de la manera en la que se filtran las frecuencias no deseadas\cite{Chen}. Finalmente, se aplica la transformada inversa de Fourier y se observa que el perfil puede haber mejorado.
 
 \begin{figure}[h!]
 \centering
@@ -456,32 +454,32 @@ Viendo el espectro de frecuencias, podemos bloquear los puntos que no correspond
 \caption{Antes y después de aplicar pre-procesamiento a la foto del haz.}\label{fig:fft_beams}
 \end{figure}
 
-Dependiendo de cuánto se bloquee en el espacio de frecuencias cambiará la calidad de la imagen reconstruida: si se bloquea muy poco, no habrá mejora, si se bloquea mucho, se puede perder información del perfil. Esta herramienta es útil cuando se prefiere una estimación medianamente precisa del ancho de un haz con mucho ruido y no se puede arreglar la imagen del con óptica, por lo que se recomienda no abusar de ella para obtener una medición confiable.
+Dependiendo de cuánto se bloquee en el espacio de frecuencias cambiará la calidad de la imagen reconstruida: si se bloquea muy poco, no habrá mejora, si se bloquea mucho, se puede perder información del perfil. Esta herramienta es útil cuando se prefiere una estimación medianamente precisa del ancho de un haz con mucho ruido y no se puede arreglar la imagen del con óptica.
 
 Después del pre-procesamiento, se encuentra el \textit{centro de gravedad de la imagen} con un cálculo del primer momento de la intensidad del haz sobre la superficie del CCD en ambas direcciones\cite{ISO11146-1}:
 \begin{align*}
 \langle x \rangle &= \frac{\int I(x,y)x \ dxdy}{\int I(x,y) \ dxdy} & \langle y \rangle &= \frac{\int I(x,y)y \ dxdy}{\int I(x,y) \ dxdy}.
 \end{align*}
 
-El algoritmo realiza esta integral de manera discreta a lo largo de cada columna y cada fila del arreglo para encontrar el valor de la proyección sobre cada eje. Una vez encontrado el centro del haz, el algoritmo procede a hacer un ajuste una distribución Gaussiana por medio de mínimos cuadrados.
+El algoritmo realiza esta integral de manera discreta a lo largo de cada columna y cada fila del arreglo para encontrar el valor de la proyección sobre cada eje. Una vez encontrado el centro del haz, el algoritmo procede a hacer un ajuste a una distribución Gaussiana por medio de mínimos cuadrados.
 
 %\begin{equation*}
 %G(x) = Ae^{-\frac{(x-\mu)^2}{2\sigma^2}}.
 %\end{equation*}
 %https://www.researchgate.net/publication/252062037_A_Simple_Algorithm_for_Fitting_a_Gaussian_Function_DSP_Tips_and_Tricks
 
-Además de existir como una biblioteca de funciones independiente, se escribió una interfaz gráfica para utilizar el programa como un ejecutable. Actualmente el programa ha pasado a ser utilizado cotidianamente por todos los usuarios del Laboratorio.
+Además de existir como una biblioteca de funciones independiente, se escribió una interfaz gráfica para utilizar el programa como un ejecutable que se encuentra en \cite{github:p}. Actualmente el programa es utilizado cotidianamente por todos los usuarios del Laboratorio.
 
 \subsubsection{Sistema de adquisición de datos}\label{adquisicion}
 
-El sistema de adquisición consiste en la paquetería de programación del TDC y el programa de visualización de cuentas. El TDC es un convertidor de cuentas de tiempo a valores digitales que consta en un circuito integrado de aplicación específica (ASIC) que registra eventos en los 8 canales del módulo y los manda a una matriz de puertas programable (FPGA) que los ordena y comprime.
+El sistema de adquisición consiste en la paquetería de programación del \textit{id800} y el programa de visualización de cuentas, desarrollados en este trabajo para la adquisición de datos en experimentos de bifotones. El \textit{id800} es un convertidor de cuentas de tiempo a valores digitales que consta en un circuito integrado de aplicación específica (ASIC) que registra eventos en los 8 canales del módulo y los manda a una matriz de puertas programable (FPGA) que los ordena y comprime.
 
-El TDC cuenta con un búfer de entrada que trabaja a una velocidad de $200$ millones de eventos por segundo, que resulta en una resolución temporal de 5.5 ns para eventos consecutivos registrados en el mismo canal. Sin embargo, la resolución temporal para eventos registrados en distintos canales es de $ 81$ ps.
+El \textit{id800} cuenta con un búfer de entrada que trabaja a una velocidad de 200 millones de eventos por segundo, que resulta en una resolución temporal de 5.5 ns para eventos consecutivos registrados en el mismo canal. Sin embargo, la resolución temporal para eventos registrados en distintos canales es de 81 ps.
 
-Para realizar la comunicación entre el TDC y el resto de los sistemas del laboratorio, fue necesario escribir una paquetería de uso. El diagrama de flujo para el desarrollo de la paquetería se encuentra en la Figura \ref{fig:flowchart}. Una descripción secuencial de lo que hace el programa es:
+Para realizar la comunicación entre el \textit{id800} y el resto de los sistemas del laboratorio, fue necesario escribir una paquetería de uso. El diagrama de flujo para el desarrollo de la paquetería se encuentra en la Figura \ref{fig:flowchart}. Una descripción secuencial de lo que hace el programa es:
 \begin{enumerate}
-\item Establecer conexión con el TDC.
-\item De manera simultánea, configurar los parámetros del experimento (que incluyen un \textit{búfer de datos} que establece el tamaño de los archivos a crear) y empieza a ``escuchar" para registrar eventos que lleguen al TDC.
+\item Establecer conexión con el \textit{id800}.
+\item De manera simultánea, configurar los parámetros del experimento (que incluyen un \textit{búfer de datos} que establece el tamaño de los archivos a crear) y empieza a ``escuchar" para registrar eventos que lleguen al \textit{id800}.
 \item Visualizar en tiempo real las cuentas procesadas.
 \item Guardar automáticamente los eventos una vez que el búfer de datos se llene.
 \end{enumerate}
@@ -492,22 +490,18 @@ Para realizar la comunicación entre el TDC y el resto de los sistemas del labor
 \caption[Diagrama de flujo del programa de adquisición.]{Diagrama de flujo del programa de adquisición. Ver detalles en la sección \ref{adquisicion}.}\label{fig:flowchart}
 \end{figure}
 
-La paquetería de uso para el módulo etiquetador de cuentas temporales (TDC) \textit{id800} está escrita en Python 3.6. Esta paquetería hace fuerte uso de \code{ctypes} que es una biblioteca de funciones foráneas para Python. Esta paquetería provee compatibilidad de estructuras con C/C++ y el uso de librerías compartidas (DLLs).
+La paquetería de uso para el módulo etiquetador de cuentas temporales (TDC) \textit{id800} está escrita en Python 3.6. Esta paquetería (llamada \code{hunahpy}) hace fuerte uso de \code{ctypes} que es una biblioteca de funciones foráneas para Python. Esta paquetería provee compatibilidad de estructuras con C/C++ y el uso de librerías compartidas (DLLs).
 
-El módulo TDC venía con un software de control proprietario, un software de LabView y ejecutables compilados en C. El desarrollar un software de aquisición propio era importante, pues el lenguaje estánar de programación del Laboratorio de Átomos Fríos es Python 3.6 y estandarizar el código usado por los programas de los experimentos era necesario.
-
-Un manual completo se puede encontrar en el Anexo A y la paquetería está disponible en \cite{github} para uso público.
-
-Se escribió también un programa de visualización de datos en tiempo real con dos funciones específicas de conteo de datos:
+El módulo \textit{id800} venía con un software de control proprietario, un software de LabView y ejecutables compilados en C. Sin embargo, al usar el programa provisto por el fabricante limita el tipo de experimentos que se pueden realizar con el \textit{id800}, pues uno no es libre de ajustar a detalle el funcionamiento del instrumento a las necesidades del laboratorio. Por esto, el desarrollar un software de aquisición propio era importante. Utilizando los archivos de compilado en C, se escribió en Python una paquetería para controlar el \textit{id800} desde la computadora. Un manual completo se puede encontrar en el Anexo A y la paquetería está disponible en \cite{github} para uso público. Se escribió también un programa de visualización de datos en tiempo real con dos funciones específicas de conteo de datos:
 \begin{itemize}
 \item Una función que integra el número de eventos por unidad de tiempo para cada canal.
 \item Un analizador de diferencias temporales: tomando un evento en un canal como un \textit{inicio}, y el siguiente como un \textit{fin}. De estas diferencias se construye un histograma útil para ver las diferencias temporales entre distinas señales (distintos canales). 
 \end{itemize}
 
-El programa de adquisición es parte de un sistema más completo que consiste en los sistemas de contol, de imagen y de adquisición de datos para experimentos en átomos fríos.
+El programa de adquisición es parte de un sistema más completo que consiste en los sistemas de contol, de imagen y de adquisición de datos.
 
-\subsubsection{Circuito de conmutación}\label{gating}
-Los APDs utilizados no cuentan con un canal de entrada digital que permita prenderlos o apagarlos usando un pulso electrónico. Por esto, se diseñó un pequeño instrumento que funcionara como compuerta digital para los eventos que registra el TDC.
+\subsubsection{Circuito AND}\label{gating}
+Los APDs utilizados no cuentan con un canal de entrada digital que permita prenderlos o apagarlos usando un pulso electrónico. Por esto, se diseñó un pequeño instrumento que funcionara como compuerta digital para los eventos que registra el TDC. Esto permite una sincronización con el sistema de control y minimiza la cantidad de datos basura generados por las cuentas obscuras de los APDs.
 %\begin{figure}[h!]
 %\centering
 %\includegraphics[width=0.6\linewidth]{gating_board_wht.png}
@@ -521,7 +515,7 @@ Este circuito de conmutación es básicamente un circuito AND adecuado a las esp
 \includegraphics[width=\linewidth]{gating_plot.png}
 \caption[Ejemplo de prueba para el circuito de gating.]{Ejemplo de prueba para el circuito de gating. a) El pulso de entrada o la señal que queremos usar. b) El pulso de control. c) El pulso de salida después de pasar por el circuito.}\label{fig:gating_plot}
 \end{figure}
-Se realizaron pruebas para verificar que el circuito funcionara adecuadamente. Con un generador de funciones, se enviaron dos trenes de pulsos TTL de distintas frecuencias: una frecuencia baja de control y una más alta como input. La Figura \ref{fig:gating_plot} muestra que el circuito de gating funciona adecuadamente.
+Se realizaron pruebas para verificar que el circuito funcionara adecuadamente. Con un generador de funciones, se enviaron dos trenes de pulsos TTL de distintas frecuencias: una frecuencia baja de control y una más alta como input. El pulso de menor frecuencia se usó para simular el pulso que emitirá el sistema de control, mientras que el tren de pulsos de alta frecuencia representó las señales emitidas por los APDs. Como se observa en la Figura \ref{fig:gating_plot}, la señal de salida está regulada por el pulso de control, con lo que nos aseguramos que el \textit{id800} no recibirá datos fuera de esta ventana experimental.
 
 \subsection{Configuración experimental}\label{experimento_correlaciones}
 Como preparación para los experimentos de FWM en átomos fríos, se diseñó un experimento sencillo para medir la función de correlación de segundo orden $\g{2}$ para luz láser.
@@ -531,7 +525,7 @@ Se amplió el montaje de la óptica de adquisición de FWM de la Figura \ref{fig
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\linewidth]{optica_adq_780.png}
-\caption[Óptica de adquisición para el haz de 780 nm.]{Óptica de adquisición para el haz de 780 nm. La sección resaltada es la ampliación del arreglo óptico de la Figura \ref{fig:optica_fwm}. Se consiguió una intensidad baja usando filtros ND y un divisor no polarizante BS.}\label{fig:optica_780}
+\caption[Óptica de adquisición para el haz de 780 nm.]{Óptica de adquisición para el haz de 780 nm. La sección resaltada es la ampliación del arreglo óptico de la Figura \ref{fig:optica_fwm}. Se consiguió una potencia de alrededor de 3 pW usando filtros ND y un divisor no polarizante BS, necesaria para no saturar a los APDs.}\label{fig:optica_780}
 \end{figure}
 
 En la sección \ref{teoria_correlaciones} vimos que en el tratamiento cuántico podemos considerar a un haz de luz como un haz de fotones individuales. El \textit{flujo de fotones} $\Phi$ se define como el número de fotones promedio que pasa por una región por unidad de tiempo. Si consideramos un haz monocromático y con intensidad constante $I$, entonces el flujo se da como:
@@ -545,9 +539,9 @@ Cada APD tiene un valor de \textit{eficiencia cuántica} $\eta$, que es la propo
 \mathcal{R} = \eta\Phi.
 \end{equation}
 
-Existe un valor máximo de $\mathcal{R}$ para cada APD que surge de que el detector necesita ``descansar" después de registrar un evento. Para el \textit{id120}, este llamado \textit{tiempo muerto} es de $\sim$1 $\mu$s. Esto nos dice que el valor máximo de $\mathcal{R}$ para registrar eventos adecuadamente es aproximadamente $\sim 10^{6} \ \text{fotones s}^{-1}$. Con este valor máximo de $\mathcal{R} = 10^6$ y $\lambda = 780$ nm (sabiendo que $\omega = 2\pi c/\lambda$) encontramos el valor máximo de la potencia del haz láser que podemos usar $P_{max} \sim 3\times 10^{-12}$ W o tres picowatts. Esto lo conseguimos usando un arreglo de filtros de densidad neutral (ND) para atenuar el haz que usamos; estos filtros reducen la potencia de un haz en $10^{\text{-OD}}$, donde OD es la densidad óptica total del arreglo de filtros.
+Existe un valor máximo de $\mathcal{R}$ para cada APD que surge de que el detector necesita ``descansar" después de registrar un evento. Al detectar un fotón, se genera una avalancha para multiplicar la señal. Sin embargo, por los altos voltajes de polarización necesarios (de hasta cientos de volts), se aplica un circuito de atenuamiento que reduce el voltaje del APD por un tiempo corto en donde no se registran nuevos eventos\cite{Cova:96}. C. Para el \textit{id120}, este llamado \textit{tiempo muerto} es de $\sim$1 $\mu$s. Con esto, la tasa máxima $\mathcal{R}$ de eventos que podemos detectar sin pérdidas significativas es $\sim 10^{6} \ \text{fotones s}^{-1}$. Con este valor máximo de $\mathcal{R} = 10^6$ y $\lambda = 780$ nm (sabiendo que $\omega = 2\pi c/\lambda$) encontramos el valor máximo de la potencia del haz láser que podemos usar $P_{max} \sim 3\times 10^{-12}$ W. Esto lo conseguimos usando un arreglo de filtros de densidad neutral (ND) para atenuar la potencia original del haz láser; estos filtros reducen la potencia de un haz en $10^{\text{-OD}}$, donde OD es la densidad óptica total del arreglo de filtros.
 
-Además de probar la calibración y funcionalidad de los APDs, se realizaron pruebas para medir la tasa de cuentas obscuras para cada uno. Para estas medidas se bloqueó el haz láser y se registraron los eventos por media hora usando el programa de adquisición de datos.
+Se realizaron pruebas para medir la tasa de cuentas obscuras para los dos APDs que se usaron en este experimento. Estas medidas se tomaron sin luz láser y se registraron los eventos por media hora usando el programa de adquisición de datos.
 
 \begin{figure}[]
 \centering
@@ -555,23 +549,23 @@ Además de probar la calibración y funcionalidad de los APDs, se realizaron pru
 \caption[Histograma de cuentas obscuras para los APDs]{Histograma de cuentas obscuras para el APD1 (azul) y el APD2 (rojo). El tiempo de integración para cada canasta fue de 150 ms.}\label{fig:dark_counts}
 \end{figure}
 
-La temperatura de operación de los APDs fue de -40 $^{\circ}$C y el voltaje de polarización de 200 V para el APD1, y 191 V para el APD2. La tasa de cuentas obscuras que se obtuvo fue de:
+La temperatura de operación de los APDs fue de -40 $^{\circ}$C. Se eligió esta temperatura porque es la temperatura a la cual el fabricante reporta para la calibración de los instrumentos. El voltaje de polarización fue de 200 V para el APD1 y 191 V para el APD2.  La tasa de cuentas obscuras que se obtuvo fue de:
 \begin{itemize}
 \item APD1: $\mu = 180.67\pm 33.55$ cuentas s$^{-1}$
 \item APD2: $\mu = 155.55\pm 31.66$ cuentas s$^{-1}$
 \end{itemize}
 
-La estadística de estas cuentas obscuras sigue una estadística Poissoniana \cite{darkcountstats}, y concuerda con el valor máximo de 200 Hz reportado por el fabricante.
+La estadística de estas cuentas obscuras sigue una estadística Poissoniana \cite{darkcountstats}, y las tasas de cuentas obscuras registradas concuerdan con el valor máximo de 200 Hz reportado por el fabricante. La Figura \ref{fig:dark_counts} presenta un histograma de las cuentas obscuras de los dos APDs y su respectivo ajuste a una distribución Poissoniana. El tamaño de cada canasta en el histograma fue de 150 ms.
 
 Después de probar la funcionalidad del programa de adquisición, se realizaron medidas de intensidad para luz láser de 780 nm. Para un haz estable de 100 $\mu$W de potencia, se usó un arreglo de filtros ND con densidad óptica total de 7.5 para obtener 3 pW a la entrada del divisor de haz 50/50. Cada brazo del interferómetro se acopló a una fibra mono-modal conectada a un APD. Para diferenciar cada brazo del interferómetro, a uno se le asignó el subíndice $T$ por ser el transmitido por el divisor de haz, mientras el otro tendrá $R$ por ser el reflejado.
 
-Se ajustó la distancia de los interferómetros para que fue tuvieran la misma longitud para medir $\g{2}(\tau = 0)$. Así, el tiempo inicial de integración de cada brazo fue $t_{T,0} = t_{R,0} = 0$.
+Se ajustó la distancia de los dos brazos del interferómetro para que fue tuvieran la misma longitud para medir $\g{2}(\tau)$ en coincidencia ($\tau=0$). Así, el tiempo inicial de integración de cada brazo fue $t_{T,0} = t_{R,0} = 0$. Esto se hizo con una incertidumbre de un par de centímetros, que  coresponde a una incertidumbre de apenas una fracción de nanosegundo. Como la escala temporal usada en este experimento fue de varias decenas de nanosegundos, por lo que para fines prácticos la diferencia temporal en la detección de cada brazo fue cero.
 
 Al utilizar los APDs no se mide directamente la intensidad de los láseres, así que es necesario relacionarlo a cantidades que podamos medir en el laboratorio. En la práctica, la intensidad de un haz no es completamente constante y habrán fluctuaciones que se verán reflejadas en la estadística que hagamos al calcular $\g{2}(0)$. Es por esto que es adecuado considerar las probabilidades de detección para un tiempo de integración $\Delta t$\cite{Beck}:
 \begin{equation}
 \g{2}(\tau = 0) = \cfrac{P_{TR}(\Delta t)}{P_T(\Delta t)P_R(\Delta t)}, \label{g2 exp}
 \end{equation}
-donde $P_{TR}$ es la probabilidad conjunta de medir una detección tanto en $T$ como en $R$ en el mismo intervalo $\Delta t$. Estas probabilidades están dadas por:
+donde $P_{TR}$ es la probabilidad conjunta de medir una detección tanto en el APD $T$ como en el APD $R$ en el mismo intervalo $\Delta t$. Estas probabilidades están dadas por:
 \begin{align*}
 P_T(\Delta t) &= \mathcal{R}_T\Delta t,  & P_{TR}(\Delta t) &= \mathcal{R}_{TR}\Delta t & P_R(\Delta t) &= \mathcal{R}_R\Delta t, 
 \end{align*} 
@@ -584,7 +578,7 @@ T = \ &\mid 1 \mid 0 \mid 2 \mid 1\mid 0\mid 0\mid 1\mid 1 \mid 0\mid \ldots \mi
 &\xleftrightarrow[\Delta t]{}\\
 R = \ &\mid 0 \mid 0 \mid 1 \mid 1\mid 1\mid 0\mid 2\mid 0 \mid 0\mid \ldots \mid 1 \mid\\
 \end{align*}
-donde $T_i$ representa el número de cuentas en $[t_i,t_{i+1}] = [i\Delta t, (i+1)\Delta t]$, por ejemplo.
+donde $T_i$ y $R_i$ representan el número de cuentas en $[t_i,t_{i+1}] = [i\Delta t, (i+1)\Delta t]$, por ejemplo.
 
 Las tasas de detección promedio serán:
 \begin{align*}
@@ -613,12 +607,12 @@ Podemos generalizar este retraso para $k$ desplazamientos y denotar a $\tau_k = 
 \begin{equation}
 \g{2}(\tau_k) = \cfrac{\sum_i T_{i+k} R_i}{\sum_i T_i \sum_i R_i}\left(\cfrac{\Delta T_k}{\Delta t}\right), \label{g2_final}
 \end{equation}
-donde cada índice $i$ corre dentro de su respectivo rango. Esto nos permite calcular $\g{2}(\tau)$ para múltiplos de $\Delta t$, aunque a medida que $k$ aumente, la región de traslape de los histogramas disminuirá y la incertidumbre de $\g{2}(\tau_k)$ aumentará a la vez.
+donde cada índice $i$ corre dentro de su respectivo rango. Esto nos permite calcular $\g{2}(\tau)$ para múltiplos de $\Delta t$, aunque a medida que $k$ aumente, la región de traslape de los histogramas disminuirá. Como cada traslape reduce el número de datos que podemos analizar, la precisión del cálculo de $\g{2}(\tau_k)$ también disminuirá.
 \subsection{Resultados}\label{resultados_correlaciones}
 
-El objetivo principal de este capítulo fue el de realizar mediciones con el interferómetro para luz láser y así verificar el buen funcionamiento del sistema de adquisición de datos. Dentro del archivo de configuración \code{config.py} del programa de adquisición se fijó un tamaño de búfer de 1,000,000 de eventos y se guardaron 70 millones de cuentas para los dos APDs $T$ y $R$.
+El objetivo principal de este capítulo fue el de realizar mediciones con el interferómetro para luz láser y así verificar el buen funcionamiento del sistema de adquisición de datos. Con este sistema, se fijó un tamaño de búfer de 1,000,000 de eventos para el \textit{id800} y se guardaron 70 millones de cuentas para los dos APDs $T$ y $R$ por 40 minutos.
 
-Se realizó el análisis de $\g{2}$ para cada canal y se usó un tiempo de canasta de $\Delta t =$ 2.5 ns para los histogramas de cuentas. El tiempo total de detección $\Delta T$ se calculó a partir de la primera y la última etiqueta de tiempo registrada para cada búfer. Para cada valor de $\tau_k$ desde 2.5 ns hasta 125 ns se realizó un análisis estadístico sobre todos los datos obtenidos para calcular $\g{2}(\tau_k)$ de acuerdo a la ecuación \ref{g2_final}.
+Se realizó el análisis de $\g{2}$ para cada canal y se determinó un tiempo de integración de $\Delta t =$ 2.5 ns (definido en la ecuación \ref{g2 exp}). El tiempo total de detección $\Delta T$ se calculó a partir de la primera y la última etiqueta de tiempo registrada por cada millón de eventos. Para cada valor de $\tau_k$ desde 2.5 ns hasta 125 ns se realizó un análisis estadístico sobre todos los datos obtenidos para calcular $\g{2}(\tau_k)$ de acuerdo a la ecuación \ref{g2_final}.
 
 \begin{figure}[]
 \centering
@@ -626,4 +620,4 @@ Se realizó el análisis de $\g{2}$ para cada canal y se usó un tiempo de canas
 \caption{$\g{2}(\tau)$ para un haz de luz coherente.}\label{fig:g2_result}
 \end{figure}
 
-Se reporta un valor de $\g{2}(0) = 1.0006\pm0.0012$ y un promedio de $\overline{\g{2}} = 1.0007\pm0.0014$, que está en buena concordancia con el valor obtenido de la teoría. Este resultado responde bien al propósito de este trabajo: el desarrollo de un esquema experimental en anticipación a experimentos de FWM en átomos fríos. 
+La Figura \ref{fig:g2_result} presenta los resultados de estas mediciones. Se reporta un valor en coincidencia de $\g{2}(0) = 1.0006\pm0.0012$. Como la teoría predice un que $\g{2}(\tau) = 1$ para todo $\tau$, se reporta un promedio de $\overline{\g{2}} = 1.0007\pm0.0014$, que está en buena concordancia con lo predicho. Las incertidumbres presentadas son exclusivamente estadísticas y no se consideraron otras posibles fuentes de error. Este resultado responde bien al propósito de este trabajo: el desarrollo de un esquema experimental en anticipación a experimentos de FWM en átomos fríos. 
