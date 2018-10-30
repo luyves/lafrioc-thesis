@@ -4,7 +4,7 @@
 %
 %El experimento principal del Laboratorio es el de generación de pares de fotones (o \textit{bifotones}) por medio de un proceso no lineal llamado \textit{mezclado de cuatro ondas} --- o FWM por sus siglas en inglés. En el Laboratorio, este proceso de FWM es realizado actualmente en una muestra de átomos de rubidio calientes, y próximamente se realizará también en una muestra de átomos fríos.
 
-\subsection{Motivación}\label{motivacion_correlaciones}
+%\subsection{Motivación}\label{motivacion_correlaciones}
 
 %La técnica más estándar para generar bifotones es la de procesos de conversión espontánea paramétrica descendiente\cite{burnham} (o SPDC por sus siglas en inglés) en cristales no lineales, como BBO. Sin embargo, el tiempo de coherencia de los fotones generados en SPDC es muy corto (del orden de ps) gracias a que poseen un amplio ancho de banda. Esto impide ciertos experimentos interesantes; incluso sistemas de detección fotónica con tecnología de punta tienen una resolución temporal de al menos decenas de ps\cite{Lukens:15}. Además, la corta longitud de coherencia los hacen poco viables para interacciones átomo--fotón, haciéndolos poco deseables para estudios de información cuántica\cite{PhysRevLett.88.243602}.
 %
@@ -21,53 +21,6 @@ El primer propósito del estudio de fotones individuales es estudiar las correla
 %Ahora, si uno considera cada fotón como un campo eléctrico propio, es de interés ver cuáles son las correlaciones que se pueden medir entre ellos. En la sección \ref{teoria_correlaciones}, se presentarán los conceptos sobre lo que se entiende por \textit{correlaciones} en nuestro sistema, así como una breve descripción matemática acerca de cómo calcularlas.
 
 %Finalmente, la tasa de generación de fotones es muy baja, aún usando técnicas comunes en la academia\cite{Cere:1}. Por ello, es importante tratar de optimizar aquellos parámetros experimentales que mejoren
-
-\subsubsection{Sistema óptico de captura}
-%Al pensar en un sistema de adquisición de datos se deben también tener en cuenta los haces láser usados y los instrumentos de detección, así como la óptica que ayudará a guiar a los fotones a los detectores. Es así que surge una motivación natural de caracterizar estos sistemas como parte de un trabajo más completo.
-
-El arreglo óptico se divide en la parte de bombeo (la luz que llega a la nube de átomos) y la parte de adquisición (la luz generada por el FWM, que será analizada). Esta sección se enfoca en la óptica de adquisición.
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.95\linewidth]{optica_adq_fwm1.png}
-\caption[Óptica de adquisición para FWM.]{Óptica de adquisición para FWM. El filtro IF1 deja pasar luz de 762 nm y el IF2 deja pasar luz de 795 nm. Un color más tenue indica que la intensidad de los haces generados es muy baja. Esta luz se enviará al TDC para analizar correlaciones.}\label{fig:optica_fwm}
-\end{figure}
-
-%\begin{figure}[h!]
-%\centering
-%\includegraphics[width=0.6\linewidth]{diamante.png}
-%\caption{Esquema energético de diamante para generación de fotones con FWM en átomos fríos de $^{87}$Rb.}\label{fig:diamante}
-%\end{figure}
-
-%La Figura \ref{fig:diamante} muestra la configuración atómica para la generación de fotones correlacionados por FWM en un gas de $^{87}$Rb. Aunque una descripción a profundidad de FWM en átomos fríos no es parte de este trabajo, de manera conceptual uno puede ver que usando dos láseres potentes de bombeo de 780nm y 776nm, se pueden generar dos fotones correlacionados de 762nm y 795nm si las condiciones de empatamiento de fase se cumplen\cite{srivathsan}. 
-En este montaje experimental, los haces de bombeo son colineales y los fotones generados también lo serán. El montaje de la óptica de adquisición consiste principalmente en un arreglo de filtros de interferencia SEMROCK LL01-780 y LL01-808 para filtrar la luz que se generará en el FWM de los haces de atrapamiento que son mucho más potentes. A cada ángulo, estos filtros de interferencia transmiten una longitud de onda central y reflejan el resto. Después de filtrar los haces de bombeo, la luz generada fue acoplada a dos fotodiodos de avalancha (APDs) para la detección de fotones individuales por medio de fibras monomodo.
-
-Aún con técnicas estándar hoy en día, la tasa de generación de bifotones en experimentos de este tipo es baja\cite{Cere:1}; es por esto que es importante obtener la mayor eficiencia posible a la hora de acoplar las fibras ópticas. El problema del acoplamiento consiste en la alineación del haz incidente y de la fibra para maximizar la potencia transferida. 
-%En condiciones ideales, uno podría conseguir un porcentaje de acoplamiento a la fibra de casi 100\%\cite{Ladany:93}, pero hacerlo es laborioso y necesita de múltiples elementos ópticos. 
-El acoplamiento de luz láser a una fibra monomodo es un problema de empatamiento de modos\cite{Newport}. Para un láser con distribución Gaussiana, el diámetro $1/e^2$ $D$ incidente sobre una lente de distancia focal $f$ necesario para producir una mancha focalizada de diámetro $\omega$ es:
-\begin{equation}
-\label{acoplamiento}
-f = D\frac{\pi \omega}{4\lambda},
-\end{equation}
-
-donde $\lambda$ es la longitud de onda del láser. La eficiencia del acoplamiento dependerá de qué tanto podemos empatar el tamaño de la mancha focalizada $\omega$ con el diámetro de la fibra óptica. De la ecuación \ref{acoplamiento}, vemos que el diámetro del haz es un parámetro controlable importante para conseguir un buen acoplamiento. Por esto, se decidió escribir un sencillo programa de computadora para analizar perfiles de haces láser utilizando fotos tomadas con un chip CCD. Este programa se usó para controlar el tamaño de los haces que serán acoplados a las fibras que van a los APDs. La descripción del perfilómetro de láseres se encuentra en la sección \ref{perfilometro}.
-
-%\subsubsection{Fotodiodos de avalancha y etiquetador de cuentas}
-Como se muestra en la Figura \ref{fig:optica_fwm}, para la detección y procesamiento de señales se utilizan dos instrumentos: algunos APD de silicón (\textit{id120}) y un etiquetador de cuentas temporales (\textit{id800}) de IDQuantique.
-
-Un APD es un un diodo p-n con una ganancia alta. Estos instrumentos tienen un mecanismo interno de amplificación, que genera señales eléctricas con alta tasa señal-ruido como respuesta a detecciones de un sólo fotón\cite{Cork}. Las cuentas detectadas por un APD pueden tener distintas fuentes:
-\begin{itemize}
-\item Fotones individuales, que pueden ser registrados correctamente o como \textit{afterpulses}.
-\item \textit{Cuentas obscuras}, señales generadas por el mismo APD sin luz externa incidente. La tasa de cuentas obscuras (\textit{dark count rate}) es dependiente de la temperatura del detector y el voltaje de polarización (bias). El fabricante del \textit{id120} indica un valor de cuentas obscuras de $<200$ Hz para un voltaje de polarización máximo.
-\end{itemize}
-
-Los APD \textit{id120} cuentan con una zona de detección de 500 $\mu$m de diámetro y una eficiencia cuántica de 80\% para $800$ nm. Es necesario optimizar los valores del voltaje de bias aplicado para minimizar el \textit{afterpulsing} y la tasa de cuentas obscuras. Una descripción general más detallada de el funcionamiento y optimización de APDs puede encontrarse en \cite{Michalet}.
-
-Una desventaja de la elección de \textit{id120} es que no tienen un trigger interno capaz de ser activado de manera externa, por lo que fue necesario diseñar un circuito de conmutación (\textit{gating}) utilizando búferes de tres estados. Este circuito se construyó para este trabajo y una descripción se encuentra en la sección \ref{gating}.
-
-Finalmente, el \textit{id800} es un módulo etiquetador de cuentas temporales (time-to-digital converter, o TDC por sus siglas en inglés). Cuenta con 8 canales de entrada BNC con una resolución temporal de 81ps para coincidencias de eventos en canales distintos. El \textit{id800} cuenta con un software de LabView para el procesamiento de cuentas, pero la funcionalidad que ofrecía no era adecuada para experimentos de FWM. Por ello, se optó por escribir una biblioteca completa para Python 3.6 para permitir la programación del módulo. Con esta biblioteca, se escribió un programa para procesar y visualizar en tiempo real las cuentas que el TDC reciba.
-
-Todo el software, la electrónica y las pruebas correspondientes se encuentran en la sección \ref{sistemas_correlaciones}.
 
 \subsection{Teoría}\label{teoria_correlaciones}
 En esta sección se presentará una descripción de los elementos teóricos utilizados en este capítulo. Partiendo de una descripción clásica de la luz, se introducirán los conceptos de \textit{coherencia} de primer y segundo grado, que nos permitirán clasificar luz de distintas fuentes de acuerdo a la estadística que siguen. Finalmente, se realizará una cuantización del campo. Este desarrollo sigue principalmente la exposición de Kenyon\cite{Kenyon}, Loudon\cite{Loudon} y Fox\cite{Fox}.
@@ -396,7 +349,43 @@ Coherente                    & Aleatorios                 & Poissoniana		       
 \end{table}
 
 \subsection{Sistemas}\label{sistemas_correlaciones}
-La principal parte del trabajo de este capítulo consistió en la elaboración de distintos programas y sistemas que serán de utilidad para el experimento de FWM en átomos fríos. Estos sistemas consistieron en un perfilador de haces Gaussianos, la paquetería de uso del TDC y el sistema de adquisición, y la electrónica de \textit{gating}.
+La principal parte del trabajo de este capítulo consistió en la elaboración de distintos programas y sistemas que serán de utilidad para el experimento de FWM en átomos fríos. Esto consistió en el sistema óptico de captura, en un perfilador de haces Gaussianos, la paquetería del sistema de adquisición, y la electrónica de \textit{gating}.
+
+\subsubsection{Sistema óptico de captura}
+
+El arreglo óptico se divide en la parte de bombeo (la luz que llega a la nube de átomos) y la parte de adquisición (la luz generada por el FWM que será capturada). Esta sección se enfoca en el sistema óptico de adquisición.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\linewidth]{optica_adq_fwm1.png}
+\caption[Óptica de adquisición para FWM.]{Óptica de adquisición para FWM. El filtro IF1 deja pasar luz de 762 nm y el IF2 deja pasar luz de 795 nm. Un color más tenue indica que la intensidad de los haces generados es muy baja. Esta luz se enviará al TDC para analizar correlaciones.}\label{fig:optica_fwm}
+\end{figure}
+
+En este montaje experimental, los haces de bombeo son colineales y los fotones generados también lo serán. El montaje de la óptica de adquisición consiste principalmente en un arreglo de filtros de interferencia SEMROCK LL01-780 y LL01-808 para filtrar la luz que se generará en el FWM de los haces de atrapamiento que son mucho más potentes. A cada ángulo, estos filtros de interferencia transmiten una longitud de onda central y reflejan el resto. Después de filtrar los haces de bombeo, la luz generada fue acoplada a dos fotodiodos de avalancha (APDs) para la detección de fotones individuales por medio de fibras monomodo.
+
+Aún con técnicas estándar hoy en día, la tasa de generación de bifotones en experimentos de este tipo es baja\cite{Cere:1}; es por esto que es importante obtener la mayor eficiencia posible a la hora de acoplar las fibras ópticas. El problema del acoplamiento consiste en la alineación del haz incidente y de la fibra para maximizar la potencia transferida. 
+%En condiciones ideales, uno podría conseguir un porcentaje de acoplamiento a la fibra de casi 100\%\cite{Ladany:93}, pero hacerlo es laborioso y necesita de múltiples elementos ópticos. 
+El acoplamiento de luz láser a una fibra monomodo es un problema de empatamiento de modos\cite{Newport}. Para un láser con distribución Gaussiana, el diámetro $1/e^2$ $D$ incidente sobre una lente de distancia focal $f$ necesario para producir una mancha focalizada de diámetro $\omega$ es:
+\begin{equation}
+\label{acoplamiento}
+f = D\frac{\pi \omega}{4\lambda},
+\end{equation}
+
+donde $\lambda$ es la longitud de onda del láser. La eficiencia del acoplamiento dependerá de qué tanto podemos empatar el tamaño de la mancha focalizada $\omega$ con el diámetro de la fibra óptica. De la ecuación \ref{acoplamiento}, vemos que el diámetro del haz es un parámetro controlable importante para conseguir un buen acoplamiento. Por esto, se decidió escribir un sencillo programa de computadora para analizar perfiles de haces láser utilizando fotos tomadas con un chip CCD. Este programa se usó para controlar el tamaño de los haces que serán acoplados a las fibras que van a los APDs. La descripción del perfilómetro de láseres se encuentra en la sección \ref{perfilometro}.
+
+Como se muestra en la Figura \ref{fig:optica_fwm}, para la detección y procesamiento de señales se utilizan dos instrumentos: algunos APD de silicón (\textit{id120}) y un etiquetador de cuentas temporales (\textit{id800}) de IDQuantique.
+
+Un APD es un un diodo p-n con una ganancia alta. Estos instrumentos tienen un mecanismo interno de amplificación, que genera señales eléctricas con alta tasa señal-ruido como respuesta a detecciones de un sólo fotón\cite{Cork}. Las cuentas detectadas por un APD pueden tener distintas fuentes:
+\begin{itemize}
+\item Fotones individuales, que pueden ser registrados correctamente o como \textit{afterpulses}.
+\item \textit{Cuentas obscuras}, señales generadas por el mismo APD sin luz externa incidente. La tasa de cuentas obscuras (\textit{dark count rate}) es dependiente de la temperatura del detector y el voltaje de polarización (bias). El fabricante del \textit{id120} indica un valor de cuentas obscuras de $<200$ Hz para un voltaje de polarización máximo.
+\end{itemize}
+
+Los APD \textit{id120} cuentan con una zona de detección de 500 $\mu$m de diámetro y una eficiencia cuántica de 80\% para $800$ nm. Es necesario optimizar los valores del voltaje de bias aplicado para minimizar el \textit{afterpulsing} y la tasa de cuentas obscuras. Una descripción general más detallada de el funcionamiento y optimización de APDs puede encontrarse en \cite{Michalet}.
+
+Una desventaja de la elección de \textit{id120} es que no tienen un trigger interno capaz de ser activado de manera externa, por lo que fue necesario diseñar un circuito de conmutación (\textit{gating}) utilizando búferes de tres estados. Este circuito se construyó para este trabajo y una descripción se encuentra en la sección \ref{gating}.
+
+Finalmente, el \textit{id800} es un módulo etiquetador de cuentas temporales (time-to-digital converter, o TDC por sus siglas en inglés). Cuenta con 8 canales de entrada BNC con una resolución temporal de 81ps para coincidencias de eventos en canales distintos. El \textit{id800} cuenta con un software de LabView para el procesamiento de cuentas, pero la funcionalidad que ofrecía no era adecuada para experimentos de FWM. Por ello, se optó por escribir una biblioteca completa para Python 3.6 para permitir la programación del módulo. Con esta biblioteca, se escribió un programa para procesar y visualizar en tiempo real las cuentas que el TDC reciba.
 
 \subsubsection{Perfilómetro láser}\label{perfilometro}
 %Poder caracterizar y manipular un haz láser de manera adecuada siempre es ventajoso en un laboratorio de óptica pues permite optimizar algunas aplicaciones de dicha luz, como acoplamiento a fibras ópticas.
@@ -468,7 +457,7 @@ El algoritmo realiza esta integral de manera discreta a lo largo de cada columna
 %\end{equation*}
 %https://www.researchgate.net/publication/252062037_A_Simple_Algorithm_for_Fitting_a_Gaussian_Function_DSP_Tips_and_Tricks
 
-Además de existir como una biblioteca de funciones independiente, se escribió una interfaz gráfica para utilizar el programa como un ejecutable que se encuentra en \cite{github:p}. Actualmente el programa es utilizado cotidianamente por todos los usuarios del Laboratorio.
+Además de existir como una biblioteca de funciones independiente, se escribió una interfaz gráfica para utilizar el programa como un ejecutable que se encuentra en \cite{github:p}. Actualmente el programa es utilizado por todos los usuarios del Laboratorio.
 
 \subsubsection{Sistema de adquisición de datos}\label{adquisicion}
 
@@ -508,7 +497,7 @@ Los APDs utilizados no cuentan con un canal de entrada digital que permita prend
 %\caption{Circuito de gating.}\label{fig:gating_board}
 %\end{figure}
 
-Este circuito de conmutación es básicamente un circuito AND adecuado a las especificaciones de voltaje de salida de los APDs (TTL de bajo voltaje o LVTTL), de entrada del TDC (TTL o LVTTL) y los pulsos del sistema de control (TTL). Se decidió usar un búfer de tres estados, que permite 3 salidas: $1$ V, $0$ V, y un estado de alta impedancia (donde no pasa corriente). El búfer tiene dos canales de entrada (input y control) y uno de salida (output); cuando no hay señal de control, el estado del búfer es de alta impedancia. Esto fue para evitar la posibilidad de que el TDC interpretara señales de salida de bajo voltaje (idealmente $0$ V) como falsos eventos. El instrumento permite hasta 8 señales de salida independientes, con sus respectivos canales de entrada y control.
+Esto es básicamente un circuito AND adecuado a las especificaciones de voltaje de salida de los APDs (TTL de bajo voltaje o LVTTL), de entrada del TDC (TTL o LVTTL) y los pulsos del sistema de control (TTL). Se decidió usar un búfer de tres estados, que permite 3 salidas: $1$ V, $0$ V, y un estado de alta impedancia (donde no pasa corriente). El búfer tiene dos canales de entrada (input y control) y uno de salida (output); cuando no hay señal de control, el estado del búfer es de alta impedancia. Esto fue para evitar la posibilidad de que el TDC interpretara señales de salida de bajo voltaje (idealmente $0$ V) como falsos eventos. El instrumento permite hasta 8 señales de salida independientes, con sus respectivos canales de entrada y control.
 
 \begin{figure}[h!]
 \centering
