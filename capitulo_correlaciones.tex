@@ -190,7 +190,7 @@ El experimento de interferencia de intensidades que realizaron Hanbury Brown y T
 \g{2}(\tau) = \cfrac{\langle\mathcal{E}^*(t)\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\mathcal{E}(t)\rangle}{\langle\mathcal{E}^*(t)\mathcal{E}(t)\rangle \langle\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\rangle} = \cfrac{\langle I(t)I(t+\tau)\rangle}{\langle I(t)\rangle\langle I(t+\tau)\rangle}.
 \end{equation}
 
-De acuerdo con esta descripción, es posible probar con la desigualdad de \textit{Cauchy-Schwartz} que:
+De acuerdo a esta descripción\cite{Loudon}, es posible probar con la desigualdad de \textit{Cauchy-Schwartz} que:
 \begin{align}
 1 &\leq \g{2}(0) \label{g0_clasica}\\
 \g{2}(\tau) &\leq \g{2}(0). \label{g0_gt_clasica}
@@ -198,7 +198,7 @@ De acuerdo con esta descripción, es posible probar con la desigualdad de \texti
 
 Para una fuente clásica de luz láser como la descrita por la ecuación \ref{eq19}, es trivial probar que:
 \begin{equation}
-\g{2}(\tau) = 1
+\g{2}(\tau) = 1 \label{g2_laser_teoria}
 \end{equation}
 para todo $\tau$. La luz láser también es coherente temporalmente en intensidad.
 
@@ -273,7 +273,7 @@ Con esto, vale la pena volver a definir la función de correlación de segundo o
 \g{2}(\tau) = \cfrac{\langle \ad(t)\ad(t+\tau) \hat a(t+\tau)\hat a(t)\rangle}{\langle\ad(t)\hat a(t)\rangle\langle\ad(t+\tau)\hat a(t+\tau)\rangle} = \cfrac{\langle \hat n(t) \hat n (t+\tau)\rangle}{\langle \hat n(t)\rangle \langle \hat n(t+\tau)\rangle}. \label{g2_cuantica}
 \end{align}
 
-Veamos los resultados de $\g{2}(\tau)$ para las fuentes de luz usadas en la sección \ref{coherencia}. Para un haz coherente, nos preguntamos cuál es la probabilidad $\mathcal{P}(n)$ de encontrar $n$ fotones en un haz de longitud $L$ partido en $N$ subsegmentos. Esto resulta equivalente a encontrar $n$ subsegmentos con un sólo fotón y $N-n$ con ninguno, en cualquier orden. Este problema se puede describir con una distribución binomial:
+Veamos los resultados de $\g{2}(\tau)$ para las fuentes de luz usadas en la sección \ref{coherencia}. Para un haz coherente, nos preguntamos cuál es la probabilidad $\mathcal{P}(n)$ de encontrar $n$ fotones en un haz de longitud $L$ partido en $N$ subsegmentos. Esto resulta equivalente a encontrar $n$ subsegmentos con un sólo fotón y $N-n$ con ninguno, en cualquier orden. Este problema se puede describir con la distribución binomial:
 \begin{equation}
 \nonumber\mathcal{P}(n)  = \cfrac{N!}{n!(N-n)!}p^n(1-p)^{N-n}.
 \end{equation}
@@ -316,7 +316,7 @@ que es una \textbf{distribución de Bose-Einstein}. Para fuentes de luz con esta
 \begin{equation}
 (\Delta n)^2 = \bar n + \bar n^2 \geq \bar n.
 \end{equation}
-Este resultado nos muestra que que la varianza de una distribución de Bose-Einstein siempre es mayor que la de una distribución Poissoniana. Las fluctuaciones de intensidad en la luz caótica clásica se asemejan mucho a las de la luz térmica descritas aquí, y presentan una estadistica similar.
+Este resultado nos muestra que la varianza de una distribución de Bose-Einstein es mayor que la de una distribución Poissoniana. Las fluctuaciones de intensidad en la luz caótica clásica se asemejan mucho a las de la luz térmica descritas aquí, y presentan una estadistica similar.
 
 Con este análisis, es conveniente definir una clasificación para las estadísticas de fotones en función de su desviación estándar:
 \begin{itemize}
@@ -327,7 +327,7 @@ Con este análisis, es conveniente definir una clasificación para las estadíst
 
 La interpretación de que la luz térmica sea super-Poissoniana significa que los fotones que se detectan vienen en promedio con una separación temporal menor a la frecuencia media de ocurrencia, lo que sugiere que llegan en ``paquetes" (o \textit{bonches}). A este efecto se le conoce como \textit{bunching}.
 
-¿Qué pasa cuando se toman medidas de intensidad al mismo tiempo? Para estudiar ests coincidencias, veamos a $\g{2}(\tau = 0)$. Utilizando la regla de conmutación $[\hat a,\ad] = 1$ podemos encontrar de la ecuación \ref{g2_cuantica} que:
+¿Qué pasa cuando se toman medidas de intensidad al mismo tiempo? Para estudiar ests medidas en coincidencia, veamos a $\g{2}(\tau = 0)$. Utilizando la regla de conmutación $[\hat a,\ad] = 1$ podemos encontrar de la ecuación \ref{g2_cuantica} que:
 \begin{equation}
 \g{2}(0) = \cfrac{\langle\hat n^2\rangle - \langle\hat n\rangle}{\langle\hat n\rangle} = 1+ \cfrac{\Delta n^2 - \bar n}{\bar n ^2}.
 \end{equation}
@@ -351,41 +351,37 @@ Coherente                    & Aleatorios                 & Poissoniana		       
 \subsection{Sistemas}\label{sistemas_correlaciones}
 La principal parte del trabajo de este capítulo consistió en la elaboración de distintos programas y sistemas que serán de utilidad para el experimento de FWM en átomos fríos. Esto consistió en el sistema óptico de captura, en un perfilador de haces Gaussianos, la paquetería del sistema de adquisición, y la electrónica de \textit{gating}.
 
-\subsubsection{Sistema óptico de captura}
+\subsubsection{Sistema óptico de captura}\label{bombeo}
 
-El arreglo óptico se divide en la parte de bombeo (la luz que llega a la nube de átomos) y la parte de adquisición (la luz generada por el FWM que será capturada). Esta sección se enfoca en el sistema óptico de adquisición.
+El arreglo óptico se divide en la parte de bombeo (la luz que llega a la nube de átomos) y la parte de adquisición (la luz generada por el FWM que será capturada). Esta sección se enfoca en el sistema óptico de adquisición. La Figura \ref{fig:optica_fwm} muestra este arreglo óptico. Se sigue la notación usada en la Figura \ref{fig:fwm_lineas} con fines didácticos, pues todavía no se introducen las transiciones atómicas relevantes a este proceso de FWM. %Como todavía no se introducen los niveles atómicos que participan en este FWM, 
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\linewidth]{optica_adq_fwm1.png}
-\caption[Óptica de adquisición para FWM.]{Óptica de adquisición para FWM. El filtro IF1 deja pasar luz de 762 nm y el IF2 deja pasar luz de 795 nm. Un color más tenue indica que la intensidad de los haces generados es muy baja. Esta luz se enviará al TDC para analizar correlaciones.}\label{fig:optica_fwm}
+\caption[Óptica de adquisición para FWM.]{Óptica de adquisición para FWM. El filtro IF1 deja pasar la luz $f3$ y el IF2 deja pasar la luz $f4$. Un color más tenue indica que la intensidad de los haces generados es muy baja. Esta luz se enviará al TDC para analizar correlaciones.}\label{fig:optica_fwm}
 \end{figure}
 
-En este montaje experimental, los haces de bombeo son colineales y los fotones generados también lo serán. El montaje de la óptica de adquisición consiste principalmente en un arreglo de filtros de interferencia SEMROCK LL01-780 y LL01-808 para filtrar la luz que se generará en el FWM de los haces de atrapamiento que son mucho más potentes. A cada ángulo, estos filtros de interferencia transmiten una longitud de onda central y reflejan el resto. Después de filtrar los haces de bombeo, la luz generada fue acoplada a dos fotodiodos de avalancha (APDs) para la detección de fotones individuales por medio de fibras monomodo.
+En este montaje experimental, los haces de bombeo son colineales y los fotones generados también lo serán. El montaje de la óptica de adquisición consiste principalmente en un arreglo de filtros de interferencia SEMROCK LL01-780 y LL01-808 para filtrar la luz que se generará en el FWM de los haces de atrapamiento que son mucho más potentes. A cada ángulo, estos filtros de interferencia transmiten una longitud de onda central y reflejan el resto. Después de filtrar los haces de bombeo, la luz generada fue acoplada a dos fotodiodos de avalancha (APDs) para la detección de fotones individuales por medio de fibras monomodo. Como se muestra en la Figura \ref{fig:optica_fwm}, para la detección y procesamiento de señales se utilizan dos instrumentos: algunos APD de silicón \textit{id120} y un etiquetador de cuentas temporales \textit{id800} (o TDC) de IDQuantique.
+
+Un APD es un un diodo p-n con una ganancia alta. Estos instrumentos tienen un mecanismo interno de amplificación, que genera señales eléctricas con alta tasa señal-ruido como respuesta a detecciones de un sólo fotón\cite{Cork}. Las cuentas detectadas por un APD pueden tener distintas fuentes:
+\begin{itemize}
+\item Fotones individuales, que pueden ser registrados correctamente o como \textit{afterpulses}.
+\item \textit{Cuentas obscuras}, señales generadas por el mismo APD sin luz externa incidente. La tasa de cuentas obscuras es dependiente de la temperatura del detector y el voltaje de polarización (bias). El fabricante del \textit{id120} indica un valor de cuentas obscuras de $<200$ Hz para un voltaje de polarización máximo.
+\end{itemize}
+
+Los APD \textit{id120} cuentan con una zona de detección de 500 $\mu$m de diámetro y una eficiencia cuántica de 80\% para $800$ nm. Es necesario optimizar los valores del voltaje de polarización aplicados para minimizar el \textit{afterpulsing} y la tasa de cuentas obscuras. Una descripción general más detallada de el funcionamiento y optimización de APDs puede encontrarse en \cite{Michalet}. Una desventaja de la elección de \textit{id120} es que no tienen un trigger interno capaz de ser activado de manera externa, por lo que fue necesario diseñar un circuito AND (\textit{gating}) utilizando búferes de tres estados. Este circuito se construyó como parte de este trabajo y su descripción se encuentra en la sección \ref{gating}.
+
+Finalmente, el \textit{id800} es un módulo etiquetador de cuentas temporales (time-to-digital converter, o TDC por sus siglas en inglés). Cuenta con 8 canales de entrada BNC con una resolución temporal de 81 ps para coincidencias de eventos en canales distintos. El \textit{id800} cuenta con un software de LabView para el procesamiento de cuentas, pero la funcionalidad que ofrecía no era adecuada para experimentos de FWM. Por ello, se optó por escribir una biblioteca completa para Python 3.6 para permitir la programación del instrumento. Con esta biblioteca, se escribió un programa para procesar y visualizar en tiempo real las cuentas que el \textit{id800} reciba.
 
 Aún con técnicas estándar hoy en día, la tasa de generación de bifotones en experimentos de este tipo es baja\cite{Cere:1}; es por esto que es importante obtener la mayor eficiencia posible a la hora de acoplar las fibras ópticas. El problema del acoplamiento consiste en la alineación del haz incidente y de la fibra para maximizar la potencia transferida. 
 %En condiciones ideales, uno podría conseguir un porcentaje de acoplamiento a la fibra de casi 100\%\cite{Ladany:93}, pero hacerlo es laborioso y necesita de múltiples elementos ópticos. 
-El acoplamiento de luz láser a una fibra monomodo es un problema de empatamiento de modos\cite{Newport}. Para un láser con distribución Gaussiana, el diámetro $1/e^2$ $D$ incidente sobre una lente de distancia focal $f$ necesario para producir una mancha focalizada de diámetro $\omega$ es:
+El acoplamiento de luz láser a una fibra monomodo es un problema de empatamiento de modos\cite{Newport}. Para un láser con distribución Gaussiana, el diámetro ($1/e^2$) $D$ incidente sobre una lente de distancia focal $f$ necesario para producir una mancha focalizada de diámetro $\omega$ es:
 \begin{equation}
 \label{acoplamiento}
 f = D\frac{\pi \omega}{4\lambda},
 \end{equation}
 
-donde $\lambda$ es la longitud de onda del láser. La eficiencia del acoplamiento dependerá de qué tanto podemos empatar el tamaño de la mancha focalizada $\omega$ con el diámetro de la fibra óptica. De la ecuación \ref{acoplamiento}, vemos que el diámetro del haz es un parámetro controlable importante para conseguir un buen acoplamiento. Por esto, se decidió escribir un sencillo programa de computadora para analizar perfiles de haces láser utilizando fotos tomadas con un chip CCD. Este programa se usó para controlar el tamaño de los haces que serán acoplados a las fibras que van a los APDs. La descripción del perfilómetro de láseres se encuentra en la sección \ref{perfilometro}.
-
-Como se muestra en la Figura \ref{fig:optica_fwm}, para la detección y procesamiento de señales se utilizan dos instrumentos: algunos APD de silicón (\textit{id120}) y un etiquetador de cuentas temporales (\textit{id800}) de IDQuantique.
-
-Un APD es un un diodo p-n con una ganancia alta. Estos instrumentos tienen un mecanismo interno de amplificación, que genera señales eléctricas con alta tasa señal-ruido como respuesta a detecciones de un sólo fotón\cite{Cork}. Las cuentas detectadas por un APD pueden tener distintas fuentes:
-\begin{itemize}
-\item Fotones individuales, que pueden ser registrados correctamente o como \textit{afterpulses}.
-\item \textit{Cuentas obscuras}, señales generadas por el mismo APD sin luz externa incidente. La tasa de cuentas obscuras (\textit{dark count rate}) es dependiente de la temperatura del detector y el voltaje de polarización (bias). El fabricante del \textit{id120} indica un valor de cuentas obscuras de $<200$ Hz para un voltaje de polarización máximo.
-\end{itemize}
-
-Los APD \textit{id120} cuentan con una zona de detección de 500 $\mu$m de diámetro y una eficiencia cuántica de 80\% para $800$ nm. Es necesario optimizar los valores del voltaje de bias aplicado para minimizar el \textit{afterpulsing} y la tasa de cuentas obscuras. Una descripción general más detallada de el funcionamiento y optimización de APDs puede encontrarse en \cite{Michalet}.
-
-Una desventaja de la elección de \textit{id120} es que no tienen un trigger interno capaz de ser activado de manera externa, por lo que fue necesario diseñar un circuito de conmutación (\textit{gating}) utilizando búferes de tres estados. Este circuito se construyó para este trabajo y una descripción se encuentra en la sección \ref{gating}.
-
-Finalmente, el \textit{id800} es un módulo etiquetador de cuentas temporales (time-to-digital converter, o TDC por sus siglas en inglés). Cuenta con 8 canales de entrada BNC con una resolución temporal de 81ps para coincidencias de eventos en canales distintos. El \textit{id800} cuenta con un software de LabView para el procesamiento de cuentas, pero la funcionalidad que ofrecía no era adecuada para experimentos de FWM. Por ello, se optó por escribir una biblioteca completa para Python 3.6 para permitir la programación del módulo. Con esta biblioteca, se escribió un programa para procesar y visualizar en tiempo real las cuentas que el TDC reciba.
+donde $\lambda$ es la longitud de onda del láser. La eficiencia del acoplamiento dependerá de qué tanto podemos empatar el tamaño de la mancha focalizada $\omega$ con el diámetro de la fibra óptica. De la ecuación \ref{acoplamiento}, vemos que el diámetro del haz es un parámetro controlable importante para conseguir un buen acoplamiento. Por esto, se decidió escribir un sencillo programa de computadora para analizar perfiles de haces láser utilizando fotos tomadas con un chip CCD. Este programa se usó para controlar el tamaño de los haces que serán acoplados a las fibras que van a los APDs. La descripción del perfilómetro de láseres se encuentra en la siguiente sección.
 
 \subsubsection{Perfilómetro láser}\label{perfilometro}
 %Poder caracterizar y manipular un haz láser de manera adecuada siempre es ventajoso en un laboratorio de óptica pues permite optimizar algunas aplicaciones de dicha luz, como acoplamiento a fibras ópticas.
@@ -461,9 +457,7 @@ Además de existir como una biblioteca de funciones independiente, se escribió 
 
 \subsubsection{Sistema de adquisición de datos}\label{adquisicion}
 
-El sistema de adquisición consiste en la paquetería de programación del \textit{id800} y el programa de visualización de cuentas, desarrollados en este trabajo para la adquisición de datos en experimentos de bifotones. El \textit{id800} es un convertidor de cuentas de tiempo a valores digitales que consta en un circuito integrado de aplicación específica (ASIC) que registra eventos en los 8 canales del módulo y los manda a una matriz de puertas programable (FPGA) que los ordena y comprime.
-
-El \textit{id800} cuenta con un búfer de entrada que trabaja a una velocidad de 200 millones de eventos por segundo, que resulta en una resolución temporal de 5.5 ns para eventos consecutivos registrados en el mismo canal. Sin embargo, la resolución temporal para eventos registrados en distintos canales es de 81 ps.
+El sistema de adquisición consiste en la paquetería de programación del \textit{id800} y el programa de visualización de cuentas, desarrollados en este trabajo para la adquisición de datos en experimentos de bifotones. El \textit{id800} es un convertidor de cuentas de tiempo a valores digitales que consta en un circuito integrado de aplicación específica (ASIC) que registra eventos en los 8 canales del módulo y los manda a una matriz de puertas programable (FPGA) que los ordena y comprime. En la Figura \ref{fig:optica_fwm}, el \textit{id800} recibe señales eléctricas que recibe de los APDs en alguno de sus canales. El \textit{id800} cuenta con un búfer de entrada que trabaja a una velocidad de 200 millones de eventos por segundo, que resulta en una resolución temporal de 5.5 ns para eventos consecutivos registrados en el mismo canal. Sin embargo, la resolución temporal para eventos registrados en distintos canales es de 81 ps.
 
 Para realizar la comunicación entre el \textit{id800} y el resto de los sistemas del laboratorio, fue necesario escribir una paquetería de uso. El diagrama de flujo para el desarrollo de la paquetería se encuentra en la Figura \ref{fig:flowchart}. Una descripción secuencial de lo que hace el programa es:
 \begin{enumerate}
@@ -479,7 +473,7 @@ Para realizar la comunicación entre el \textit{id800} y el resto de los sistema
 \caption[Diagrama de flujo del programa de adquisición.]{Diagrama de flujo del programa de adquisición. Ver detalles en la sección \ref{adquisicion}.}\label{fig:flowchart}
 \end{figure}
 
-La paquetería de uso para el módulo etiquetador de cuentas temporales (TDC) \textit{id800} está escrita en Python 3.6. Esta paquetería (llamada \code{hunahpy}) hace fuerte uso de \code{ctypes} que es una biblioteca de funciones foráneas para Python. Esta paquetería provee compatibilidad de estructuras con C/C++ y el uso de librerías compartidas (DLLs).
+La paquetería de uso para el módulo etiquetador de cuentas temporales (TDC) \textit{id800} está escrita en Python 3.6. Esta paquetería (llamada \code{hunahpy}) hace fuerte uso de \code{ctypes}, que es una biblioteca de funciones foráneas para Python. Esta paquetería provee compatibilidad de estructuras con C/C++ y el uso de librerías compartidas (DLLs).
 
 El módulo \textit{id800} venía con un software de control proprietario, un software de LabView y ejecutables compilados en C. Sin embargo, al usar el programa provisto por el fabricante limita el tipo de experimentos que se pueden realizar con el \textit{id800}, pues uno no es libre de ajustar a detalle el funcionamiento del instrumento a las necesidades del laboratorio. Por esto, el desarrollar un software de aquisición propio era importante. Utilizando los archivos de compilado en C, se escribió en Python una paquetería para controlar el \textit{id800} desde la computadora. Un manual completo se puede encontrar en el Anexo A y la paquetería está disponible en \cite{github} para uso público. Se escribió también un programa de visualización de datos en tiempo real con dos funciones específicas de conteo de datos:
 \begin{itemize}
@@ -497,23 +491,23 @@ Los APDs utilizados no cuentan con un canal de entrada digital que permita prend
 %\caption{Circuito de gating.}\label{fig:gating_board}
 %\end{figure}
 
-Esto es básicamente un circuito AND adecuado a las especificaciones de voltaje de salida de los APDs (TTL de bajo voltaje o LVTTL), de entrada del TDC (TTL o LVTTL) y los pulsos del sistema de control (TTL). Se decidió usar un búfer de tres estados, que permite 3 salidas: $1$ V, $0$ V, y un estado de alta impedancia (donde no pasa corriente). El búfer tiene dos canales de entrada (input y control) y uno de salida (output); cuando no hay señal de control, el estado del búfer es de alta impedancia. Esto fue para evitar la posibilidad de que el TDC interpretara señales de salida de bajo voltaje (idealmente $0$ V) como falsos eventos. El instrumento permite hasta 8 señales de salida independientes, con sus respectivos canales de entrada y control.
+Esto es básicamente un circuito AND adecuado a las especificaciones de voltaje de salida de los APDs (TTL de bajo voltaje o LVTTL), de entrada del TDC (TTL o LVTTL) y los pulsos del sistema de control (TTL). Se decidió usar un búfer de tres estados SN74LVC126A de Texas Instruments, que permite 3 salidas: $1$ V, $0$ V, y un estado de alta impedancia (donde no pasa corriente). El búfer tiene dos canales de entrada (input y control) y uno de salida (output); cuando no hay señal de control, el estado del búfer es de alta impedancia. Esto fue para evitar la posibilidad de que el TDC interpretara señales de salida de bajo voltaje (idealmente $0$ V) como falsos eventos. El instrumento permite hasta 8 señales de salida independientes, con sus respectivos canales de entrada y control.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\linewidth]{gating_plot.png}
 \caption[Ejemplo de prueba para el circuito de gating.]{Ejemplo de prueba para el circuito de gating. a) El pulso de entrada o la señal que queremos usar. b) El pulso de control. c) El pulso de salida después de pasar por el circuito.}\label{fig:gating_plot}
 \end{figure}
-Se realizaron pruebas para verificar que el circuito funcionara adecuadamente. Con un generador de funciones, se enviaron dos trenes de pulsos TTL de distintas frecuencias: una frecuencia baja de control y una más alta como input. El pulso de menor frecuencia se usó para simular el pulso que emitirá el sistema de control, mientras que el tren de pulsos de alta frecuencia representó las señales emitidas por los APDs. Como se observa en la Figura \ref{fig:gating_plot}, la señal de salida está regulada por el pulso de control, con lo que nos aseguramos que el \textit{id800} no recibirá datos fuera de esta ventana experimental.
+Se realizaron pruebas para verificar que el circuito funcionara adecuadamente. Con un generador de funciones, se enviaron dos trenes de pulsos TTL de distintas frecuencias: una frecuencia baja como control y una más alta como input. El pulso de menor frecuencia se usó para simular el pulso que emitirá el sistema de control, mientras que el tren de pulsos de alta frecuencia simuló las señales emitidas por los APDs. Como se observa en la Figura \ref{fig:gating_plot}, la señal de salida está regulada por el pulso de control, con lo que nos aseguramos que el \textit{id800} no recibirá datos fuera de esta ventana experimental.
 
 \subsection{Configuración experimental}\label{experimento_correlaciones}
 Como preparación para los experimentos de FWM en átomos fríos, se diseñó un experimento sencillo para medir la función de correlación de segundo orden $\g{2}$ para luz láser.
 
-Se amplió el montaje de la óptica de adquisición de FWM de la Figura \ref{fig:optica_fwm} para analizar la luz del haz de bombeo de 780 nm. Se montó un interferómetro de intensidades con un divisor de haz 50/50 y cada brazo se mandó a un APDs. Para este experimento se apagó la luz de 776 nm.
+Se amplió el montaje de la óptica de adquisición de FWM de la Figura \ref{fig:optica_fwm} para analizar la luz del haz de bombeo de 780 nm ($f1$). Se montó un interferómetro de intensidades con un divisor de haz 50/50 y cada brazo se mandó a un APD. Para este experimento se apagó el segundo haz ($f2$). La Figura \ref{fig:optica_780} muestra esta ampliación al montaje de la óptica de adquisición de FWM presentada en la sección \ref{bombeo}.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.95\linewidth]{optica_adq_780.png}
+\includegraphics[width=0.95\linewidth]{optica_adq_7801.png}
 \caption[Óptica de adquisición para el haz de 780 nm.]{Óptica de adquisición para el haz de 780 nm. La sección resaltada es la ampliación del arreglo óptico de la Figura \ref{fig:optica_fwm}. Se consiguió una potencia de alrededor de 3 pW usando filtros ND y un divisor no polarizante BS, necesaria para no saturar a los APDs.}\label{fig:optica_780}
 \end{figure}
 
@@ -528,33 +522,31 @@ Cada APD tiene un valor de \textit{eficiencia cuántica} $\eta$, que es la propo
 \mathcal{R} = \eta\Phi.
 \end{equation}
 
-Existe un valor máximo de $\mathcal{R}$ para cada APD que surge de que el detector necesita ``descansar" después de registrar un evento. Al detectar un fotón, se genera una avalancha para multiplicar la señal. Sin embargo, por los altos voltajes de polarización necesarios (de hasta cientos de volts), se aplica un circuito de atenuamiento que reduce el voltaje del APD por un tiempo corto en donde no se registran nuevos eventos\cite{Cova:96}. C. Para el \textit{id120}, este llamado \textit{tiempo muerto} es de $\sim$1 $\mu$s. Con esto, la tasa máxima $\mathcal{R}$ de eventos que podemos detectar sin pérdidas significativas es $\sim 10^{6} \ \text{fotones s}^{-1}$. Con este valor máximo de $\mathcal{R} = 10^6$ y $\lambda = 780$ nm (sabiendo que $\omega = 2\pi c/\lambda$) encontramos el valor máximo de la potencia del haz láser que podemos usar $P_{max} \sim 3\times 10^{-12}$ W. Esto lo conseguimos usando un arreglo de filtros de densidad neutral (ND) para atenuar la potencia original del haz láser; estos filtros reducen la potencia de un haz en $10^{\text{-OD}}$, donde OD es la densidad óptica total del arreglo de filtros.
+Existe un valor máximo de $\mathcal{R}$ para cada APD que surge de que el detector necesita ``descansar" después de registrar un evento. Al detectar un fotón, se genera una avalancha para multiplicar la señal. Sin embargo, por los altos voltajes de polarización necesarios (de hasta cientos de volts), se aplica un circuito de atenuamiento que reduce el voltaje del APD por un tiempo corto en donde no se registran nuevos eventos\cite{Cova:96}. Para el \textit{id120}, este llamado \textit{tiempo muerto} es de $\sim$1 $\mu$s. Con esto, la tasa máxima $\mathcal{R}$ de eventos que podemos detectar sin pérdidas significativas es inversa a este tiempo muerto, o $\sim 10^{6} \ \text{fotones s}^{-1}$. Con este valor máximo de $\mathcal{R}$ y $\lambda = 780$ nm (sabiendo que $\omega = 2\pi c/\lambda$) encontramos el valor máximo de la potencia del haz láser que podemos usar $P_{max} \sim 3$ pW. Esto lo conseguimos usando un arreglo de filtros de densidad neutral (ND) para atenuar la potencia original del haz láser; estos filtros reducen la potencia de un haz en $10^{\text{-OD}}$, donde OD es la densidad óptica total del arreglo de filtros.
 
-Se realizaron pruebas para medir la tasa de cuentas obscuras para los dos APDs que se usaron en este experimento. Estas medidas se tomaron sin luz láser y se registraron los eventos por media hora usando el programa de adquisición de datos.
+Se realizaron pruebas para medir la tasa de cuentas obscuras para los dos APDs que se usaron en este experimento. Estas medidas se tomaron sin luz láser y se registraron los eventos por media hora usando el programa de adquisición de datos. La estadística de estas cuentas obscuras sigue una estadística Poissoniana \cite{darkcountstats}, y las tasas de cuentas obscuras registradas concuerdan con el valor máximo de 200 Hz reportado por el fabricante. La Figura \ref{fig:dark_counts} presenta un histograma de las cuentas obscuras de los dos APDs y su respectivo ajuste a una distribución Poissoniana. El tamaño de cada canasta en el histograma fue de 150 ms.
 
-\begin{figure}[]
+\begin{figure}[ht!]
 \centering
 \includegraphics[width=\linewidth]{cuentas_obscuras_2.png}
 \caption[Histograma de cuentas obscuras para los APDs]{Histograma de cuentas obscuras para el APD1 (azul) y el APD2 (rojo). El tiempo de integración para cada canasta fue de 150 ms.}\label{fig:dark_counts}
 \end{figure}
 
-La temperatura de operación de los APDs fue de -40 $^{\circ}$C. Se eligió esta temperatura porque es la temperatura a la cual el fabricante reporta para la calibración de los instrumentos. El voltaje de polarización fue de 200 V para el APD1 y 191 V para el APD2.  La tasa de cuentas obscuras que se obtuvo fue de:
+La temperatura de operación de los APDs fue de -40 $^{\circ}$C. Se eligió esta temperatura porque es la temperatura a la cual el fabricante reporta para la calibración de los instrumentos. El voltaje de polarización fue de 200 V para ambos APDs.  La tasa de cuentas obscuras que se obtuvo fue de:
 \begin{itemize}
 \item APD1: $\mu = 180.67\pm 33.55$ cuentas s$^{-1}$
 \item APD2: $\mu = 155.55\pm 31.66$ cuentas s$^{-1}$
 \end{itemize}
 
-La estadística de estas cuentas obscuras sigue una estadística Poissoniana \cite{darkcountstats}, y las tasas de cuentas obscuras registradas concuerdan con el valor máximo de 200 Hz reportado por el fabricante. La Figura \ref{fig:dark_counts} presenta un histograma de las cuentas obscuras de los dos APDs y su respectivo ajuste a una distribución Poissoniana. El tamaño de cada canasta en el histograma fue de 150 ms.
-
 Después de probar la funcionalidad del programa de adquisición, se realizaron medidas de intensidad para luz láser de 780 nm. Para un haz estable de 100 $\mu$W de potencia, se usó un arreglo de filtros ND con densidad óptica total de 7.5 para obtener 3 pW a la entrada del divisor de haz 50/50. Cada brazo del interferómetro se acopló a una fibra mono-modal conectada a un APD. Para diferenciar cada brazo del interferómetro, a uno se le asignó el subíndice $T$ por ser el transmitido por el divisor de haz, mientras el otro tendrá $R$ por ser el reflejado.
 
-Se ajustó la distancia de los dos brazos del interferómetro para que fue tuvieran la misma longitud para medir $\g{2}(\tau)$ en coincidencia ($\tau=0$). Así, el tiempo inicial de integración de cada brazo fue $t_{T,0} = t_{R,0} = 0$. Esto se hizo con una incertidumbre de un par de centímetros, que  coresponde a una incertidumbre de apenas una fracción de nanosegundo. Como la escala temporal usada en este experimento fue de varias decenas de nanosegundos, por lo que para fines prácticos la diferencia temporal en la detección de cada brazo fue cero.
+Se ajustó la distancia de los dos brazos del interferómetro para que fue tuvieran la misma longitud para medir $\g{2}(\tau)$ en coincidencia ($\tau=0$). Sin embargo, esto no es muy importante. Si los brazos del interferómetro no fueran iguales, al calcular $\g{2}(\tau)$ veríamos las cuentas en coincidencia en un tiempo $\tau \neq 0$. %Esto se hizo con una incertidumbre de un par de centímetros, que  coresponde a una incertidumbre de apenas una fracción de nanosegundo. Como la escala temporal usada en este experimento fue de varias decenas de nanosegundos, por lo que para fines prácticos la diferencia temporal en la detección de cada brazo fue cero.
 
-Al utilizar los APDs no se mide directamente la intensidad de los láseres, así que es necesario relacionarlo a cantidades que podamos medir en el laboratorio. En la práctica, la intensidad de un haz no es completamente constante y habrán fluctuaciones que se verán reflejadas en la estadística que hagamos al calcular $\g{2}(0)$. Es por esto que es adecuado considerar las probabilidades de detección para un tiempo de integración $\Delta t$\cite{Beck}:
+Al utilizar los APDs no se mide directamente la intensidad de los láseres, así que es necesario relacionarlo a cantidades que podamos medir en el laboratorio. En la práctica, la intensidad de un haz no es completamente constante y habrán fluctuaciones que se verán reflejadas en la estadística que hagamos al calcular $\g{2}(0)$. Es por esto que es adecuado considerar las probabilidades de detección para un tiempo arbitrario de integración $\Delta t$\cite{Beck}:
 \begin{equation}
 \g{2}(\tau = 0) = \cfrac{P_{TR}(\Delta t)}{P_T(\Delta t)P_R(\Delta t)}, \label{g2 exp}
 \end{equation}
-donde $P_{TR}$ es la probabilidad conjunta de medir una detección tanto en el APD $T$ como en el APD $R$ en el mismo intervalo $\Delta t$. Estas probabilidades están dadas por:
+donde $P_{TR}$ es la probabilidad conjunta de medir una detección tanto en el APD $T$ (transmitido) como en el APD $R$ (reflejado) en el mismo intervalo $\Delta t$. Estas probabilidades están dadas por:
 \begin{align*}
 P_T(\Delta t) &= \mathcal{R}_T\Delta t,  & P_{TR}(\Delta t) &= \mathcal{R}_{TR}\Delta t & P_R(\Delta t) &= \mathcal{R}_R\Delta t, 
 \end{align*} 
@@ -574,7 +566,6 @@ Las tasas de detección promedio serán:
 \mathcal{R}_T &= \left(\frac{N_T}{\Delta T}\right), & \mathcal{R}_{TR} &= \left(\frac{N_{TR}}{\Delta T}\right), & \mathcal{R}_R &= \left(\frac{N_R}{\Delta T}\right),
 \end{align*}
 donde $N_T$ y $N_R$ representan el número total de cuentas para cada canal. En términos de los histogramas de eventos, se ve que $N_T = \sum_{i=0}^n T_i$ y $N_R = \sum_{i=0}^n R_i$. Para $\Delta t$ pequeños, las probabilidades de detección serán también muy pequeñas y será válido que el número de cuentas conjunto sea $N_{TR} = \sum_{i=0}^n T_i R_i$.
-
 La ecuación \ref{g2 exp} queda entonces dada por:
 \begin{align}
 \nonumber \g{2}(\tau = 0) &= \cfrac{N_{TR}}{N_T N_R}\left(\cfrac{\Delta T}{\Delta t}\right),\\
@@ -601,12 +592,12 @@ donde cada índice $i$ corre dentro de su respectivo rango. Esto nos permite cal
 
 El objetivo principal de este capítulo fue el de realizar mediciones con el interferómetro para luz láser y así verificar el buen funcionamiento del sistema de adquisición de datos. Con este sistema, se fijó un tamaño de búfer de 1,000,000 de eventos para el \textit{id800} y se guardaron 70 millones de cuentas para los dos APDs $T$ y $R$ por 40 minutos.
 
-Se realizó el análisis de $\g{2}$ para cada canal y se determinó un tiempo de integración de $\Delta t =$ 2.5 ns (definido en la ecuación \ref{g2 exp}). El tiempo total de detección $\Delta T$ se calculó a partir de la primera y la última etiqueta de tiempo registrada por cada millón de eventos. Para cada valor de $\tau_k$ desde 2.5 ns hasta 125 ns se realizó un análisis estadístico sobre todos los datos obtenidos para calcular $\g{2}(\tau_k)$ de acuerdo a la ecuación \ref{g2_final}.
+Se realizó el análisis de $\g{2}$ para cada canal y se eligió un tiempo de integración de $\Delta t =$ 2.5 ns (definido en la ecuación \ref{g2 exp}). El tiempo total de detección $\Delta T$ se calculó a partir de la primera y la última etiqueta de tiempo registrada por cada millón de eventos. Para cada valor de $\tau_k$ desde 2.5 ns hasta 125 ns se realizó un análisis estadístico sobre todos los datos obtenidos para calcular $\g{2}(\tau_k)$ de acuerdo a la ecuación \ref{g2_final}.
 
 \begin{figure}[]
 \centering
 \includegraphics[width=\linewidth]{g2_laser.png}
-\caption{$\g{2}(\tau)$ para un haz de luz coherente.}\label{fig:g2_result}
+\caption[$\g{2}(\tau)$ para un haz de luz coherente.]{$\g{2}(\tau)$ para un haz de luz coherente. La línea punteada es el resultado teórico de \ref{g2_laser_teoria}, y el cálculo de $\g{2}$ se hizo de acuerdo a \ref{g2_final}.}\label{fig:g2_result}
 \end{figure}
 
 La Figura \ref{fig:g2_result} presenta los resultados de estas mediciones. Se reporta un valor en coincidencia de $\g{2}(0) = 1.0006\pm0.0012$. Como la teoría predice un que $\g{2}(\tau) = 1$ para todo $\tau$, se reporta un promedio de $\overline{\g{2}} = 1.0007\pm0.0014$, que está en buena concordancia con lo predicho. Las incertidumbres presentadas son exclusivamente estadísticas y no se consideraron otras posibles fuentes de error. Este resultado responde bien al propósito de este trabajo: el desarrollo de un esquema experimental en anticipación a experimentos de FWM en átomos fríos. 

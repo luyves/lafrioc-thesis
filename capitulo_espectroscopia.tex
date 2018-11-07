@@ -9,13 +9,14 @@ Este capítulo se enfoca en las mediciones de densidad óptica de la nube atómi
 
 %\subsection{Motivación}\label{motivacion_espectro}
 
-La densidad óptica (OD) es particularmente importante para este trabajo, pues define distintos regímenes de generación de bifotones por FWM y determina la forma de su función de correlación $\g{2}(\tau)$\cite{Du:08,PhysRevA.75.033814}. De acuerdo a \cite{Du:08}, en el régimen de densidad óptica baja la tasa de coincidencias en bifotones es proporcional a OD$^2$ y su función de onda tiene la forma de una oscilación amortiguada. Este amortiguamiento ocurre por efectos de interferencia destructiva entre los bifotones generados y resulta en una baja eficiencia de de generación de bifotones. Por otro lado, el régimen de densidad óptica baja, la tasa de coincidencias es linealmente proporcional a OD y la forma de la función de onda es cuadrada. Como en el segundo régimen no hay efectos de interferencia, es de interés generar una nube atómica de alta densidad óptica para mejorar la eficiencia de generación de bifotones por FWM.
+La densidad óptica (OD) es particularmente importante para este trabajo, pues define distintos regímenes de generación de bifotones por FWM y determina la forma de su función de correlación $\g{2}(\tau)$\cite{Du:08,PhysRevA.75.033814}. De acuerdo a \cite{Du:08}, en el régimen de densidad óptica baja la tasa de coincidencias en bifotones es proporcional a OD$^2$ y su función de onda tiene la forma de una oscilación amortiguada. Este amortiguamiento ocurre por efectos de interferencia destructiva entre los bifotones creados y resulta en una baja eficiencia de generación de bifotones. Por otro lado, el régimen de densidad óptica alta, la tasa de coincidencias es linealmente proporcional a OD y la forma de la función de onda es cuadrada. Como en el segundo régimen no hay efectos de interferencia, es de interés generar una nube atómica de alta densidad óptica para mejorar la eficiencia de generación de bifotones por FWM.
 
 En este segundo capítulo, se realizó la caracterización de la densidad óptica de la nube atómica atrapada por la MOT desarrollada en \cite{Adrian}. Se presenta además el arreglo óptico que se usará para la generación de fotones correlacionados en FWM.
 
 \subsection{Teoría}\label{teoria_espectro}
 
 Los átomos alcalinos son normalmente usados para experimentos de átomos fríos por varias razones: su estructura atómica se parece a la del hidrógeno en cuanto que tienen un sólo electrón de valencia en su última capa, esto facilita su descripción teórica pues puedes crear sistemas de dos niveles atómicos con relativa facilidad\cite[p.~60]{Foot}, presiones de vaporización cercanas a temperatura ambiente\cite{steck87}, y frecuencias de excitación cercanas al visible que permiten usar láseres comerciales. En el Laboratorio, el átomo alcalino usado es rubidio por ser relativamente barato y tener transiciones atómicas en el infrarrojo cercano.
+	
 
 \subsubsection{Estructura atómica de rubidio}
 Para entender el enfriamiento y confinamiento de átomos, se parte de la estructura de sus niveles energéticos\cite{steck87,robinson}. En un átomo alcalino, su electrón de valencia presenta momento angular orbital $\bm{L}$ y momento angular de espín $\bm{S}$. Estos dos momentos interactúan entre sí y resultan en el momento angular electrónico total $\bm{J} = \bm{L} + \bm{S}$. Por la naturaleza vectorial del acoplamiento $\bm{LS}$, este momento angular puede tener valores
@@ -43,7 +44,7 @@ El momento angular total también tiene una proyección que puede valer $m_F = 0
 \subsubsection{Trampa magneto-óptica}\label{mot}
 Una descripción teórica a profundidad de los mecanismos de una MOT no forma parte de esta tesis. Sin embargo, una introducción breve basada en \cite{Foot} resulta útil.
 
-Por un lado, el enfriamieneto láser es una manifestación de una fuerza radiativa que Ashkin llamó \textit{fuerza de scattering}\cite{PhysRevLett.24.156}. Por el otro lado, para atrapar estos átomos se aprovecha su momento dipolar magnético con el uso de un campo cuadrupolar externo\cite{PhysRevLett.59.2631}.
+Por un lado, el enfriamieneto láser es una manifestación de una fuerza radiativa que Ashkin llamó \textit{fuerza de scattering}\cite{PhysRevLett.24.156}. Por el otro lado, para atrapar átomos se aprovecha su momento dipolar magnético con el uso de un campo cuadrupolar externo\cite{PhysRevLett.59.2631}.
 
 El enfriamiento láser está basado en la transferencia de momento entre luz y átomos. Al absorber un fotón, el átomo sentirá una fuerza en la dirección de propagación del fotón. Además, el átomo eventualmente emitirá un fotón en una dirección aleatoria por el proceso de emisión espontánea. Al tomar el promedio estadístico para muchos fotones, la fuerza que siente el átomo por emisión espontánea será cero por no emitir en una dirección preferencial.
 
@@ -64,7 +65,7 @@ El Hamiltoniano que describe la interacción de un átomo con un campo magnétic
 \begin{equation}
 \nonumber H_{\mathcal{B}} = \frac{\mu_B}{\hbar}\left(g_{S} \bm{S} + g_{L} \bm{L} + g_I \bm{I}\right)\cdot\B,
 \end{equation}
-donde cada factor $g$ considera las modificaciones a los momentos magnéticos dipolares del espín del electrón, momento angular orbital del electrón y espín nuclear, respectivamente. Consideremos un campo magnético en una sola dirección. Para un campo magnético débil, existe un desdoblamiento de los niveles energéticos (llamado \textit{efecto Zeeman}) que es lineal con el campo. Puede probarse \cite{Foot} que este cambio en la energía es $\Delta E \propto m_F \mathcal{B}$.
+donde cada factor $g$ considera las modificaciones a los momentos magnéticos dipolares del espín del electrón, momento angular orbital del electrón y espín nuclear, respectivamente. Consideremos un campo magnético en una sola dirección. Para un campo magnético débil, existe un desdoblamiento de los niveles energéticos (llamado \textit{efecto Zeeman}) que es lineal con el campo. Puede probarse \cite{Foot} que este cambio en la energía es $\Delta E \propto \Delta m_J \mathcal{B}$.
 
 La Figura \ref{fig:zeeman} muestra el mecanismo de atrapamiento magnético y las líneas del campo cuadrupolar que lo permiten. Dos bobinas en configuración anti-Helmholtz\footnote{Dos bobinas circulares de radio $R$ están en configuración anti-Helmholtz cuando se colocan simétricamente a lo largo de un eje común pero son alimentadas con corriente en sentido opuesto. Las dos bobinas están separadas por una distancia igual a su radio $R$, y el centro de esta configuración se define como el punto sobre el eje común equidistante a cada bobina.} permiten que cerca del centro de la trampa exista un gradiente de campo magnético lineal. La Figura \ref{fig:zeeman} b muestra las líneas de campo para dicha configuración cerca del centro. Para la dirección $z$, por ejemplo, el campo es aproximadamente $\mathcal{B} = Bz$. En el estado base, $J=0$ y $m_J=0$ también. Para $J = 1$, el efecto Zeeman hace que la energía de cada cada uno de los sub-niveles $m_J = 0,\pm 1$ varíe linealmente con $z$. Si los haces contrapropagantes tienen polariziones circulares opuestas ($\sigma^+$ y $\sigma^-$), esto creará un desequilibrio en las fuerzas de scattering por las reglas de selección dipolar\cite{Foot}.
 
@@ -118,12 +119,12 @@ La Figura \ref{fig:diamante} muestra la configuración atómica para la generaci
 \caption{Esquema energético de diamante para generación de fotones con FWM en átomos fríos de $^{87}$Rb.}\label{fig:diamante}
 \end{figure}
 
-Para realizar las medidas de la densidad óptica (OD) de nuestra nube se aprovechó el montaje óptico para la luz de bombeo del FWM (Figura \ref{fig:optica_bombeo}). En este arreglo, se usan dos haces de bombeo co-propagantes de 780 nm y 776 nm (bombeo 1 y bombeo 2). Estos haces son resonantes a las transiciones $5^2S_{1/2}, \ F=2\rightarrow 5^2P_{3/2}, \ F'=3$ y $5^2P_{3/2}, \ F=3 \rightarrow 5^2D_{3/2}, \ F'=3$, respectivamente. En la discusión de FWM de \cite{srivathsan} y \cite{gulati}, en esta configuración se generarán pares de fotones con modos bien definidos por medio del FWM espontáneo. A estos haces se les superpone un haz semilla de 795 nm resonante a la transición $5^2S_{1/2}, \ F=2\rightarrow 5^2P_{1/2}, \ F'=2$ para hacer más fácil la alineación y acoplamiento a fibra de la luz generada\cite{orozco}.
+Para realizar las medidas de la densidad óptica (OD) de nuestra nube se aprovechó el montaje óptico para la luz de bombeo del FWM (Figura \ref{fig:optica_bombeo}). En este arreglo, se usan dos haces de bombeo co-propagantes de 780 nm y 776 nm (bombeo 1 y bombeo 2). Estos haces son resonantes a las transiciones $5^2S_{1/2}, \ F=2\rightarrow 5^2P_{3/2}, \ F'=3$ y $5^2P_{3/2}, \ F=3 \rightarrow 5^2D_{3/2}, \ F'=3$, respectivamente. En la discusión de FWM de \cite{srivathsan} y \cite{gulati}, en esta configuración se generarán pares de fotones con modos bien definidos por medio del FWM espontáneo. A estos haces se les superpone un haz semilla de 795 nm resonante a la transición $5^2S_{1/2}, \ F=2\rightarrow 5^2P_{1/2}, \ F'=2$ para hacer más fácil la alineación y acoplamiento a fibra de la luz generada\cite{orozco}. Los tres haces pasan por retardadores de media onda ($\lambda /2$) y divisores de haz polarizantes (PBS) para controlar su potencia y polarización.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\linewidth]{optica_bombeo.png}
-\caption[Óptica de bombeo para el FWM.]{Óptica de bombeo para el FWM. Un divisor de haz polarizante (PBS) permite superponer el haz semilla con el haz de bombeo 1. El filtro IF3 sirve para superponer los dos haces de bombeo.}\label{fig:optica_bombeo}
+\caption[Óptica de bombeo para el FWM.]{Óptica de bombeo para el FWM. Un divisor de haz polarizante (PBS) permite superponer el haz semilla con el haz de bombeo 1. El filtro IF3 sirve para superponer los dos haces de bombeo. Cada haz pasa por un retardador de media onda $\lambda/2$ y un divisor de haz polarizante PBS para controlar su polarización.}\label{fig:optica_bombeo}
 \end{figure}
 
 \subsection{Configuración experimental}\label{experimento_espectro}
@@ -149,8 +150,8 @@ Las bobinas anti-Helmholtz de la MOT fueron hechas en el Laboratorio con alambre
 \includegraphics[width=0.8\linewidth]{presion.png}
 \caption[Presión en la cámara de la MOT contra corriente suministrada al dispensador de rubidio.]{Presión en la cámara de la MOT contra corriente suministrada al dispensador de rubidio. Mediciones tomadas a lo largo de varias horas.}\label{fig:pres}
 \end{figure}
-
-\subsubsection*{Técnica de medición}
+\newpage
+\subsubsection{Técnicas de medición}
 
 Se registró la transmisión del haz de prueba en función de su desintonía de la transición $F=2 \rightarrow F'=3$, usando un AOM para modular su frecuencia. Se consiguió un diámetro de haz más pequeño que el tamaño de la nube para evitar malas medidas ocasionadas por luz no absorbida. El haz se dirigió al centro de la nube atómica y después fue analizado por un fotodiodo PDA36A, que registró el espectro de absorción.
 
@@ -167,7 +168,7 @@ Los desplazamientos de frecuencia de los haces de prueba y enfriamiento se reali
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\linewidth]{aom_eff.png}
-\caption[Voltaje medido por el fotodiodo contra desintonía del AOM.]{Voltaje medido por el fotodiodo contra desintonía del AOM. Normalizado respecto al valor máximo de voltaje.}\label{fig:aom}
+\caption[Eficiencia del AOM contra desintonía.]{Eficiencia del AOM contra desintonía. Normalizado respecto al valor máximo de voltaje.}\label{fig:aom}
 \end{figure}
 
 Para cada espectro de absorción obtenido, se realizó un ajuste a la ecuación \ref{od}. Como se demostró que la eficiencia del AOM usado para modular la frecuencia del haz de prueba no era constante, se realizó una normalización de la señal. Esta normalización se hizo respecto a la medida de la luz registrada por el fotodiodo sin nube atómica presente. Además de esta normalización, se consideró un \textit{offset} vertical y un corrimiento horizontal para el centro del pozo de absorción. Esto se hizo para obtener un mejor ajuste de los datos experimentales a la ecuación \ref{od}. El error de los resultados presentados se reporta como la desviación estándar del ajuste teórico a los datos experimentales.
