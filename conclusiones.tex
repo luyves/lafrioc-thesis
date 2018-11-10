@@ -1,12 +1,12 @@
-\section{Conclusiones}\label{Conclusiones}
+\section{Conclusiones y perspectivas}\label{Conclusiones}
 
-En este trabajo se enfocó principalmente en dejar listo un sistema de adquisición y procesamiento de datos para pares de fotones generados a partir de experimentos en átomos fríos de rubidio. Esto consistió en montar el sistema óptico de bombeo de luz y el sistema óptico de adquisición de captura, pensados para experimentos de mezclado de cuatro ondas.
+Este trabajo se enfocó en dejar listo un sistema de adquisición y procesamiento de datos para pares de fotones generados a partir de experimentos en átomos fríos de rubidio. Consistió en montar el sistema óptico de bombeo de luz y el sistema óptico de adquisición de captura, pensados para experimentos de mezclado de cuatro ondas.
 
 Se escribió una paquetería completa en Python para procesar etiquetas temporales de eventos generados por fotodiodos de avalancha. Este programa se conecta con el módulo de cuentas \textit{id800}, coordina la comunicación del instrumento con la computadora y permite al usuario visualizar los datos generados en tiempo real, para después guardarlos en un servidor. El desarrollo de este software propio permitió quitarse de la limitante de tener que usar el programa proporcionado por el fabricante, logrando adaptar la funcionalidad del \textit{id800} a las necesidades del experimento y no al revés.
 
 Además de esta paquetería para adquisición de datos, se desarrollaron dos sistemas útiles para el experimento de mezclado de cuatro ondas y para el Laboratorio en general. Estos sistemas fueron un perfilómetro para haces de luz Gaussianos y un circuito AND para controlar la señal de salida de los APDs.
 
-Se realizó un experimento sencillo para verificar que el sistema de adquisición funcionara adecuadamente. Este experimento consistió en medir la función de correlación de segundo orden $\g{2}(\tau)$ para una fuente clásica de luz coherente. Se obtuvo un valor de $\g{2}(0) = 1.0006\pm0.0012$ y un promedio de $\overline{\g{2}} = 1.0007\pm0.0014$, que se encuentran en excelente concordancia con la teoría. Esto demostró el buen funcionamiento del programa de adquisición de datos que será utilizado para procesar bifotones generados por FWM.
+Se realizó un experimento sencillo para verificar que el sistema de adquisición funcionara adecuadamente. Este experimento consistió en medir la función de correlación de segundo orden $\g{2}(\tau)$ para una fuente clásica de luz coherente. Se obtuvo un valor de $\g{2}(0) = 1.0006\pm0.0012$ y un promedio de $\overline{\g{2}} = 1.0007\pm0.0014$, que se encuentran en excelente concordancia con la teoría. Esto demostró el buen funcionamiento del programa de adquisición de datos que será utilizado para procesar bifotones generados por FWM. %Actualmente, este sistema de adquisición se usa exi
 
 Finalmente, se escribió una guía para usar la paquetería de adquisición de datos y su interfaz gráfica. Esta guía se puede encontrar en el Apéndice \ref{apendice_TDC}, y la paquetería se encuentra en \cite{github}.
 
