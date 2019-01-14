@@ -24,7 +24,7 @@ En este capítulo se presenta una introducción a la teoría de estadística de 
 En esta sección se presentará una descripción de los elementos teóricos utilizados en este capítulo. Partiendo de una descripción clásica de la luz, se introducirán los conceptos de \textit{coherencia} de primer y segundo grado, que nos permitirán clasificar luz de distintas fuentes de acuerdo a la estadística que siguen. Finalmente, se realizará una cuantización del campo. Este desarrollo sigue principalmente la exposición de Kenyon\cite{Kenyon}, Loudon\cite{Loudon} y Fox\cite{Fox}.
 
 \subsubsection{Óptica clásica}\label{optica_clasica}
-Aunque muchos efectos ópticos clásicos pueden ser descritos por óptica geométrica, para poder explicar efectos como interferencia y difracción, que necesitan el tratamiento clásico de la luz como ondas. La teoría de Maxwell de la luz como ondas electromagnéticas está descrita en términos del campo eléctrico $\E(\textbf{r},t)$ y el campo magnético $\B(\textbf{r},t)$; para el campo electromagnético en materiales, se definen de manera más general el campo de desplazamiento $\D(\textbf{r},t)$ y la cantidad magnética $\Hmag(\textbf{r},t)$. En un material homogéneo e isotrópico, la descripción de estos campos generales es:
+Aunque muchos efectos ópticos clásicos pueden ser descritos por óptica geométrica, para poder explicar efectos como interferencia y difracción, se necesita el tratamiento clásico de la luz como ondas. La teoría de Maxwell de la luz como ondas electromagnéticas está descrita en términos del campo eléctrico $\E(\textbf{r},t)$ y el campo magnético $\B(\textbf{r},t)$; para el campo electromagnético en materiales, se definen de manera más general el campo de desplazamiento $\D(\textbf{r},t)$ y la cantidad magnética $\Hmag(\textbf{r},t)$. En un material homogéneo e isotrópico, la descripción de estos campos generales es:
 \begin{align*}
 \D &= \epsilon_0\epsilon_r\E & \B &= \mu_0\mu_r\Hmag,
 \end{align*}
@@ -58,7 +58,7 @@ y el hecho que el primer término del lado derecho es cero por la ecuación \ref
 \begin{equation}
 \nabla^2\E(\bm{r},t) = \mu_0\epsilon_0\frac{\partial^2\E(\bm{r},t)}{\partial^2 t},
 \end{equation}
-que corresponde a una ecuación de onda con velocidad $c = 1/\sqrt{\mu_0\epsilon_0} = 2.998\times 10^8 ms^{-1}$, que es la velocidad de la luz en el vacío.
+que corresponde a una ecuación de onda con velocidad $c = 1/\sqrt{\mu_0\epsilon_0} = 2.998\times 10^8$ ms$^{-1}$, que es la velocidad de la luz en el vacío.
 De una manera análoga se encuentra una ecuación de onda para el campo magnético $\B$.
 
 \subsubsection{La función de correlación de primer orden}\label{coherencia}
@@ -73,7 +73,7 @@ Si dos trenes de onda presentan una relación bien determinada de fase entre ell
 \end{figure}
 
 
-Para cuantificar la coherencia, calculamos la \textit{correlación}. La Figura \ref{fig:mach_zehnder} muestra un esquema sencillo del interferómetro de Mach Zehnder. Supongamos que tenemos un campo eléctrico incidente $\E(t)$ incidente sobre el primer divisor de haz, que asumimos idéntico al segundo y ambos con coeficiente de reflexión $\mathcal{R}$ y coeficiente de transmisión  $\mathcal{T}$. Después de pasar por el primer divisor, el haz reflejado y el transmitido recorren una distancia $l_1$ y $l_2$, respectivamente, usualmente diseñadas de distinta magnitud. Al recombinarse en el segundo divisor, tendremos dos salidas:
+Para cuantificar la coherencia, calculamos la \textit{correlación}. La Figura \ref{fig:mach_zehnder} muestra un esquema sencillo del interferómetro de Mach Zehnder. Supongamos que tenemos un campo eléctrico $\E(t)$ incidente sobre el primer divisor de haz, que asumimos idéntico al segundo y ambos con coeficiente de reflexión $\mathcal{R}$ y coeficiente de transmisión  $\mathcal{T}$. Después de pasar por el primer divisor, el haz reflejado y el transmitido recorren una distancia $l_1$ y $l_2$, respectivamente, usualmente diseñadas de distinta magnitud. Al recombinarse en el segundo divisor, tendremos dos salidas:
 \begin{align*}
 \E_A(t) &= \mathcal{RT}\E(t_1) + \mathcal{TR}\E(t_2) \propto \E(t_1) + \E(t_2),\\
 \E_B(t) &= \mathcal{TT}\E(t_2) + \mathcal{RR}\E(t_1),
@@ -93,7 +93,7 @@ Vemos que tenemos tres contribuciones a la intensidad medida. Las primeras dos c
 
 Si --- sin pérdida de generalidad --- consideramos que $t_1 < t_2 = t_1 + \tau$ (y $\tau > 0$), podemos ver que la correlación dependerá de esta diferencia temporal $\tau$ a partir de un tiempo dado, más que de valores particulares de $t_1$ o $t_2$, siempre y cuando la naturaleza de $\E(t)$ nos permita tomar promedios sin mucho problema. De manera más general, el tercer término está definido de manera estadística como:
 \begin{equation}
-\langle\E(t)\cdot\E(t+\tau)\rangle = \cfrac{1}{T}\int_T dt \ \E^*(t)\E(t+\tau)\equiv \langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle ,
+\langle\E(t)\cdot\E(t+\tau)\rangle = \cfrac{1}{T}\int_T dt \ \E^*(t)\E(t+\tau)\equiv \langle\E^*(t)\E(t+\tau)\rangle ,
 \end{equation} 
 
 que se conoce como la \textit{función de correlación de primer orden}. El \textit{grado de coherencia temporal de primer orden} se define como la versión normalizada de la función de correlación de primer orden:
@@ -106,18 +106,18 @@ Veamos cómo se ve $\g{1}(\tau)$ para distintos tipos de luz.
 
 Consideremos a una fuente de luz caótica como un ensamble de muchos átomos que emiten luz de manera independiente unos de otros. Si se da una colisión entre ellos, la fase de la luz emitida cambia aleatoriamente (que permanece constante hasta que ocurra otra colisión) pero su amplitud $E_0$ y frecuencia $\omega_0$ permanecen constantes. Podemos modelar este cambio de fase como una función $\varphi(t)$ con dominio $[0,2\pi]$, y si observamos este campo en un punto espacial fijo:
 \begin{equation}
-\nonumber \E(t) = E_0e^{-i\omega_0t + i\varphi(t)}.
+\mathcal{E}(t) = E_0e^{-i\omega_0t + i\varphi(t)}.
 \end{equation}
 El cambio de fase de la luz emitida por un átomo es independiente de todos los demás. Suponiendo que podemos superponer cada campo individual para obtener el campo eléctrico total:
 \begin{align*}
-\E(t) &= \E_1(t) + \E_2(t) + ... + \E_n(t)\\
-\E(t) &= E_0e^{-i\omega_0t}\left(e^{i\varphi_1(t) + i\varphi_2(t) + ... + i\varphi_n(t)}\right)
+\mathcal{E}(t) &= \E_1(t) + \E_2(t) + ... + \E_n(t)\\
+\mathcal{E}(t) &= E_0e^{-i\omega_0t}\left(e^{i\varphi_1(t) + i\varphi_2(t) + ... + i\varphi_n(t)}\right)
 \end{align*}
 
 Si calculamos $\g{1}(\tau)$ para esta fuente de luz:
 
 \begin{align*}
-\langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle = E_0^2 e^{-i\omega_0\tau}&\times\langle\{e^{-i\varphi_1(t)} + e^{-i\varphi_2(t)} + ...  +e^{-i\varphi_n(t)}\}\\
+\langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle = E_0^2 e^{-i\omega_0\tau}&\langle\{e^{-i\varphi_1(t)} + e^{-i\varphi_2(t)} + ...  +e^{-i\varphi_n(t)}\}\\
 &\times\{e^{i\varphi_1(t+\tau)} + e^{i\varphi_2(t+\tau)} + ...  +e^{i\varphi_n(t+\tau)}\}\rangle.
 \end{align*}
 Al tomarse el promedio estadístico, los términos cruzados se eliminan pues corresponden a saltos aleatorios distintos (y promedian cero al considerarse el ensamble completo). Así,
@@ -128,15 +128,15 @@ Al tomarse el promedio estadístico, los términos cruzados se eliminan pues cor
 \end{align}
 ya que cada átomo es indistinguible de los demás.
 
-Finalmente, calculemos $\langle\mathcal{E}_j^*(t)\mathcal{E}_j(t+\tau)\rangle$. De la teoría cinética de los gases, sabemos que la probabilidad de que haya un tiempo entre colisiones dentro del intervalo $[\tau,\tau+d\tau]$ (donde la fase del campo es constante) es:
+Calculemos $\langle\mathcal{E}_j^*(t)\mathcal{E}_j(t+\tau)\rangle$. De la teoría cinética de los gases, sabemos que la probabilidad de que haya un tiempo entre colisiones dentro del intervalo $[\tau,\tau+d\tau]$ (donde la fase del campo es constante) es:
 \begin{equation}
-p(\tau)d\tau = (1/\tau_c)e^{(\tau/\tau_c)}d\tau,
+p(\tau)d\tau = (1/\tau_c)e^{(-\tau/\tau_c)}d\tau,
 \end{equation}
 donde $\tau_c$ es el tiempo característico de vuelo, o tiempo de coherencia. Usando esta distribución de probabilidad para calcular $\langle\mathcal{E}_j^*(t)\mathcal{E}_j(t+\tau)\rangle$,
 \begin{align}
-\nonumber \langle\mathcal{E}_j^*(t)\mathcal{E}_j(t+\tau)\rangle &= E_0^2e^{-i\omega_0\tau}\langle e^{i\phi_j(t+\tau) - i\phi_j(t)}\\
-\nonumber &= E_0^2e^{-i\omega_0\tau}\int_\tau ^\infty d\tau' p(\tau')\\
-\nonumber &= E_0^2e^{-i\omega_0\tau} e^{\tau/\tau_c}.
+\nonumber \langle\mathcal{E}_j^*(t)\mathcal{E}_j(t+\tau)\rangle &= E_0^2e^{-i\omega_0\tau}\langle e^{i\phi_j(t+\tau) - i\phi_j(t)}\rangle\\
+\nonumber &= E_0^2e^{-i\omega_0\tau}\int_\tau ^\infty p(\tau') d\tau'\\
+\nonumber &= E_0^2e^{-i\omega_0\tau} e^{-\tau/\tau_c}.
 \end{align}
 
 Finalmente, de la ecuación \ref{eq15} obtenemos que:
@@ -156,7 +156,7 @@ Calculando $\langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle$, obtenemos que:
 \g{1}(\tau) = e^{-i\omega_0\tau - \frac{\pi}{2}(\tau/\tau_c)^2}. \label{eq_doppler}
 \end{equation}
 
-De las ecuaciones \ref{eq_colision} y \ref{eq_doppler}, vemos que la magnitud de $\g{1}(\tau)$ para luz caótica ensanchada por colisiones tiene un perfil Lorentziano, mientras que para luz caótica ensanchada por Doppler presenta un perfil Gaussiano. En ambos casos, $|\g{1}(0)| = 1$ es el máximo y decrece monotónicamente hacia $0$.
+De las ecuaciones \ref{eq_colision} y \ref{eq_doppler}, vemos que la magnitud de $\g{1}(\tau)$ para luz caótica ensanchada por colisiones tiene un perfil Lorentziano, mientras que para luz caótica ensanchada por Doppler presenta un perfil Gaussiano. En ambos casos, $|\g{1}(0)| = 1$ es el máximo y decrece monótonamente hacia $0$.
 
 \subsubsection*{Luz láser}\label{luz_laser}
 
@@ -259,10 +259,10 @@ Los operadores $\ad$ y $\hat a$ actúan en estos estados de la forma:
 \ad|n\rangle &= \sqrt{n+1}|n+1\rangle.
 \end{align*}
 
-En la descripción de óptica cuántica, estos estados $|n\rangle$ describe el número de exitaciones con energía $\hbar\omega$; estas exitaciones reciben el nombre de \textit{fotones}.
+En la descripción de óptica cuántica, estos estados $|n\rangle$ describe el número de excitaciones con energía $\hbar\omega$; estas excitaciones reciben el nombre de \textit{fotones}.
 
 \subsubsection{Estadística de fotones individuales}\label{estadistica}
-La óptica cuántica está encargada de estudiar a los haces de luz como un chorro de fotones en vez de la descripción clásica de ondas. Para hacer esto, es útil ver estudiar la estadística de este haz de fotones. La intensidad de este campo está dado por el valor esperado del operador $\hat n$, que es equivalente al número promedio de fotones en el haz. Esto quiere decir que:
+La óptica cuántica está encargada de estudiar a los haces de luz como un chorro de fotones en vez de la descripción clásica de ondas. Para hacer esto, es útil estudiar la estadística de este haz de fotones. La intensidad de este campo está dada por el valor esperado del operador $\hat n$, que es equivalente al número promedio de fotones en el haz. Esto quiere decir que:
 \begin{equation}
 \langle I \rangle \propto \langle \hat n \rangle  = \langle \ad \hat a \rangle \equiv \bar n.
 \end{equation}
@@ -306,7 +306,7 @@ Cada modo oscilatorio tiene la energía dada por la ecuación \ref{eq_energia_os
 \begin{equation}
 \mathcal{P}_{\omega}(n) = \cfrac{\exp(-n\hbar\omega/k_BT)}{\sum_{n=0}^\infty\exp(-n\hbar	\omega/k_BT}). \label{prob_termica}
 \end{equation}
-Para este tipo de luz, es posible demostrar que $\bar n = 1/(\exp(\hbar\omega/k_BT)-1)$, y la probabilidad \ref{prob_termica} es :
+Para este tipo de luz, es posible demostrar que $\bar n = 1/(\exp(\hbar\omega/k_BT)-1)$, y la probabilidad \ref{prob_termica} es:
 \begin{equation}
 \mathcal{P}_{\omega}(n) = \cfrac{1}{\bar n+1}\left(\cfrac{\bar n}{\bar n + 1}\right)^n,
 \end{equation}
@@ -539,7 +539,7 @@ La temperatura de operación de los APDs fue de -40 $^{\circ}$C. Se eligió esta
 
 Después de probar la funcionalidad del programa de adquisición, se realizaron medidas de intensidad para luz láser de 780 nm. Para un haz estable de 100 $\mu$W de potencia, se usó un arreglo de filtros ND con densidad óptica total de 7.5 para obtener 3 pW a la entrada del divisor de haz 50/50. Cada brazo del interferómetro se acopló a una fibra mono-modal conectada a un APD. Para diferenciar cada brazo del interferómetro, a uno se le asignó el subíndice $T$ por ser el transmitido por el divisor de haz, mientras el otro tendrá $R$ por ser el reflejado.
 
-Se ajustó la distancia de los dos brazos del interferómetro para que fue tuvieran la misma longitud para medir $\g{2}(\tau)$ en coincidencia ($\tau=0$). Sin embargo, esto no es muy importante. Si los brazos del interferómetro no fueran iguales, al calcular $\g{2}(\tau)$ veríamos las cuentas en coincidencia en un tiempo $\tau \neq 0$. %Esto se hizo con una incertidumbre de un par de centímetros, que  coresponde a una incertidumbre de apenas una fracción de nanosegundo. Como la escala temporal usada en este experimento fue de varias decenas de nanosegundos, por lo que para fines prácticos la diferencia temporal en la detección de cada brazo fue cero.
+Se ajustó la distancia de los dos brazos del interferómetro para que tuvieran la misma longitud para medir $\g{2}(\tau)$ en coincidencia ($\tau=0$). Sin embargo, esto no es muy importante. Si los brazos del interferómetro no fueran iguales, al calcular $\g{2}(\tau)$ veríamos las cuentas en coincidencia a un tiempo $\tau \neq 0$. %Esto se hizo con una incertidumbre de un par de centímetros, que  coresponde a una incertidumbre de apenas una fracción de nanosegundo. Como la escala temporal usada en este experimento fue de varias decenas de nanosegundos, por lo que para fines prácticos la diferencia temporal en la detección de cada brazo fue cero.
 
 Al utilizar los APDs no se mide directamente la intensidad de los láseres, así que es necesario relacionarlo a cantidades que podamos medir en el laboratorio. En la práctica, la intensidad de un haz no es completamente constante y habrán fluctuaciones que se verán reflejadas en la estadística que hagamos al calcular $\g{2}(0)$. Es por esto que es adecuado considerar las probabilidades de detección para un tiempo arbitrario de integración $\Delta t$\cite{Beck}:
 \begin{equation}
@@ -575,7 +575,7 @@ Este análisis es válido para medir $\g{2}(0)$. El retraso $\tau$ surge de la d
 &\ _{\downarrow}^{t_0} \\
 T = \ &\mid 1 \mid 0 \mid 2 \mid 1\mid 0\mid 0 \mid 1 \mid \ldots \mid 1 \mid 0 \mid 0 \mid\\
 R' &= \ \ \mid 0 \mid 0 \mid 1 \mid 1\mid 1\mid 0 \mid \ldots \mid 2 \mid 0 \mid 0 \mid 1 \mid\\
-& \ \ \ \ \ ^{\uparrow}_{t'_0}
+& \ \ \ \ \ ^{\uparrow}_{t'_0 = t_0 + \Delta t}
 \end{align*}
 Vemos que, sin embargo, sólo podremos obtener el número de cuentas conjunto $N_{TR}$ para el traslape temporal de nuestros nuevos histogramas, y nuestro tiempo total de detección $\Delta T$ también habrá cambiado. En este caso,
 \begin{align*}

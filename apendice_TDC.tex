@@ -62,17 +62,11 @@ Estos parámetros iniciales de configuración pueden modificarse al cambiar los 
 %En estos archivos, los valores de las etiquetas de tiempo están dados en múltiplos del reloj (\code{timebase}) del sistema. Esta unidad es aproximadamente 81 ps y puede obtenerse usando el método de \code{timebase} de los objetos TDC.
 
 \subsubsection{Lista de métodos}
-El objeto \code{TDC} tiene una lista de propiedades que determinan los parámetros de operación. Como referencia, se listarán los métodos de acuerdo a la siguiente leyenda, con un ejemplo:
+El objeto \code{TDC} tiene una lista de métodos (propiedades y funciones) que determinan los parámetros de operación. Las \textit{propiedades} del TDC son:
 \begin{itemize}
-\item \textbf{output}(y precisión, si la tiene) \code{método(argumentos)}: Descripción del método. Si un método no tiene argumentos o no regresa un output, su descripción omitirá esa sección.
-\item \textbf{int32} \code{timestamp\_count}: El tamaño del búfer de eventos.
-\end{itemize}
-
-Las propiedades modificables del TDC son:
-\begin{itemize}
-\item \textbf{double} \code{timebase}: La resolución temporal del TDC en segundos. El valor exacto es $8.09552722121028e^{-11}$s.
-\item \textbf{int32} \code{timestamp\_count}: El tamaño del búfer de eventos. El búfer es el número total de eventos independientes que el TDC puede procesar en su memoria interna; si este valor está fijado en $1000$ y llega un evento $1001$, reescribirá al primero evento y así continuará. Entre $0$ y $1,000,000$.
-\item \textbf{int32} \code{channels\_enabled}: La \textit{máscara de bytes} de los canales habilitados del TDC. Si sólo se habilita el canal 1 (correspondiente a una máscara 1), todos los eventos que lleguen a un canal que no sea el 1 no serán procesados. Se recomienda dejar todos los canales habilitados.
+\item \textbf{timebase}: La resolución temporal del TDC en segundos. El valor exacto es $8.09552722121028e^{-11}$s. \textbf{double}.
+\item \textbf{timestamp\_count}: El tamaño del búfer de eventos. El búfer es el número total de eventos independientes que el TDC puede procesar en su memoria interna; si este valor está fijado en $1000$ y llega un evento $1001$, reescribirá al primero evento y así continuará. Entre $0$ y $1,000,000$. \textbf{int32}.
+\item \textbf{channels\_enabled}: La \textit{máscara de bytes} de los canales habilitados del TDC. Si sólo se habilita el canal 1 (correspondiente a una máscara 1), todos los eventos que lleguen a un canal que no sea el 1 no serán procesados. Se recomienda dejar todos los canales habilitados. \textbf{int32}.
 
 La máscara de bytes es una correspondencia byte-canal que maneja el TDC. La Tabla \ref{mascara} muestra los primeros valores de la relación de correspondencia. Se recomienda dejar todos los canales habilitados (que equivale a un byte de 255, -1, o 0xff en hexadecimal), a menos que un defecto físico en un canal de entrada al TDC esté ocasionando ruido. En ese caso, es simple seguir la secuencia de máscara para encontrar el valor necesario de byte.
 
@@ -89,18 +83,18 @@ Byte	 & Canal   & Byte  & Canal   & Byte  & Canal \\ \hline
 \end{tabular}
 \caption{Máscara de bytes del TDC.} \label{mascara}
 \end{table}
-\item \textbf{int32} \code{timestamps}: Array de longitud \code{timestamp\_count} con las etiquetas de tiempo guardadas al momento.
-\item \textbf{int32} \code{channel}: Array de longitud \code{timestamp\_count} con la máscara de bytes de los canales correspondientes a cada etiqueta de tiempo registrada.
-\item \textbf{int32} \code{coincWin}: Coincidence window. La ventana de tiempo para el conteo de coincidencias En múltiplos de \code{timebase}.
-\item \textbf{int32} \code{expTime}: Exposure time. El tiempo de integración para el cálculo de coincidencias. En milisegundos.
-\item \textbf{int32} \code{bincount}: Parámetro del histograma de diferencias temporales. Número de barras del histograma. En múltiplos de \code{timebase}, entre $1$ y $1,000,000$.
-\item \textbf{int32} \code{binsize}: Parámetro del histograma de diferencias temporales. Ancho de cada barra del histograma. En múltiplos de \code{timebase}, entre $2$ y $1,000,000$.
+\item \textbf{timestamps}: Array de longitud \code{timestamp\_count} con las etiquetas de tiempo guardadas al momento. \textbf{int32}.
+\item \textbf{channels}: Array de longitud \code{timestamp\_count} con la máscara de bytes de los canales correspondientes a cada etiqueta de tiempo registrada. \textbf{int32}.
+\item \textbf{coincWin}: Coincidence window. La ventana de tiempo para el conteo de coincidencias En múltiplos de \code{timebase}. \textbf{int32}.
+\item \textbf{expTime}: \textbf{int32}. Exposure time. El tiempo de integración para el cálculo de coincidencias. En milisegundos.
+\item \textbf{bincount}: Parámetro del histograma de diferencias temporales. Número de barras del histograma. En múltiplos de \code{timebase}, entre $1$ y $1,000,000$. \textbf{int32}.
+\item \textbf{binsize}: Parámetro del histograma de diferencias temporales. Ancho de cada barra del histograma. En múltiplos de \code{timebase}, entre $2$ y $1,000,000$. \textbf{int32}.
 \end{itemize}
 
-La lista completa de funciones implementadas para la paquetería de \code{hunahpy}, junto con su descripción, es:
+La lista completa de \textit{funciones} implementadas para la paquetería de \code{hunahpy}, junto con su descripción, es:
 
 \begin{enumerate}
-\item \textbf{error code} \code{switch(byte)}: Función para debuggear el código. Esta fución se ejecuta después de casi todas las otras funciones y es la encargada de imprimir los códigos de error generados por cada función. En la Tabla \ref{switch} están todos los mensajes de error posibles y algunas notas sobre cómo corregirlos.
+\item \textbf{switch(byte)}: Regresa \textbf{error code}. Función para debuggear el código. Esta fución se ejecuta después de casi todas las otras funciones y es la encargada de imprimir los códigos de error generados por cada función. En la Tabla \ref{switch} están todos los mensajes de error posibles y algunas notas sobre cómo corregirlos.
 
 \begin{table}[h!]
 \centering
@@ -121,9 +115,9 @@ La lista completa de funciones implementadas para la paquetería de \code{hunahp
 \caption{Mensajes de error de un objeto TDC.} \label{switch}
 \end{table}
 
-\item \textbf{error code} \code{close()}: Cierra la conexión al módulo TDC. Sólo se permite una conexión a la vez - sólo un programa de adquisición abierto. Es importante cerrar la conexión antes de desconectarlo para evitar dañar el módulo.
-\item error code \code{switchTermination(on)}: No confundirse con la función \code{switch()} que es la función de debugging. \code{switchTermination()} activa o desactiva el modo de impedancia de $50\Omega$ para los canales de entrada del TDC. Si está desactivado, la impedancia de los canales de entrada del TDC será $1000\Omega$. \code{on} es booleano: puede ser $1$ o $0$.
-\item \textbf{error code} \code{configureSelfTest(channel,signal period,burst size,burst distance)}: El FPGA del TDC puede generar trenes de pulsos virtuales que serán procesados como señales añadidas a las entradas reales de cada canal.
+\item \textbf{close()}: Regresa \textbf{error code}. Cierra la conexión al módulo TDC. Sólo se permite una conexión a la vez - sólo un programa de adquisición abierto. Es importante cerrar la conexión antes de desconectarlo para evitar dañar el módulo.
+\item \textbf{switchTermination(on)}: Regresa \textbf{error code}. No confundirse con la función \code{switch()} que es la función para errores. \code{switchTermination()} activa o desactiva el modo de impedancia de $50\Omega$ para los canales de entrada del TDC. Si está desactivado, la impedancia de los canales de entrada del TDC será $1000\Omega$. \code{on} es booleano: puede ser $1$ o $0$.
+\item \textbf{configureSelfTest(channel, signal period, burst size, burst distance)}: Regresa \textbf{error code}. El FPGA del TDC puede generar trenes de pulsos virtuales que serán procesados como señales añadidas a las entradas reales de cada canal.
 \begin{itemize}
 \item \code{channel}: Byte del canal a usarse (e.g. 5 corresponde a canales 1 y 3).
 \item \code{signal period}: Período de todas las señales de un tren, en unidades de $20$ns. Entre $2$ Y $60$.
@@ -135,28 +129,28 @@ La lista completa de funciones implementadas para la paquetería de \code{hunahp
 \includegraphics[width=\linewidth]{/A1_selftest.png}
 \caption{Señal de prueba del TDC.}\label{fig:selftest}
 \end{figure}
-\item \textbf{int8} \code{getChannel(byte)}: Regresa el número real de un canal basado en la máscara de bytes.
-\item error code \code{getCoincCounters()}: Calcula el número de coincidencias para la última ventana temporal dado por \code{expTime}. Dos eventos son considerados coincidentes si suceden dentro de esa ventana. Este valor se guarda en la variable \code{coincidence\_array} en el orden: 1, 2, 3, 4, 5, 6, 7 ,8, 1/2, 1/3, 1/4, 2/3, 2/4, 3/4, 1/2/3, 1/2/4, 1/3/4, 2/3/4, 1/2/3/4. Las coincidencias no son acumulativas; sólo se guardan las coincidencias para la última ventana temporal de exposición.
+\item \textbf{getChannel(byte)}: Regresa \textbf{int8}. Regresa el número real de un canal usando la máscara de bytes (Tabla \ref{mascara}).
+\item \textbf{getCoincCounters()}: Regresa \textbf{error code}. Calcula el número de coincidencias para la última ventana temporal dado por \code{expTime}. Dos eventos son considerados coincidentes si suceden dentro de esa ventana. Este valor se guarda en la variable \code{coincidence\_array} en el orden: 1, 2, 3, 4, 5, 6, 7 ,8, 1/2, 1/3, 1/4, 2/3, 2/4, 3/4, 1/2/3, 1/2/4, 1/3/4, 2/3/4, 1/2/3/4. Las coincidencias no son acumulativas; sólo se guardan las coincidencias para la última ventana temporal de exposición.
 
-\item \textbf{error code} \code{getDataLost()}: Verifica si hay pérdidas de datos causadas por una velocidad de detección demasiado alta para el cable USB. De haber datos perdidos, el valor de \code{data\_loss} queda como $1$ y se levanta un mensaje de aviso al usuario.
-\item \code{getDeviceParams()}: Imprime los parámetros de operación del TDC.
-\item error code \code{setHistogramParams(bincount, binsize)}: Define los parámetros del histograma de diferencias temporales \code{bincount} y \code{binsize}. Al llamarse esta función, se borran todos los histogramas anteriores acumulados hasta ese punto.
-\item \code{getHistogramParams()}: Imprime los parámetros \code{bincount} y \code{binsize} del histograma de diferencias temporales.
-\item \code{getHistogram(chanA,chanB,reset)}: Llama al histograma de diferencias temporales entre el canal \code{chanA} y el canal \code{chanB}.
+\item \textbf{getDataLost()}: Regresa \textbf{error code}. Verifica si hay pérdidas de datos causadas por una velocidad de detección demasiado alta para el cable USB. De haber datos perdidos, el valor de \code{data\_loss} queda como $1$ y se levanta un mensaje de aviso al usuario.
+\item \textbf{getDeviceParams()}: Imprime los parámetros de operación del TDC.
+\item \textbf{setHistogramParams(bincount, binsize)}: Regresa \textbf{error code}. Define los parámetros del histograma de diferencias temporales \code{bincount} y \code{binsize}. Al llamarse esta función, se borran todos los histogramas anteriores acumulados hasta ese punto.
+\item \textbf{getHistogramParams()}: Imprime los parámetros \code{bincount} y \code{binsize} del histograma de diferencias temporales.
+\item \textbf{getHistogram(chanA, chanB, reset)}: Regresa \textbf{error code}. Llama al histograma de diferencias temporales entre el canal \code{chanA} y el canal \code{chanB}.
 \begin{itemize}
 \item \code{chanA}: Primer canal del TDC para calcular el histograma. 0,...,7 para los canales 1,...,8. Si el valor está fuera de ese rango, calcula el histograma global.
 \item \code{chanB}: Segundo canal del TDC para calcular el histograma. 0,...,7 para los canales 1,...,8. Si el valor está fuera de ese rango, calcula el histograma global.
 \item \code{reset}: Si se deben borrar los histogramas anteriores acumulados hasta ese punto. Booleano: $1$ o $0$.
 \end{itemize}
-\item \code{getLastTimestamps(reset,output,*save)}: La función más importante de la paquetería. Guarda los valores de los últimos eventos procesados por el TDC en las variables \code{timestamps} y sus respectivos canales en \code{channels}. Si la cantidad de eventos procesados al momento de llamar la función es menor al tamaño total del búfer (el número total de eventos que el TDC puede almacenar en memoria en todo momento), la variable \code{valid} regresa el número total de etiquetas válidas en \code{timestamps} y \code{channels} (\textit{i.e.}, si el búfer tiene capacidad de $1000$ etiquetas pero sólo han sucedido $200$, \code{TDC.valid} tendrá un valor de $200$ y sólo las primeras $200$ entradas de \code{TDC.timestamps} serán no nulas).
+\item \textbf{getLastTimestamps(reset, output, *save)}: Regresa \textbf{error code}. Guarda los valores de los últimos eventos procesados por el TDC en las variables \code{timestamps} y sus respectivos canales en \code{channels}. Si la cantidad de eventos procesados al momento de llamar la función es menor al tamaño total del búfer (el número total de eventos que el TDC puede almacenar en memoria en todo momento), la variable \code{valid} regresa el número total de etiquetas válidas en \code{timestamps} y \code{channels} (\textit{i.e.}, si el búfer tiene capacidad de $1000$ etiquetas pero sólo han sucedido $200$, \code{TDC.valid} tendrá un valor de $200$ y sólo las primeras $200$ entradas de \code{TDC.timestamps} serán no nulas).
 \begin{itemize}
 \item \code{reset}: Si se deben borrar los eventos anteriores acumulados hasta ese punto. Booleano: $1$ o $0$.
 \item \code{output}: Si se deben guardar los eventos a archivo.  Booleano: $1$ o $0$. De ser positivo, llama a \code{saveTimestamps()}.
 \item \code{*save}: Si \code{output = 1}, \code{*save} serán los argumentos que \code{saveTimestamps()} necesite: los nombres de archivo y extensión que serán creados.
 \end{itemize}
-\item \code{saveTimestamps(filename\_timestamps, filename\_channels,} \code{extension)}: Guarda los valores de \code{timestamps} y \code{channels} en un archivo con nombre \code{filename\_timestamps} y \code{filename\_channels}. Sólo puede guardar datos en formato decimal.
-\item \code{writeTimestamps(filename, binary)}: Crea o abre un archivo con nombre \code{filename} y empieza a escribir todos los eventos registrados en él. Para formato binario, usar el argumento \code{binary=True}. Para dejar de escribir, llamar a la función de nuevo \textbf{sin} argumentos. Los archivos creados no tienen un límite de tamaño.
-\textbf{IMPORTANTE:} Los archivos de datos guardados en formato binario \textit{no son legibles por un humano}. Es necesario decodificarlos primero. Cada evento consiste en 10 bytes: 8 bytes que determinan el tiempo de cada evento (en múltiplos de 81 ps) y 2 bytes que determinan su canal (de 0 a 7).
+\item \textbf{saveTimestamps(filename\_timestamps, filename\_channels, extension)}: Guarda los valores de \code{timestamps} y \code{channels} en un archivo con nombre \code{filename\_timestamps} y \code{filename\_channels}. Sólo puede guardar datos en formato decimal.
+\item \textbf{writeTimestamps(filename, binary)}: Crea y abre un archivo con nombre \code{filename} y empieza a escribir todos los eventos registrados en él en formato decimal. Para guardarlos en formato binario, usar el argumento \code{binary=True}. Para dejar de escribir, llamar a la función de nuevo \textbf{sin} argumentos. Los archivos creados no tienen un límite de tamaño.
+\textbf{IMPORTANTE:} Los archivos de datos guardados en formato binario \textit{no son legibles por un humano}. Es necesario decodificarlos primero. Cada evento consiste en 10 bytes: 8 bytes que determinan el tiempo de cada evento (en múltiplos de \code{timebase}) y 2 bytes que determinan su canal (de 0 a 7) de acuerdo a la máscara de bytes (Tabla \ref{mascara}).
 
 \end{enumerate}
 
@@ -169,6 +163,7 @@ La diferencia entre \code{getLastTimestamps} y \code{writeTimestamps} es que \co
 Todos los parámetros necesarios por un objeto \code{TDC} se definen a partir del archivo de configuración \code{config.py}. En este archivo se definen el tamaño del búfer (\code{timestamp\_count}) y el total de canales activados. Los valores por default son \code{timestamp\_count} $=$ 1000000 y todos los canales activados.
 
 Además, también se definen algunas propiedades útiles únicamente para la interfaz gráfica (el programa de adquisición), como el número de canastas del histograma o la ventana temporal para el conteo de coincidencias. Además, se define el nombre de los archivos de datos que se crearán y si se están guardando datos en modo continuo o en múltipes archivos.
+\newpage
 
 \subsection{Ejemplos}
 Se presentan dos ejemplos de scripts para usar \code{hunahpy} en sus dos modos de guardado de datos.
@@ -196,7 +191,7 @@ La función principal para guardar los datos es en este caso \code{writeTimestam
 \end{verbatim}
 \newpage
 \subsubsection*{Modo de múltiples archivos}
-La función principal para guardar los datos es en este caso \code{getLastTimestamps}. En el archivo de configuración, se definió un tamaño de búfer de 100000 eventos y un total de archivos de 20. Escribirá los datos en formato decimal.
+La función principal para guardar los datos es en este caso \code{getLastTimestamps}. Escribirá los datos en formato decimal.
 
 \begin{verbatim}
 ###################################
