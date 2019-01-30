@@ -24,7 +24,7 @@ En este capítulo se presenta una introducción a la teoría de estadística de 
 En esta sección se presentará una descripción de los elementos teóricos utilizados en este capítulo. Partiendo de una descripción clásica de la luz, se introducirán los conceptos de \textit{coherencia} de primer y segundo grado, que nos permitirán clasificar luz de distintas fuentes de acuerdo a la estadística que siguen. Finalmente, se realizará una cuantización del campo. Este desarrollo sigue principalmente la exposición de Kenyon\cite{Kenyon}, Loudon\cite{Loudon} y Fox\cite{Fox}.
 
 \subsubsection{Óptica clásica}\label{optica_clasica}
-Aunque muchos efectos ópticos clásicos pueden ser descritos por óptica geométrica, para poder explicar efectos como interferencia y difracción, se necesita el tratamiento clásico de la luz como ondas. La teoría de Maxwell de la luz como ondas electromagnéticas está descrita en términos del campo eléctrico $\E(\textbf{r},t)$ y el campo magnético $\B(\textbf{r},t)$; para el campo electromagnético en materiales, se definen de manera más general el campo de desplazamiento $\D(\textbf{r},t)$ y la cantidad magnética $\Hmag(\textbf{r},t)$. En un material homogéneo e isotrópico, la descripción de estos campos generales es:
+Aunque muchos efectos ópticos clásicos pueden ser descritos por óptica geométrica, para poder explicar efectos como interferencia y difracción, se necesita el tratamiento clásico de la luz como ondas. La teoría de Maxwell de la luz como ondas electromagnéticas está descrita en términos del campo eléctrico $\E(\textbf{r},t)$ y el campo magnético $\B(\textbf{r},t)$; para el campo electromagnético en materiales, se definen de manera más general el campo de desplazamiento $\D(\textbf{r},t)$ y la cantidad magnética $\Hmag(\textbf{r},t)$. En un material homogéneo, isotrópico y lineal, la descripción de estos campos generales es:
 \begin{align*}
 \D &= \epsilon_0\epsilon_r\E & \B &= \mu_0\mu_r\Hmag,
 \end{align*}
@@ -64,7 +64,7 @@ De una manera análoga se encuentra una ecuación de onda para el campo magnéti
 \subsubsection{La función de correlación de primer orden}\label{coherencia}
 Para poder describir la correlación temporal entre dos haces de luz, es necesario entender el efecto de interferencia. La interferencia es el efecto de la recombinación de dos ondas en movimiento; patrones de interferencia ocurren cuando estas dos ondas presentan una diferencia relativa de fase. Un patrón de interferencia es indispensable para estudiar la coherencia entre ondas. %En el contexto del campo electromagnético, existen varios ejemplos que sirven para dejarlo en claro: el experimento de la doble rendija de Young, el interferómetro de Michaelson o el interferómetro de Mach Zehnder.
 
-Si dos trenes de onda presentan una relación bien determinada de fase entre ellos, se dice que son \textit{coherentes}. En una situación ideal, si conocemos esta relación de fase para un tiempo inicial, podríamos deducir la fase relativa en todo momento. La vida real, por desgracia, no funciona así y en realidad tenemos fluctuaciones en la fase que suceden conforme pasa el tiempo. Sin embargo, si la diferencia de fase entre las dos ondas permanece relativamente constante dentro de un intervalo $\tau_c$, decimos que son \textit{parcialmente coherentes} con un tiempo de coherencia $\tau_c$. En este sentido, la coherencia es una medida de la estabilidad de frecuencia de la luz: podremos predecir acertadamente la fase de una onda para un tiempo $t + \tau$, siempre y cuando $\tau << \tau_c$. De manera inmediata podemos obtener la distancia de coherencia $d_c = c\tau_c$ y medir la fase en dos puntos distintos en el espacio.
+Si dos trenes de onda presentan una relación bien determinada de fase entre ellos, se dice que son \textit{coherentes}. En una situación ideal, si conocemos esta relación de fase para un tiempo inicial, podríamos deducir la fase relativa en todo momento. Sin embargo, la vida real no funciona así y en realidad tenemos fluctuaciones en la fase que suceden conforme pasa el tiempo. Sin embargo, si la diferencia de fase entre las dos ondas permanece relativamente constante dentro de un intervalo $\tau_c$, decimos que son \textit{parcialmente coherentes} con un tiempo de coherencia $\tau_c$. En este sentido, la coherencia es una medida de la estabilidad de frecuencia de la luz: podremos predecir acertadamente la fase de una onda para un tiempo $t + \tau$, siempre y cuando $\tau << \tau_c$. De manera inmediata podemos obtener la distancia de coherencia $d_c = c\tau_c$ y medir la fase en dos puntos distintos en el espacio.
 
 \begin{figure}[]
 \centering
@@ -73,7 +73,7 @@ Si dos trenes de onda presentan una relación bien determinada de fase entre ell
 \end{figure}
 
 
-Para cuantificar la coherencia, calculamos la \textit{correlación}. La Figura \ref{fig:mach_zehnder} muestra un esquema sencillo del interferómetro de Mach Zehnder. Supongamos que tenemos un campo eléctrico $\E(t)$ incidente sobre el primer divisor de haz, que asumimos idéntico al segundo y ambos con coeficiente de reflexión $\mathcal{R}$ y coeficiente de transmisión  $\mathcal{T}$. Después de pasar por el primer divisor, el haz reflejado y el transmitido recorren una distancia $l_1$ y $l_2$, respectivamente, usualmente diseñadas de distinta magnitud. Al recombinarse en el segundo divisor, tendremos dos salidas:
+Para cuantificar la coherencia, calculamos la \textit{correlación}. Queremos estudiar la interacción entre dos ondas: la Figura \ref{fig:mach_zehnder} muestra un esquema sencillo del interferómetro de Mach Zehnder. Supongamos que tenemos un campo eléctrico $\E(t)$ incidente sobre el primer divisor de haz, que asumimos idéntico al segundo y ambos con coeficiente de reflexión $\mathcal{R}$ y coeficiente de transmisión  $\mathcal{T}$. Después de pasar por el primer divisor, el haz reflejado y el transmitido recorren una distancia $l_1$ y $l_2$, respectivamente, usualmente diseñadas de distinta magnitud. Al recombinarse en el segundo divisor, tendremos dos salidas:
 \begin{align*}
 \E_A(t) &= \mathcal{RT}\E(t_1) + \mathcal{TR}\E(t_2) \propto \E(t_1) + \E(t_2),\\
 \E_B(t) &= \mathcal{TT}\E(t_2) + \mathcal{RR}\E(t_1),
@@ -89,7 +89,7 @@ En la realidad no podemos medir la intensidad de manera instantántea, por lo qu
 \langle I_A(t)\rangle \propto \langle\mathcal{E}(t_1)^2\rangle + \langle\mathcal{E}(t_2)^2\rangle + 2\langle\E(t_1)\cdot\E(t_2)\rangle.
 \end{equation}
 
-Vemos que tenemos tres contribuciones a la intensidad medida. Las primeras dos corresponden a la intensidad que mediríamos de cada campo después de recorrer su brazo del interferómetro de manera independiente, \textit{i.e.}, sin efectos de interferencia. Sin embargo, el tercer término contiene la información de la \textit{correlación} de cada haz.
+Vemos que tenemos tres contribuciones a la intensidad medida. Las primeras dos corresponden a la intensidad que mediríamos de cada campo después de recorrer su brazo del interferómetro de manera independiente, \textit{i.e.}, sin efectos de interferencia. Sin embargo, el tercer término contiene la información de la \textit{correlación} entre los haces.
 
 Si --- sin pérdida de generalidad --- consideramos que $t_1 < t_2 = t_1 + \tau$ (y $\tau > 0$), podemos ver que la correlación dependerá de esta diferencia temporal $\tau$ a partir de un tiempo dado, más que de valores particulares de $t_1$ o $t_2$, siempre y cuando la naturaleza de $\E(t)$ nos permita tomar promedios sin mucho problema. De manera más general, el tercer término está definido de manera estadística como:
 \begin{equation}
@@ -103,8 +103,7 @@ que se conoce como la \textit{función de correlación de primer orden}. El \tex
 
 Veamos cómo se ve $\g{1}(\tau)$ para distintos tipos de luz.
 \subsubsection*{Luz caótica}\label{luz_termica}
-
-Consideremos a una fuente de luz caótica como un ensamble de muchos átomos que emiten luz de manera independiente unos de otros. Si se da una colisión entre ellos, la fase de la luz emitida cambia aleatoriamente (que permanece constante hasta que ocurra otra colisión) pero su amplitud $E_0$ y frecuencia $\omega_0$ permanecen constantes. Podemos modelar este cambio de fase como una función $\varphi(t)$ con dominio $[0,2\pi]$, y si observamos este campo en un punto espacial fijo:
+Consideremos un ensamble de muchos átomos que emiten luz de manera independiente unos de otros. Contemplaremos dos tipos de luz caótica: luz con colisiones entre átomos, y luz ensanchada por efecto Doppler. Tomemos el primer caso. Si se da una colisión entre ellos, la fase de la luz emitida cambia aleatoriamente (que permanece constante hasta que ocurra otra colisión) pero su amplitud $E_0$ y frecuencia $\omega_0$ permanecen constantes. Podemos modelar este cambio de fase como una función $\varphi(t)$ con dominio $[0,2\pi]$, y si observamos este campo en un punto espacial fijo:
 \begin{equation}
 \mathcal{E}(t) = E_0e^{-i\omega_0t + i\varphi(t)}.
 \end{equation}
@@ -128,14 +127,14 @@ Al tomarse el promedio estadístico, los términos cruzados se eliminan pues cor
 \end{align}
 ya que cada átomo es indistinguible de los demás.
 
-Calculemos $\langle\mathcal{E}_j^*(t)\mathcal{E}_j(t+\tau)\rangle$. De la teoría cinética de los gases, sabemos que la probabilidad de que haya un tiempo entre colisiones dentro del intervalo $[\tau,\tau+d\tau]$ (donde la fase del campo es constante) es:
+Calculemos $\langle\mathcal{E}_j^*(t)\mathcal{E}_j(t+\tau)\rangle$. De la teoría cinética de los gases, sabemos que la probabilidad de que haya un tiempo entre colisiones dentro del intervalo $[t,t+dt]$ (donde la fase del campo es constante) es:
 \begin{equation}
-p(\tau)d\tau = (1/\tau_c)e^{(-\tau/\tau_c)}d\tau,
+p(t)dt = (1/\tau_c)e^{(-t/\tau_c)}dt,
 \end{equation}
 donde $\tau_c$ es el tiempo característico de vuelo, o tiempo de coherencia. Usando esta distribución de probabilidad para calcular $\langle\mathcal{E}_j^*(t)\mathcal{E}_j(t+\tau)\rangle$,
 \begin{align}
 \nonumber \langle\mathcal{E}_j^*(t)\mathcal{E}_j(t+\tau)\rangle &= E_0^2e^{-i\omega_0\tau}\langle e^{i\phi_j(t+\tau) - i\phi_j(t)}\rangle\\
-\nonumber &= E_0^2e^{-i\omega_0\tau}\int_\tau ^\infty p(\tau') d\tau'\\
+\nonumber &= E_0^2e^{-i\omega_0\tau}\int_\tau ^\infty p(t) dt\\
 \nonumber &= E_0^2e^{-i\omega_0\tau} e^{-\tau/\tau_c}.
 \end{align}
 
@@ -149,7 +148,7 @@ Para una fuente de luz caótica con ensanchamiento Doppler se puede hacer un an�
 \E(t) = E_0\sum_{i=1}^n e^{-i\omega_i t + i\varphi_i}.
 \end{equation*}
 
-Aunque la fase del $i$-ésimo átomo es constante (dado que asumimos que no hay colisiones atómicas), están distribuidos de manera aleatoria y las contribuciones de fase de distintos átomos promediará cero. Además, cada átomo tiene una frecuencia de radiación $\omega_i$ recorrida de la frecuencia central $\omega_0$, determinada por su velocidad. 
+Aunque la fase del $i$-ésimo átomo es constante (dado que asumimos que ahora no hay colisiones atómicas), están distribuidos de manera aleatoria y las contribuciones de fase de distintos átomos promediará cero. Además, cada átomo tiene una frecuencia de radiación $\omega_i$ recorrida de la frecuencia central $\omega_0$, determinada por su velocidad. 
 
 Calculando $\langle\mathcal{E}^*(t)\mathcal{E}(t+\tau)\rangle$, obtenemos que:
 \begin{equation}
@@ -188,7 +187,7 @@ El experimento de interferencia de intensidades que realizaron Hanbury Brown y T
 \g{2}(\tau) = \cfrac{\langle\mathcal{E}^*(t)\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\mathcal{E}(t)\rangle}{\langle\mathcal{E}^*(t)\mathcal{E}(t)\rangle \langle\mathcal{E}^*(t+\tau)\mathcal{E}(t+\tau)\rangle} = \cfrac{\langle I(t)I(t+\tau)\rangle}{\langle I(t)\rangle\langle I(t+\tau)\rangle}.
 \end{equation}
 
-De acuerdo a esta descripción\cite{Loudon}, es posible probar con la desigualdad de \textit{Cauchy-Schwartz} que:
+En esta descripción \textbf{clásica}\cite{Loudon}, es posible probar con la desigualdad de \textit{Cauchy-Schwartz} que:
 \begin{align}
 1 &\leq \g{2}(0) \label{g0_clasica}\\
 \g{2}(\tau) &\leq \g{2}(0). \label{g0_gt_clasica}
@@ -213,7 +212,7 @@ quedando para luz caótica con colisiones y con ensanchamiento Doppler:
 \begin{align}
 \g{2}(\tau) &= 1 + e^{-2\tau/\tau_c}, & \g{2}(\tau) &= 1 + e^{-\pi(\tau/\tau_c)^2}.
 \end{align}
-En la Figura \ref{fig:g2} vemos la forma de $\g{2}(\tau)$ para las tres fuentes clásicas de luz tratadas hasta ahora. Notamos que en los tres casos, las ecuaciones \ref{g0_clasica} y \ref{g0_gt_clasica} se cumplen.
+En la Figura \ref{fig:g2} vemos la forma de $\g{2}(\tau)$ para las tres fuentes clásicas de luz tratadas hasta ahora. Notamos que en los tres casos \textbf{clásicos}, $\g{2}(\tau) \leq \g{2}(0)$ se cumple.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.9\linewidth]{g2_all.png}
@@ -221,18 +220,18 @@ En la Figura \ref{fig:g2} vemos la forma de $\g{2}(\tau)$ para las tres fuentes 
 \end{figure}
 
 \subsubsection{Cuantización del campo}\label{optica_cuantica}
-Hasta ahora, sólo hemos tratado de forma clásica las fuentes de luz. Nos gustaría ver qué pasa con la función $\g{2}(\tau)$ al seguir un tratamiento cuántico. De la teoría clásica del campo electromagnético \cite{Loudon}, sabemos que el campo eléctrico $\E(\bm{r},t)$ y el campo magnético $\B(\bm{r},t)$ son campos vectoriales dependientes del tiempo que en vacío dependen de un tercer campo $\A(\bm{r},t)$ (el potencial vectorial) y un campo escalar $\phi(\bm{r},t)$:
+Hasta ahora, sólo hemos tratado de forma clásica las fuentes de luz. Nos gustaría ver qué pasa con la función $\g{2}(\tau)$ al seguir un tratamiento cuántico. De la teoría clásica del campo electromagnético \cite{Loudon}, sabemos que el campo eléctrico $\E(\bm{r},t)$ y el campo magnético $\B(\bm{r},t)$ son campos vectoriales dependientes del tiempo que en vacío se pueden escribir en términos de un tercer campo $\A(\bm{r},t)$ (el potencial vectorial) y un campo escalar $\phi(\bm{r},t)$:
 \begin{align*}
 \B(\bm{r},t) &=\curl\A(\bm{r},t), \\
 \E(\bm{r},t) &=-\nabla\phi(\bm{r},t) - \cfrac{\partial\A(\bm{r},t)}{\partial t}.
 \end{align*}
 
-De acuerdo a las expresiones anteriores, el Hamiltoniano clásico tiene la forma
+De acuerdo a las expresiones anteriores, el Hamiltoniano clásico del campo en una cavidad de volumen $V$ tiene la forma
 \begin{equation}
 H = \frac{1}{2}\epsilon_0 \int\int\int_V d^3r \ \left(|\E(\bm{r},t)|^2 + c^2|\B(\bm{r},t)|^2\right). \label{Hamiltoniano}
 \end{equation}
 
-Tomando la norma de Coulomb, (para la cual $\divr\A = 0$), se puede demostrar que la expansión de Fourier del potencial vectorial es:
+Para este Hamiltoniano, tomando la norma de Coulomb (con la cual $\divr\A = 0$), el potencial vectorial $\A$ tiene una solución de onda y se puede demostrar que su expansión de Fourier es:
 \begin{equation}
 \A(\bm{r},t) = \sum_{\bm{k}}\sum_{\mu =\pm 1}\left(\bm{e}^{(\mu)}(\bm{k})a_{\bm{k}}^{(\mu)}(t)e^{i\bm{k}\cdot\bm{r}} + \bm{e}^{*(\mu)}(\bm{k})a^{*(\mu)}_{\bm{k}}(t)e^{-i\bm{k}\cdot\bm{r}}\right),
 \end{equation}
@@ -247,10 +246,7 @@ Este Hamiltoniano se asemeja mucho al de un oscilador armónico expresado en fun
 \begin{equation}
 \hat H = \hbar\omega\left(\ad\hat a + \frac{1}{2}\right).
 \end{equation} 
-Esto, y la naturaleza ondulatoria y periódica de la luz, hacen razonable describir el comportamiento cuántico en el formalismo del oscilador armónico. Los eigenestados de este Hamiltoniano son $|n\rangle$, y les corresponde una energía:
-\begin{align}
-E_n &= \hbar\omega\left(n + \frac{1}{2}\right) & n &= 1,2,3,... \label{eq_energia_oscilador}
-\end{align}
+Esto, y la naturaleza ondulatoria y periódica de la luz, hacen razonable describir el comportamiento cuántico en el formalismo del oscilador armónico. En realidad, esto es un poco más complicado, pues cada operador $\hat a$ depende de $\mu$ y $\bm{k}$, pero podemos entenderlo como que estos operadores crean y destruyen un fotón de energía $\hbar\omega_{\bm{k}}$ y modo $\bm{k}\mu$. El número de fotones en un estado excitado está dado por $n_{\bm{k}\mu}$, que es el eigenvalor del operador de número fotónico $\hat n_{\bm{k}\mu}$. Los eigenestados, $|n_{\bm{k}\mu}\rangle$, son llamados \textit{estados de número de fotones} o \textit{estados de Fock}. Sin embargo, para un sistema sencillo es práctico realizar esta descripción tal que estos estados $|n\rangle$ describen el número de excitaciones con energía $\hbar\omega$: excitaciones que reciben el nombre de \textit{fotones}.
 
 Los operadores $\ad$ y $\hat a$ actúan en estos estados de la forma:
 \begin{align*}
@@ -259,7 +255,6 @@ Los operadores $\ad$ y $\hat a$ actúan en estos estados de la forma:
 \ad|n\rangle &= \sqrt{n+1}|n+1\rangle.
 \end{align*}
 
-En la descripción de óptica cuántica, estos estados $|n\rangle$ describe el número de excitaciones con energía $\hbar\omega$; estas excitaciones reciben el nombre de \textit{fotones}.
 
 \subsubsection{Estadística de fotones individuales}\label{estadistica}
 La óptica cuántica está encargada de estudiar a los haces de luz como un chorro de fotones en vez de la descripción clásica de ondas. Para hacer esto, es útil estudiar la estadística de este haz de fotones. La intensidad de este campo está dada por el valor esperado del operador $\hat n$, que es equivalente al número promedio de fotones en el haz. Esto quiere decir que:
@@ -361,13 +356,13 @@ El arreglo óptico se divide en la parte de bombeo (la luz que llega a la nube d
 
 En este montaje experimental, los haces de bombeo son colineales y los fotones generados también lo serán. El montaje de la óptica de adquisición consiste principalmente en un arreglo de filtros de interferencia SEMROCK LL01-780 y LL01-808 para filtrar la luz que se generará en el FWM de los haces de atrapamiento que son mucho más potentes. A cada ángulo, estos filtros de interferencia transmiten una longitud de onda central y reflejan el resto. Después de filtrar los haces de bombeo, la luz generada fue acoplada a dos fotodiodos de avalancha (APDs) para la detección de fotones individuales por medio de fibras monomodo. Como se muestra en la Figura \ref{fig:optica_fwm}, para la detección y procesamiento de señales se utilizan dos instrumentos: algunos APD de silicón \textit{id120} y un etiquetador de cuentas temporales \textit{id800} (o TDC) de IDQuantique.
 
-Un APD es un un diodo p-n con una ganancia alta. Estos instrumentos tienen un mecanismo interno de amplificación, que genera señales eléctricas con alta tasa señal-ruido como respuesta a detecciones de un sólo fotón\cite{Cork}. Las cuentas detectadas por un APD pueden tener distintas fuentes:
+Un APD es un diodo p-n con una ganancia alta. Estos instrumentos tienen un mecanismo interno de amplificación, que genera señales eléctricas con alta tasa señal-ruido como respuesta a detecciones de un fotón individual\cite{Cork}. Las cuentas detectadas por un APD pueden tener distintas fuentes:
 \begin{itemize}
 \item Fotones individuales, que pueden ser registrados correctamente o como \textit{afterpulses}.
 \item \textit{Cuentas obscuras}, señales generadas por el mismo APD sin luz externa incidente. La tasa de cuentas obscuras es dependiente de la temperatura del detector y el voltaje de polarización (bias). El fabricante del \textit{id120} indica un valor de cuentas obscuras de $<200$ Hz para un voltaje de polarización máximo.
 \end{itemize}
 
-Los APD \textit{id120} cuentan con una zona de detección de 500 $\mu$m de diámetro y una eficiencia cuántica de 80\% para $800$ nm. Es necesario optimizar los valores del voltaje de polarización aplicados para minimizar el \textit{afterpulsing} y la tasa de cuentas obscuras. Una descripción general más detallada de el funcionamiento y optimización de APDs puede encontrarse en \cite{Michalet}. Una desventaja de la elección de \textit{id120} es que no tienen un trigger interno capaz de ser activado de manera externa, por lo que fue necesario diseñar un circuito AND (\textit{gating}) utilizando búferes de tres estados. Este circuito se construyó como parte de este trabajo y su descripción se encuentra en la sección \ref{gating}.
+Los APD \textit{id120} cuentan con una zona de detección de 500 $\mu$m de diámetro y una eficiencia cuántica de 80\% para $800$ nm. Es necesario optimizar los valores del voltaje de polarización aplicados para minimizar el \textit{afterpulsing} y la tasa de cuentas obscuras. Una descripción general más detallada del funcionamiento y optimización de APDs puede encontrarse en \cite{Michalet}. Una desventaja de la elección de \textit{id120} es que no tienen un trigger interno capaz de ser activado de manera externa, por lo que fue necesario diseñar un circuito AND (\textit{gating}) utilizando búferes de tres estados. Este circuito se construyó como parte de este trabajo y su descripción se encuentra en la sección \ref{gating}.
 
 Finalmente, el \textit{id800} es un módulo etiquetador de cuentas temporales (time-to-digital converter, o TDC por sus siglas en inglés). Cuenta con 8 canales de entrada BNC con una resolución temporal de 81 ps para coincidencias de eventos en canales distintos. El \textit{id800} cuenta con un software de LabView para el procesamiento de cuentas, pero la funcionalidad que ofrecía no era adecuada para experimentos de FWM. Por ello, se optó por escribir una biblioteca completa para Python 3.6 para permitir la programación del instrumento. Con esta biblioteca, se escribió un programa para procesar y visualizar en tiempo real las cuentas que el \textit{id800} reciba.
 
@@ -437,7 +432,7 @@ Viendo el espectro de frecuencias, podemos bloquear los puntos que no correspond
 \caption{Antes y después de aplicar pre-procesamiento a la foto del haz.}\label{fig:fft_beams}
 \end{figure}
 
-Dependiendo de cuánto se bloquee en el espacio de frecuencias cambiará la calidad de la imagen reconstruida: si se bloquea muy poco, no habrá mejora, si se bloquea mucho, se puede perder información del perfil. Esta herramienta es útil cuando se prefiere una estimación medianamente precisa del ancho de un haz con mucho ruido y no se puede arreglar la imagen del con óptica.
+Dependiendo de cuánto se bloquee en el espacio de frecuencias cambiará la calidad de la imagen reconstruida: si se bloquea muy poco, no habrá mejora, si se bloquea mucho, se puede perder información del perfil. Esta herramienta es útil cuando se prefiere una estimación medianamente precisa del ancho de un haz con mucho ruido y no se puede mejorar la imagen con un reacomodo de los elementos ópticos.
 
 Después del pre-procesamiento, se encuentra el \textit{centro de gravedad de la imagen} con un cálculo del primer momento de la intensidad del haz sobre la superficie del CCD en ambas direcciones\cite{ISO11146-1}:
 \begin{align*}
@@ -455,7 +450,7 @@ Además de existir como una biblioteca de funciones independiente, se escribió 
 
 \subsubsection{Sistema de adquisición de datos}\label{adquisicion}
 
-El sistema de adquisición consiste en la paquetería de programación del \textit{id800} y el programa de visualización de cuentas, desarrollados en este trabajo para la adquisición de datos en experimentos de bifotones. El \textit{id800} es un convertidor de cuentas de tiempo a valores digitales que consta en un circuito integrado de aplicación específica (ASIC) que registra eventos en los 8 canales del módulo y los manda a una matriz de puertas programable (FPGA) que los ordena y comprime. En la Figura \ref{fig:optica_fwm}, el \textit{id800} recibe señales eléctricas que recibe de los APDs en alguno de sus canales. El \textit{id800} cuenta con un búfer de entrada que trabaja a una velocidad de 200 millones de eventos por segundo, que resulta en una resolución temporal de 5.5 ns para eventos consecutivos registrados en el mismo canal. Sin embargo, la resolución temporal para eventos registrados en distintos canales es de 81 ps.
+El sistema de adquisición consiste en la paquetería de programación del \textit{id800} y el programa de visualización de cuentas, desarrollados en este trabajo para la adquisición de datos en experimentos de bifotones. El \textit{id800} es un convertidor de cuentas de tiempo a valores digitales que consta en un circuito integrado de aplicación específica (ASIC) que registra eventos en los 8 canales del módulo y los manda a una matriz de puertas programable (FPGA) que los ordena y comprime. En la Figura \ref{fig:optica_fwm}, el \textit{id800} recibe señales eléctricas que recibe de los APDs en alguno de sus canales. El \textit{id800} cuenta con un búfer de entrada que trabaja a una velocidad de 200 millones de eventos por segundo, que resulta en una resolución temporal de 5 ns para eventos consecutivos registrados en el mismo canal. Sin embargo, la resolución temporal para eventos registrados en distintos canales es de 81 ps.
 
 Para realizar la comunicación entre el \textit{id800} y el resto de los sistemas del laboratorio, fue necesario escribir una paquetería de uso. El diagrama de flujo para el desarrollo de la paquetería se encuentra en la Figura \ref{fig:flowchart}. Una descripción secuencial de lo que hace el programa es:
 \begin{enumerate}
@@ -489,7 +484,7 @@ Los APDs utilizados no cuentan con un canal de entrada digital que permita prend
 %\caption{Circuito de gating.}\label{fig:gating_board}
 %\end{figure}
 
-Esto es básicamente un circuito AND adecuado a las especificaciones de voltaje de salida de los APDs (TTL de bajo voltaje o LVTTL), de entrada del TDC (TTL o LVTTL) y los pulsos del sistema de control (TTL). Se decidió usar un búfer de tres estados SN74LVC126A de Texas Instruments, que permite 3 salidas: $1$ V, $0$ V, y un estado de alta impedancia (donde no pasa corriente). El búfer tiene dos canales de entrada (input y control) y uno de salida (output); cuando no hay señal de control, el estado del búfer es de alta impedancia. Esto fue para evitar la posibilidad de que el TDC interpretara señales de salida de bajo voltaje (idealmente $0$ V) como falsos eventos. El instrumento permite hasta 8 señales de salida independientes, con sus respectivos canales de entrada y control.
+Esto es básicamente un circuito AND adecuado a las especificaciones de voltaje de salida de los APDs (TTL de bajo voltaje o LVTTL), de entrada del TDC (TTL o LVTTL) y los pulsos del sistema de control (TTL). Se decidió usar un búfer de tres estados SN74LVC126A de Texas Instruments, que permite 3 salidas: $1$ V, $0$ V, y un estado de alta impedancia (donde no pasa corriente). El búfer tiene dos canales de entrada (input y control) y uno de salida (output); cuando no haya experimento (es decir, cuando no se registre voltaje en el canal de control), el estado del búfer es de alta impedancia. Esto fue para evitar la posibilidad de que el TDC interpretara señales de salida de bajo voltaje (idealmente $0$ V) como falsos eventos. El instrumento permite hasta 8 señales de salida independientes, con sus respectivos canales de entrada y control.
 
 \begin{figure}[h!]
 \centering
@@ -497,6 +492,8 @@ Esto es básicamente un circuito AND adecuado a las especificaciones de voltaje 
 \caption[Ejemplo de prueba para el circuito de gating.]{Ejemplo de prueba para el circuito de gating. a) El pulso de entrada o la señal que queremos usar. b) El pulso de control. c) El pulso de salida después de pasar por el circuito.}\label{fig:gating_plot}
 \end{figure}
 Se realizaron pruebas para verificar que el circuito funcionara adecuadamente. Con un generador de funciones, se enviaron dos trenes de pulsos TTL de distintas frecuencias: una frecuencia baja como control y una más alta como input. El pulso de menor frecuencia se usó para simular el pulso que emitirá el sistema de control, mientras que el tren de pulsos de alta frecuencia simuló las señales emitidas por los APDs. Como se observa en la Figura \ref{fig:gating_plot}, la señal de salida está regulada por el pulso de control, con lo que nos aseguramos que el \textit{id800} no recibirá datos fuera de esta ventana experimental.
+
+Este circuito se utilizó para simular la ventana experimental que se utilizará en los experimentos de mezclado de cuatro ondas. El pulso de entrada es la señal que proviene de un APD cuando registra un evento y la señal de control se realizó desde una tarjeta gráfica LabJack T7, encargada del sistema completo de control. La señal de salida va al \textit{id800}, por lo que este circuito sirve para limitar la tasa de eventos que serán procesados.
 
 \newpage
 \subsection{Configuración experimental}\label{experimento_correlaciones}
@@ -510,7 +507,7 @@ Se amplió el montaje de la óptica de adquisición de FWM de la Figura \ref{fig
 \caption[Óptica de adquisición para el haz de 780 nm.]{Óptica de adquisición para el haz de 780 nm. La sección resaltada es la ampliación del arreglo óptico de la Figura \ref{fig:optica_fwm}. Se consiguió una potencia de alrededor de 3 pW usando filtros ND y un divisor no polarizante BS, necesaria para no saturar a los APDs.}\label{fig:optica_780}
 \end{figure}
 
-En la sección \ref{teoria_correlaciones} vimos que en el tratamiento cuántico podemos considerar a un haz de luz como un haz de fotones individuales. El \textit{flujo de fotones} $\Phi$ se define como el número de fotones promedio que pasa por una región por unidad de tiempo. Si consideramos un haz monocromático y con intensidad constante $I$, entonces el flujo se da como:
+En la sección \ref{teoria_correlaciones} vimos que en el tratamiento cuántico podemos considerar a un haz de luz como un haz de fotones individuales. El \textit{flujo de fotones} $\Phi$ se define como el número de fotones promedio que pasa por una región por unidad de tiempo. Si consideramos un haz monocromático y con intensidad constante $I$, entonces el flujo de fotones que pasa por un área $A$ se da como:
 \begin{equation}
 \Phi = \frac{IA}{\hbar\omega} = \frac{P}{\hbar\omega}\text{fotones s}^{-1}, \label{flujo}
 \end{equation}
@@ -521,7 +518,7 @@ Cada APD tiene un valor de \textit{eficiencia cuántica} $\eta$, que es la propo
 \mathcal{R} = \eta\Phi.
 \end{equation}
 
-Existe un valor máximo de $\mathcal{R}$ para cada APD que surge de que el detector necesita ``descansar" después de registrar un evento. Al detectar un fotón, se genera una avalancha para multiplicar la señal. Sin embargo, por los altos voltajes de polarización necesarios (de hasta cientos de volts), se aplica un circuito de atenuamiento que reduce el voltaje del APD por un tiempo corto en donde no se registran nuevos eventos\cite{Cova:96}. Para el \textit{id120}, este llamado \textit{tiempo muerto} es de $\sim$1 $\mu$s. Con esto, la tasa máxima $\mathcal{R}$ de eventos que podemos detectar sin pérdidas significativas es inversa a este tiempo muerto, o $\sim 10^{6} \ \text{fotones s}^{-1}$. Con este valor máximo de $\mathcal{R}$ y $\lambda = 780$ nm (sabiendo que $\omega = 2\pi c/\lambda$) encontramos el valor máximo de la potencia del haz láser que podemos usar $P_{max} \sim 3$ pW. Esto lo conseguimos usando un arreglo de filtros de densidad neutral (ND) para atenuar la potencia original del haz láser; estos filtros reducen la potencia de un haz en $10^{\text{-OD}}$, donde OD es la densidad óptica total del arreglo de filtros.
+Existe un valor máximo de $\mathcal{R}$ para cada APD que surge de que el detector necesita ``descansar" después de registrar un evento. Al detectar un fotón, se genera una avalancha de electrones que multiplican la señal eléctrica. Sin embargo, por los altos voltajes de polarización que son necesarios (de hasta cientos de voltios), se aplica un circuito de atenuamiento que reduce el voltaje del APD por un tiempo corto en donde no se registran nuevos eventos\cite{Cova:96}. Para el \textit{id120}, este llamado \textit{tiempo muerto} es de $\sim$1 $\mu$s. Con esto, la tasa máxima $\mathcal{R}$ de eventos que podemos detectar sin pérdidas significativas es inversa a este tiempo muerto, o $\sim 10^{6} \ \text{fotones s}^{-1}$. Con este valor máximo de $\mathcal{R}$ y $\lambda = 780$ nm (sabiendo que $\omega = 2\pi c/\lambda$) encontramos el valor máximo de la potencia del haz láser que podemos usar $P_{max} \sim 3$ pW. Esto lo conseguimos usando un arreglo de filtros de densidad neutral (ND) para atenuar la potencia original del haz láser; estos filtros reducen la potencia de un haz en $10^{\text{-OD}}$, donde OD es la densidad óptica total del arreglo de filtros.
 
 Se realizaron pruebas para medir la tasa de cuentas obscuras para los dos APDs que se usaron en este experimento. Estas medidas se tomaron sin luz láser y se registraron los eventos por media hora usando el programa de adquisición de datos. La estadística de estas cuentas obscuras sigue una estadística Poissoniana \cite{darkcountstats}, y las tasas de cuentas obscuras registradas concuerdan con el valor máximo de 200 Hz reportado por el fabricante. La Figura \ref{fig:dark_counts} presenta un histograma de las cuentas obscuras de los dos APDs y su respectivo ajuste a una distribución Poissoniana. El tamaño de cada canasta en el histograma fue de 150 ms.
 
